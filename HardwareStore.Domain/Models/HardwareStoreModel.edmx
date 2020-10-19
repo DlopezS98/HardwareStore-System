@@ -1,0 +1,2091 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HardwareStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Ctg_Brands">
+          <Key>
+            <PropertyRef Name="Pk_BrandID" />
+          </Key>
+          <Property Name="Pk_BrandID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Brs_CustomID" Type="varchar" MaxLength="9" StoreGeneratedPattern="Computed" />
+          <Property Name="Brs_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Brs_Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="Brs_CreatedAt" Type="date" Nullable="false" />
+          <Property Name="Brs_UpdatedAt" Type="date" Nullable="false" />
+          <Property Name="Brs_Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ctg_Categories">
+          <Key>
+            <PropertyRef Name="Pk_CategoryID" />
+          </Key>
+          <Property Name="Pk_CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cat_CustomID" Type="varchar" MaxLength="9" StoreGeneratedPattern="Computed" />
+          <Property Name="Cat_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cat_Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="Cat_CreatedAt" Type="date" Nullable="false" />
+          <Property Name="Cat_UpdatedAt" Type="date" Nullable="false" />
+          <Property Name="Cat_Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ctg_Currency">
+          <Key>
+            <PropertyRef Name="Pk_CurrencyID" />
+          </Key>
+          <Property Name="Pk_CurrencyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cy_Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cy_Description" Type="nvarchar" MaxLength="150" />
+          <Property Name="Cy_Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ctg_CurrencyExchange">
+          <Key>
+            <PropertyRef Name="Pk_CurrencyExchangeID" />
+          </Key>
+          <Property Name="Pk_CurrencyExchangeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fk_CurrencyID" Type="int" Nullable="false" />
+          <Property Name="Cye_LocalCurrency" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cye_Sale" Type="float" Nullable="false" />
+          <Property Name="Cye_Purchase" Type="float" Nullable="false" />
+          <Property Name="Cye_CreatedAt" Type="date" Nullable="false" />
+          <Property Name="Cye_UpdateddAt" Type="date" Nullable="false" />
+          <Property Name="Cye_Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ctg_Customers">
+          <Key>
+            <PropertyRef Name="Pk_CustomerID" />
+          </Key>
+          <Property Name="Pk_CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cust_CustomID" Type="varchar" MaxLength="10" StoreGeneratedPattern="Computed" />
+          <Property Name="Cust_FirtsName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cust_LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cust_Address" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Cust_PhoneNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="Cust_IdentificationCard" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Cust_CreatedAt" Type="date" Nullable="false" />
+          <Property Name="Cust_UpdatedAt" Type="date" Nullable="false" />
+          <Property Name="Cust_Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ctg_DiscountPromotions">
+          <Key>
+            <PropertyRef Name="Pk_DiscountPromotionID" />
+          </Key>
+          <Property Name="Pk_DiscountPromotionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Dtps_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Dtps_Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="Dtps_Discount" Type="int" Nullable="false" />
+          <Property Name="Dtps_CreateAt" Type="date" Nullable="false" />
+          <Property Name="Dtps_UpdatedAt" Type="date" Nullable="false" />
+          <Property Name="Dtps_Status" Type="bit" Nullable="false" />
+          <Property Name="Dtps_Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ctg_Employees">
+          <Key>
+            <PropertyRef Name="Pk_EmployeeID" />
+          </Key>
+          <Property Name="Pk_EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emp_CustomID" Type="varchar" MaxLength="7" StoreGeneratedPattern="Computed" />
+          <Property Name="Emp_Position" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="Emp_FirstName" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="Emp_LastName" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="Emp_PhoneNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="Emp_Address" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Emp_IdentificationCard" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Emp_EmailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Emp_CreatedAt" Type="date" Nullable="false" />
+          <Property Name="Emp_UpdatedAt" Type="date" Nullable="false" />
+          <Property Name="Emp_Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ctg_MeasureUnits">
+          <Key>
+            <PropertyRef Name="Pk_MeasureID" />
+          </Key>
+          <Property Name="Pk_MeasureID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fk_UnitType" Type="int" Nullable="false" />
+          <Property Name="Msu_Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Msu_Abbreviation" Type="nvarchar" MaxLength="5" />
+          <Property Name="Msu_CreatedAt" Type="date" Nullable="false" />
+          <Property Name="Msu_UpdatedAt" Type="date" Nullable="false" />
+          <Property Name="Msu_Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ctg_Privilegies">
+          <Key>
+            <PropertyRef Name="Pk_PrivilegieID" />
+          </Key>
+          <Property Name="Pk_PrivilegieID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pvg_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pvg_CreatedAt" Type="date" Nullable="false" />
+          <Property Name="Pvg_UpdatedAt" Type="date" Nullable="false" />
+          <Property Name="Pvg_Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ctg_ProductDetails">
+          <Key>
+            <PropertyRef Name="Pk_ProductDetailID" />
+          </Key>
+          <Property Name="Pk_ProductDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fk_ProductID" Type="int" Nullable="false" />
+          <Property Name="Pdl_customID" Type="varchar" MaxLength="15" StoreGeneratedPattern="Computed" />
+          <Property Name="Fk_CategoryID" Type="int" Nullable="false" />
+          <Property Name="Fk_BrandID" Type="int" />
+          <Property Name="Fk_SupplierID" Type="int" Nullable="false" />
+          <Property Name="Fk_UnitConversion" Type="int" Nullable="false" />
+          <Property Name="Pdl_DefaultCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pdl_Dimensions" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pdl_MaterialType" Type="nvarchar" MaxLength="30" />
+          <Property Name="Pdl_ExpiryDate" Type="date" />
+          <Property Name="Pdl_CreatedAt" Type="date" Nullable="false" />
+          <Property Name="Pdl_UpdatedAt" Type="date" Nullable="false" />
+          <Property Name="Pdl_Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ctg_Products">
+          <Key>
+            <PropertyRef Name="Pk_productID" />
+          </Key>
+          <Property Name="Pk_productID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Prod_customID" Type="varchar" MaxLength="10" StoreGeneratedPattern="Computed" />
+          <Property Name="Prod_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prod_Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="Prod_Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ctg_Suppliers">
+          <Key>
+            <PropertyRef Name="Pk_SupplierID" />
+          </Key>
+          <Property Name="Pk_SupplierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sps_customID" Type="varchar" MaxLength="9" StoreGeneratedPattern="Computed" />
+          <Property Name="Sps_CompanyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sps_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sps_Address" Type="nvarchar" MaxLength="250" />
+          <Property Name="Sps_PhoneNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="Sps_EmailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sps_CreatedAt" Type="date" Nullable="false" />
+          <Property Name="Sps_UpdatedAt_" Type="date" Nullable="false" />
+          <Property Name="Sps_Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ctg_UnitConversion">
+          <Key>
+            <PropertyRef Name="Pk_UnitConversion" />
+          </Key>
+          <Property Name="Pk_UnitConversion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fk_SourceUnit" Type="int" Nullable="false" />
+          <Property Name="Fk_DestinationUnit" Type="int" Nullable="false" />
+          <Property Name="Utc_Equivalence" Type="float" Nullable="false" />
+          <Property Name="Utc_CreatedAt" Type="date" Nullable="false" />
+          <Property Name="Utc_UpdatedAt" Type="date" Nullable="false" />
+          <Property Name="Utc_Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ctg_UnitType">
+          <Key>
+            <PropertyRef Name="Pk_UnitType" />
+          </Key>
+          <Property Name="Pk_UnitType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Uty_Type" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Uty_CreatedAt" Type="date" Nullable="false" />
+          <Property Name="Uty_UpdatedAt" Type="date" Nullable="false" />
+          <Property Name="Uty_Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ctg_Users">
+          <Key>
+            <PropertyRef Name="Pk_UserID" />
+          </Key>
+          <Property Name="Pk_UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fk_EmployeeID" Type="int" Nullable="false" />
+          <Property Name="Fk_PrivilegieID" Type="int" Nullable="false" />
+          <Property Name="UserCustomID" Type="varchar" MaxLength="9" StoreGeneratedPattern="Computed" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="UserPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserImage" Type="nvarchar" MaxLength="250" />
+          <Property Name="UserCreatedAt" Type="date" Nullable="false" />
+          <Property Name="UserUpdatedAt" Type="date" Nullable="false" />
+          <Property Name="UserDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ctg_Warehouses">
+          <Key>
+            <PropertyRef Name="Pk_WarehouseID" />
+          </Key>
+          <Property Name="Pk_WarehouseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Whs_CustomID" Type="varchar" MaxLength="7" StoreGeneratedPattern="Computed" />
+          <Property Name="Whs_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Whs_Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="Whs_CreatedAt" Type="date" Nullable="false" />
+          <Property Name="Whs_UpdatedAt" Type="date" Nullable="false" />
+          <Property Name="Whs_Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Tbl_HardwareStore">
+          <Key>
+            <PropertyRef Name="Hws_CreatedAt" />
+            <PropertyRef Name="Hws_UpdatedAt" />
+          </Key>
+          <Property Name="Hws_Name" Type="nvarchar" MaxLength="60" />
+          <Property Name="Hws_RUCNumber" Type="nvarchar" MaxLength="60" />
+          <Property Name="Hws_Address" Type="nvarchar" MaxLength="250" />
+          <Property Name="Hws_Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="Hws_EmailAddress" Type="nvarchar" MaxLength="60" />
+          <Property Name="Hws_PhoneNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="Hws_FixedLineNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="Hws_OwnerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hws_CreatedAt" Type="date" Nullable="false" />
+          <Property Name="Hws_UpdatedAt" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_OrderDetails">
+          <Key>
+            <PropertyRef Name="Fk_OrderID" />
+            <PropertyRef Name="Fk_ProductDetailID" />
+          </Key>
+          <Property Name="Fk_OrderID" Type="int" Nullable="false" />
+          <Property Name="Fk_ProductDetailID" Type="int" Nullable="false" />
+          <Property Name="Odt_Quantity" Type="int" Nullable="false" />
+          <Property Name="Odt_PurchasePrice" Type="float" Nullable="false" />
+          <Property Name="Odt_DetailTax" Type="float" />
+          <Property Name="Odt_Subtotal" Type="float" Nullable="false" />
+          <Property Name="Odt_Discount" Type="int" />
+          <Property Name="Odt_Total" Type="float" Nullable="false" />
+          <Property Name="Odt_Deleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Tbl_Orders">
+          <Key>
+            <PropertyRef Name="Pk_OrderID" />
+          </Key>
+          <Property Name="Pk_OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fk_SupplierID" Type="int" Nullable="false" />
+          <Property Name="Fk_UserID" Type="int" Nullable="false" />
+          <Property Name="Ord_Number" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ord_Date" Type="date" />
+          <Property Name="Ord_Tax" Type="float" />
+          <Property Name="Ord_Subtotal" Type="float" Nullable="false" />
+          <Property Name="Ord_Discount" Type="int" />
+          <Property Name="Ord_Total" Type="float" Nullable="false" />
+          <Property Name="Ord_Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_RemovedProducts">
+          <Key>
+            <PropertyRef Name="Pk_RemovedProductID" />
+          </Key>
+          <Property Name="Pk_RemovedProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fk_WarehouseID" Type="int" Nullable="false" />
+          <Property Name="Fk_ProductDetailID" Type="int" Nullable="false" />
+          <Property Name="Fk_UserID" Type="int" Nullable="false" />
+          <Property Name="RmProd_Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RmProd_Description" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="RmProd_Quantity" Type="int" Nullable="false" />
+          <Property Name="RmProd_PurchasePrice" Type="float" Nullable="false" />
+          <Property Name="RmProd_CreatedAt" Type="date" Nullable="false" />
+          <Property Name="RmProd_Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="Tbl_SaleDetails">
+          <Key>
+            <PropertyRef Name="Fk_SaleID" />
+            <PropertyRef Name="Fk_ProductDetailID" />
+          </Key>
+          <Property Name="Fk_SaleID" Type="int" Nullable="false" />
+          <Property Name="Fk_ProductDetailID" Type="int" Nullable="false" />
+          <Property Name="Sdt_Price" Type="float" Nullable="false" />
+          <Property Name="Sdt_Quantity" Type="int" Nullable="false" />
+          <Property Name="Sdt_Tax" Type="float" />
+          <Property Name="Sdt_Subtotal" Type="float" Nullable="false" />
+          <Property Name="Sdt_Discount" Type="int" />
+          <Property Name="Sdt_Total" Type="float" Nullable="false" />
+          <Property Name="Sdt_Deleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Tbl_Sales">
+          <Key>
+            <PropertyRef Name="Pk_SaleID" />
+          </Key>
+          <Property Name="Pk_SaleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fk_UserID" Type="int" />
+          <Property Name="Fk_CustomerID" Type="int" />
+          <Property Name="Fk_CurrencyExchangeID" Type="int" />
+          <Property Name="Sale_CustomerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sale_PaymentType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sale_Date" Type="date" Nullable="false" />
+          <Property Name="Sale_TaxName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sale_Tax" Type="float" />
+          <Property Name="Sale_Subtotal" Type="float" Nullable="false" />
+          <Property Name="Sale_Discount" Type="int" />
+          <Property Name="Sale_TotalAmount" Type="float" Nullable="false" />
+          <Property Name="Sale_Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Taxes">
+          <Key>
+            <PropertyRef Name="Pk_TaxID" />
+          </Key>
+          <Property Name="Pk_TaxID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaxName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TaxDescription" Type="nvarchar" MaxLength="150" />
+          <Property Name="TaxRate" Type="float" Nullable="false" />
+          <Property Name="TaxCreatedAt" Type="date" Nullable="false" />
+          <Property Name="TaxUpdatedAt" Type="date" Nullable="false" />
+          <Property Name="TaxDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_TransferDetails">
+          <Key>
+            <PropertyRef Name="Pk_TransferDetailID" />
+          </Key>
+          <Property Name="Pk_TransferDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fk_TransferID" Type="int" Nullable="false" />
+          <Property Name="Fk_ProductDetailID" Type="int" Nullable="false" />
+          <Property Name="TD_SourceWarehouseID" Type="int" Nullable="false" />
+          <Property Name="TD_Quantity" Type="int" Nullable="false" />
+          <Property Name="TD_CreatedAt" Type="date" />
+          <Property Name="TD_UpdatedAt" Type="date" />
+        </EntityType>
+        <EntityType Name="Tbl_Transfers">
+          <Key>
+            <PropertyRef Name="Pk_TransferID" />
+          </Key>
+          <Property Name="Pk_TransferID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fk_UserID" Type="int" />
+          <Property Name="Fk_DestinationWarehouse" Type="int" Nullable="false" />
+          <Property Name="TransferDate" Type="date" />
+          <Property Name="TransferTotal" Type="int" />
+          <Property Name="TransferStatus" Type="bit" />
+        </EntityType>
+        <EntityType Name="Tbl_WarehouseProducts">
+          <Key>
+            <PropertyRef Name="Fk_WarehouseID" />
+            <PropertyRef Name="Fk_ProductDetailID" />
+          </Key>
+          <Property Name="Fk_WarehouseID" Type="int" Nullable="false" />
+          <Property Name="Fk_ProductDetailID" Type="int" Nullable="false" />
+          <Property Name="WhPr_Stock" Type="int" />
+          <Property Name="WhPr_PurchasePrice" Type="float" Nullable="false" />
+          <Property Name="WhPr_SalePrice" Type="float" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BRANDS_PDL">
+          <End Role="Ctg_Brands" Type="Self.Ctg_Brands" Multiplicity="0..1" />
+          <End Role="Ctg_ProductDetails" Type="Self.Ctg_ProductDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Brands">
+              <PropertyRef Name="Pk_BrandID" />
+            </Principal>
+            <Dependent Role="Ctg_ProductDetails">
+              <PropertyRef Name="Fk_BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATEGORIES_PDL">
+          <End Role="Ctg_Categories" Type="Self.Ctg_Categories" Multiplicity="1" />
+          <End Role="Ctg_ProductDetails" Type="Self.Ctg_ProductDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Categories">
+              <PropertyRef Name="Pk_CategoryID" />
+            </Principal>
+            <Dependent Role="Ctg_ProductDetails">
+              <PropertyRef Name="Fk_CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CURRENCYEXCHANGE">
+          <End Role="Ctg_Currency" Type="Self.Ctg_Currency" Multiplicity="1" />
+          <End Role="Ctg_CurrencyExchange" Type="Self.Ctg_CurrencyExchange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Currency">
+              <PropertyRef Name="Pk_CurrencyID" />
+            </Principal>
+            <Dependent Role="Ctg_CurrencyExchange">
+              <PropertyRef Name="Fk_CurrencyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CURRENCYEXCHANGE_SALES">
+          <End Role="Ctg_CurrencyExchange" Type="Self.Ctg_CurrencyExchange" Multiplicity="0..1" />
+          <End Role="Tbl_Sales" Type="Self.Tbl_Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_CurrencyExchange">
+              <PropertyRef Name="Pk_CurrencyExchangeID" />
+            </Principal>
+            <Dependent Role="Tbl_Sales">
+              <PropertyRef Name="Fk_CurrencyExchangeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUSTOMERS_SALES">
+          <End Role="Ctg_Customers" Type="Self.Ctg_Customers" Multiplicity="0..1" />
+          <End Role="Tbl_Sales" Type="Self.Tbl_Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Customers">
+              <PropertyRef Name="Pk_CustomerID" />
+            </Principal>
+            <Dependent Role="Tbl_Sales">
+              <PropertyRef Name="Fk_CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLOYEES_USERS">
+          <End Role="Ctg_Employees" Type="Self.Ctg_Employees" Multiplicity="1" />
+          <End Role="Ctg_Users" Type="Self.Ctg_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Employees">
+              <PropertyRef Name="Pk_EmployeeID" />
+            </Principal>
+            <Dependent Role="Ctg_Users">
+              <PropertyRef Name="Fk_EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDERS_ODT">
+          <End Role="Tbl_Orders" Type="Self.Tbl_Orders" Multiplicity="1" />
+          <End Role="Tbl_OrderDetails" Type="Self.Tbl_OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Orders">
+              <PropertyRef Name="Pk_OrderID" />
+            </Principal>
+            <Dependent Role="Tbl_OrderDetails">
+              <PropertyRef Name="Fk_OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRIVILEGIES_USERS">
+          <End Role="Ctg_Privilegies" Type="Self.Ctg_Privilegies" Multiplicity="1" />
+          <End Role="Ctg_Users" Type="Self.Ctg_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Privilegies">
+              <PropertyRef Name="Pk_PrivilegieID" />
+            </Principal>
+            <Dependent Role="Ctg_Users">
+              <PropertyRef Name="Fk_PrivilegieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROD_DETAILS_RMPROD">
+          <End Role="Ctg_ProductDetails" Type="Self.Ctg_ProductDetails" Multiplicity="1" />
+          <End Role="Tbl_RemovedProducts" Type="Self.Tbl_RemovedProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_ProductDetails">
+              <PropertyRef Name="Pk_ProductDetailID" />
+            </Principal>
+            <Dependent Role="Tbl_RemovedProducts">
+              <PropertyRef Name="Fk_ProductDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROD_DETAILS_WHPR">
+          <End Role="Ctg_ProductDetails" Type="Self.Ctg_ProductDetails" Multiplicity="1" />
+          <End Role="Tbl_WarehouseProducts" Type="Self.Tbl_WarehouseProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_ProductDetails">
+              <PropertyRef Name="Pk_ProductDetailID" />
+            </Principal>
+            <Dependent Role="Tbl_WarehouseProducts">
+              <PropertyRef Name="Fk_ProductDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCT_DETAIL_TD">
+          <End Role="Ctg_ProductDetails" Type="Self.Ctg_ProductDetails" Multiplicity="1" />
+          <End Role="Tbl_TransferDetails" Type="Self.Tbl_TransferDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_ProductDetails">
+              <PropertyRef Name="Pk_ProductDetailID" />
+            </Principal>
+            <Dependent Role="Tbl_TransferDetails">
+              <PropertyRef Name="Fk_ProductDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTS_ODT">
+          <End Role="Ctg_ProductDetails" Type="Self.Ctg_ProductDetails" Multiplicity="1" />
+          <End Role="Tbl_OrderDetails" Type="Self.Tbl_OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_ProductDetails">
+              <PropertyRef Name="Pk_ProductDetailID" />
+            </Principal>
+            <Dependent Role="Tbl_OrderDetails">
+              <PropertyRef Name="Fk_ProductDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTS_PDL">
+          <End Role="Ctg_Products" Type="Self.Ctg_Products" Multiplicity="1" />
+          <End Role="Ctg_ProductDetails" Type="Self.Ctg_ProductDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Products">
+              <PropertyRef Name="Pk_productID" />
+            </Principal>
+            <Dependent Role="Ctg_ProductDetails">
+              <PropertyRef Name="Fk_ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTS_SDT">
+          <End Role="Ctg_ProductDetails" Type="Self.Ctg_ProductDetails" Multiplicity="1" />
+          <End Role="Tbl_SaleDetails" Type="Self.Tbl_SaleDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_ProductDetails">
+              <PropertyRef Name="Pk_ProductDetailID" />
+            </Principal>
+            <Dependent Role="Tbl_SaleDetails">
+              <PropertyRef Name="Fk_ProductDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SALES_SDT">
+          <End Role="Tbl_Sales" Type="Self.Tbl_Sales" Multiplicity="1" />
+          <End Role="Tbl_SaleDetails" Type="Self.Tbl_SaleDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Sales">
+              <PropertyRef Name="Pk_SaleID" />
+            </Principal>
+            <Dependent Role="Tbl_SaleDetails">
+              <PropertyRef Name="Fk_SaleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOURCEUNIT">
+          <End Role="Ctg_MeasureUnits" Type="Self.Ctg_MeasureUnits" Multiplicity="1" />
+          <End Role="Ctg_UnitConversion" Type="Self.Ctg_UnitConversion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_MeasureUnits">
+              <PropertyRef Name="Pk_MeasureID" />
+            </Principal>
+            <Dependent Role="Ctg_UnitConversion">
+              <PropertyRef Name="Fk_SourceUnit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUPPLIERS_ORD">
+          <End Role="Ctg_Suppliers" Type="Self.Ctg_Suppliers" Multiplicity="1" />
+          <End Role="Tbl_Orders" Type="Self.Tbl_Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Suppliers">
+              <PropertyRef Name="Pk_SupplierID" />
+            </Principal>
+            <Dependent Role="Tbl_Orders">
+              <PropertyRef Name="Fk_SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUPPLIERS_PDL">
+          <End Role="Ctg_Suppliers" Type="Self.Ctg_Suppliers" Multiplicity="1" />
+          <End Role="Ctg_ProductDetails" Type="Self.Ctg_ProductDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Suppliers">
+              <PropertyRef Name="Pk_SupplierID" />
+            </Principal>
+            <Dependent Role="Ctg_ProductDetails">
+              <PropertyRef Name="Fk_SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANSFERS_TD">
+          <End Role="Tbl_Transfers" Type="Self.Tbl_Transfers" Multiplicity="1" />
+          <End Role="Tbl_TransferDetails" Type="Self.Tbl_TransferDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Transfers">
+              <PropertyRef Name="Pk_TransferID" />
+            </Principal>
+            <Dependent Role="Tbl_TransferDetails">
+              <PropertyRef Name="Fk_TransferID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UNITCONVERSION_PDL">
+          <End Role="Ctg_UnitConversion" Type="Self.Ctg_UnitConversion" Multiplicity="1" />
+          <End Role="Ctg_ProductDetails" Type="Self.Ctg_ProductDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_UnitConversion">
+              <PropertyRef Name="Pk_UnitConversion" />
+            </Principal>
+            <Dependent Role="Ctg_ProductDetails">
+              <PropertyRef Name="Fk_UnitConversion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UNITTYPE_MSU">
+          <End Role="Ctg_UnitType" Type="Self.Ctg_UnitType" Multiplicity="1" />
+          <End Role="Ctg_MeasureUnits" Type="Self.Ctg_MeasureUnits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_UnitType">
+              <PropertyRef Name="Pk_UnitType" />
+            </Principal>
+            <Dependent Role="Ctg_MeasureUnits">
+              <PropertyRef Name="Fk_UnitType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERS_ORD">
+          <End Role="Ctg_Users" Type="Self.Ctg_Users" Multiplicity="1" />
+          <End Role="Tbl_Orders" Type="Self.Tbl_Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Users">
+              <PropertyRef Name="Pk_UserID" />
+            </Principal>
+            <Dependent Role="Tbl_Orders">
+              <PropertyRef Name="Fk_UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERS_SALES">
+          <End Role="Ctg_Users" Type="Self.Ctg_Users" Multiplicity="0..1" />
+          <End Role="Tbl_Sales" Type="Self.Tbl_Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Users">
+              <PropertyRef Name="Pk_UserID" />
+            </Principal>
+            <Dependent Role="Tbl_Sales">
+              <PropertyRef Name="Fk_UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERS_TFS">
+          <End Role="Ctg_Users" Type="Self.Ctg_Users" Multiplicity="0..1" />
+          <End Role="Tbl_Transfers" Type="Self.Tbl_Transfers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Users">
+              <PropertyRef Name="Pk_UserID" />
+            </Principal>
+            <Dependent Role="Tbl_Transfers">
+              <PropertyRef Name="Fk_UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAREHOUSE_TFS">
+          <End Role="Ctg_Warehouses" Type="Self.Ctg_Warehouses" Multiplicity="1" />
+          <End Role="Tbl_Transfers" Type="Self.Tbl_Transfers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Warehouses">
+              <PropertyRef Name="Pk_WarehouseID" />
+            </Principal>
+            <Dependent Role="Tbl_Transfers">
+              <PropertyRef Name="Fk_DestinationWarehouse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAREHOUSES_RMPROD">
+          <End Role="Ctg_Warehouses" Type="Self.Ctg_Warehouses" Multiplicity="1" />
+          <End Role="Tbl_RemovedProducts" Type="Self.Tbl_RemovedProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Warehouses">
+              <PropertyRef Name="Pk_WarehouseID" />
+            </Principal>
+            <Dependent Role="Tbl_RemovedProducts">
+              <PropertyRef Name="Fk_WarehouseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAREHOUSES_WHPR">
+          <End Role="Ctg_Warehouses" Type="Self.Ctg_Warehouses" Multiplicity="1" />
+          <End Role="Tbl_WarehouseProducts" Type="Self.Tbl_WarehouseProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Warehouses">
+              <PropertyRef Name="Pk_WarehouseID" />
+            </Principal>
+            <Dependent Role="Tbl_WarehouseProducts">
+              <PropertyRef Name="Fk_WarehouseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HardwareStoreModelStoreContainer">
+          <EntitySet Name="Ctg_Brands" EntityType="Self.Ctg_Brands" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ctg_Categories" EntityType="Self.Ctg_Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ctg_Currency" EntityType="Self.Ctg_Currency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ctg_CurrencyExchange" EntityType="Self.Ctg_CurrencyExchange" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ctg_Customers" EntityType="Self.Ctg_Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ctg_DiscountPromotions" EntityType="Self.Ctg_DiscountPromotions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ctg_Employees" EntityType="Self.Ctg_Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ctg_MeasureUnits" EntityType="Self.Ctg_MeasureUnits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ctg_Privilegies" EntityType="Self.Ctg_Privilegies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ctg_ProductDetails" EntityType="Self.Ctg_ProductDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ctg_Products" EntityType="Self.Ctg_Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ctg_Suppliers" EntityType="Self.Ctg_Suppliers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ctg_UnitConversion" EntityType="Self.Ctg_UnitConversion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ctg_UnitType" EntityType="Self.Ctg_UnitType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ctg_Users" EntityType="Self.Ctg_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ctg_Warehouses" EntityType="Self.Ctg_Warehouses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_OrderDetails" EntityType="Self.Tbl_OrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Orders" EntityType="Self.Tbl_Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_RemovedProducts" EntityType="Self.Tbl_RemovedProducts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SaleDetails" EntityType="Self.Tbl_SaleDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Sales" EntityType="Self.Tbl_Sales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Taxes" EntityType="Self.Tbl_Taxes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_TransferDetails" EntityType="Self.Tbl_TransferDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Transfers" EntityType="Self.Tbl_Transfers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_WarehouseProducts" EntityType="Self.Tbl_WarehouseProducts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_HardwareStore" EntityType="Self.Tbl_HardwareStore" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Tbl_HardwareStore].[Hws_Name] AS [Hws_Name], 
+    [Tbl_HardwareStore].[Hws_RUCNumber] AS [Hws_RUCNumber], 
+    [Tbl_HardwareStore].[Hws_Address] AS [Hws_Address], 
+    [Tbl_HardwareStore].[Hws_Description] AS [Hws_Description], 
+    [Tbl_HardwareStore].[Hws_EmailAddress] AS [Hws_EmailAddress], 
+    [Tbl_HardwareStore].[Hws_PhoneNumber] AS [Hws_PhoneNumber], 
+    [Tbl_HardwareStore].[Hws_FixedLineNumber] AS [Hws_FixedLineNumber], 
+    [Tbl_HardwareStore].[Hws_OwnerName] AS [Hws_OwnerName], 
+    [Tbl_HardwareStore].[Hws_CreatedAt] AS [Hws_CreatedAt], 
+    [Tbl_HardwareStore].[Hws_UpdatedAt] AS [Hws_UpdatedAt]
+    FROM [dbo].[Tbl_HardwareStore] AS [Tbl_HardwareStore]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_BRANDS_PDL" Association="Self.FK_BRANDS_PDL">
+            <End Role="Ctg_Brands" EntitySet="Ctg_Brands" />
+            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATEGORIES_PDL" Association="Self.FK_CATEGORIES_PDL">
+            <End Role="Ctg_Categories" EntitySet="Ctg_Categories" />
+            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CURRENCYEXCHANGE" Association="Self.FK_CURRENCYEXCHANGE">
+            <End Role="Ctg_Currency" EntitySet="Ctg_Currency" />
+            <End Role="Ctg_CurrencyExchange" EntitySet="Ctg_CurrencyExchange" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CURRENCYEXCHANGE_SALES" Association="Self.FK_CURRENCYEXCHANGE_SALES">
+            <End Role="Ctg_CurrencyExchange" EntitySet="Ctg_CurrencyExchange" />
+            <End Role="Tbl_Sales" EntitySet="Tbl_Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUSTOMERS_SALES" Association="Self.FK_CUSTOMERS_SALES">
+            <End Role="Ctg_Customers" EntitySet="Ctg_Customers" />
+            <End Role="Tbl_Sales" EntitySet="Tbl_Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLOYEES_USERS" Association="Self.FK_EMPLOYEES_USERS">
+            <End Role="Ctg_Employees" EntitySet="Ctg_Employees" />
+            <End Role="Ctg_Users" EntitySet="Ctg_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDERS_ODT" Association="Self.FK_ORDERS_ODT">
+            <End Role="Tbl_Orders" EntitySet="Tbl_Orders" />
+            <End Role="Tbl_OrderDetails" EntitySet="Tbl_OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRIVILEGIES_USERS" Association="Self.FK_PRIVILEGIES_USERS">
+            <End Role="Ctg_Privilegies" EntitySet="Ctg_Privilegies" />
+            <End Role="Ctg_Users" EntitySet="Ctg_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROD_DETAILS_RMPROD" Association="Self.FK_PROD_DETAILS_RMPROD">
+            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
+            <End Role="Tbl_RemovedProducts" EntitySet="Tbl_RemovedProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROD_DETAILS_WHPR" Association="Self.FK_PROD_DETAILS_WHPR">
+            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
+            <End Role="Tbl_WarehouseProducts" EntitySet="Tbl_WarehouseProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCT_DETAIL_TD" Association="Self.FK_PRODUCT_DETAIL_TD">
+            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
+            <End Role="Tbl_TransferDetails" EntitySet="Tbl_TransferDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTS_ODT" Association="Self.FK_PRODUCTS_ODT">
+            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
+            <End Role="Tbl_OrderDetails" EntitySet="Tbl_OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTS_PDL" Association="Self.FK_PRODUCTS_PDL">
+            <End Role="Ctg_Products" EntitySet="Ctg_Products" />
+            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTS_SDT" Association="Self.FK_PRODUCTS_SDT">
+            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
+            <End Role="Tbl_SaleDetails" EntitySet="Tbl_SaleDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SALES_SDT" Association="Self.FK_SALES_SDT">
+            <End Role="Tbl_Sales" EntitySet="Tbl_Sales" />
+            <End Role="Tbl_SaleDetails" EntitySet="Tbl_SaleDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOURCEUNIT" Association="Self.FK_SOURCEUNIT">
+            <End Role="Ctg_MeasureUnits" EntitySet="Ctg_MeasureUnits" />
+            <End Role="Ctg_UnitConversion" EntitySet="Ctg_UnitConversion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SUPPLIERS_ORD" Association="Self.FK_SUPPLIERS_ORD">
+            <End Role="Ctg_Suppliers" EntitySet="Ctg_Suppliers" />
+            <End Role="Tbl_Orders" EntitySet="Tbl_Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SUPPLIERS_PDL" Association="Self.FK_SUPPLIERS_PDL">
+            <End Role="Ctg_Suppliers" EntitySet="Ctg_Suppliers" />
+            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANSFERS_TD" Association="Self.FK_TRANSFERS_TD">
+            <End Role="Tbl_Transfers" EntitySet="Tbl_Transfers" />
+            <End Role="Tbl_TransferDetails" EntitySet="Tbl_TransferDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UNITCONVERSION_PDL" Association="Self.FK_UNITCONVERSION_PDL">
+            <End Role="Ctg_UnitConversion" EntitySet="Ctg_UnitConversion" />
+            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UNITTYPE_MSU" Association="Self.FK_UNITTYPE_MSU">
+            <End Role="Ctg_UnitType" EntitySet="Ctg_UnitType" />
+            <End Role="Ctg_MeasureUnits" EntitySet="Ctg_MeasureUnits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERS_ORD" Association="Self.FK_USERS_ORD">
+            <End Role="Ctg_Users" EntitySet="Ctg_Users" />
+            <End Role="Tbl_Orders" EntitySet="Tbl_Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERS_SALES" Association="Self.FK_USERS_SALES">
+            <End Role="Ctg_Users" EntitySet="Ctg_Users" />
+            <End Role="Tbl_Sales" EntitySet="Tbl_Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERS_TFS" Association="Self.FK_USERS_TFS">
+            <End Role="Ctg_Users" EntitySet="Ctg_Users" />
+            <End Role="Tbl_Transfers" EntitySet="Tbl_Transfers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAREHOUSE_TFS" Association="Self.FK_WAREHOUSE_TFS">
+            <End Role="Ctg_Warehouses" EntitySet="Ctg_Warehouses" />
+            <End Role="Tbl_Transfers" EntitySet="Tbl_Transfers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAREHOUSES_RMPROD" Association="Self.FK_WAREHOUSES_RMPROD">
+            <End Role="Ctg_Warehouses" EntitySet="Ctg_Warehouses" />
+            <End Role="Tbl_RemovedProducts" EntitySet="Tbl_RemovedProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAREHOUSES_WHPR" Association="Self.FK_WAREHOUSES_WHPR">
+            <End Role="Ctg_Warehouses" EntitySet="Ctg_Warehouses" />
+            <End Role="Tbl_WarehouseProducts" EntitySet="Tbl_WarehouseProducts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HardwareStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Ctg_Brands">
+          <Key>
+            <PropertyRef Name="Pk_BrandID" />
+          </Key>
+          <Property Name="Pk_BrandID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Brs_CustomID" Type="String" MaxLength="9" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Brs_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Brs_Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Brs_CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Brs_UpdatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Brs_Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ctg_ProductDetails" Relationship="Self.FK_BRANDS_PDL" FromRole="Ctg_Brands" ToRole="Ctg_ProductDetails" />
+        </EntityType>
+        <EntityType Name="Ctg_Categories">
+          <Key>
+            <PropertyRef Name="Pk_CategoryID" />
+          </Key>
+          <Property Name="Pk_CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cat_CustomID" Type="String" MaxLength="9" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Cat_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cat_Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Cat_CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cat_UpdatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cat_Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ctg_ProductDetails" Relationship="Self.FK_CATEGORIES_PDL" FromRole="Ctg_Categories" ToRole="Ctg_ProductDetails" />
+        </EntityType>
+        <EntityType Name="Ctg_Currency">
+          <Key>
+            <PropertyRef Name="Pk_CurrencyID" />
+          </Key>
+          <Property Name="Pk_CurrencyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cy_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cy_Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Cy_Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ctg_CurrencyExchange" Relationship="Self.FK_CURRENCYEXCHANGE" FromRole="Ctg_Currency" ToRole="Ctg_CurrencyExchange" />
+        </EntityType>
+        <EntityType Name="Ctg_CurrencyExchange">
+          <Key>
+            <PropertyRef Name="Pk_CurrencyExchangeID" />
+          </Key>
+          <Property Name="Pk_CurrencyExchangeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fk_CurrencyID" Type="Int32" Nullable="false" />
+          <Property Name="Cye_LocalCurrency" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cye_Sale" Type="Double" Nullable="false" />
+          <Property Name="Cye_Purchase" Type="Double" Nullable="false" />
+          <Property Name="Cye_CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cye_UpdateddAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cye_Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ctg_Currency" Relationship="Self.FK_CURRENCYEXCHANGE" FromRole="Ctg_CurrencyExchange" ToRole="Ctg_Currency" />
+          <NavigationProperty Name="Tbl_Sales" Relationship="Self.FK_CURRENCYEXCHANGE_SALES" FromRole="Ctg_CurrencyExchange" ToRole="Tbl_Sales" />
+        </EntityType>
+        <EntityType Name="Ctg_Customers">
+          <Key>
+            <PropertyRef Name="Pk_CustomerID" />
+          </Key>
+          <Property Name="Pk_CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cust_CustomID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Cust_FirtsName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cust_LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cust_Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cust_PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Cust_IdentificationCard" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cust_CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cust_UpdatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cust_Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Tbl_Sales" Relationship="Self.FK_CUSTOMERS_SALES" FromRole="Ctg_Customers" ToRole="Tbl_Sales" />
+        </EntityType>
+        <EntityType Name="Ctg_DiscountPromotions">
+          <Key>
+            <PropertyRef Name="Pk_DiscountPromotionID" />
+          </Key>
+          <Property Name="Pk_DiscountPromotionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Dtps_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Dtps_Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Dtps_Discount" Type="Int32" Nullable="false" />
+          <Property Name="Dtps_CreateAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Dtps_UpdatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Dtps_Status" Type="Boolean" Nullable="false" />
+          <Property Name="Dtps_Deleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ctg_Employees">
+          <Key>
+            <PropertyRef Name="Pk_EmployeeID" />
+          </Key>
+          <Property Name="Pk_EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emp_CustomID" Type="String" MaxLength="7" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Emp_Position" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Emp_FirstName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Emp_LastName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Emp_PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Emp_Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Emp_IdentificationCard" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Emp_EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Emp_CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Emp_UpdatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Emp_Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ctg_Users" Relationship="Self.FK_EMPLOYEES_USERS" FromRole="Ctg_Employees" ToRole="Ctg_Users" />
+        </EntityType>
+        <EntityType Name="Ctg_MeasureUnits">
+          <Key>
+            <PropertyRef Name="Pk_MeasureID" />
+          </Key>
+          <Property Name="Pk_MeasureID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fk_UnitType" Type="Int32" Nullable="false" />
+          <Property Name="Msu_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Msu_Abbreviation" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Msu_CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Msu_UpdatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Msu_Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ctg_UnitConversion" Relationship="Self.FK_SOURCEUNIT" FromRole="Ctg_MeasureUnits" ToRole="Ctg_UnitConversion" />
+          <NavigationProperty Name="Ctg_UnitType" Relationship="Self.FK_UNITTYPE_MSU" FromRole="Ctg_MeasureUnits" ToRole="Ctg_UnitType" />
+        </EntityType>
+        <EntityType Name="Ctg_Privilegies">
+          <Key>
+            <PropertyRef Name="Pk_PrivilegieID" />
+          </Key>
+          <Property Name="Pk_PrivilegieID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pvg_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pvg_CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Pvg_UpdatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Pvg_Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ctg_Users" Relationship="Self.FK_PRIVILEGIES_USERS" FromRole="Ctg_Privilegies" ToRole="Ctg_Users" />
+        </EntityType>
+        <EntityType Name="Ctg_ProductDetails">
+          <Key>
+            <PropertyRef Name="Pk_ProductDetailID" />
+          </Key>
+          <Property Name="Pk_ProductDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fk_ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Pdl_customID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Fk_CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="Fk_BrandID" Type="Int32" />
+          <Property Name="Fk_SupplierID" Type="Int32" Nullable="false" />
+          <Property Name="Fk_UnitConversion" Type="Int32" Nullable="false" />
+          <Property Name="Pdl_DefaultCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pdl_Dimensions" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pdl_MaterialType" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Pdl_ExpiryDate" Type="DateTime" Precision="0" />
+          <Property Name="Pdl_CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Pdl_UpdatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Pdl_Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ctg_Brands" Relationship="Self.FK_BRANDS_PDL" FromRole="Ctg_ProductDetails" ToRole="Ctg_Brands" />
+          <NavigationProperty Name="Ctg_Categories" Relationship="Self.FK_CATEGORIES_PDL" FromRole="Ctg_ProductDetails" ToRole="Ctg_Categories" />
+          <NavigationProperty Name="Tbl_RemovedProducts" Relationship="Self.FK_PROD_DETAILS_RMPROD" FromRole="Ctg_ProductDetails" ToRole="Tbl_RemovedProducts" />
+          <NavigationProperty Name="Tbl_WarehouseProducts" Relationship="Self.FK_PROD_DETAILS_WHPR" FromRole="Ctg_ProductDetails" ToRole="Tbl_WarehouseProducts" />
+          <NavigationProperty Name="Tbl_TransferDetails" Relationship="Self.FK_PRODUCT_DETAIL_TD" FromRole="Ctg_ProductDetails" ToRole="Tbl_TransferDetails" />
+          <NavigationProperty Name="Tbl_OrderDetails" Relationship="Self.FK_PRODUCTS_ODT" FromRole="Ctg_ProductDetails" ToRole="Tbl_OrderDetails" />
+          <NavigationProperty Name="Ctg_Products" Relationship="Self.FK_PRODUCTS_PDL" FromRole="Ctg_ProductDetails" ToRole="Ctg_Products" />
+          <NavigationProperty Name="Tbl_SaleDetails" Relationship="Self.FK_PRODUCTS_SDT" FromRole="Ctg_ProductDetails" ToRole="Tbl_SaleDetails" />
+          <NavigationProperty Name="Ctg_Suppliers" Relationship="Self.FK_SUPPLIERS_PDL" FromRole="Ctg_ProductDetails" ToRole="Ctg_Suppliers" />
+          <NavigationProperty Name="Ctg_UnitConversion" Relationship="Self.FK_UNITCONVERSION_PDL" FromRole="Ctg_ProductDetails" ToRole="Ctg_UnitConversion" />
+        </EntityType>
+        <EntityType Name="Ctg_Products">
+          <Key>
+            <PropertyRef Name="Pk_productID" />
+          </Key>
+          <Property Name="Pk_productID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Prod_customID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Prod_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prod_Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Prod_Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ctg_ProductDetails" Relationship="Self.FK_PRODUCTS_PDL" FromRole="Ctg_Products" ToRole="Ctg_ProductDetails" />
+        </EntityType>
+        <EntityType Name="Ctg_Suppliers">
+          <Key>
+            <PropertyRef Name="Pk_SupplierID" />
+          </Key>
+          <Property Name="Pk_SupplierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sps_customID" Type="String" MaxLength="9" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Sps_CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sps_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sps_Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Sps_PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Sps_EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sps_CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Sps_UpdatedAt_" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Sps_Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ctg_ProductDetails" Relationship="Self.FK_SUPPLIERS_PDL" FromRole="Ctg_Suppliers" ToRole="Ctg_ProductDetails" />
+          <NavigationProperty Name="Tbl_Orders" Relationship="Self.FK_SUPPLIERS_ORD" FromRole="Ctg_Suppliers" ToRole="Tbl_Orders" />
+        </EntityType>
+        <EntityType Name="Ctg_UnitConversion">
+          <Key>
+            <PropertyRef Name="Pk_UnitConversion" />
+          </Key>
+          <Property Name="Pk_UnitConversion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fk_SourceUnit" Type="Int32" Nullable="false" />
+          <Property Name="Fk_DestinationUnit" Type="Int32" Nullable="false" />
+          <Property Name="Utc_Equivalence" Type="Double" Nullable="false" />
+          <Property Name="Utc_CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Utc_UpdatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Utc_Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ctg_MeasureUnits" Relationship="Self.FK_SOURCEUNIT" FromRole="Ctg_UnitConversion" ToRole="Ctg_MeasureUnits" />
+          <NavigationProperty Name="Ctg_ProductDetails" Relationship="Self.FK_UNITCONVERSION_PDL" FromRole="Ctg_UnitConversion" ToRole="Ctg_ProductDetails" />
+        </EntityType>
+        <EntityType Name="Ctg_UnitType">
+          <Key>
+            <PropertyRef Name="Pk_UnitType" />
+          </Key>
+          <Property Name="Pk_UnitType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Uty_Type" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Uty_CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Uty_UpdatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Uty_Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ctg_MeasureUnits" Relationship="Self.FK_UNITTYPE_MSU" FromRole="Ctg_UnitType" ToRole="Ctg_MeasureUnits" />
+        </EntityType>
+        <EntityType Name="Ctg_Users">
+          <Key>
+            <PropertyRef Name="Pk_UserID" />
+          </Key>
+          <Property Name="Pk_UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fk_EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="Fk_PrivilegieID" Type="Int32" Nullable="false" />
+          <Property Name="UserCustomID" Type="String" MaxLength="9" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="UserName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserImage" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="UserCreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserUpdatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ctg_Employees" Relationship="Self.FK_EMPLOYEES_USERS" FromRole="Ctg_Users" ToRole="Ctg_Employees" />
+          <NavigationProperty Name="Ctg_Privilegies" Relationship="Self.FK_PRIVILEGIES_USERS" FromRole="Ctg_Users" ToRole="Ctg_Privilegies" />
+          <NavigationProperty Name="Tbl_Orders" Relationship="Self.FK_USERS_ORD" FromRole="Ctg_Users" ToRole="Tbl_Orders" />
+          <NavigationProperty Name="Tbl_Sales" Relationship="Self.FK_USERS_SALES" FromRole="Ctg_Users" ToRole="Tbl_Sales" />
+          <NavigationProperty Name="Tbl_Transfers" Relationship="Self.FK_USERS_TFS" FromRole="Ctg_Users" ToRole="Tbl_Transfers" />
+        </EntityType>
+        <EntityType Name="Ctg_Warehouses">
+          <Key>
+            <PropertyRef Name="Pk_WarehouseID" />
+          </Key>
+          <Property Name="Pk_WarehouseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Whs_CustomID" Type="String" MaxLength="7" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Whs_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Whs_Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Whs_CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Whs_UpdatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Whs_Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Tbl_Transfers" Relationship="Self.FK_WAREHOUSE_TFS" FromRole="Ctg_Warehouses" ToRole="Tbl_Transfers" />
+          <NavigationProperty Name="Tbl_RemovedProducts" Relationship="Self.FK_WAREHOUSES_RMPROD" FromRole="Ctg_Warehouses" ToRole="Tbl_RemovedProducts" />
+          <NavigationProperty Name="Tbl_WarehouseProducts" Relationship="Self.FK_WAREHOUSES_WHPR" FromRole="Ctg_Warehouses" ToRole="Tbl_WarehouseProducts" />
+        </EntityType>
+        <EntityType Name="Tbl_OrderDetails">
+          <Key>
+            <PropertyRef Name="Fk_OrderID" />
+            <PropertyRef Name="Fk_ProductDetailID" />
+          </Key>
+          <Property Name="Fk_OrderID" Type="Int32" Nullable="false" />
+          <Property Name="Fk_ProductDetailID" Type="Int32" Nullable="false" />
+          <Property Name="Odt_Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Odt_PurchasePrice" Type="Double" Nullable="false" />
+          <Property Name="Odt_DetailTax" Type="Double" />
+          <Property Name="Odt_Subtotal" Type="Double" Nullable="false" />
+          <Property Name="Odt_Discount" Type="Int32" />
+          <Property Name="Odt_Total" Type="Double" Nullable="false" />
+          <Property Name="Odt_Deleted" Type="Boolean" />
+          <NavigationProperty Name="Ctg_ProductDetails" Relationship="Self.FK_PRODUCTS_ODT" FromRole="Tbl_OrderDetails" ToRole="Ctg_ProductDetails" />
+          <NavigationProperty Name="Tbl_Orders" Relationship="Self.FK_ORDERS_ODT" FromRole="Tbl_OrderDetails" ToRole="Tbl_Orders" />
+        </EntityType>
+        <EntityType Name="Tbl_Orders">
+          <Key>
+            <PropertyRef Name="Pk_OrderID" />
+          </Key>
+          <Property Name="Pk_OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fk_SupplierID" Type="Int32" Nullable="false" />
+          <Property Name="Fk_UserID" Type="Int32" Nullable="false" />
+          <Property Name="Ord_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ord_Date" Type="DateTime" Precision="0" />
+          <Property Name="Ord_Tax" Type="Double" />
+          <Property Name="Ord_Subtotal" Type="Double" Nullable="false" />
+          <Property Name="Ord_Discount" Type="Int32" />
+          <Property Name="Ord_Total" Type="Double" Nullable="false" />
+          <Property Name="Ord_Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ctg_Suppliers" Relationship="Self.FK_SUPPLIERS_ORD" FromRole="Tbl_Orders" ToRole="Ctg_Suppliers" />
+          <NavigationProperty Name="Ctg_Users" Relationship="Self.FK_USERS_ORD" FromRole="Tbl_Orders" ToRole="Ctg_Users" />
+          <NavigationProperty Name="Tbl_OrderDetails" Relationship="Self.FK_ORDERS_ODT" FromRole="Tbl_Orders" ToRole="Tbl_OrderDetails" />
+        </EntityType>
+        <EntityType Name="Tbl_RemovedProducts">
+          <Key>
+            <PropertyRef Name="Pk_RemovedProductID" />
+          </Key>
+          <Property Name="Pk_RemovedProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fk_WarehouseID" Type="Int32" Nullable="false" />
+          <Property Name="Fk_ProductDetailID" Type="Int32" Nullable="false" />
+          <Property Name="Fk_UserID" Type="Int32" Nullable="false" />
+          <Property Name="RmProd_Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RmProd_Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RmProd_Quantity" Type="Int32" Nullable="false" />
+          <Property Name="RmProd_PurchasePrice" Type="Double" Nullable="false" />
+          <Property Name="RmProd_CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RmProd_Status" Type="Boolean" />
+          <NavigationProperty Name="Ctg_ProductDetails" Relationship="Self.FK_PROD_DETAILS_RMPROD" FromRole="Tbl_RemovedProducts" ToRole="Ctg_ProductDetails" />
+          <NavigationProperty Name="Ctg_Warehouses" Relationship="Self.FK_WAREHOUSES_RMPROD" FromRole="Tbl_RemovedProducts" ToRole="Ctg_Warehouses" />
+        </EntityType>
+        <EntityType Name="Tbl_SaleDetails">
+          <Key>
+            <PropertyRef Name="Fk_SaleID" />
+            <PropertyRef Name="Fk_ProductDetailID" />
+          </Key>
+          <Property Name="Fk_SaleID" Type="Int32" Nullable="false" />
+          <Property Name="Fk_ProductDetailID" Type="Int32" Nullable="false" />
+          <Property Name="Sdt_Price" Type="Double" Nullable="false" />
+          <Property Name="Sdt_Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Sdt_Tax" Type="Double" />
+          <Property Name="Sdt_Subtotal" Type="Double" Nullable="false" />
+          <Property Name="Sdt_Discount" Type="Int32" />
+          <Property Name="Sdt_Total" Type="Double" Nullable="false" />
+          <Property Name="Sdt_Deleted" Type="Boolean" />
+          <NavigationProperty Name="Ctg_ProductDetails" Relationship="Self.FK_PRODUCTS_SDT" FromRole="Tbl_SaleDetails" ToRole="Ctg_ProductDetails" />
+          <NavigationProperty Name="Tbl_Sales" Relationship="Self.FK_SALES_SDT" FromRole="Tbl_SaleDetails" ToRole="Tbl_Sales" />
+        </EntityType>
+        <EntityType Name="Tbl_Sales">
+          <Key>
+            <PropertyRef Name="Pk_SaleID" />
+          </Key>
+          <Property Name="Pk_SaleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fk_UserID" Type="Int32" />
+          <Property Name="Fk_CustomerID" Type="Int32" />
+          <Property Name="Fk_CurrencyExchangeID" Type="Int32" />
+          <Property Name="Sale_CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sale_PaymentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sale_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Sale_TaxName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sale_Tax" Type="Double" />
+          <Property Name="Sale_Subtotal" Type="Double" Nullable="false" />
+          <Property Name="Sale_Discount" Type="Int32" />
+          <Property Name="Sale_TotalAmount" Type="Double" Nullable="false" />
+          <Property Name="Sale_Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ctg_CurrencyExchange" Relationship="Self.FK_CURRENCYEXCHANGE_SALES" FromRole="Tbl_Sales" ToRole="Ctg_CurrencyExchange" />
+          <NavigationProperty Name="Ctg_Customers" Relationship="Self.FK_CUSTOMERS_SALES" FromRole="Tbl_Sales" ToRole="Ctg_Customers" />
+          <NavigationProperty Name="Ctg_Users" Relationship="Self.FK_USERS_SALES" FromRole="Tbl_Sales" ToRole="Ctg_Users" />
+          <NavigationProperty Name="Tbl_SaleDetails" Relationship="Self.FK_SALES_SDT" FromRole="Tbl_Sales" ToRole="Tbl_SaleDetails" />
+        </EntityType>
+        <EntityType Name="Tbl_Taxes">
+          <Key>
+            <PropertyRef Name="Pk_TaxID" />
+          </Key>
+          <Property Name="Pk_TaxID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaxName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TaxDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TaxRate" Type="Double" Nullable="false" />
+          <Property Name="TaxCreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TaxUpdatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TaxDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_TransferDetails">
+          <Key>
+            <PropertyRef Name="Pk_TransferDetailID" />
+          </Key>
+          <Property Name="Pk_TransferDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fk_TransferID" Type="Int32" Nullable="false" />
+          <Property Name="Fk_ProductDetailID" Type="Int32" Nullable="false" />
+          <Property Name="TD_SourceWarehouseID" Type="Int32" Nullable="false" />
+          <Property Name="TD_Quantity" Type="Int32" Nullable="false" />
+          <Property Name="TD_CreatedAt" Type="DateTime" Precision="0" />
+          <Property Name="TD_UpdatedAt" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Ctg_ProductDetails" Relationship="Self.FK_PRODUCT_DETAIL_TD" FromRole="Tbl_TransferDetails" ToRole="Ctg_ProductDetails" />
+          <NavigationProperty Name="Tbl_Transfers" Relationship="Self.FK_TRANSFERS_TD" FromRole="Tbl_TransferDetails" ToRole="Tbl_Transfers" />
+        </EntityType>
+        <EntityType Name="Tbl_Transfers">
+          <Key>
+            <PropertyRef Name="Pk_TransferID" />
+          </Key>
+          <Property Name="Pk_TransferID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fk_UserID" Type="Int32" />
+          <Property Name="Fk_DestinationWarehouse" Type="Int32" Nullable="false" />
+          <Property Name="TransferDate" Type="DateTime" Precision="0" />
+          <Property Name="TransferTotal" Type="Int32" />
+          <Property Name="TransferStatus" Type="Boolean" />
+          <NavigationProperty Name="Ctg_Users" Relationship="Self.FK_USERS_TFS" FromRole="Tbl_Transfers" ToRole="Ctg_Users" />
+          <NavigationProperty Name="Ctg_Warehouses" Relationship="Self.FK_WAREHOUSE_TFS" FromRole="Tbl_Transfers" ToRole="Ctg_Warehouses" />
+          <NavigationProperty Name="Tbl_TransferDetails" Relationship="Self.FK_TRANSFERS_TD" FromRole="Tbl_Transfers" ToRole="Tbl_TransferDetails" />
+        </EntityType>
+        <EntityType Name="Tbl_WarehouseProducts">
+          <Key>
+            <PropertyRef Name="Fk_WarehouseID" />
+            <PropertyRef Name="Fk_ProductDetailID" />
+          </Key>
+          <Property Name="Fk_WarehouseID" Type="Int32" Nullable="false" />
+          <Property Name="Fk_ProductDetailID" Type="Int32" Nullable="false" />
+          <Property Name="WhPr_Stock" Type="Int32" />
+          <Property Name="WhPr_PurchasePrice" Type="Double" Nullable="false" />
+          <Property Name="WhPr_SalePrice" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Ctg_ProductDetails" Relationship="Self.FK_PROD_DETAILS_WHPR" FromRole="Tbl_WarehouseProducts" ToRole="Ctg_ProductDetails" />
+          <NavigationProperty Name="Ctg_Warehouses" Relationship="Self.FK_WAREHOUSES_WHPR" FromRole="Tbl_WarehouseProducts" ToRole="Ctg_Warehouses" />
+        </EntityType>
+        <EntityType Name="Tbl_HardwareStore">
+          <Key>
+            <PropertyRef Name="Hws_CreatedAt" />
+            <PropertyRef Name="Hws_UpdatedAt" />
+          </Key>
+          <Property Name="Hws_Name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Hws_RUCNumber" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Hws_Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Hws_Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Hws_EmailAddress" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Hws_PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Hws_FixedLineNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Hws_OwnerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hws_CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Hws_UpdatedAt" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <Association Name="FK_BRANDS_PDL">
+          <End Role="Ctg_Brands" Type="Self.Ctg_Brands" Multiplicity="0..1" />
+          <End Role="Ctg_ProductDetails" Type="Self.Ctg_ProductDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Brands">
+              <PropertyRef Name="Pk_BrandID" />
+            </Principal>
+            <Dependent Role="Ctg_ProductDetails">
+              <PropertyRef Name="Fk_BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATEGORIES_PDL">
+          <End Role="Ctg_Categories" Type="Self.Ctg_Categories" Multiplicity="1" />
+          <End Role="Ctg_ProductDetails" Type="Self.Ctg_ProductDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Categories">
+              <PropertyRef Name="Pk_CategoryID" />
+            </Principal>
+            <Dependent Role="Ctg_ProductDetails">
+              <PropertyRef Name="Fk_CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CURRENCYEXCHANGE">
+          <End Role="Ctg_Currency" Type="Self.Ctg_Currency" Multiplicity="1" />
+          <End Role="Ctg_CurrencyExchange" Type="Self.Ctg_CurrencyExchange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Currency">
+              <PropertyRef Name="Pk_CurrencyID" />
+            </Principal>
+            <Dependent Role="Ctg_CurrencyExchange">
+              <PropertyRef Name="Fk_CurrencyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CURRENCYEXCHANGE_SALES">
+          <End Role="Ctg_CurrencyExchange" Type="Self.Ctg_CurrencyExchange" Multiplicity="0..1" />
+          <End Role="Tbl_Sales" Type="Self.Tbl_Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_CurrencyExchange">
+              <PropertyRef Name="Pk_CurrencyExchangeID" />
+            </Principal>
+            <Dependent Role="Tbl_Sales">
+              <PropertyRef Name="Fk_CurrencyExchangeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUSTOMERS_SALES">
+          <End Role="Ctg_Customers" Type="Self.Ctg_Customers" Multiplicity="0..1" />
+          <End Role="Tbl_Sales" Type="Self.Tbl_Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Customers">
+              <PropertyRef Name="Pk_CustomerID" />
+            </Principal>
+            <Dependent Role="Tbl_Sales">
+              <PropertyRef Name="Fk_CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLOYEES_USERS">
+          <End Role="Ctg_Employees" Type="Self.Ctg_Employees" Multiplicity="1" />
+          <End Role="Ctg_Users" Type="Self.Ctg_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Employees">
+              <PropertyRef Name="Pk_EmployeeID" />
+            </Principal>
+            <Dependent Role="Ctg_Users">
+              <PropertyRef Name="Fk_EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOURCEUNIT">
+          <End Role="Ctg_MeasureUnits" Type="Self.Ctg_MeasureUnits" Multiplicity="1" />
+          <End Role="Ctg_UnitConversion" Type="Self.Ctg_UnitConversion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_MeasureUnits">
+              <PropertyRef Name="Pk_MeasureID" />
+            </Principal>
+            <Dependent Role="Ctg_UnitConversion">
+              <PropertyRef Name="Fk_SourceUnit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UNITTYPE_MSU">
+          <End Role="Ctg_UnitType" Type="Self.Ctg_UnitType" Multiplicity="1" />
+          <End Role="Ctg_MeasureUnits" Type="Self.Ctg_MeasureUnits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_UnitType">
+              <PropertyRef Name="Pk_UnitType" />
+            </Principal>
+            <Dependent Role="Ctg_MeasureUnits">
+              <PropertyRef Name="Fk_UnitType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRIVILEGIES_USERS">
+          <End Role="Ctg_Privilegies" Type="Self.Ctg_Privilegies" Multiplicity="1" />
+          <End Role="Ctg_Users" Type="Self.Ctg_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Privilegies">
+              <PropertyRef Name="Pk_PrivilegieID" />
+            </Principal>
+            <Dependent Role="Ctg_Users">
+              <PropertyRef Name="Fk_PrivilegieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROD_DETAILS_RMPROD">
+          <End Role="Ctg_ProductDetails" Type="Self.Ctg_ProductDetails" Multiplicity="1" />
+          <End Role="Tbl_RemovedProducts" Type="Self.Tbl_RemovedProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_ProductDetails">
+              <PropertyRef Name="Pk_ProductDetailID" />
+            </Principal>
+            <Dependent Role="Tbl_RemovedProducts">
+              <PropertyRef Name="Fk_ProductDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROD_DETAILS_WHPR">
+          <End Role="Ctg_ProductDetails" Type="Self.Ctg_ProductDetails" Multiplicity="1" />
+          <End Role="Tbl_WarehouseProducts" Type="Self.Tbl_WarehouseProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_ProductDetails">
+              <PropertyRef Name="Pk_ProductDetailID" />
+            </Principal>
+            <Dependent Role="Tbl_WarehouseProducts">
+              <PropertyRef Name="Fk_ProductDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCT_DETAIL_TD">
+          <End Role="Ctg_ProductDetails" Type="Self.Ctg_ProductDetails" Multiplicity="1" />
+          <End Role="Tbl_TransferDetails" Type="Self.Tbl_TransferDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_ProductDetails">
+              <PropertyRef Name="Pk_ProductDetailID" />
+            </Principal>
+            <Dependent Role="Tbl_TransferDetails">
+              <PropertyRef Name="Fk_ProductDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTS_ODT">
+          <End Role="Ctg_ProductDetails" Type="Self.Ctg_ProductDetails" Multiplicity="1" />
+          <End Role="Tbl_OrderDetails" Type="Self.Tbl_OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_ProductDetails">
+              <PropertyRef Name="Pk_ProductDetailID" />
+            </Principal>
+            <Dependent Role="Tbl_OrderDetails">
+              <PropertyRef Name="Fk_ProductDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTS_PDL">
+          <End Role="Ctg_Products" Type="Self.Ctg_Products" Multiplicity="1" />
+          <End Role="Ctg_ProductDetails" Type="Self.Ctg_ProductDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Products">
+              <PropertyRef Name="Pk_productID" />
+            </Principal>
+            <Dependent Role="Ctg_ProductDetails">
+              <PropertyRef Name="Fk_ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTS_SDT">
+          <End Role="Ctg_ProductDetails" Type="Self.Ctg_ProductDetails" Multiplicity="1" />
+          <End Role="Tbl_SaleDetails" Type="Self.Tbl_SaleDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_ProductDetails">
+              <PropertyRef Name="Pk_ProductDetailID" />
+            </Principal>
+            <Dependent Role="Tbl_SaleDetails">
+              <PropertyRef Name="Fk_ProductDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUPPLIERS_PDL">
+          <End Role="Ctg_Suppliers" Type="Self.Ctg_Suppliers" Multiplicity="1" />
+          <End Role="Ctg_ProductDetails" Type="Self.Ctg_ProductDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Suppliers">
+              <PropertyRef Name="Pk_SupplierID" />
+            </Principal>
+            <Dependent Role="Ctg_ProductDetails">
+              <PropertyRef Name="Fk_SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UNITCONVERSION_PDL">
+          <End Role="Ctg_UnitConversion" Type="Self.Ctg_UnitConversion" Multiplicity="1" />
+          <End Role="Ctg_ProductDetails" Type="Self.Ctg_ProductDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_UnitConversion">
+              <PropertyRef Name="Pk_UnitConversion" />
+            </Principal>
+            <Dependent Role="Ctg_ProductDetails">
+              <PropertyRef Name="Fk_UnitConversion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUPPLIERS_ORD">
+          <End Role="Ctg_Suppliers" Type="Self.Ctg_Suppliers" Multiplicity="1" />
+          <End Role="Tbl_Orders" Type="Self.Tbl_Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Suppliers">
+              <PropertyRef Name="Pk_SupplierID" />
+            </Principal>
+            <Dependent Role="Tbl_Orders">
+              <PropertyRef Name="Fk_SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERS_ORD">
+          <End Role="Ctg_Users" Type="Self.Ctg_Users" Multiplicity="1" />
+          <End Role="Tbl_Orders" Type="Self.Tbl_Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Users">
+              <PropertyRef Name="Pk_UserID" />
+            </Principal>
+            <Dependent Role="Tbl_Orders">
+              <PropertyRef Name="Fk_UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERS_SALES">
+          <End Role="Ctg_Users" Type="Self.Ctg_Users" Multiplicity="0..1" />
+          <End Role="Tbl_Sales" Type="Self.Tbl_Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Users">
+              <PropertyRef Name="Pk_UserID" />
+            </Principal>
+            <Dependent Role="Tbl_Sales">
+              <PropertyRef Name="Fk_UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERS_TFS">
+          <End Role="Ctg_Users" Type="Self.Ctg_Users" Multiplicity="0..1" />
+          <End Role="Tbl_Transfers" Type="Self.Tbl_Transfers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Users">
+              <PropertyRef Name="Pk_UserID" />
+            </Principal>
+            <Dependent Role="Tbl_Transfers">
+              <PropertyRef Name="Fk_UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAREHOUSE_TFS">
+          <End Role="Ctg_Warehouses" Type="Self.Ctg_Warehouses" Multiplicity="1" />
+          <End Role="Tbl_Transfers" Type="Self.Tbl_Transfers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Warehouses">
+              <PropertyRef Name="Pk_WarehouseID" />
+            </Principal>
+            <Dependent Role="Tbl_Transfers">
+              <PropertyRef Name="Fk_DestinationWarehouse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAREHOUSES_RMPROD">
+          <End Role="Ctg_Warehouses" Type="Self.Ctg_Warehouses" Multiplicity="1" />
+          <End Role="Tbl_RemovedProducts" Type="Self.Tbl_RemovedProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Warehouses">
+              <PropertyRef Name="Pk_WarehouseID" />
+            </Principal>
+            <Dependent Role="Tbl_RemovedProducts">
+              <PropertyRef Name="Fk_WarehouseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAREHOUSES_WHPR">
+          <End Role="Ctg_Warehouses" Type="Self.Ctg_Warehouses" Multiplicity="1" />
+          <End Role="Tbl_WarehouseProducts" Type="Self.Tbl_WarehouseProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Warehouses">
+              <PropertyRef Name="Pk_WarehouseID" />
+            </Principal>
+            <Dependent Role="Tbl_WarehouseProducts">
+              <PropertyRef Name="Fk_WarehouseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDERS_ODT">
+          <End Role="Tbl_Orders" Type="Self.Tbl_Orders" Multiplicity="1" />
+          <End Role="Tbl_OrderDetails" Type="Self.Tbl_OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Orders">
+              <PropertyRef Name="Pk_OrderID" />
+            </Principal>
+            <Dependent Role="Tbl_OrderDetails">
+              <PropertyRef Name="Fk_OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SALES_SDT">
+          <End Role="Tbl_Sales" Type="Self.Tbl_Sales" Multiplicity="1" />
+          <End Role="Tbl_SaleDetails" Type="Self.Tbl_SaleDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Sales">
+              <PropertyRef Name="Pk_SaleID" />
+            </Principal>
+            <Dependent Role="Tbl_SaleDetails">
+              <PropertyRef Name="Fk_SaleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANSFERS_TD">
+          <End Role="Tbl_Transfers" Type="Self.Tbl_Transfers" Multiplicity="1" />
+          <End Role="Tbl_TransferDetails" Type="Self.Tbl_TransferDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Transfers">
+              <PropertyRef Name="Pk_TransferID" />
+            </Principal>
+            <Dependent Role="Tbl_TransferDetails">
+              <PropertyRef Name="Fk_TransferID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HardwareStoreEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Ctg_Brands" EntityType="Self.Ctg_Brands" />
+          <EntitySet Name="Ctg_Categories" EntityType="Self.Ctg_Categories" />
+          <EntitySet Name="Ctg_Currency" EntityType="Self.Ctg_Currency" />
+          <EntitySet Name="Ctg_CurrencyExchange" EntityType="Self.Ctg_CurrencyExchange" />
+          <EntitySet Name="Ctg_Customers" EntityType="Self.Ctg_Customers" />
+          <EntitySet Name="Ctg_DiscountPromotions" EntityType="Self.Ctg_DiscountPromotions" />
+          <EntitySet Name="Ctg_Employees" EntityType="Self.Ctg_Employees" />
+          <EntitySet Name="Ctg_MeasureUnits" EntityType="Self.Ctg_MeasureUnits" />
+          <EntitySet Name="Ctg_Privilegies" EntityType="Self.Ctg_Privilegies" />
+          <EntitySet Name="Ctg_ProductDetails" EntityType="Self.Ctg_ProductDetails" />
+          <EntitySet Name="Ctg_Products" EntityType="Self.Ctg_Products" />
+          <EntitySet Name="Ctg_Suppliers" EntityType="Self.Ctg_Suppliers" />
+          <EntitySet Name="Ctg_UnitConversion" EntityType="Self.Ctg_UnitConversion" />
+          <EntitySet Name="Ctg_UnitType" EntityType="Self.Ctg_UnitType" />
+          <EntitySet Name="Ctg_Users" EntityType="Self.Ctg_Users" />
+          <EntitySet Name="Ctg_Warehouses" EntityType="Self.Ctg_Warehouses" />
+          <EntitySet Name="Tbl_OrderDetails" EntityType="Self.Tbl_OrderDetails" />
+          <EntitySet Name="Tbl_Orders" EntityType="Self.Tbl_Orders" />
+          <EntitySet Name="Tbl_RemovedProducts" EntityType="Self.Tbl_RemovedProducts" />
+          <EntitySet Name="Tbl_SaleDetails" EntityType="Self.Tbl_SaleDetails" />
+          <EntitySet Name="Tbl_Sales" EntityType="Self.Tbl_Sales" />
+          <EntitySet Name="Tbl_Taxes" EntityType="Self.Tbl_Taxes" />
+          <EntitySet Name="Tbl_TransferDetails" EntityType="Self.Tbl_TransferDetails" />
+          <EntitySet Name="Tbl_Transfers" EntityType="Self.Tbl_Transfers" />
+          <EntitySet Name="Tbl_WarehouseProducts" EntityType="Self.Tbl_WarehouseProducts" />
+          <EntitySet Name="Tbl_HardwareStore" EntityType="Self.Tbl_HardwareStore" />
+          <AssociationSet Name="FK_BRANDS_PDL" Association="Self.FK_BRANDS_PDL">
+            <End Role="Ctg_Brands" EntitySet="Ctg_Brands" />
+            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATEGORIES_PDL" Association="Self.FK_CATEGORIES_PDL">
+            <End Role="Ctg_Categories" EntitySet="Ctg_Categories" />
+            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CURRENCYEXCHANGE" Association="Self.FK_CURRENCYEXCHANGE">
+            <End Role="Ctg_Currency" EntitySet="Ctg_Currency" />
+            <End Role="Ctg_CurrencyExchange" EntitySet="Ctg_CurrencyExchange" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CURRENCYEXCHANGE_SALES" Association="Self.FK_CURRENCYEXCHANGE_SALES">
+            <End Role="Ctg_CurrencyExchange" EntitySet="Ctg_CurrencyExchange" />
+            <End Role="Tbl_Sales" EntitySet="Tbl_Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUSTOMERS_SALES" Association="Self.FK_CUSTOMERS_SALES">
+            <End Role="Ctg_Customers" EntitySet="Ctg_Customers" />
+            <End Role="Tbl_Sales" EntitySet="Tbl_Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLOYEES_USERS" Association="Self.FK_EMPLOYEES_USERS">
+            <End Role="Ctg_Employees" EntitySet="Ctg_Employees" />
+            <End Role="Ctg_Users" EntitySet="Ctg_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOURCEUNIT" Association="Self.FK_SOURCEUNIT">
+            <End Role="Ctg_MeasureUnits" EntitySet="Ctg_MeasureUnits" />
+            <End Role="Ctg_UnitConversion" EntitySet="Ctg_UnitConversion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UNITTYPE_MSU" Association="Self.FK_UNITTYPE_MSU">
+            <End Role="Ctg_UnitType" EntitySet="Ctg_UnitType" />
+            <End Role="Ctg_MeasureUnits" EntitySet="Ctg_MeasureUnits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRIVILEGIES_USERS" Association="Self.FK_PRIVILEGIES_USERS">
+            <End Role="Ctg_Privilegies" EntitySet="Ctg_Privilegies" />
+            <End Role="Ctg_Users" EntitySet="Ctg_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROD_DETAILS_RMPROD" Association="Self.FK_PROD_DETAILS_RMPROD">
+            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
+            <End Role="Tbl_RemovedProducts" EntitySet="Tbl_RemovedProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROD_DETAILS_WHPR" Association="Self.FK_PROD_DETAILS_WHPR">
+            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
+            <End Role="Tbl_WarehouseProducts" EntitySet="Tbl_WarehouseProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCT_DETAIL_TD" Association="Self.FK_PRODUCT_DETAIL_TD">
+            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
+            <End Role="Tbl_TransferDetails" EntitySet="Tbl_TransferDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTS_ODT" Association="Self.FK_PRODUCTS_ODT">
+            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
+            <End Role="Tbl_OrderDetails" EntitySet="Tbl_OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTS_PDL" Association="Self.FK_PRODUCTS_PDL">
+            <End Role="Ctg_Products" EntitySet="Ctg_Products" />
+            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTS_SDT" Association="Self.FK_PRODUCTS_SDT">
+            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
+            <End Role="Tbl_SaleDetails" EntitySet="Tbl_SaleDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SUPPLIERS_PDL" Association="Self.FK_SUPPLIERS_PDL">
+            <End Role="Ctg_Suppliers" EntitySet="Ctg_Suppliers" />
+            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UNITCONVERSION_PDL" Association="Self.FK_UNITCONVERSION_PDL">
+            <End Role="Ctg_UnitConversion" EntitySet="Ctg_UnitConversion" />
+            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SUPPLIERS_ORD" Association="Self.FK_SUPPLIERS_ORD">
+            <End Role="Ctg_Suppliers" EntitySet="Ctg_Suppliers" />
+            <End Role="Tbl_Orders" EntitySet="Tbl_Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERS_ORD" Association="Self.FK_USERS_ORD">
+            <End Role="Ctg_Users" EntitySet="Ctg_Users" />
+            <End Role="Tbl_Orders" EntitySet="Tbl_Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERS_SALES" Association="Self.FK_USERS_SALES">
+            <End Role="Ctg_Users" EntitySet="Ctg_Users" />
+            <End Role="Tbl_Sales" EntitySet="Tbl_Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERS_TFS" Association="Self.FK_USERS_TFS">
+            <End Role="Ctg_Users" EntitySet="Ctg_Users" />
+            <End Role="Tbl_Transfers" EntitySet="Tbl_Transfers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAREHOUSE_TFS" Association="Self.FK_WAREHOUSE_TFS">
+            <End Role="Ctg_Warehouses" EntitySet="Ctg_Warehouses" />
+            <End Role="Tbl_Transfers" EntitySet="Tbl_Transfers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAREHOUSES_RMPROD" Association="Self.FK_WAREHOUSES_RMPROD">
+            <End Role="Ctg_Warehouses" EntitySet="Ctg_Warehouses" />
+            <End Role="Tbl_RemovedProducts" EntitySet="Tbl_RemovedProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAREHOUSES_WHPR" Association="Self.FK_WAREHOUSES_WHPR">
+            <End Role="Ctg_Warehouses" EntitySet="Ctg_Warehouses" />
+            <End Role="Tbl_WarehouseProducts" EntitySet="Tbl_WarehouseProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDERS_ODT" Association="Self.FK_ORDERS_ODT">
+            <End Role="Tbl_Orders" EntitySet="Tbl_Orders" />
+            <End Role="Tbl_OrderDetails" EntitySet="Tbl_OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SALES_SDT" Association="Self.FK_SALES_SDT">
+            <End Role="Tbl_Sales" EntitySet="Tbl_Sales" />
+            <End Role="Tbl_SaleDetails" EntitySet="Tbl_SaleDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANSFERS_TD" Association="Self.FK_TRANSFERS_TD">
+            <End Role="Tbl_Transfers" EntitySet="Tbl_Transfers" />
+            <End Role="Tbl_TransferDetails" EntitySet="Tbl_TransferDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HardwareStoreModelStoreContainer" CdmEntityContainer="HardwareStoreEntities">
+          <EntitySetMapping Name="Ctg_Brands">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Ctg_Brands">
+              <MappingFragment StoreEntitySet="Ctg_Brands">
+                <ScalarProperty Name="Pk_BrandID" ColumnName="Pk_BrandID" />
+                <ScalarProperty Name="Brs_CustomID" ColumnName="Brs_CustomID" />
+                <ScalarProperty Name="Brs_Name" ColumnName="Brs_Name" />
+                <ScalarProperty Name="Brs_Description" ColumnName="Brs_Description" />
+                <ScalarProperty Name="Brs_CreatedAt" ColumnName="Brs_CreatedAt" />
+                <ScalarProperty Name="Brs_UpdatedAt" ColumnName="Brs_UpdatedAt" />
+                <ScalarProperty Name="Brs_Deleted" ColumnName="Brs_Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ctg_Categories">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Ctg_Categories">
+              <MappingFragment StoreEntitySet="Ctg_Categories">
+                <ScalarProperty Name="Pk_CategoryID" ColumnName="Pk_CategoryID" />
+                <ScalarProperty Name="Cat_CustomID" ColumnName="Cat_CustomID" />
+                <ScalarProperty Name="Cat_Name" ColumnName="Cat_Name" />
+                <ScalarProperty Name="Cat_Description" ColumnName="Cat_Description" />
+                <ScalarProperty Name="Cat_CreatedAt" ColumnName="Cat_CreatedAt" />
+                <ScalarProperty Name="Cat_UpdatedAt" ColumnName="Cat_UpdatedAt" />
+                <ScalarProperty Name="Cat_Deleted" ColumnName="Cat_Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ctg_Currency">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Ctg_Currency">
+              <MappingFragment StoreEntitySet="Ctg_Currency">
+                <ScalarProperty Name="Pk_CurrencyID" ColumnName="Pk_CurrencyID" />
+                <ScalarProperty Name="Cy_Name" ColumnName="Cy_Name" />
+                <ScalarProperty Name="Cy_Description" ColumnName="Cy_Description" />
+                <ScalarProperty Name="Cy_Deleted" ColumnName="Cy_Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ctg_CurrencyExchange">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Ctg_CurrencyExchange">
+              <MappingFragment StoreEntitySet="Ctg_CurrencyExchange">
+                <ScalarProperty Name="Pk_CurrencyExchangeID" ColumnName="Pk_CurrencyExchangeID" />
+                <ScalarProperty Name="Fk_CurrencyID" ColumnName="Fk_CurrencyID" />
+                <ScalarProperty Name="Cye_LocalCurrency" ColumnName="Cye_LocalCurrency" />
+                <ScalarProperty Name="Cye_Sale" ColumnName="Cye_Sale" />
+                <ScalarProperty Name="Cye_Purchase" ColumnName="Cye_Purchase" />
+                <ScalarProperty Name="Cye_CreatedAt" ColumnName="Cye_CreatedAt" />
+                <ScalarProperty Name="Cye_UpdateddAt" ColumnName="Cye_UpdateddAt" />
+                <ScalarProperty Name="Cye_Deleted" ColumnName="Cye_Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ctg_Customers">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Ctg_Customers">
+              <MappingFragment StoreEntitySet="Ctg_Customers">
+                <ScalarProperty Name="Pk_CustomerID" ColumnName="Pk_CustomerID" />
+                <ScalarProperty Name="Cust_CustomID" ColumnName="Cust_CustomID" />
+                <ScalarProperty Name="Cust_FirtsName" ColumnName="Cust_FirtsName" />
+                <ScalarProperty Name="Cust_LastName" ColumnName="Cust_LastName" />
+                <ScalarProperty Name="Cust_Address" ColumnName="Cust_Address" />
+                <ScalarProperty Name="Cust_PhoneNumber" ColumnName="Cust_PhoneNumber" />
+                <ScalarProperty Name="Cust_IdentificationCard" ColumnName="Cust_IdentificationCard" />
+                <ScalarProperty Name="Cust_CreatedAt" ColumnName="Cust_CreatedAt" />
+                <ScalarProperty Name="Cust_UpdatedAt" ColumnName="Cust_UpdatedAt" />
+                <ScalarProperty Name="Cust_Deleted" ColumnName="Cust_Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ctg_DiscountPromotions">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Ctg_DiscountPromotions">
+              <MappingFragment StoreEntitySet="Ctg_DiscountPromotions">
+                <ScalarProperty Name="Pk_DiscountPromotionID" ColumnName="Pk_DiscountPromotionID" />
+                <ScalarProperty Name="Dtps_Name" ColumnName="Dtps_Name" />
+                <ScalarProperty Name="Dtps_Description" ColumnName="Dtps_Description" />
+                <ScalarProperty Name="Dtps_Discount" ColumnName="Dtps_Discount" />
+                <ScalarProperty Name="Dtps_CreateAt" ColumnName="Dtps_CreateAt" />
+                <ScalarProperty Name="Dtps_UpdatedAt" ColumnName="Dtps_UpdatedAt" />
+                <ScalarProperty Name="Dtps_Status" ColumnName="Dtps_Status" />
+                <ScalarProperty Name="Dtps_Deleted" ColumnName="Dtps_Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ctg_Employees">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Ctg_Employees">
+              <MappingFragment StoreEntitySet="Ctg_Employees">
+                <ScalarProperty Name="Pk_EmployeeID" ColumnName="Pk_EmployeeID" />
+                <ScalarProperty Name="Emp_CustomID" ColumnName="Emp_CustomID" />
+                <ScalarProperty Name="Emp_Position" ColumnName="Emp_Position" />
+                <ScalarProperty Name="Emp_FirstName" ColumnName="Emp_FirstName" />
+                <ScalarProperty Name="Emp_LastName" ColumnName="Emp_LastName" />
+                <ScalarProperty Name="Emp_PhoneNumber" ColumnName="Emp_PhoneNumber" />
+                <ScalarProperty Name="Emp_Address" ColumnName="Emp_Address" />
+                <ScalarProperty Name="Emp_IdentificationCard" ColumnName="Emp_IdentificationCard" />
+                <ScalarProperty Name="Emp_EmailAddress" ColumnName="Emp_EmailAddress" />
+                <ScalarProperty Name="Emp_CreatedAt" ColumnName="Emp_CreatedAt" />
+                <ScalarProperty Name="Emp_UpdatedAt" ColumnName="Emp_UpdatedAt" />
+                <ScalarProperty Name="Emp_Deleted" ColumnName="Emp_Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ctg_MeasureUnits">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Ctg_MeasureUnits">
+              <MappingFragment StoreEntitySet="Ctg_MeasureUnits">
+                <ScalarProperty Name="Pk_MeasureID" ColumnName="Pk_MeasureID" />
+                <ScalarProperty Name="Fk_UnitType" ColumnName="Fk_UnitType" />
+                <ScalarProperty Name="Msu_Type" ColumnName="Msu_Type" />
+                <ScalarProperty Name="Msu_Abbreviation" ColumnName="Msu_Abbreviation" />
+                <ScalarProperty Name="Msu_CreatedAt" ColumnName="Msu_CreatedAt" />
+                <ScalarProperty Name="Msu_UpdatedAt" ColumnName="Msu_UpdatedAt" />
+                <ScalarProperty Name="Msu_Deleted" ColumnName="Msu_Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ctg_Privilegies">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Ctg_Privilegies">
+              <MappingFragment StoreEntitySet="Ctg_Privilegies">
+                <ScalarProperty Name="Pk_PrivilegieID" ColumnName="Pk_PrivilegieID" />
+                <ScalarProperty Name="Pvg_Name" ColumnName="Pvg_Name" />
+                <ScalarProperty Name="Pvg_CreatedAt" ColumnName="Pvg_CreatedAt" />
+                <ScalarProperty Name="Pvg_UpdatedAt" ColumnName="Pvg_UpdatedAt" />
+                <ScalarProperty Name="Pvg_Deleted" ColumnName="Pvg_Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ctg_ProductDetails">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Ctg_ProductDetails">
+              <MappingFragment StoreEntitySet="Ctg_ProductDetails">
+                <ScalarProperty Name="Pk_ProductDetailID" ColumnName="Pk_ProductDetailID" />
+                <ScalarProperty Name="Fk_ProductID" ColumnName="Fk_ProductID" />
+                <ScalarProperty Name="Pdl_customID" ColumnName="Pdl_customID" />
+                <ScalarProperty Name="Fk_CategoryID" ColumnName="Fk_CategoryID" />
+                <ScalarProperty Name="Fk_BrandID" ColumnName="Fk_BrandID" />
+                <ScalarProperty Name="Fk_SupplierID" ColumnName="Fk_SupplierID" />
+                <ScalarProperty Name="Fk_UnitConversion" ColumnName="Fk_UnitConversion" />
+                <ScalarProperty Name="Pdl_DefaultCode" ColumnName="Pdl_DefaultCode" />
+                <ScalarProperty Name="Pdl_Dimensions" ColumnName="Pdl_Dimensions" />
+                <ScalarProperty Name="Pdl_MaterialType" ColumnName="Pdl_MaterialType" />
+                <ScalarProperty Name="Pdl_ExpiryDate" ColumnName="Pdl_ExpiryDate" />
+                <ScalarProperty Name="Pdl_CreatedAt" ColumnName="Pdl_CreatedAt" />
+                <ScalarProperty Name="Pdl_UpdatedAt" ColumnName="Pdl_UpdatedAt" />
+                <ScalarProperty Name="Pdl_Deleted" ColumnName="Pdl_Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ctg_Products">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Ctg_Products">
+              <MappingFragment StoreEntitySet="Ctg_Products">
+                <ScalarProperty Name="Pk_productID" ColumnName="Pk_productID" />
+                <ScalarProperty Name="Prod_customID" ColumnName="Prod_customID" />
+                <ScalarProperty Name="Prod_Name" ColumnName="Prod_Name" />
+                <ScalarProperty Name="Prod_Description" ColumnName="Prod_Description" />
+                <ScalarProperty Name="Prod_Deleted" ColumnName="Prod_Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ctg_Suppliers">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Ctg_Suppliers">
+              <MappingFragment StoreEntitySet="Ctg_Suppliers">
+                <ScalarProperty Name="Pk_SupplierID" ColumnName="Pk_SupplierID" />
+                <ScalarProperty Name="Sps_customID" ColumnName="Sps_customID" />
+                <ScalarProperty Name="Sps_CompanyName" ColumnName="Sps_CompanyName" />
+                <ScalarProperty Name="Sps_Name" ColumnName="Sps_Name" />
+                <ScalarProperty Name="Sps_Address" ColumnName="Sps_Address" />
+                <ScalarProperty Name="Sps_PhoneNumber" ColumnName="Sps_PhoneNumber" />
+                <ScalarProperty Name="Sps_EmailAddress" ColumnName="Sps_EmailAddress" />
+                <ScalarProperty Name="Sps_CreatedAt" ColumnName="Sps_CreatedAt" />
+                <ScalarProperty Name="Sps_UpdatedAt_" ColumnName="Sps_UpdatedAt_" />
+                <ScalarProperty Name="Sps_Deleted" ColumnName="Sps_Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ctg_UnitConversion">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Ctg_UnitConversion">
+              <MappingFragment StoreEntitySet="Ctg_UnitConversion">
+                <ScalarProperty Name="Pk_UnitConversion" ColumnName="Pk_UnitConversion" />
+                <ScalarProperty Name="Fk_SourceUnit" ColumnName="Fk_SourceUnit" />
+                <ScalarProperty Name="Fk_DestinationUnit" ColumnName="Fk_DestinationUnit" />
+                <ScalarProperty Name="Utc_Equivalence" ColumnName="Utc_Equivalence" />
+                <ScalarProperty Name="Utc_CreatedAt" ColumnName="Utc_CreatedAt" />
+                <ScalarProperty Name="Utc_UpdatedAt" ColumnName="Utc_UpdatedAt" />
+                <ScalarProperty Name="Utc_Deleted" ColumnName="Utc_Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ctg_UnitType">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Ctg_UnitType">
+              <MappingFragment StoreEntitySet="Ctg_UnitType">
+                <ScalarProperty Name="Pk_UnitType" ColumnName="Pk_UnitType" />
+                <ScalarProperty Name="Uty_Type" ColumnName="Uty_Type" />
+                <ScalarProperty Name="Uty_CreatedAt" ColumnName="Uty_CreatedAt" />
+                <ScalarProperty Name="Uty_UpdatedAt" ColumnName="Uty_UpdatedAt" />
+                <ScalarProperty Name="Uty_Deleted" ColumnName="Uty_Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ctg_Users">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Ctg_Users">
+              <MappingFragment StoreEntitySet="Ctg_Users">
+                <ScalarProperty Name="Pk_UserID" ColumnName="Pk_UserID" />
+                <ScalarProperty Name="Fk_EmployeeID" ColumnName="Fk_EmployeeID" />
+                <ScalarProperty Name="Fk_PrivilegieID" ColumnName="Fk_PrivilegieID" />
+                <ScalarProperty Name="UserCustomID" ColumnName="UserCustomID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserImage" ColumnName="UserImage" />
+                <ScalarProperty Name="UserCreatedAt" ColumnName="UserCreatedAt" />
+                <ScalarProperty Name="UserUpdatedAt" ColumnName="UserUpdatedAt" />
+                <ScalarProperty Name="UserDeleted" ColumnName="UserDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ctg_Warehouses">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Ctg_Warehouses">
+              <MappingFragment StoreEntitySet="Ctg_Warehouses">
+                <ScalarProperty Name="Pk_WarehouseID" ColumnName="Pk_WarehouseID" />
+                <ScalarProperty Name="Whs_CustomID" ColumnName="Whs_CustomID" />
+                <ScalarProperty Name="Whs_Name" ColumnName="Whs_Name" />
+                <ScalarProperty Name="Whs_Description" ColumnName="Whs_Description" />
+                <ScalarProperty Name="Whs_CreatedAt" ColumnName="Whs_CreatedAt" />
+                <ScalarProperty Name="Whs_UpdatedAt" ColumnName="Whs_UpdatedAt" />
+                <ScalarProperty Name="Whs_Deleted" ColumnName="Whs_Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_OrderDetails">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Tbl_OrderDetails">
+              <MappingFragment StoreEntitySet="Tbl_OrderDetails">
+                <ScalarProperty Name="Fk_OrderID" ColumnName="Fk_OrderID" />
+                <ScalarProperty Name="Fk_ProductDetailID" ColumnName="Fk_ProductDetailID" />
+                <ScalarProperty Name="Odt_Quantity" ColumnName="Odt_Quantity" />
+                <ScalarProperty Name="Odt_PurchasePrice" ColumnName="Odt_PurchasePrice" />
+                <ScalarProperty Name="Odt_DetailTax" ColumnName="Odt_DetailTax" />
+                <ScalarProperty Name="Odt_Subtotal" ColumnName="Odt_Subtotal" />
+                <ScalarProperty Name="Odt_Discount" ColumnName="Odt_Discount" />
+                <ScalarProperty Name="Odt_Total" ColumnName="Odt_Total" />
+                <ScalarProperty Name="Odt_Deleted" ColumnName="Odt_Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Orders">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Tbl_Orders">
+              <MappingFragment StoreEntitySet="Tbl_Orders">
+                <ScalarProperty Name="Pk_OrderID" ColumnName="Pk_OrderID" />
+                <ScalarProperty Name="Fk_SupplierID" ColumnName="Fk_SupplierID" />
+                <ScalarProperty Name="Fk_UserID" ColumnName="Fk_UserID" />
+                <ScalarProperty Name="Ord_Number" ColumnName="Ord_Number" />
+                <ScalarProperty Name="Ord_Date" ColumnName="Ord_Date" />
+                <ScalarProperty Name="Ord_Tax" ColumnName="Ord_Tax" />
+                <ScalarProperty Name="Ord_Subtotal" ColumnName="Ord_Subtotal" />
+                <ScalarProperty Name="Ord_Discount" ColumnName="Ord_Discount" />
+                <ScalarProperty Name="Ord_Total" ColumnName="Ord_Total" />
+                <ScalarProperty Name="Ord_Deleted" ColumnName="Ord_Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_RemovedProducts">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Tbl_RemovedProducts">
+              <MappingFragment StoreEntitySet="Tbl_RemovedProducts">
+                <ScalarProperty Name="Pk_RemovedProductID" ColumnName="Pk_RemovedProductID" />
+                <ScalarProperty Name="Fk_WarehouseID" ColumnName="Fk_WarehouseID" />
+                <ScalarProperty Name="Fk_ProductDetailID" ColumnName="Fk_ProductDetailID" />
+                <ScalarProperty Name="Fk_UserID" ColumnName="Fk_UserID" />
+                <ScalarProperty Name="RmProd_Title" ColumnName="RmProd_Title" />
+                <ScalarProperty Name="RmProd_Description" ColumnName="RmProd_Description" />
+                <ScalarProperty Name="RmProd_Quantity" ColumnName="RmProd_Quantity" />
+                <ScalarProperty Name="RmProd_PurchasePrice" ColumnName="RmProd_PurchasePrice" />
+                <ScalarProperty Name="RmProd_CreatedAt" ColumnName="RmProd_CreatedAt" />
+                <ScalarProperty Name="RmProd_Status" ColumnName="RmProd_Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_SaleDetails">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Tbl_SaleDetails">
+              <MappingFragment StoreEntitySet="Tbl_SaleDetails">
+                <ScalarProperty Name="Fk_SaleID" ColumnName="Fk_SaleID" />
+                <ScalarProperty Name="Fk_ProductDetailID" ColumnName="Fk_ProductDetailID" />
+                <ScalarProperty Name="Sdt_Price" ColumnName="Sdt_Price" />
+                <ScalarProperty Name="Sdt_Quantity" ColumnName="Sdt_Quantity" />
+                <ScalarProperty Name="Sdt_Tax" ColumnName="Sdt_Tax" />
+                <ScalarProperty Name="Sdt_Subtotal" ColumnName="Sdt_Subtotal" />
+                <ScalarProperty Name="Sdt_Discount" ColumnName="Sdt_Discount" />
+                <ScalarProperty Name="Sdt_Total" ColumnName="Sdt_Total" />
+                <ScalarProperty Name="Sdt_Deleted" ColumnName="Sdt_Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Sales">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Tbl_Sales">
+              <MappingFragment StoreEntitySet="Tbl_Sales">
+                <ScalarProperty Name="Pk_SaleID" ColumnName="Pk_SaleID" />
+                <ScalarProperty Name="Fk_UserID" ColumnName="Fk_UserID" />
+                <ScalarProperty Name="Fk_CustomerID" ColumnName="Fk_CustomerID" />
+                <ScalarProperty Name="Fk_CurrencyExchangeID" ColumnName="Fk_CurrencyExchangeID" />
+                <ScalarProperty Name="Sale_CustomerName" ColumnName="Sale_CustomerName" />
+                <ScalarProperty Name="Sale_PaymentType" ColumnName="Sale_PaymentType" />
+                <ScalarProperty Name="Sale_Date" ColumnName="Sale_Date" />
+                <ScalarProperty Name="Sale_TaxName" ColumnName="Sale_TaxName" />
+                <ScalarProperty Name="Sale_Tax" ColumnName="Sale_Tax" />
+                <ScalarProperty Name="Sale_Subtotal" ColumnName="Sale_Subtotal" />
+                <ScalarProperty Name="Sale_Discount" ColumnName="Sale_Discount" />
+                <ScalarProperty Name="Sale_TotalAmount" ColumnName="Sale_TotalAmount" />
+                <ScalarProperty Name="Sale_Deleted" ColumnName="Sale_Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Taxes">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Tbl_Taxes">
+              <MappingFragment StoreEntitySet="Tbl_Taxes">
+                <ScalarProperty Name="Pk_TaxID" ColumnName="Pk_TaxID" />
+                <ScalarProperty Name="TaxName" ColumnName="TaxName" />
+                <ScalarProperty Name="TaxDescription" ColumnName="TaxDescription" />
+                <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+                <ScalarProperty Name="TaxCreatedAt" ColumnName="TaxCreatedAt" />
+                <ScalarProperty Name="TaxUpdatedAt" ColumnName="TaxUpdatedAt" />
+                <ScalarProperty Name="TaxDeleted" ColumnName="TaxDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_TransferDetails">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Tbl_TransferDetails">
+              <MappingFragment StoreEntitySet="Tbl_TransferDetails">
+                <ScalarProperty Name="Pk_TransferDetailID" ColumnName="Pk_TransferDetailID" />
+                <ScalarProperty Name="Fk_TransferID" ColumnName="Fk_TransferID" />
+                <ScalarProperty Name="Fk_ProductDetailID" ColumnName="Fk_ProductDetailID" />
+                <ScalarProperty Name="TD_SourceWarehouseID" ColumnName="TD_SourceWarehouseID" />
+                <ScalarProperty Name="TD_Quantity" ColumnName="TD_Quantity" />
+                <ScalarProperty Name="TD_CreatedAt" ColumnName="TD_CreatedAt" />
+                <ScalarProperty Name="TD_UpdatedAt" ColumnName="TD_UpdatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Transfers">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Tbl_Transfers">
+              <MappingFragment StoreEntitySet="Tbl_Transfers">
+                <ScalarProperty Name="Pk_TransferID" ColumnName="Pk_TransferID" />
+                <ScalarProperty Name="Fk_UserID" ColumnName="Fk_UserID" />
+                <ScalarProperty Name="Fk_DestinationWarehouse" ColumnName="Fk_DestinationWarehouse" />
+                <ScalarProperty Name="TransferDate" ColumnName="TransferDate" />
+                <ScalarProperty Name="TransferTotal" ColumnName="TransferTotal" />
+                <ScalarProperty Name="TransferStatus" ColumnName="TransferStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_WarehouseProducts">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Tbl_WarehouseProducts">
+              <MappingFragment StoreEntitySet="Tbl_WarehouseProducts">
+                <ScalarProperty Name="Fk_WarehouseID" ColumnName="Fk_WarehouseID" />
+                <ScalarProperty Name="Fk_ProductDetailID" ColumnName="Fk_ProductDetailID" />
+                <ScalarProperty Name="WhPr_Stock" ColumnName="WhPr_Stock" />
+                <ScalarProperty Name="WhPr_PurchasePrice" ColumnName="WhPr_PurchasePrice" />
+                <ScalarProperty Name="WhPr_SalePrice" ColumnName="WhPr_SalePrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_HardwareStore">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Tbl_HardwareStore">
+              <MappingFragment StoreEntitySet="Tbl_HardwareStore">
+                <ScalarProperty Name="Hws_Name" ColumnName="Hws_Name" />
+                <ScalarProperty Name="Hws_RUCNumber" ColumnName="Hws_RUCNumber" />
+                <ScalarProperty Name="Hws_Address" ColumnName="Hws_Address" />
+                <ScalarProperty Name="Hws_Description" ColumnName="Hws_Description" />
+                <ScalarProperty Name="Hws_EmailAddress" ColumnName="Hws_EmailAddress" />
+                <ScalarProperty Name="Hws_PhoneNumber" ColumnName="Hws_PhoneNumber" />
+                <ScalarProperty Name="Hws_FixedLineNumber" ColumnName="Hws_FixedLineNumber" />
+                <ScalarProperty Name="Hws_OwnerName" ColumnName="Hws_OwnerName" />
+                <ScalarProperty Name="Hws_CreatedAt" ColumnName="Hws_CreatedAt" />
+                <ScalarProperty Name="Hws_UpdatedAt" ColumnName="Hws_UpdatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
