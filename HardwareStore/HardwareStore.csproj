@@ -125,6 +125,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Modules\Orders.Module\OrdersPage.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -186,6 +187,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Orders.Module\OrdersPage.aspx.cs">
+      <DependentUpon>OrdersPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Orders.Module\OrdersPage.aspx.designer.cs">
+      <DependentUpon>OrdersPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -211,6 +219,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Modules\Catalogs.Module\" />
+    <Folder Include="Modules\Home\" />
+    <Folder Include="Modules\ProductsAdmin.Module\" />
+    <Folder Include="Modules\Reports.Module\" />
+    <Folder Include="Modules\Sales.Module\" />
+    <Folder Include="Modules\Security.Module\" />
+    <Folder Include="Modules\SystemConfiguration\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -224,6 +239,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HardwareStore.Domain\HardwareStore.Domain.csproj">
+      <Project>{4BAAA2F3-6291-4505-B3B6-17D1F1845ABA}</Project>
+      <Name>HardwareStore.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HardwareStore.Infraestructure\HardwareStore.Infraestructure.csproj">
       <Project>{8940aac1-6cbf-470c-a9a5-fd4ea18baa75}</Project>
       <Name>HardwareStore.Infraestructure</Name>
