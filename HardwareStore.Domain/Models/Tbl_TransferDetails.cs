@@ -22,7 +22,7 @@ namespace HardwareStore.Domain.Models
         public Nullable<System.DateTime> TD_CreatedAt { get; set; }
         public Nullable<System.DateTime> TD_UpdatedAt { get; set; }
     
-        public virtual Ctg_ProductDetails Ctg_ProductDetails { get; set; }
         public virtual Tbl_Transfers Tbl_Transfers { get; set; }
+        public virtual Ctg_ProductDetails Ctg_ProductDetails { get; set; }
     }
 }

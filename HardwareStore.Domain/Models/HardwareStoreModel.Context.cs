@@ -34,10 +34,8 @@ namespace HardwareStore.Domain.Models
         public virtual DbSet<Ctg_Employees> Ctg_Employees { get; set; }
         public virtual DbSet<Ctg_MeasureUnits> Ctg_MeasureUnits { get; set; }
         public virtual DbSet<Ctg_Privilegies> Ctg_Privilegies { get; set; }
-        public virtual DbSet<Ctg_ProductDetails> Ctg_ProductDetails { get; set; }
         public virtual DbSet<Ctg_Products> Ctg_Products { get; set; }
         public virtual DbSet<Ctg_Suppliers> Ctg_Suppliers { get; set; }
-        public virtual DbSet<Ctg_UnitConversion> Ctg_UnitConversion { get; set; }
         public virtual DbSet<Ctg_UnitType> Ctg_UnitType { get; set; }
         public virtual DbSet<Ctg_Users> Ctg_Users { get; set; }
         public virtual DbSet<Ctg_Warehouses> Ctg_Warehouses { get; set; }
@@ -49,7 +47,9 @@ namespace HardwareStore.Domain.Models
         public virtual DbSet<Tbl_Taxes> Tbl_Taxes { get; set; }
         public virtual DbSet<Tbl_TransferDetails> Tbl_TransferDetails { get; set; }
         public virtual DbSet<Tbl_Transfers> Tbl_Transfers { get; set; }
-        public virtual DbSet<Tbl_WarehouseProducts> Tbl_WarehouseProducts { get; set; }
         public virtual DbSet<Tbl_HardwareStore> Tbl_HardwareStore { get; set; }
+        public virtual DbSet<Ctg_UnitConversion> Ctg_UnitConversion { get; set; }
+        public virtual DbSet<Ctg_ProductDetails> Ctg_ProductDetails { get; set; }
+        public virtual DbSet<Tbl_WarehouseProducts> Tbl_WarehouseProducts { get; set; }
     }
 }

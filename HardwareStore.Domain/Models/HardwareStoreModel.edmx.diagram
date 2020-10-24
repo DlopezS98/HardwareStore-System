@@ -14,10 +14,8 @@
         <EntityTypeShape EntityType="HardwareStoreModel.Ctg_Employees" Width="1.5" PointX="1.5" PointY="35" IsExpanded="true" />
         <EntityTypeShape EntityType="HardwareStoreModel.Ctg_MeasureUnits" Width="1.5" PointX="1.5" PointY="27.125" IsExpanded="true" />
         <EntityTypeShape EntityType="HardwareStoreModel.Ctg_Privilegies" Width="1.5" PointX="1.5" PointY="39.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="HardwareStoreModel.Ctg_ProductDetails" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
         <EntityTypeShape EntityType="HardwareStoreModel.Ctg_Products" Width="1.5" PointX="0.75" PointY="20.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HardwareStoreModel.Ctg_Suppliers" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="HardwareStoreModel.Ctg_UnitConversion" Width="1.5" PointX="0.75" PointY="23.125" IsExpanded="true" />
         <EntityTypeShape EntityType="HardwareStoreModel.Ctg_UnitType" Width="1.5" PointX="1.5" PointY="31.5" IsExpanded="true" />
         <EntityTypeShape EntityType="HardwareStoreModel.Ctg_Users" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HardwareStoreModel.Ctg_Warehouses" Width="1.5" PointX="6" PointY="4.375" IsExpanded="true" />
@@ -29,35 +27,37 @@
         <EntityTypeShape EntityType="HardwareStoreModel.Tbl_Taxes" Width="1.5" PointX="10.75" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="HardwareStoreModel.Tbl_TransferDetails" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
         <EntityTypeShape EntityType="HardwareStoreModel.Tbl_Transfers" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="HardwareStoreModel.Tbl_WarehouseProducts" Width="1.5" PointX="5.25" PointY="16.625" IsExpanded="true" />
         <EntityTypeShape EntityType="HardwareStoreModel.Tbl_HardwareStore" Width="1.5" PointX="10.75" PointY="5.625" IsExpanded="true" />
-        <AssociationConnector Association="HardwareStoreModel.FK_BRANDS_PDL" ManuallyRouted="false" />
-        <AssociationConnector Association="HardwareStoreModel.FK_CATEGORIES_PDL" ManuallyRouted="false" />
         <AssociationConnector Association="HardwareStoreModel.FK_CURRENCYEXCHANGE" ManuallyRouted="false" />
         <AssociationConnector Association="HardwareStoreModel.FK_CURRENCYEXCHANGE_SALES" ManuallyRouted="false" />
         <AssociationConnector Association="HardwareStoreModel.FK_CUSTOMERS_SALES" ManuallyRouted="false" />
         <AssociationConnector Association="HardwareStoreModel.FK_EMPLOYEES_USERS" ManuallyRouted="false" />
-        <AssociationConnector Association="HardwareStoreModel.FK_SOURCEUNIT" ManuallyRouted="false" />
         <AssociationConnector Association="HardwareStoreModel.FK_UNITTYPE_MSU" ManuallyRouted="false" />
         <AssociationConnector Association="HardwareStoreModel.FK_PRIVILEGIES_USERS" ManuallyRouted="false" />
-        <AssociationConnector Association="HardwareStoreModel.FK_PROD_DETAILS_RMPROD" ManuallyRouted="false" />
-        <AssociationConnector Association="HardwareStoreModel.FK_PROD_DETAILS_WHPR" ManuallyRouted="false" />
-        <AssociationConnector Association="HardwareStoreModel.FK_PRODUCT_DETAIL_TD" ManuallyRouted="false" />
-        <AssociationConnector Association="HardwareStoreModel.FK_PRODUCTS_ODT" ManuallyRouted="false" />
-        <AssociationConnector Association="HardwareStoreModel.FK_PRODUCTS_PDL" ManuallyRouted="false" />
-        <AssociationConnector Association="HardwareStoreModel.FK_PRODUCTS_SDT" ManuallyRouted="false" />
-        <AssociationConnector Association="HardwareStoreModel.FK_SUPPLIERS_PDL" ManuallyRouted="false" />
-        <AssociationConnector Association="HardwareStoreModel.FK_UNITCONVERSION_PDL" ManuallyRouted="false" />
         <AssociationConnector Association="HardwareStoreModel.FK_SUPPLIERS_ORD" ManuallyRouted="false" />
         <AssociationConnector Association="HardwareStoreModel.FK_USERS_ORD" ManuallyRouted="false" />
         <AssociationConnector Association="HardwareStoreModel.FK_USERS_SALES" ManuallyRouted="false" />
         <AssociationConnector Association="HardwareStoreModel.FK_USERS_TFS" ManuallyRouted="false" />
         <AssociationConnector Association="HardwareStoreModel.FK_WAREHOUSE_TFS" ManuallyRouted="false" />
         <AssociationConnector Association="HardwareStoreModel.FK_WAREHOUSES_RMPROD" ManuallyRouted="false" />
-        <AssociationConnector Association="HardwareStoreModel.FK_WAREHOUSES_WHPR" ManuallyRouted="false" />
         <AssociationConnector Association="HardwareStoreModel.FK_ORDERS_ODT" ManuallyRouted="false" />
         <AssociationConnector Association="HardwareStoreModel.FK_SALES_SDT" ManuallyRouted="false" />
         <AssociationConnector Association="HardwareStoreModel.FK_TRANSFERS_TD" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HardwareStoreModel.Ctg_UnitConversion" Width="1.5" PointX="3.75" PointY="27.125" />
+        <AssociationConnector Association="HardwareStoreModel.FK_SOURCEUNIT" />
+        <EntityTypeShape EntityType="HardwareStoreModel.Ctg_ProductDetails" Width="1.5" PointX="6" PointY="16.875" />
+        <EntityTypeShape EntityType="HardwareStoreModel.Tbl_WarehouseProducts" Width="1.5" PointX="11.25" PointY="12.125" />
+        <AssociationConnector Association="HardwareStoreModel.FK_BRANDS_PDL" />
+        <AssociationConnector Association="HardwareStoreModel.FK_CATEGORIES_PDL" />
+        <AssociationConnector Association="HardwareStoreModel.FK_PROD_DETAILS_RMPROD" />
+        <AssociationConnector Association="HardwareStoreModel.FK_PROD_DETAILS_WHPR" />
+        <AssociationConnector Association="HardwareStoreModel.FK_PRODUCT_DETAIL_TD" />
+        <AssociationConnector Association="HardwareStoreModel.FK_PRODUCTS_ODT" />
+        <AssociationConnector Association="HardwareStoreModel.FK_PRODUCTS_PDL" />
+        <AssociationConnector Association="HardwareStoreModel.FK_PRODUCTS_SDT" />
+        <AssociationConnector Association="HardwareStoreModel.FK_SUPPLIERS_PDL" />
+        <AssociationConnector Association="HardwareStoreModel.FK_UNITCONVERSION_PDL" />
+        <AssociationConnector Association="HardwareStoreModel.FK_WAREHOUSES_WHPR" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

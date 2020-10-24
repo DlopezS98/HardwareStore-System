@@ -22,7 +22,7 @@ namespace HardwareStore.Domain.Models
     
         public int Pk_UnitConversion { get; set; }
         public int Fk_SourceUnit { get; set; }
-        public int Fk_DestinationUnit { get; set; }
+        public string Utc_DestinationUnit { get; set; }
         public double Utc_Equivalence { get; set; }
         public System.DateTime Utc_CreatedAt { get; set; }
         public System.DateTime Utc_UpdatedAt { get; set; }

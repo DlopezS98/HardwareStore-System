@@ -12,13 +12,34 @@ namespace HardwareStore.Modules.Orders.Module
 {
     public partial class OrdersPage : System.Web.UI.Page
     {
+        private readonly WarehouseController WarehouseCtrl;
+        //private readonly WarehouseProductsController WhPrCtrl;
+
+        public OrdersPage()
+        {
+            this.WarehouseCtrl = new WarehouseController();
+            //this.WhPrCtrl = new WarehouseProductsController();
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                this.LoadDropDownWarehouse();
+            }
+        }
 
+        public void LoadDropDownWarehouse()
+        {
+            ddlstWarehouses.DataSource = this.WarehouseCtrl.GetWarehouses();
+            ddlstWarehouses.DataTextField = "DropDisplayName";
+            ddlstWarehouses.DataValueField = "Pk_WarehouseID";
+            ddlstWarehouses.DataBind();
+            ddlstWarehouses.Items.Insert(0, new ListItem("----[Seleccionar Bodega Destino]----", "0"));
         }
 
         [WebMethod]
-        [ScriptMethod(UseHttpGet = true)]
+        //[ScriptMethod(UseHttpGet = true)]
         public static Object LoadData()
         {
             DateTime Start = DateTime.Parse("2000-09-12");
@@ -28,5 +49,19 @@ namespace HardwareStore.Modules.Orders.Module
             //return "Hello World";
             return obj;
         }
+
+        [WebMethod]
+        public static Object GetWarehouseProducts()
+        {
+            WarehouseProductsController WhPr = new WarehouseProductsController();
+            var obj = WhPr.GetProductsInWarehouse("");
+            return obj;
+        }
+
+        public void SendOrder()
+        {
+
+        }
+    }
     }
 }

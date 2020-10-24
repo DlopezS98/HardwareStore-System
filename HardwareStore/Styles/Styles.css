@@ -1,0 +1,513 @@
+﻿* {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Segoe UI", sans-serif;
+}
+
+textarea {
+    height: 50px;
+    resize: none;
+    padding: 5px;
+    width: 100%;
+    border-radius: 10px;
+}
+/*Modales*/
+.Modal {
+    position: fixed;
+    background: rgba(0,0,0,0.3);
+    display: block;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: none;
+    opacity: 0;
+}
+
+.ModalContent {
+    width: 90%;
+    max-width: 750px;
+    min-width: 450px;
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    background: #fff;
+    min-height: 200px;
+    border-radius: 0.5cm;
+    overflow: hidden;
+}
+
+    .ModalContent .containerBottom {
+        text-align: center;
+    }
+
+
+.ModalTitle {
+    font-size: 26px;
+    padding: 10px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+    display: block;
+    background: #2F323A
+}
+
+.ModalActions, .Content {
+    padding: 10px;
+    color: #2F323A;
+    font-weight: bold;
+    margin: auto;
+    display: block;
+    text-align: center;
+}
+
+    .ModalActions label {
+        display: inline-block;
+    }
+
+    .ModalActions input {
+        margin-left: 20px;
+        height: 30px;
+        padding: 5px;
+        margin: 10px;
+        width: 100%;
+    }
+
+    .ModalActions .inputPrecio {
+        margin-left: 20px;
+        height: 30px;
+        padding: 5px;
+        margin: 10px;
+        width: 30%;
+    }
+
+    .ModalActions textarea {
+        margin-top: 5px;
+        margin-left: 10px;
+        height: 50px;
+        padding: 5px;
+        width: 100%;
+    }
+/*Site Master*/
+.MainSection {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    background: #EAEEF1;
+    display: flex;
+}
+
+.Container {
+    background-color: #EAEEF1;
+    /*height: calc(100% - 50px);*/
+    height: 100%;
+    width: 100%;
+    margin-top: 4rem;
+    margin-right: 10px;
+    margin-left: 260px;
+}
+
+header {
+    background-color: #fff;
+    width: 100%;
+    height: 50px;
+    margin: 0px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.left_area {
+    margin-left: 20px;
+    padding-top: 10px;
+}
+
+    .left_area h3 {
+        color: #fff;
+        margin: 0;
+        text-transform: uppercase;
+        font-size: 22px;
+        font-weight: 900;
+    }
+
+    .left_area span {
+        color: #1DC4E7;
+    }
+
+.Logout_btn {
+    padding: 5px;
+    background: #19B3D3;
+    text-decoration: none;
+    float: right;
+    margin-top: -30px;
+    margin-right: 40px;
+    border-radius: 2px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    transition-property: background;
+}
+
+    .Logout_btn:hover {
+        background: #0D9DBB;
+        text-decoration: none;
+        color: #fff;
+    }
+
+.SideBar {
+    background: #2F323A;
+    padding-top: 5px;
+    position: fixed;
+    left: 0;
+    width: 250px;
+    height: calc(100% + 20px);
+    transition: 0.5s;
+    transition-property: left;
+}
+
+    .SideBar .Avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 100px;
+        margin-bottom: 10px;
+        margin-left: 100px;
+    }
+
+    .SideBar h4 {
+        color: #ccc;
+        margin-top: 0;
+        margin-bottom: 20px;
+        margin-left: 45px;
+    }
+
+    .SideBar a {
+        color: #fff;
+        display: block;
+        width: 100%;
+        line-height: 45px;
+        text-decoration: none;
+        padding-left: 20px;
+        box-sizing: border-box;
+        transition: 0.5s;
+        transition-property: background;
+    }
+
+        .SideBar a:hover {
+            background: #19B3D3;
+            color: #fff;
+        }
+
+    .SideBar span {
+        padding-left: 15px;
+        font-size: 15px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+@media screen and (max-width: 1100px) {
+    .SideBar {
+        left: -190px;
+    }
+
+        .SideBar a span {
+            display: none;
+        }
+
+        .SideBar a {
+            font-size: 20px;
+            margin-left: 170px;
+            width: 80px
+        }
+
+        .SideBar i {
+            margin-left: 20px;
+        }
+
+    .Container {
+        margin-left: 70px;
+    }
+
+    .SideBar .Avatar {
+        height: 30px;
+        width: 30px;
+        margin-left: 205px
+    }
+}
+/*Administrados de Catálogos*/
+* {
+    box-sizing: border-box;
+}
+
+.column {
+    float: left;
+    width: 25%;
+    padding: 0 10px;
+}
+
+.row {
+    margin: 0 -5px;
+}
+
+    .row:after {
+        content: "";
+        display: flex;
+        clear: both;
+    }
+
+.card {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+    padding-bottom: 20px;
+    text-align: center;
+    /*background-color: #f1f1f1;*/
+    border-color: #dedede;
+    border-width: 1px;
+    border-style: solid;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+}
+
+.card .btninfoborder {
+    border-color: #19B3D3;
+    border-width: 1px;
+    border-style: solid;
+    color: #19B3D3;
+    border-radius: 10px;
+    width: 70px;
+    height: 25px;
+    font-size: 15px;
+    padding: 5px;
+    text-decoration: none;
+}
+
+    .card .btninfoborder:hover {
+        background: #19B3D3;
+        color: #fff;
+    }
+
+.card h4 {
+    color: #2F323A;
+}
+/*Módulo Seguridad*/
+.Button_Group {
+    margin: 10px;
+}
+
+/*Administrar Catálogos*/
+.Txt_Titulo {
+    padding-left: 10px;
+}
+
+
+/*Productos*/
+#mtvContenedor .BtnAgregar {
+    text-decoration: none;
+}
+
+.btnPrimary {
+    background: #19B3D3;
+    color: #fff;
+    border-radius: 10px;
+    border: none;
+    width: 70px;
+    height: 25px;
+    font-size: 15px;
+    padding: 5px;
+    text-decoration: none;
+    margin: 5px;
+}
+
+.btnSuccess {
+    background: #00A350;
+    color: #fff;
+    border-radius: 10px;
+    width: 150px;
+    height: 40px;
+    font-size: 15px;
+    padding: 5px;
+    list-style:none;
+    text-decoration: none;
+    margin-left: 10px;
+    border: none;
+}
+
+.btnDanger {
+    border: none;
+    background: #ff0000;
+    color: #fff;
+    border-radius: 10px;
+    width: 120px;
+    height: 30px;
+    font-size: 15px;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.TableContainer {
+    width: 100%;
+    max-width: 1500px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.table {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    table-layout: unset;
+}
+
+    .table tr {
+        border: 1px solid #ddd;
+    }
+
+    .table th {
+        font-size: 13px;
+        padding: 8px;
+        text-align: center;
+    }
+
+    .table td {
+        font-size: 13px;
+        padding: 8px;
+        text-align: center;
+    }
+
+    .table thead th {
+        text-transform: uppercase;
+        background: #2F323A;
+        color: #fff;
+    }
+
+    .table i {
+        color: brown;
+        margin: 5px;
+    }
+
+/*Venta*/
+/*.ContainerVentas {
+}
+
+.titleVenta {
+}*/
+
+.ContainerVentas .txt20 {
+    height: 30px;
+    padding: 5px;
+    margin: 5px;
+    width: 100%;
+    border: 0.5px solid #2F323A;
+    border-radius: 5px;
+}
+
+/*Pedidos*/
+.ContainerPedidos .txt20 {
+    height: 30px;
+    padding: 5px;
+    margin: 5px;
+    width: 100%;
+    border: 0.5px solid #2F323A;
+    border-radius: 5px;
+    flex-wrap: wrap;
+}
+
+
+/*Reportes*/
+.ContainerReportes .txtFechaRep {
+    height: 30px;
+    padding: 5px;
+    margin: 5px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+}
+
+.imgExport {
+    width: 50px;
+    height: 50px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+
+/*DlopezS98 - Styles*/
+
+.container-Existencias {
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.formSection {
+    background-color: white;
+    width: 450px;
+    padding: 40px 10px 40px 10px;
+    margin: 10px auto; /*centrar el formulario*/
+    border-radius: 5px;
+    box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.form-control {
+    display: block;
+    border: 1px solid #2F323A;
+    margin: 10px auto;
+    width: 400px;
+    background-color: #eaeaea;
+    padding: 10px;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+/*Pedidos*/
+.ContainerPedidos .txt20 {
+    height: 30px;
+    padding: 5px;
+    margin: 5px;
+    width: 100%;
+    border: 0.5px solid #2F323A;
+    border-radius: 5px;
+}
+
+.txtFechaRep {
+    height: 30px;
+    padding: 5px;
+    margin: 5px;
+    width: 100%;
+    border: 0.5px solid #2F323A;
+    border-radius: 5px;
+}
+/*Reportes*/
+.ContainerReportes .txtFechaRep {
+    height: 30px;
+    padding: 5px;
+    margin: 5px;
+    width: 100%;
+    border: 0.2px solid #2F323A;
+    border-radius: 5px;
+}
+
+.imgExport {
+    width: 50px;
+    height: 50px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+/*Admin Existencias*/
+.container-Existencias {
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+/*Configuración*/
+

@@ -17,8 +17,8 @@ namespace HardwareStore.Domain.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Ctg_Suppliers()
         {
-            this.Ctg_ProductDetails = new HashSet<Ctg_ProductDetails>();
             this.Tbl_Orders = new HashSet<Tbl_Orders>();
+            this.Ctg_ProductDetails = new HashSet<Ctg_ProductDetails>();
         }
     
         public int Pk_SupplierID { get; set; }
@@ -33,8 +33,8 @@ namespace HardwareStore.Domain.Models
         public bool Sps_Deleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ctg_ProductDetails> Ctg_ProductDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_Orders> Tbl_Orders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Ctg_ProductDetails> Ctg_ProductDetails { get; set; }
     }
 }

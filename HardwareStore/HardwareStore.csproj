@@ -105,8 +105,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About.aspx" />
-    <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -125,7 +123,22 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Images\Avatar.png" />
+    <Content Include="Modules\Catalogs.Module\Brands.aspx" />
+    <Content Include="Modules\Catalogs.Module\Categories.aspx" />
+    <Content Include="Modules\Catalogs.Module\Customers.aspx" />
+    <Content Include="Modules\Catalogs.Module\Employees.aspx" />
+    <Content Include="Modules\Catalogs.Module\MainCatalogs.aspx" />
+    <Content Include="Modules\Catalogs.Module\Privilegies.aspx" />
+    <Content Include="Modules\Catalogs.Module\Products.aspx" />
+    <Content Include="Modules\Catalogs.Module\Suppliers.aspx" />
+    <Content Include="Modules\Catalogs.Module\UnitsOfMeasurement.aspx" />
+    <Content Include="Modules\Catalogs.Module\Warehauses.aspx" />
     <Content Include="Modules\Orders.Module\OrdersPage.aspx" />
+    <Content Include="Modules\ProductsAdmin.Module\MainProductsAdmin.aspx" />
+    <Content Include="Modules\Reports.Module\MainReports.aspx" />
+    <Content Include="Modules\Sales.Module\MainSales.aspx" />
+    <Content Include="Modules\Security.Module\MainSecurity.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -155,6 +168,7 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="Styles\Styles.css" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -162,21 +176,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -187,12 +187,110 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Catalogs.Module\Brands.aspx.cs">
+      <DependentUpon>Brands.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Catalogs.Module\Brands.aspx.designer.cs">
+      <DependentUpon>Brands.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Catalogs.Module\Categories.aspx.cs">
+      <DependentUpon>Categories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Catalogs.Module\Categories.aspx.designer.cs">
+      <DependentUpon>Categories.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Catalogs.Module\Customers.aspx.cs">
+      <DependentUpon>Customers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Catalogs.Module\Customers.aspx.designer.cs">
+      <DependentUpon>Customers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Catalogs.Module\Employees.aspx.cs">
+      <DependentUpon>Employees.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Catalogs.Module\Employees.aspx.designer.cs">
+      <DependentUpon>Employees.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Catalogs.Module\MainCatalogs.aspx.cs">
+      <DependentUpon>MainCatalogs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Catalogs.Module\MainCatalogs.aspx.designer.cs">
+      <DependentUpon>MainCatalogs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Catalogs.Module\Privilegies.aspx.cs">
+      <DependentUpon>Privilegies.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Catalogs.Module\Privilegies.aspx.designer.cs">
+      <DependentUpon>Privilegies.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Catalogs.Module\Products.aspx.cs">
+      <DependentUpon>Products.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Catalogs.Module\Products.aspx.designer.cs">
+      <DependentUpon>Products.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Catalogs.Module\Suppliers.aspx.cs">
+      <DependentUpon>Suppliers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Catalogs.Module\Suppliers.aspx.designer.cs">
+      <DependentUpon>Suppliers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Catalogs.Module\UnitsOfMeasurement.aspx.cs">
+      <DependentUpon>UnitsOfMeasurement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Catalogs.Module\UnitsOfMeasurement.aspx.designer.cs">
+      <DependentUpon>UnitsOfMeasurement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Catalogs.Module\Warehauses.aspx.cs">
+      <DependentUpon>Warehauses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Catalogs.Module\Warehauses.aspx.designer.cs">
+      <DependentUpon>Warehauses.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Orders.Module\OrdersPage.aspx.cs">
       <DependentUpon>OrdersPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Modules\Orders.Module\OrdersPage.aspx.designer.cs">
       <DependentUpon>OrdersPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\ProductsAdmin.Module\MainProductsAdmin.aspx.cs">
+      <DependentUpon>MainProductsAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\ProductsAdmin.Module\MainProductsAdmin.aspx.designer.cs">
+      <DependentUpon>MainProductsAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Reports.Module\MainReports.aspx.cs">
+      <DependentUpon>MainReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Reports.Module\MainReports.aspx.designer.cs">
+      <DependentUpon>MainReports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Sales.Module\MainSales.aspx.cs">
+      <DependentUpon>MainSales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Sales.Module\MainSales.aspx.designer.cs">
+      <DependentUpon>MainSales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Security.Module\MainSecurity.aspx.cs">
+      <DependentUpon>MainSecurity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Security.Module\MainSecurity.aspx.designer.cs">
+      <DependentUpon>MainSecurity.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
@@ -219,12 +317,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Modules\Catalogs.Module\" />
     <Folder Include="Modules\Home\" />
-    <Folder Include="Modules\ProductsAdmin.Module\" />
-    <Folder Include="Modules\Reports.Module\" />
-    <Folder Include="Modules\Sales.Module\" />
-    <Folder Include="Modules\Security.Module\" />
     <Folder Include="Modules\SystemConfiguration\" />
   </ItemGroup>
   <ItemGroup>
