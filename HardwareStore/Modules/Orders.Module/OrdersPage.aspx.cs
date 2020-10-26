@@ -63,5 +63,4 @@ namespace HardwareStore.Modules.Orders.Module
 
         }
     }
-    }
 }

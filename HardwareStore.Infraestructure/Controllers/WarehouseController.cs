@@ -92,9 +92,24 @@ namespace HardwareStore.Infraestructure.Controllers
             }
         }
 
-        public void DeleteWarehouse(Boolean Deleted)
+        public void DeleteWarehouse(int Pk_WarehouseID)
         {
-            
+            try
+            {
+                Command = new SqlCommand();
+                var Connection = this.GetConnection();
+                Command.Connection = Connection;
+                Command.CommandText = "Sp_DeleteWarehouse";
+                Command.CommandType = CommandType.StoredProcedure;
+                Connection.Open();
+                Command.Parameters.AddWithValue("@Pk_WarehouseID", Pk_WarehouseID);
+                Command.ExecuteNonQuery();
+                Connection.Close();
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
         }
     }
 }

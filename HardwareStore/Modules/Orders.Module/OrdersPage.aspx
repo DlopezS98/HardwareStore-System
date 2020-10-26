@@ -1,63 +1,126 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="OrdersPage.aspx.cs" Inherits="HardwareStore.Modules.Orders.Module.OrdersPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="OdModal" id="odmodal" data-animation="slideInOutLeft">
+            <div class="modal-dialog">
+                <div class="modal-header">
+                    <h4 style="color:#fff;">Existencias Productos</h4>
+                    <button class="close-modal" aria-label="close modal" data-close>✕</button>
+                </div>
+                <div class="modal-content">
+                    <p><strong>Why do we use it?</strong></p>
+                    <p style="text-align: justify;">
+                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
+                        The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                    </p>
+                    
+                </div>
+                <%--<footer class="modal-footer">
+                    Footer of modal
+                </footer>--%>
+            </div>
+        </div>
     <div style="border: 1px solid #ddd; background: #fff; margin-bottom: 10px; border-radius: 10px; max-width: 98.5%">
-        <h1>Módulo Pedidos / Compras</h1>
+        <h1 style="text-align: center;">Módulo Pedidos / Compras</h1>
         <hr />
         <asp:MultiView ID="OrdersView" ActiveViewIndex="0" runat="server">
             <asp:View runat="server">
                 <%-- Inicio formulario principal --%>
-                <div class="ContainerPedidos">
+                <div class="ContainerPedidos" style="padding-left: 24px; padding-right: 24px;">
                     <div style="text-align: center">
                         <h2 class="titleVenta">Nuevo Pedido</h2>
                     </div>
+                    <button type="button" class="open-modal" data-open="odmodal">
+                        Launch Modal
+                    </button>
                     <div style="display: flex; flex-wrap: wrap;">
-                        <div style="width: 48%; margin: 5px">
+                        <div style="width: 30%; margin: 5px">
                             <h6 style="margin-left: 10px">Bodegas</h6>
-                            <div style="display: flex">
+                            <div style="display: flex;">
                                 <asp:DropDownList ID="ddlstWarehouses" CssClass="form-control" Width="100%" Height="40px" runat="server">
-                                </asp:DropDownList>                                
-                            </div>
-                            <asp:Button CssClass="BtnAgregar" Height="30px" ID="BtnAgregarPro" Text="+" runat="server" />
-                        </div>
-                        <div style="width: 45%; margin: 5px">
-                            <h6 style="margin-left: 10px">Categoría</h6>
-                            <div style="display: flex">
-                                <input runat="server" type="text" name="Type" id="txtCategory" class="form-control" />
+                                </asp:DropDownList>
+                                <asp:Button CssClass="BtnAgregar" Height="30px" ID="BtnAddWarehouse" Text="+" runat="server" />
                             </div>
                         </div>
-                        <div style="width: 48%; margin: 5px">
+                        <div style="width: 30%; margin: 5px">
                             <h6 style="margin-left: 10px">N Pedido</h6>
                             <div style="display: flex">
-                                <input runat="server" type="text" name="Type" id="txtOrdNumber" class="form-control" />
+                                <asp:TextBox placeholder="Número Factura" runat="server" ID="txtOrdNumber" class="form-control" />
                             </div>
                         </div>
-                        <div style="width: 45%; margin: 52px">
+                        <div style="width: 30%; margin: 5px">
+                            <h6 style="margin-left: 10px">Precio</h6>
+                            <div style="display: flex">
+                                <asp:TextBox TextMode="Number" step="0.01" placeholder="Precio" runat="server" ID="TextBox1" class="form-control" />
+                            </div>
+                        </div>
+                        <div style="width: 30%; margin: 5px">
                             <h6 style="margin-left: 10px">Producto</h6>
                             <div style="display: flex">
-                                <input runat="server" type="text" name="Type" id="txtProduct" class="form-control" />
-                                <a href="#"><i class="fas fa-plus-circle" style="margin: 10px; color: #00A350"></i></a>
+                                <asp:TextBox ReadOnly="true" placeholder="Producto" runat="server" ID="txtProduct" class="form-control" />
+                                <%--<a><i class="fas fa-plus-circle" style="margin: 10px; color: #00A350"></i></a>--%>
+                                <asp:Button CssClass="BtnAgregar" Height="30px" ID="btnAddProduct" Text="+" runat="server" />
                             </div>
                         </div>
-                        <div style="width: 45%; margin: 5px">
+                        <div style="width: 30%; margin: 5px">
+                            <h6 style="margin-left: 10px">Categoría</h6>
+                            <div style="display: flex">
+                                <asp:TextBox ReadOnly="true" placeholder="Categoria" runat="server" ID="txtCategory" class="form-control" />
+                            </div>
+                        </div>
+                        <div style="width: 30%; margin: 5px">
+                            <h6 style="margin-left: 10px">Código</h6>
+                            <div style="display: flex">
+                                <asp:TextBox ReadOnly="true" placeholder="Código producto" runat="server" ID="txtDefaultCode" CssClass="form-control" />
+                            </div>
+                        </div>
+                        <div style="width: 30%; margin: 5px">
                             <h6 style="margin-left: 10px">Marca</h6>
                             <div style="display: flex">
-                                <asp:TextBox ReadOnly="true" runat="server" name="Type" ID="txtBrand" CssClass="form-control" />
+                                <asp:TextBox ReadOnly="true" placeholder="Marca" runat="server" ID="txtBrand" CssClass="form-control" />
                             </div>
                         </div>
-                        <div style="width: 45%; margin: 5px">
+                        <div style="width: 30%; margin: 5px">
+                            <h6 style="margin-left: 10px">Dimensiones</h6>
+                            <div style="display: flex">
+                                <asp:TextBox ReadOnly="true" placeholder="Dimensiones" runat="server" ID="txtDimensions" CssClass="form-control" />
+                            </div>
+                        </div>
+                        <div style="width: 30%; margin: 5px">
+                            <h6 style="margin-left: 10px">Unidad de medida</h6>
+                            <div style="display: flex">
+                                <asp:TextBox ReadOnly="true" placeholder="Unidad de medida" runat="server" ID="txtMeasureUnit" CssClass="form-control" />
+                            </div>
+                        </div>
+                        <div style="width: 30%; margin: 5px">
+                            <h6 style="margin-left: 10px">Cantidad</h6>
+                            <div style="display: flex">
+                                <asp:TextBox placeholder="Cantidad" TextMode="Number" runat="server" ID="txtQuantity" CssClass="form-control" />
+                            </div>
+                        </div>
+                        <div style="width: 30%; margin: 5px">
                             <h6 style="margin-left: 10px">Descuento</h6>
                             <div style="display: flex">
-                                <asp:TextBox runat="server" TextMode="Number" ID="txtDiscount" CssClass="form-control" />
+                                <asp:TextBox runat="server" placeholder="Descuento" TextMode="Number" ID="txtDetailDiscount" CssClass="form-control" />
                             </div>
                         </div>
-                        <div style="width: 20%; margin: 10px">
+                        <div style="width: 30%; margin: 10px">
+                            <h6 style="margin-left: 10px">SubTotal</h6>
+                            <div style="display: flex">
+                                <asp:TextBox ReadOnly="true" placeholder="SubTotal" runat="server" ID="txtDetailSubTotal" CssClass="form-control" />
+                            </div>
+                        </div>
+                        <div style="width: 30%; margin: 10px">
                             <h6 style="margin-left: 10px">Total</h6>
                             <div style="display: flex">
-                                <input runat="server" type="text" name="Type" id="Text4" class="form-control" />
+                                <asp:TextBox ReadOnly="true" placeholder="Total" runat="server" ID="txtDetailTotal" CssClass="form-control" />
                             </div>
                         </div>
+                        <div style="width: 100%; margin: 20px; min-width: 150px; text-align: center">
+                            <asp:Button runat="server" Text="Agregar" ID="btnAddToDetailList" CssClass="btnSuccess" Style="margin-left: 10px" />
+                            <asp:Button runat="server" Text="Cancelar" ID="btnAbortAddToDetailList" CssClass="btnDanger" Style="margin-left: 10px" />
                         </div>
+                    </div>
                 </div>
                 <%-- Fin Formulario principal --%>
                 <%-- Tabla de productos --%>
@@ -65,12 +128,14 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>Código</th>
                                 <th>Producto</th>
+                                <th>Marca</th>
+                                <th>Dimensiones</th>
+                                <th>Unidad</th>
+                                <th>Precio Compra</th>
                                 <th>Cantidad</th>
-                                <th>Precio Venta</th>
                                 <th>SubTotal</th>
-                                <th>IVA</th>
                                 <th>Descuento</th>
                                 <th>Total</th>
                                 <th>Acciones</th>
@@ -110,43 +175,29 @@
                 <%-- Fin de la tabla --%>
                 <%-- Inicio del formulario del total a pagar --%>
                 <div class="ContainerPedidos">
-                    <div style="display: flex">
+                    <div style="display: flex; flex-wrap: wrap;">
                         <div style="width: 30%; margin: 10px">
-                            <h6 style="margin-left: 10px">Cantidad</h6>
+                            <h6 style="margin-left: 10px">IVA</h6>
                             <div style="display: flex">
-                                <input runat="server" type="text" name="Type" id="Text6" class="form-control" />
-                            </div>
-                        </div>
-                        <div style="width: 30%; margin: 10px">
-                            <h6 style="margin-left: 10px">Precio de Compra</h6>
-                            <div style="display: flex">
-                                <input runat="server" type="text" name="Type" id="Text7" class="form-control" />
-                            </div>
-                        </div>
-                        <div style="width: 30%; margin: 10px">
-                            <h6 style="margin-left: 10px">Detalle de Impuestos</h6>
-                            <div style="display: flex">
-                                <input runat="server" type="text" name="Type" id="Text8" class="form-control" />
-                            </div>
-                        </div>
-                    </div>
-                    <div style="display: flex">
-                        <div style="width: 30%; margin: 10px">
-                            <h6 style="margin-left: 10px">Sub Total</h6>
-                            <div style="display: flex">
-                                <input runat="server" type="text" name="Type" id="Text9" class="form-control" />
+                                <asp:TextBox TextMode="Number" step="0.01" runat="server" ID="txtTotalTax" placeholder="IVA" CssClass="form-control" />
                             </div>
                         </div>
                         <div style="width: 30%; margin: 10px">
                             <h6 style="margin-left: 10px">Descuento</h6>
                             <div style="display: flex">
-                                <input runat="server" type="text" name="Type" id="Text10" class="form-control" />
+                                <asp:TextBox TextMode="Number" runat="server" ID="txtTotalDiscount" placeholder="Descuento" class="form-control" />
+                            </div>
+                        </div>
+                        <div style="width: 30%; margin: 10px">
+                            <h6 style="margin-left: 10px">Sub Total</h6>
+                            <div style="display: flex">
+                                <asp:TextBox ReadOnly="true" runat="server" ID="txtSubtotal" placeholder="Subtotal" class="form-control" />
                             </div>
                         </div>
                         <div style="width: 30%; margin: 10px">
                             <h6 style="margin-left: 10px">Total</h6>
                             <div style="display: flex">
-                                <input runat="server" type="text" name="Type" id="Text11" class="form-control" />
+                                <asp:TextBox ReadOnly="true" placeholder="Total" runat="server" ID="txtTotal" class="form-control" />
                             </div>
                         </div>
 
@@ -185,6 +236,37 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ScriptSection" runat="server">
     <script>
         (function () {
+
+            //const OpenEls = document.querySelectorAll("[data-open]");
+            //const CloseEls = document.querySelectorAll("[data-close]");
+            //const IsVisible = "is-visible";
+
+            //for (const el of OpenEls) {
+            //    el.addEventListener("click", function () {
+            //        const ModalId = this.dataset.open;
+            //        document.getElementById(ModalId).classList.add(IsVisible);
+            //    });
+            //}
+
+            //for (const el of CloseEls) {
+            //    el.addEventListener("click", function () {
+            //        this.parentElement.parentElement.parentElement.classList.remove(IsVisible);
+            //    });
+            //}
+
+            //document.addEventListener("click", e => {
+            //    if (e.target == document.querySelector(".modal.is-visible")) {
+            //        document.querySelector(".modal.is-visible [data-close]").click();
+            //    }
+            //});
+
+            //document.addEventListener("keyup", e => {
+            //    // if we press the ESC
+            //    if (e.key == "Escape" && document.querySelector(".modal.is-visible")) {
+            //        document.querySelector(".modal.is-visible [data-close]").click();
+            //    }
+            //});
+
             $.ajax({
                 type: "POST",
                 url: "OrdersPage.aspx/LoadData",
@@ -254,5 +336,36 @@
             }
 
         })();
+
+        const openEls = document.querySelectorAll("[data-open]");
+        const closeEls = document.querySelectorAll("[data-close]");
+        const isVisible = "is-visible";
+
+        for (const el of openEls) {
+            el.addEventListener("click", function () {
+                const modalId = this.dataset.open;
+                document.getElementById(modalId).classList.add(isVisible);
+            });
+        }
+
+        for (const el of closeEls) {
+            el.addEventListener("click", function (e) {
+                e.preventDefault();
+                this.parentElement.parentElement.parentElement.classList.remove(isVisible);
+            });
+        }
+
+        document.addEventListener("click", e => {
+            if (e.target == document.querySelector(".modal.is-visible")) {
+                document.querySelector(".modal.is-visible [data-close]").click();
+            }
+        });
+
+        document.addEventListener("keyup", e => {
+            // if we press the ESC
+            if (e.key == "Escape" && document.querySelector(".modal.is-visible")) {
+                document.querySelector(".modal.is-visible [data-close]").click();
+            }
+        });
     </script>
 </asp:Content>
