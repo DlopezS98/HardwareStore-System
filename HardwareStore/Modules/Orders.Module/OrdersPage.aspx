@@ -8,11 +8,6 @@
                     <button class="close-modal" aria-label="close modal" data-close>✕</button>
                 </div>
                 <div class="modal-content">
-                    <p><strong>Why do we use it?</strong></p>
-                    <p style="text-align: justify;">
-                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
-                        The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                    </p>
                     
                 </div>
                 <%--<footer class="modal-footer">
@@ -234,38 +229,8 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ScriptSection" runat="server">
-    <script>
+    <%--<script>
         (function () {
-
-            //const OpenEls = document.querySelectorAll("[data-open]");
-            //const CloseEls = document.querySelectorAll("[data-close]");
-            //const IsVisible = "is-visible";
-
-            //for (const el of OpenEls) {
-            //    el.addEventListener("click", function () {
-            //        const ModalId = this.dataset.open;
-            //        document.getElementById(ModalId).classList.add(IsVisible);
-            //    });
-            //}
-
-            //for (const el of CloseEls) {
-            //    el.addEventListener("click", function () {
-            //        this.parentElement.parentElement.parentElement.classList.remove(IsVisible);
-            //    });
-            //}
-
-            //document.addEventListener("click", e => {
-            //    if (e.target == document.querySelector(".modal.is-visible")) {
-            //        document.querySelector(".modal.is-visible [data-close]").click();
-            //    }
-            //});
-
-            //document.addEventListener("keyup", e => {
-            //    // if we press the ESC
-            //    if (e.key == "Escape" && document.querySelector(".modal.is-visible")) {
-            //        document.querySelector(".modal.is-visible [data-close]").click();
-            //    }
-            //});
 
             $.ajax({
                 type: "POST",
@@ -336,36 +301,7 @@
             }
 
         })();
-
-        const openEls = document.querySelectorAll("[data-open]");
-        const closeEls = document.querySelectorAll("[data-close]");
-        const isVisible = "is-visible";
-
-        for (const el of openEls) {
-            el.addEventListener("click", function () {
-                const modalId = this.dataset.open;
-                document.getElementById(modalId).classList.add(isVisible);
-            });
-        }
-
-        for (const el of closeEls) {
-            el.addEventListener("click", function (e) {
-                e.preventDefault();
-                this.parentElement.parentElement.parentElement.classList.remove(isVisible);
-            });
-        }
-
-        document.addEventListener("click", e => {
-            if (e.target == document.querySelector(".modal.is-visible")) {
-                document.querySelector(".modal.is-visible [data-close]").click();
-            }
-        });
-
-        document.addEventListener("keyup", e => {
-            // if we press the ESC
-            if (e.key == "Escape" && document.querySelector(".modal.is-visible")) {
-                document.querySelector(".modal.is-visible [data-close]").click();
-            }
-        });
-    </script>
+    </script>--%>
+    <script src="../../Scripts/Modules/OrderModule.js"></script>
+    <script src="../../Scripts/Modal/Modal.js"></script>
 </asp:Content>
