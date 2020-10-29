@@ -1,4 +1,5 @@
-﻿using HardwareStore.Infraestructure.Controllers;
+﻿using HardwareStore.Domain;
+using HardwareStore.Infraestructure.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +14,13 @@ namespace HardwareStore.Modules.Orders.Module
     public partial class OrdersPage : System.Web.UI.Page
     {
         private readonly WarehouseController WarehouseCtrl;
-        //private readonly WarehouseProductsController WhPrCtrl;
+        private readonly WarehouseProductsController WhPrCtrl;
+        List<OrderDetailsStage> listOdtStage = null;
 
         public OrdersPage()
         {
             this.WarehouseCtrl = new WarehouseController();
-            //this.WhPrCtrl = new WarehouseProductsController();
+            this.WhPrCtrl = new WarehouseProductsController();
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -27,6 +29,7 @@ namespace HardwareStore.Modules.Orders.Module
             {
                 this.LoadDropDownWarehouse();
             }
+            this.loadGridViewWarehouseProducts("");
         }
 
         public void LoadDropDownWarehouse()
@@ -36,6 +39,13 @@ namespace HardwareStore.Modules.Orders.Module
             ddlstWarehouses.DataValueField = "Pk_WarehouseID";
             ddlstWarehouses.DataBind();
             ddlstWarehouses.Items.Insert(0, new ListItem("----[Seleccionar Bodega Destino]----", "0"));
+        }
+
+        public void loadGridViewWarehouseProducts(string query)
+        {
+            var list = this.WhPrCtrl.GetProductsInWarehouse(query);
+            GridViewWarehouseProducts.DataSource = list;
+            GridViewWarehouseProducts.DataBind();
         }
 
         [WebMethod]
@@ -58,9 +68,244 @@ namespace HardwareStore.Modules.Orders.Module
             return obj;
         }
 
-        public void SendOrder()
+        //Grid del modal de los productos en bodega
+        protected void GridViewWarehouseProducts_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            GridViewRow Row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+            int index = Row.RowIndex;
+            int idWhr = Convert.ToInt32(GridViewWarehouseProducts.DataKeys[index]["Fk_WarehouseID"]);
+            int idProdDetail = Convert.ToInt32(GridViewWarehouseProducts.DataKeys[index]["Fk_ProductDetailID"]);
+            switch (e.CommandName)
+            {
+                case "cmdSelect":
+                    this.ResetDetailInputs();
+                    this.SendWarehouseProductToTextBox(idWhr, idProdDetail);
+                    break;
+                default:
+                    break;
+            }
+        }
 
+        public void SendWarehouseProductToTextBox(int idWhr, int idProdDetail)
+        {
+            //Metodo que retorna un elemento en productos bodegas (Warehouse-products)
+            var obj = this.WhPrCtrl.GetAWarehouseProduct(idWhr, idProdDetail);
+            //Valores a los textbox
+            txtWarehouseId.Text = idWhr.ToString();
+            txtProductId.Text = idProdDetail.ToString();
+            txtProduct.Text = obj.ProductName;
+            txtBrand.Text = obj.BrandName;
+            txtDefaultCode.Text = obj.DefaultCode;
+            txtDimensions.Text = obj.Dimensions;
+            ddlstWarehouses.SelectedValue = obj.Fk_WarehouseID.ToString();
+            txtMeasureUnit.Text = obj.MeasureUnit;
+            txtPrice.Text = obj.WhPr_PurchasePrice.ToString();
+            txtSupplier.Text = obj.SupplierName;
+            txtMaterialType.Text = obj.MaterialType;
+            txtWarehouseName.Text = obj.WarehouseName;
+        }
+
+        //Grid Detalle de pedido
+        protected void GridViewOrderDetailsStage_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            GridViewRow Row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+            int index = Row.RowIndex;
+            int idWhr = Convert.ToInt32(GridViewOrderDetailsStage.DataKeys[index]["Fk_WarehouseID"]);
+            int idProdDetail = Convert.ToInt32(GridViewOrderDetailsStage.DataKeys[index]["Fk_ProductDetailID"]);
+            switch (e.CommandName)
+            {
+                case "cmdEdit":
+                    this.SendOrderDetailStageToTextbox(idWhr, idProdDetail);
+                    btnAddToDetailStageList.Text = "Editar";
+                    break;
+
+                case "cmdDelete":
+                    listOdtStage = (Session["ListOdtStg"] as List<OrderDetailsStage>);
+                    var obj = this.listOdtStage.FirstOrDefault(o => o.Fk_WarehouseID == idWhr && o.Fk_ProductDetailID == idProdDetail);
+                    listOdtStage.Remove(obj);
+                    GridViewOrderDetailsStage.DataSource = listOdtStage;
+                    GridViewOrderDetailsStage.DataBind();
+                    this.ResetDetailInputs();
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        public void SendOrderDetailStageToTextbox(int idWhr, int idProdDetail)
+        {
+            listOdtStage = (Session["ListOdtStg"] as List<OrderDetailsStage>);
+            var obj = this.listOdtStage.FirstOrDefault(o => o.Fk_WarehouseID == idWhr && o.Fk_ProductDetailID == idProdDetail);
+            txtWarehouseId.Text = idWhr.ToString();
+            txtProductId.Text = idProdDetail.ToString();
+            txtProduct.Text = obj.ProductName;
+            txtBrand.Text = obj.BrandName;
+            txtDimensions.Text = obj.Dimensions;
+            ddlstWarehouses.SelectedValue = obj.Fk_WarehouseID.ToString();
+            txtMeasureUnit.Text = obj.MeasureUnit;
+            txtPrice.Text = obj.PurchasePrice.ToString();
+            txtSupplier.Text = obj.SupplierName;
+            txtMaterialType.Text = obj.MaterialType;
+            txtWarehouseName.Text = obj.WarehouseName;
+            txtDetailDiscount.Text = obj.Discount.ToString();
+            txtDimensions.Text = obj.Dimensions;
+            txtDefaultCode.Text = obj.DefaultCode;
+            txtQuantity.Text = obj.Quantity.ToString();
+        }
+
+        //Creacíon del objeto a añadir a lista de detalle (pedido)
+        public OrderDetailsStage CreateItemForDetailStage()
+        {
+            OrderDetailsStage OdtStg = new OrderDetailsStage();
+            OdtStg.Fk_ProductDetailID = Convert.ToInt32(txtProductId.Text);
+            OdtStg.Fk_WarehouseID = Convert.ToInt32(ddlstWarehouses.SelectedValue);
+            OdtStg.WarehouseName = ddlstWarehouses.SelectedItem.Text;
+            OdtStg.ProductName = txtProduct.Text;
+            OdtStg.BrandName = txtBrand.Text;
+            OdtStg.SupplierName = txtSupplier.Text;
+            OdtStg.MaterialType = txtMaterialType.Text;
+            OdtStg.MeasureUnit = txtMeasureUnit.Text;
+            OdtStg.PurchasePrice = Convert.ToDouble(txtPrice.Text);
+            OdtStg.Quantity = Convert.ToInt32(txtQuantity.Text);
+            OdtStg.Discount = Convert.ToInt32(txtDetailDiscount.Text);
+            OdtStg.DefaultCode = txtDefaultCode.Text;
+            OdtStg.Dimensions = txtDimensions.Text;
+            return OdtStg;
+        }
+
+        //Añadiendo a/ editanto la Lista de detalle (pedido)
+        protected void btnAddToDetailStageList_Click(object sender, EventArgs e)
+        {
+            switch (btnAddToDetailStageList.Text)
+            {
+                case "Agregar":
+                    var obj = this.CreateItemForDetailStage();
+                    if (Session["ListOdtStg"] == null)
+                    {
+                        //Agregando a lista
+                        listOdtStage = new List<OrderDetailsStage>();
+                        listOdtStage.Add(obj);
+                        //Guardando los datos en la sesión del usuario
+                        //Evitar que el postback elimine los datos...
+                        Session["ListOdtStg"] = listOdtStage;
+                    }
+                    else
+                    {
+                        //recuperando los datos de la sesión...
+                        listOdtStage = (Session["ListOdtStg"] as List<OrderDetailsStage>);
+                        listOdtStage.Add(obj);
+                    }
+
+                    GridViewOrderDetailsStage.DataSource = listOdtStage;
+                    GridViewOrderDetailsStage.DataBind();
+                    this.ResetDetailInputs();
+                    calculateTotalAmount();
+                    break;
+
+                case "Editar":
+                    listOdtStage = (Session["ListOdtStg"] as List<OrderDetailsStage>);
+                    int WhrId = Convert.ToInt32(txtWarehouseId.Text);
+                    int ProdDdtId = Convert.ToInt32(txtProductId.Text);
+                    var oldObj = listOdtStage.FirstOrDefault(o => o.Fk_WarehouseID == WhrId && o.Fk_ProductDetailID == ProdDdtId);
+                    oldObj.PurchasePrice = Convert.ToDouble(txtPrice.Text);
+                    oldObj.Quantity = Convert.ToInt32(txtQuantity.Text);
+                    oldObj.Discount = Convert.ToInt32(txtDetailDiscount.Text);
+                    oldObj.Fk_WarehouseID = Convert.ToInt32(ddlstWarehouses.SelectedValue);
+                    oldObj.WarehouseName = ddlstWarehouses.SelectedItem.Text;
+                    GridViewOrderDetailsStage.DataSource = listOdtStage;
+                    GridViewOrderDetailsStage.DataBind();
+                    this.ResetDetailInputs();
+                    calculateTotalAmount();
+                    break;
+
+                default:
+
+                    break;
+            }
+
+        }
+
+        //Cancelar agregar datos a la lista del detalle de orden
+        protected void btnAbortAddToDetailStageList_Click(object sender, EventArgs e)
+        {
+            this.ResetDetailInputs();
+        }
+
+        public void ResetDetailInputs()
+        {
+            btnAddToDetailStageList.Text = "Agregar";
+            txtProductId.Text = "";
+            txtProduct.Text = "";
+            txtWarehouseId.Text = "";
+            txtWarehouseName.Text = "";
+            ddlstWarehouses.SelectedIndex = 0;
+            txtOrdNumber.Text = "";
+            txtPrice.Text = "";
+            txtSupplier.Text = "";
+            txtDetailTotal.Text = "";
+            txtDetailSubTotal.Text = "";
+            txtBrand.Text = "";
+            txtDefaultCode.Text = "";
+            txtDimensions.Text = "";
+            txtMaterialType.Text = "";
+            txtMeasureUnit.Text = "";
+            txtDetailDiscount.Text = "";
+            txtQuantity.Text = "";
+        }
+
+        public double CalculateSubTotalOrderAmount()
+        {
+            double SubtotalAmount = 0;
+            listOdtStage = (Session["ListOdtStg"] as List<OrderDetailsStage>);
+            foreach (var item in listOdtStage)
+            {
+                SubtotalAmount = SubtotalAmount + item.totalAmount;
+            }
+
+            txtSubtotal.Text = "C$" + SubtotalAmount.ToString();
+
+            return SubtotalAmount;
+        }
+
+        public void calculateTotalAmount()
+        {
+            double tax, total;
+            int discount;
+            double subtotal = this.CalculateSubTotalOrderAmount();
+            total = subtotal;
+            if (txtTotalTax.Text != "")
+            {
+                total = total + Convert.ToDouble(txtTotalTax.Text);
+            }
+
+            if (txtTotalDiscount.Text != "")
+            {
+                discount = Convert.ToInt32(txtTotalDiscount.Text);
+                total = total - (((double)discount / 100) * total);
+            }
+
+            txtTotal.Text = "C$" + total.ToString();
+        }
+
+        protected void btnRecalculateOrderTotal_Click(object sender, EventArgs e)
+        {
+            this.calculateTotalAmount();
+        }
+
+        protected void btnSearchWarehouseProduct_Click(object sender, EventArgs e)
+        {
+            this.loadGridViewWarehouseProducts(txtSearchWarehouseProduct.Text);
+        }
+
+        protected void btnGoToListOrders_Click(object sender, EventArgs e)
+        {
+            OrdersView.ActiveViewIndex = 1;
+        }
+
+        protected void btnBackToCreateOrder_Click(object sender, EventArgs e)
+        {
+            OrdersView.ActiveViewIndex = 0;
         }
     }
 }

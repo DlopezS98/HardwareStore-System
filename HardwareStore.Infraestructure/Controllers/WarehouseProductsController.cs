@@ -121,5 +121,12 @@ namespace HardwareStore.Infraestructure.Controllers
                 throw exc;
             }
         }
+
+        public tblWarehouseProducts GetAWarehouseProduct(int idWhr, int idProdDetail)
+        {
+            var list = this.GetProductsInWarehouse("");
+            var obj = list.FirstOrDefault(code => code.Fk_WarehouseID == idWhr && code.Fk_ProductDetailID == idProdDetail);
+            return obj;
+        }
     }
 }

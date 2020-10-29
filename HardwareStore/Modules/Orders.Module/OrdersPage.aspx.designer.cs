@@ -13,6 +13,51 @@ namespace HardwareStore.Modules.Orders.Module {
     public partial class OrdersPage {
         
         /// <summary>
+        /// txtSearchWarehouseProduct control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSearchWarehouseProduct;
+        
+        /// <summary>
+        /// btnSearchWarehouseProduct control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSearchWarehouseProduct;
+        
+        /// <summary>
+        /// GridViewWarehouseProducts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewWarehouseProducts;
+        
+        /// <summary>
+        /// warehouseId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl warehouseId;
+        
+        /// <summary>
+        /// proddetailid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl proddetailid;
+        
+        /// <summary>
         /// OrdersView control.
         /// </summary>
         /// <remarks>
@@ -20,6 +65,42 @@ namespace HardwareStore.Modules.Orders.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.MultiView OrdersView;
+        
+        /// <summary>
+        /// btnGoToListOrders control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnGoToListOrders;
+        
+        /// <summary>
+        /// txtWarehouseId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtWarehouseId;
+        
+        /// <summary>
+        /// txtProductId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtProductId;
+        
+        /// <summary>
+        /// txtWarehouseName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtWarehouseName;
         
         /// <summary>
         /// ddlstWarehouses control.
@@ -49,13 +130,13 @@ namespace HardwareStore.Modules.Orders.Module {
         protected global::System.Web.UI.WebControls.TextBox txtOrdNumber;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtPrice;
         
         /// <summary>
         /// txtProduct control.
@@ -65,24 +146,6 @@ namespace HardwareStore.Modules.Orders.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtProduct;
-        
-        /// <summary>
-        /// btnAddProduct control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddProduct;
-        
-        /// <summary>
-        /// txtCategory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCategory;
         
         /// <summary>
         /// txtDefaultCode control.
@@ -101,6 +164,24 @@ namespace HardwareStore.Modules.Orders.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBrand;
+        
+        /// <summary>
+        /// txtSupplier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSupplier;
+        
+        /// <summary>
+        /// txtMaterialType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMaterialType;
         
         /// <summary>
         /// txtDimensions control.
@@ -139,40 +220,40 @@ namespace HardwareStore.Modules.Orders.Module {
         protected global::System.Web.UI.WebControls.TextBox txtDetailDiscount;
         
         /// <summary>
-        /// txtDetailSubTotal control.
+        /// btnAddToDetailStageList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDetailSubTotal;
+        protected global::System.Web.UI.WebControls.Button btnAddToDetailStageList;
         
         /// <summary>
-        /// txtDetailTotal control.
+        /// btnAbortAddToDetailStageList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDetailTotal;
+        protected global::System.Web.UI.WebControls.Button btnAbortAddToDetailStageList;
         
         /// <summary>
-        /// btnAddToDetailList control.
+        /// GridViewOrderDetailsStage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddToDetailList;
+        protected global::System.Web.UI.WebControls.GridView GridViewOrderDetailsStage;
         
         /// <summary>
-        /// btnAbortAddToDetailList control.
+        /// txtSubtotal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAbortAddToDetailList;
+        protected global::System.Web.UI.WebControls.TextBox txtSubtotal;
         
         /// <summary>
         /// txtTotalTax control.
@@ -193,15 +274,6 @@ namespace HardwareStore.Modules.Orders.Module {
         protected global::System.Web.UI.WebControls.TextBox txtTotalDiscount;
         
         /// <summary>
-        /// txtSubtotal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSubtotal;
-        
-        /// <summary>
         /// txtTotal control.
         /// </summary>
         /// <remarks>
@@ -209,5 +281,23 @@ namespace HardwareStore.Modules.Orders.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTotal;
+        
+        /// <summary>
+        /// btnRecalculateOrderTotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRecalculateOrderTotal;
+        
+        /// <summary>
+        /// btnBackToCreateOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBackToCreateOrder;
     }
 }
