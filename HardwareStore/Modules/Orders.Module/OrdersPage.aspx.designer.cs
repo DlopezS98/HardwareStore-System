@@ -13,6 +13,15 @@ namespace HardwareStore.Modules.Orders.Module {
     public partial class OrdersPage {
         
         /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
         /// txtSearchWarehouseProduct control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,24 @@ namespace HardwareStore.Modules.Orders.Module {
         protected global::System.Web.UI.WebControls.MultiView OrdersView;
         
         /// <summary>
+        /// UpdatePanel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
+        
+        /// <summary>
+        /// msgCreate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl msgCreate;
+        
+        /// <summary>
         /// btnGoToListOrders control.
         /// </summary>
         /// <remarks>
@@ -94,6 +121,15 @@ namespace HardwareStore.Modules.Orders.Module {
         protected global::System.Web.UI.WebControls.TextBox txtProductId;
         
         /// <summary>
+        /// txtSupplierId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSupplierId;
+        
+        /// <summary>
         /// txtWarehouseName control.
         /// </summary>
         /// <remarks>
@@ -112,13 +148,13 @@ namespace HardwareStore.Modules.Orders.Module {
         protected global::System.Web.UI.WebControls.DropDownList ddlstWarehouses;
         
         /// <summary>
-        /// BtnAddWarehouse control.
+        /// reqValddlWarehouse control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnAddWarehouse;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqValddlWarehouse;
         
         /// <summary>
         /// txtOrdNumber control.
@@ -139,6 +175,24 @@ namespace HardwareStore.Modules.Orders.Module {
         protected global::System.Web.UI.WebControls.TextBox txtPrice;
         
         /// <summary>
+        /// RangeValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator RangeValidator1;
+        
+        /// <summary>
+        /// reqPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqPrice;
+        
+        /// <summary>
         /// txtProduct control.
         /// </summary>
         /// <remarks>
@@ -146,6 +200,15 @@ namespace HardwareStore.Modules.Orders.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtProduct;
+        
+        /// <summary>
+        /// reqValProduct control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqValProduct;
         
         /// <summary>
         /// txtDefaultCode control.
@@ -211,6 +274,24 @@ namespace HardwareStore.Modules.Orders.Module {
         protected global::System.Web.UI.WebControls.TextBox txtQuantity;
         
         /// <summary>
+        /// valRangeQuantity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator valRangeQuantity;
+        
+        /// <summary>
+        /// reqQuantity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqQuantity;
+        
+        /// <summary>
         /// txtDetailDiscount control.
         /// </summary>
         /// <remarks>
@@ -218,6 +299,24 @@ namespace HardwareStore.Modules.Orders.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDetailDiscount;
+        
+        /// <summary>
+        /// valRangeDiscount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator valRangeDiscount;
+        
+        /// <summary>
+        /// reqDiscount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqDiscount;
         
         /// <summary>
         /// btnAddToDetailStageList control.
@@ -256,6 +355,15 @@ namespace HardwareStore.Modules.Orders.Module {
         protected global::System.Web.UI.WebControls.TextBox txtSubtotal;
         
         /// <summary>
+        /// reqValSubtotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqValSubtotal;
+        
+        /// <summary>
         /// txtTotalTax control.
         /// </summary>
         /// <remarks>
@@ -265,6 +373,24 @@ namespace HardwareStore.Modules.Orders.Module {
         protected global::System.Web.UI.WebControls.TextBox txtTotalTax;
         
         /// <summary>
+        /// valRangeTotalTax control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator valRangeTotalTax;
+        
+        /// <summary>
+        /// reqValTotalTax control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqValTotalTax;
+        
+        /// <summary>
         /// txtTotalDiscount control.
         /// </summary>
         /// <remarks>
@@ -272,6 +398,24 @@ namespace HardwareStore.Modules.Orders.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTotalDiscount;
+        
+        /// <summary>
+        /// RangeValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator RangeValidator2;
+        
+        /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
         /// txtTotal control.
@@ -290,6 +434,24 @@ namespace HardwareStore.Modules.Orders.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRecalculateOrderTotal;
+        
+        /// <summary>
+        /// btnCreateOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCreateOrder;
+        
+        /// <summary>
+        /// btnCancelOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelOrder;
         
         /// <summary>
         /// btnBackToCreateOrder control.

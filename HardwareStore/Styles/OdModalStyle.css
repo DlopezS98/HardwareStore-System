@@ -47,6 +47,7 @@
 .modal-dialog {
     position: relative;
     width: 1000px;
+    min-width: 500px;
     max-height: 80vh;
     border-radius: 5px;
     background: var(--white);
@@ -64,18 +65,19 @@
 }
 
 .modal-header {
-    display: flex;
-    justify-content: space-between;
+    width: 100%;
+    position: relative;
 }
 
     .modal-header .close-modal {
         font-size: 1.5rem;
     }
 
+
+
 .OdModal p + p {
     margin-top: 1rem;
 }
-
 
 /* SLIDE ANIMATION
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -89,4 +91,12 @@
     opacity: 1;
     transform: none;
     transition-delay: 0.2s;
+}
+
+.btnClose {
+    color: #00A441;
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    padding: 7px;
 }

@@ -168,8 +168,12 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="Styles\cssCatalogs.css" />
+    <Content Include="Styles\cssConfiguration.css" />
+    <Content Include="Styles\cssSales.css" />
     <Content Include="Styles\OdModalStyle.css" />
     <Content Include="Styles\Styles.css" />
+    <Content Include="Styles\Toast.css" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -355,9 +359,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>2980</DevelopmentServerPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:2980/</IISUrl>
+          <IISUrl>http://localhost:4854/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

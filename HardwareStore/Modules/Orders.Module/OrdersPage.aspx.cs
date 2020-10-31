@@ -1,4 +1,5 @@
 ﻿using HardwareStore.Domain;
+using HardwareStore.Domain.Models;
 using HardwareStore.Infraestructure.Controllers;
 using System;
 using System.Collections.Generic;
@@ -14,13 +15,15 @@ namespace HardwareStore.Modules.Orders.Module
     public partial class OrdersPage : System.Web.UI.Page
     {
         private readonly WarehouseController WarehouseCtrl;
-        private readonly WarehouseProductsController WhPrCtrl;
+        private readonly WarehouseProductsController WarehouseProductCtrl;
+        private readonly OrdersController OrdersController;
         List<OrderDetailsStage> listOdtStage = null;
 
         public OrdersPage()
         {
             this.WarehouseCtrl = new WarehouseController();
-            this.WhPrCtrl = new WarehouseProductsController();
+            this.WarehouseProductCtrl = new WarehouseProductsController();
+            this.OrdersController = new OrdersController();
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -28,8 +31,16 @@ namespace HardwareStore.Modules.Orders.Module
             if (!IsPostBack)
             {
                 this.LoadDropDownWarehouse();
+                this.loadGridViewWarehouseProducts("");
             }
-            this.loadGridViewWarehouseProducts("");
+
+            if (Session["ListOdtStg"] != null)
+            {
+                listOdtStage = (Session["ListOdtStg"] as List<OrderDetailsStage>);
+                GridViewOrderDetailsStage.DataSource = listOdtStage;
+                GridViewOrderDetailsStage.DataBind();
+            }
+
         }
 
         public void LoadDropDownWarehouse()
@@ -43,32 +54,22 @@ namespace HardwareStore.Modules.Orders.Module
 
         public void loadGridViewWarehouseProducts(string query)
         {
-            var list = this.WhPrCtrl.GetProductsInWarehouse(query);
+            var list = this.WarehouseProductCtrl.GetProductsInWarehouse(query);
             GridViewWarehouseProducts.DataSource = list;
             GridViewWarehouseProducts.DataBind();
         }
 
-        [WebMethod]
-        //[ScriptMethod(UseHttpGet = true)]
-        public static Object LoadData()
-        {
-            DateTime Start = DateTime.Parse("2000-09-12");
-            DateTime End = DateTime.Parse("2020-10-18");
-            OrdersController OrdCtr = new OrdersController();
-            var obj = OrdCtr.GetOrders(Start, End);
-            //return "Hello World";
-            return obj;
-        }
+        //[WebMethod]
+        //public static Object LoadData()
+        //{
+        //    DateTime Start = DateTime.Parse("2000-09-12");
+        //    DateTime End = DateTime.Parse("2020-10-18");
+        //    OrdersController OrdCtr = new OrdersController();
+        //    var obj = OrdCtr.GetOrders(Start, End);
+        //    return obj;
+        //}
 
-        [WebMethod]
-        public static Object GetWarehouseProducts()
-        {
-            WarehouseProductsController WhPr = new WarehouseProductsController();
-            var obj = WhPr.GetProductsInWarehouse("");
-            return obj;
-        }
-
-        //Grid del modal de los productos en bodega
+        //Grid del modal de los productos en bodega+
         protected void GridViewWarehouseProducts_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             GridViewRow Row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
@@ -89,7 +90,7 @@ namespace HardwareStore.Modules.Orders.Module
         public void SendWarehouseProductToTextBox(int idWhr, int idProdDetail)
         {
             //Metodo que retorna un elemento en productos bodegas (Warehouse-products)
-            var obj = this.WhPrCtrl.GetAWarehouseProduct(idWhr, idProdDetail);
+            var obj = this.WarehouseProductCtrl.GetAWarehouseProduct(idWhr, idProdDetail);
             //Valores a los textbox
             txtWarehouseId.Text = idWhr.ToString();
             txtProductId.Text = idProdDetail.ToString();
@@ -103,6 +104,7 @@ namespace HardwareStore.Modules.Orders.Module
             txtSupplier.Text = obj.SupplierName;
             txtMaterialType.Text = obj.MaterialType;
             txtWarehouseName.Text = obj.WarehouseName;
+            txtSupplierId.Text = obj.Fk_SupplierID.ToString();
         }
 
         //Grid Detalle de pedido
@@ -126,6 +128,8 @@ namespace HardwareStore.Modules.Orders.Module
                     GridViewOrderDetailsStage.DataSource = listOdtStage;
                     GridViewOrderDetailsStage.DataBind();
                     this.ResetDetailInputs();
+                    this.ResetOrderInputs();
+                    this.calculateTotalAmount();
                     break;
 
                 default:
@@ -152,6 +156,7 @@ namespace HardwareStore.Modules.Orders.Module
             txtDimensions.Text = obj.Dimensions;
             txtDefaultCode.Text = obj.DefaultCode;
             txtQuantity.Text = obj.Quantity.ToString();
+            txtSupplierId.Text = obj.Fk_SupplierID.ToString();
         }
 
         //Creacíon del objeto a añadir a lista de detalle (pedido)
@@ -171,6 +176,7 @@ namespace HardwareStore.Modules.Orders.Module
             OdtStg.Discount = Convert.ToInt32(txtDetailDiscount.Text);
             OdtStg.DefaultCode = txtDefaultCode.Text;
             OdtStg.Dimensions = txtDimensions.Text;
+            OdtStg.Fk_SupplierID = Convert.ToInt32(txtSupplierId.Text);
             return OdtStg;
         }
 
@@ -186,7 +192,7 @@ namespace HardwareStore.Modules.Orders.Module
                         //Agregando a lista
                         listOdtStage = new List<OrderDetailsStage>();
                         listOdtStage.Add(obj);
-                        //Guardando los datos en la sesión del usuario
+                        //Guardando los datos en la sesión del usuario (persistencia de datos)
                         //Evitar que el postback elimine los datos...
                         Session["ListOdtStg"] = listOdtStage;
                     }
@@ -194,13 +200,24 @@ namespace HardwareStore.Modules.Orders.Module
                     {
                         //recuperando los datos de la sesión...
                         listOdtStage = (Session["ListOdtStg"] as List<OrderDetailsStage>);
-                        listOdtStage.Add(obj);
+                        //veriicando si el objeto existe
+                        bool exist = listOdtStage.Exists(x => x.Fk_WarehouseID == obj.Fk_WarehouseID && x.Fk_ProductDetailID == obj.Fk_ProductDetailID);
+                        if (!exist)
+                        {
+                            listOdtStage.Add(obj);
+                        }
+                        else
+                        {
+                            //Response.Write("<script>alert('El elemento ya existe en la lista');</script>");
+                            string ShowToaster = "launch_toast()";
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", ShowToaster, true);
+                        }
                     }
 
                     GridViewOrderDetailsStage.DataSource = listOdtStage;
                     GridViewOrderDetailsStage.DataBind();
                     this.ResetDetailInputs();
-                    calculateTotalAmount();
+                    this.calculateTotalAmount();
                     break;
 
                 case "Editar":
@@ -216,7 +233,7 @@ namespace HardwareStore.Modules.Orders.Module
                     GridViewOrderDetailsStage.DataSource = listOdtStage;
                     GridViewOrderDetailsStage.DataBind();
                     this.ResetDetailInputs();
-                    calculateTotalAmount();
+                    this.calculateTotalAmount();
                     break;
 
                 default:
@@ -240,11 +257,8 @@ namespace HardwareStore.Modules.Orders.Module
             txtWarehouseId.Text = "";
             txtWarehouseName.Text = "";
             ddlstWarehouses.SelectedIndex = 0;
-            txtOrdNumber.Text = "";
             txtPrice.Text = "";
             txtSupplier.Text = "";
-            txtDetailTotal.Text = "";
-            txtDetailSubTotal.Text = "";
             txtBrand.Text = "";
             txtDefaultCode.Text = "";
             txtDimensions.Text = "";
@@ -258,19 +272,22 @@ namespace HardwareStore.Modules.Orders.Module
         {
             double SubtotalAmount = 0;
             listOdtStage = (Session["ListOdtStg"] as List<OrderDetailsStage>);
-            foreach (var item in listOdtStage)
+            if(listOdtStage != null)
             {
-                SubtotalAmount = SubtotalAmount + item.totalAmount;
-            }
+                foreach (var item in listOdtStage)
+                {
+                    SubtotalAmount = SubtotalAmount + item.totalAmount;
+                }
 
-            txtSubtotal.Text = "C$" + SubtotalAmount.ToString();
+                txtSubtotal.Text = SubtotalAmount.ToString();
+            }
 
             return SubtotalAmount;
         }
 
         public void calculateTotalAmount()
         {
-            double tax, total;
+            double total;
             int discount;
             double subtotal = this.CalculateSubTotalOrderAmount();
             total = subtotal;
@@ -285,7 +302,7 @@ namespace HardwareStore.Modules.Orders.Module
                 total = total - (((double)discount / 100) * total);
             }
 
-            txtTotal.Text = "C$" + total.ToString();
+            txtTotal.Text = total.ToString();
         }
 
         protected void btnRecalculateOrderTotal_Click(object sender, EventArgs e)
@@ -306,6 +323,76 @@ namespace HardwareStore.Modules.Orders.Module
         protected void btnBackToCreateOrder_Click(object sender, EventArgs e)
         {
             OrdersView.ActiveViewIndex = 0;
+        }
+
+        protected void btnCreateOrder_Click(object sender, EventArgs e)
+        {
+            this.calculateTotalAmount();
+            List<Tbl_OrderDetails> OdtList = new List<Tbl_OrderDetails>();
+            List<Tbl_WarehouseProducts> WpList = new List<Tbl_WarehouseProducts>();
+            Tbl_Orders Ord = new Tbl_Orders();
+            Ord.Fk_SupplierID = Convert.ToInt32(txtSupplierId.Text);
+            Ord.Fk_UserID = 1;
+            Ord.Ord_Number = txtOrdNumber.Text;
+            Ord.Ord_Tax = Convert.ToDouble(txtTotalTax.Text);
+            Ord.Ord_Subtotal = Convert.ToDouble(txtSubtotal.Text);
+            Ord.Ord_Discount = Convert.ToInt32(txtTotalDiscount.Text);
+            Ord.Ord_Total = Convert.ToDouble(txtTotal.Text);
+
+            listOdtStage = (Session["ListOdtStg"] as List<OrderDetailsStage>);
+            foreach (var item in listOdtStage)
+            {
+                Tbl_OrderDetails Odt = new Tbl_OrderDetails();
+                Odt.Fk_ProductDetailID = item.Fk_ProductDetailID;
+                Odt.Odt_Quantity = item.Quantity;
+                Odt.Odt_PurchasePrice = item.PurchasePrice;
+                Odt.Odt_DetailTax = null;
+                Odt.Odt_Subtotal = item.Subtotal;
+                Odt.Odt_Discount = item.Discount;
+                Odt.Odt_Total = item.totalAmount;
+                OdtList.Add(Odt);
+            }
+
+            foreach (var item in listOdtStage)
+            {
+                Tbl_WarehouseProducts obj = new Tbl_WarehouseProducts();
+                obj.Fk_WarehouseID = item.Fk_WarehouseID;
+                obj.Fk_ProductDetailID = item.Fk_ProductDetailID;
+                obj.WhPr_Stock = item.Quantity;
+                obj.WhPr_PurchasePrice = item.PurchasePrice;
+                obj.WhPr_SalePrice = item.PurchasePrice + (((double)25 / 100) * item.PurchasePrice);
+                WpList.Add(obj);
+            }
+
+            string msg = OrdersController.MainOrderTransaction(Ord, OdtList, WpList);
+            msgCreate.InnerText = msg;
+            this.RemoveListOrdertDetailsStage();
+            this.ResetOrderInputs();
+        }
+
+        public void ResetOrderInputs()
+        {
+            txtOrdNumber.Text = "";
+            txtSubtotal.Text = "";
+            txtTotalTax.Text = "";
+            txtTotalDiscount.Text = "";
+            txtTotal.Text = "";
+            txtSupplierId.Text = "";
+        }
+
+        protected void btnCancelOrder_Click(object sender, EventArgs e)
+        {
+            this.RemoveListOrdertDetailsStage();
+            this.ResetDetailInputs();
+            this.ResetOrderInputs();
+        }
+
+        public void RemoveListOrdertDetailsStage()
+        {
+            Session.Remove("ListOdtStg");
+            listOdtStage = (Session["ListOdtStg"] as List<OrderDetailsStage>);
+            GridViewOrderDetailsStage.DataSource = listOdtStage;
+            GridViewOrderDetailsStage.DataBind();
         }
     }
 }

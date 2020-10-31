@@ -13,6 +13,7 @@ namespace HardwareStore.Domain
         public string DefaultCode { get; set; }
         public string ProductName { get; set; }
         public string SupplierName { get; set; }
+        public int Fk_SupplierID { get; set; }
         public string BrandName { get; set; }
         public string MaterialType { get; set; }
         public string Dimensions { get; set; }
@@ -21,8 +22,7 @@ namespace HardwareStore.Domain
         public int Quantity { get; set; }
         public int Discount { get; set; }
         public double Subtotal { get => this.Quantity * this.PurchasePrice; }
-        public double totalAmount { get => 
-                (this.Subtotal - (((double)this.Discount / 100) * this.Subtotal));
-        }
+        public double totalAmount
+        { get => (this.Subtotal - (((double)this.Discount / 100) * this.Subtotal)); }
     }
 }

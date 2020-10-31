@@ -24,6 +24,8 @@
             <Scripts>
                 <asp:ScriptReference Name="MsAjaxBundle" />
                 <asp:ScriptReference Name="jquery" />
+                <%--<asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />--%>
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
             </Scripts>
         </asp:ScriptManager>
         <div>
@@ -50,7 +52,7 @@
                     <a href="/Modules/Security.Module/MainSecurity.aspx"><i class="fas fa-shield-alt"><span>Seguridad</span></i></a>
                     <a href="#"><i class="fas fa-cog"><span>Configuración</span></i></a>
                 </div>
-                <main class="Container">
+                <main class="ContainerPrincipal">
                     <asp:ContentPlaceHolder ID="MainContent" runat="server">
                     </asp:ContentPlaceHolder>
                 </main>

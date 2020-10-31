@@ -8,11 +8,13 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace HardwareStore.Infraestructure.Controllers
 {
     public class OrdersController : HarwareStoreRepository
     {
+        //HttpContext context = HttpContext.Current;
         private SqlCommand Command;
 
         public List<tblOrders> GetOrders(DateTime StartDate, DateTime EndDate)
@@ -131,11 +133,11 @@ namespace HardwareStore.Infraestructure.Controllers
             {
                 if (Odt.Count > 0)
                 {
-                    Command = new SqlCommand();
                     var Connection = this.GetConnection();
                     Connection.Open();
                     for (int i = 0; i < Odt.Count; i++)
                     {
+                        Command = new SqlCommand();
                         Command.Connection = Connection;
                         Command.CommandText = "Sp_CreateOrderDetail";
                         Command.CommandType = CommandType.StoredProcedure;
@@ -164,11 +166,11 @@ namespace HardwareStore.Infraestructure.Controllers
             {
                 if (WhPr.Count > 0)
                 {
-                    Command = new SqlCommand();
                     var Connection = this.GetConnection();
                     Connection.Open();
                     for (int i = 0; i < WhPr.Count; i++)
                     {
+                        Command = new SqlCommand();
                         Command.Connection = Connection;
                         Command.CommandText = "Sp_WirehouseProducts";
                         Command.CommandType = CommandType.StoredProcedure;
