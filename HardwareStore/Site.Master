@@ -48,7 +48,7 @@
                     <a href="/Modules/ProductsAdmin.Module/ProductsAdminMain.aspx"><i class="fas fa-cogs"><span>Admin. de Existencias</span></i></a>
                     <a href="/Modules/Catalogs.Module/MainCatalogs.aspx"><i class="fab fa-buffer"><span>Admin. de Catálogos</span></i></a>
                     <a href="/Modules/Reports.Module/MainReports.aspx"><i class="fas fa-receipt"><span>Reportes</span></i></a>
-                    <a href="/Modules/Orders.Module/OrdersPage.aspx"><i class="fas fa-dolly"><span>Pedidos</span></i></a>
+                    <a href="/Modules/Orders.Module/OrdersPage.aspx"><i class="fas fa-dolly"><span>Compras</span></i></a>
                     <a href="/Modules/Security.Module/MainSecurity.aspx"><i class="fas fa-shield-alt"><span>Seguridad</span></i></a>
                     <a href="#"><i class="fas fa-cog"><span>Configuración</span></i></a>
                 </div>
