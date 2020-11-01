@@ -1,4 +1,4 @@
-﻿#toast {
+﻿.toast {
     visibility: hidden;
     max-width: 50px;
     height: 80px;
@@ -6,40 +6,54 @@
     margin: auto;
     background-color: #fff;
     color: #000;
-    text-align: center;
+    /*text-align: center;*/
     border: 1px solid #ddd;
-    border-radius: 2px;
     position: fixed;
     z-index: 1;
     right: 50px;
     bottom: 30px;
     font-size: 17px;
-    white-space: nowrap;
+    white-space: nowrap; 
     box-shadow: 0px 5px 5px 0px #888888;
     border-radius: 10px;
 }
 
-    #toast #img {
+    .toast-img {
+        display:flex;
+        justify-content:center;
+        align-items:center;
         width: 50px;
         height: 80px;
         float: left;
         padding-top: 16px;
         padding-bottom: 16px;
         box-sizing: border-box;
-        background-color: #C82333;
-        color: #fff;
         border-bottom-left-radius: 10px;
         border-top-left-radius: 10px;
     }
 
-    #toast #desc {
+    .toast-img-danger {
+        background-color: #C82333;
+        color: #fff;
+    }
+
+    .toast-img-success {
+        background-color: #00A441;
+        color: #fff;
+    }
+
+    .toast-body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         color: #000;
         padding: 16px;
         overflow: hidden;
+        height: 100%;
         white-space: nowrap;
     }
 
-    #toast.show {
+    .toast.show {
         visibility: visible;
         -webkit-animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 2s, fadeout 0.5s 2.5s;
         animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 4s, fadeout 0.5s 4.5s;

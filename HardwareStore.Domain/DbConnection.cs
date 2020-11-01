@@ -19,7 +19,9 @@ namespace HardwareStore.Domain
 
         protected SqlConnection GetConnection()
         {
-            //string stringConnection = @"" + ConfigurationManager.ConnectionStrings["HardwareStoreEntities"].ToString();
+            //string stringConnection = @"" + ConfigurationManager.ConnectionStrings["HardwareStoreEntities"].ConnectionString;
+            //ConnectionStringSettings Settings = ConfigurationManager.ConnectionStrings["HardwareStoreEntities"];
+            //string stringConnection = @"" + Settings.ConnectionString;
             //string stringConnection = @"" + this.Context.Database.Connection.ConnectionString;
             string stringConnection = @"data source=01DLOPES98\DEVSTACK;initial catalog=HardwareStore;user id=DlopezS98;password=01DlopezS98;MultipleActiveResultSets=True;";
             return new SqlConnection(stringConnection);

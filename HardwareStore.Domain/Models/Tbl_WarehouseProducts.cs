@@ -16,6 +16,7 @@ namespace HardwareStore.Domain.Models
     {
         public int Fk_WarehouseID { get; set; }
         public int Fk_ProductDetailID { get; set; }
+        public int Fk_SupplierID { get; set; }
         public Nullable<int> WhPr_Stock { get; set; }
         public double WhPr_PurchasePrice { get; set; }
         public double WhPr_SalePrice { get; set; }
@@ -23,6 +24,7 @@ namespace HardwareStore.Domain.Models
         public System.DateTime WhPr_UpdatedAt { get; set; }
     
         public virtual Ctg_ProductDetails Ctg_ProductDetails { get; set; }
+        public virtual Ctg_Suppliers Ctg_Suppliers { get; set; }
         public virtual Ctg_Warehouses Ctg_Warehouses { get; set; }
     }
 }

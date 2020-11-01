@@ -28,8 +28,8 @@ namespace HardwareStore.Domain.Models
         public System.DateTime Msu_UpdatedAt { get; set; }
         public bool Msu_Deleted { get; set; }
     
-        public virtual Ctg_UnitType Ctg_UnitType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ctg_UnitConversion> Ctg_UnitConversion { get; set; }
+        public virtual Ctg_UnitType Ctg_UnitType { get; set; }
     }
 }

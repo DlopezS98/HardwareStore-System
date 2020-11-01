@@ -85,15 +85,6 @@ namespace HardwareStore.Modules.Orders.Module {
         protected global::System.Web.UI.UpdatePanel UpdatePanel2;
         
         /// <summary>
-        /// msgCreate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl msgCreate;
-        
-        /// <summary>
         /// btnGoToListOrders control.
         /// </summary>
         /// <remarks>
@@ -139,6 +130,33 @@ namespace HardwareStore.Modules.Orders.Module {
         protected global::System.Web.UI.WebControls.TextBox txtWarehouseName;
         
         /// <summary>
+        /// txtProduct control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtProduct;
+        
+        /// <summary>
+        /// btnShowmodal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnShowmodal;
+        
+        /// <summary>
+        /// reqValProduct control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqValProduct;
+        
+        /// <summary>
         /// ddlstWarehouses control.
         /// </summary>
         /// <remarks>
@@ -155,6 +173,33 @@ namespace HardwareStore.Modules.Orders.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqValddlWarehouse;
+        
+        /// <summary>
+        /// ddlstSuppliers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlstSuppliers;
+        
+        /// <summary>
+        /// RequiredFieldValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+        
+        /// <summary>
+        /// RequiredFieldValidator3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
         
         /// <summary>
         /// txtOrdNumber control.
@@ -193,24 +238,6 @@ namespace HardwareStore.Modules.Orders.Module {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqPrice;
         
         /// <summary>
-        /// txtProduct control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtProduct;
-        
-        /// <summary>
-        /// reqValProduct control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqValProduct;
-        
-        /// <summary>
         /// txtDefaultCode control.
         /// </summary>
         /// <remarks>
@@ -227,15 +254,6 @@ namespace HardwareStore.Modules.Orders.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBrand;
-        
-        /// <summary>
-        /// txtSupplier control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSupplier;
         
         /// <summary>
         /// txtMaterialType control.
@@ -454,6 +472,15 @@ namespace HardwareStore.Modules.Orders.Module {
         protected global::System.Web.UI.WebControls.Button btnCancelOrder;
         
         /// <summary>
+        /// UpdatePanel3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
+        
+        /// <summary>
         /// btnBackToCreateOrder control.
         /// </summary>
         /// <remarks>
@@ -461,5 +488,59 @@ namespace HardwareStore.Modules.Orders.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBackToCreateOrder;
+        
+        /// <summary>
+        /// btnUpdateTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUpdateTable;
+        
+        /// <summary>
+        /// DatepickerFrom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl DatepickerFrom;
+        
+        /// <summary>
+        /// DatepickerTo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl DatepickerTo;
+        
+        /// <summary>
+        /// btnFilterByDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnFilterByDate;
+        
+        /// <summary>
+        /// GridViewOrders control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewOrders;
+        
+        /// <summary>
+        /// GridViewOrderDetail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewOrderDetail;
     }
 }

@@ -14,16 +14,18 @@ namespace HardwareStore.Modules.Orders.Module
 {
     public partial class OrdersPage : System.Web.UI.Page
     {
-        private readonly WarehouseController WarehouseCtrl;
-        private readonly WarehouseProductsController WarehouseProductCtrl;
-        private readonly OrdersController OrdersController;
+        private readonly WarehouseController vWarehouseCtrl;
+        private readonly WarehouseProductsController vWarehouseProductCtrl;
+        private readonly OrdersController vOrdersCtrl;
+        private readonly SuppliersControllers vSupplierCtrl;
         List<OrderDetailsStage> listOdtStage = null;
 
         public OrdersPage()
         {
-            this.WarehouseCtrl = new WarehouseController();
-            this.WarehouseProductCtrl = new WarehouseProductsController();
-            this.OrdersController = new OrdersController();
+            this.vWarehouseCtrl = new WarehouseController();
+            this.vWarehouseProductCtrl = new WarehouseProductsController();
+            this.vOrdersCtrl = new OrdersController();
+            this.vSupplierCtrl = new SuppliersControllers();
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -32,6 +34,10 @@ namespace HardwareStore.Modules.Orders.Module
             {
                 this.LoadDropDownWarehouse();
                 this.loadGridViewWarehouseProducts("");
+                this.LoadDropDownSuppliers();
+                DateTime Start = DateTime.Parse("1998-10-01");
+                DateTime End = DateTime.Now;
+                this.LoadGridViewOrders(Start, End);
             }
 
             if (Session["ListOdtStg"] != null)
@@ -40,12 +46,11 @@ namespace HardwareStore.Modules.Orders.Module
                 GridViewOrderDetailsStage.DataSource = listOdtStage;
                 GridViewOrderDetailsStage.DataBind();
             }
-
         }
 
         public void LoadDropDownWarehouse()
         {
-            ddlstWarehouses.DataSource = this.WarehouseCtrl.GetWarehouses();
+            ddlstWarehouses.DataSource = this.vWarehouseCtrl.GetWarehouses();
             ddlstWarehouses.DataTextField = "DropDisplayName";
             ddlstWarehouses.DataValueField = "Pk_WarehouseID";
             ddlstWarehouses.DataBind();
@@ -54,20 +59,27 @@ namespace HardwareStore.Modules.Orders.Module
 
         public void loadGridViewWarehouseProducts(string query)
         {
-            var list = this.WarehouseProductCtrl.GetProductsInWarehouse(query);
+            var list = this.vWarehouseProductCtrl.GetProductsInWarehouse(query);
             GridViewWarehouseProducts.DataSource = list;
             GridViewWarehouseProducts.DataBind();
         }
 
-        //[WebMethod]
-        //public static Object LoadData()
-        //{
-        //    DateTime Start = DateTime.Parse("2000-09-12");
-        //    DateTime End = DateTime.Parse("2020-10-18");
-        //    OrdersController OrdCtr = new OrdersController();
-        //    var obj = OrdCtr.GetOrders(Start, End);
-        //    return obj;
-        //}
+        public void LoadDropDownSuppliers()
+        {
+            ddlstSuppliers.DataSource = this.vSupplierCtrl.GetSuppliers();
+            ddlstSuppliers.DataTextField = "Sps_CompanyName";
+            ddlstSuppliers.DataValueField = "Pk_SupplierID";
+            ddlstSuppliers.DataBind();
+            ddlstSuppliers.Items.Insert(0, new ListItem("----[Seleccionar Proveedor]----", "0"));
+        }
+
+
+        public void LoadGridViewOrders(DateTime Start, DateTime End)
+        {
+            var list = vOrdersCtrl.GetOrders(Start, End);
+            GridViewOrders.DataSource = list;
+            GridViewOrders.DataBind();
+        }
 
         //Grid del modal de los productos en bodega+
         protected void GridViewWarehouseProducts_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -90,7 +102,7 @@ namespace HardwareStore.Modules.Orders.Module
         public void SendWarehouseProductToTextBox(int idWhr, int idProdDetail)
         {
             //Metodo que retorna un elemento en productos bodegas (Warehouse-products)
-            var obj = this.WarehouseProductCtrl.GetAWarehouseProduct(idWhr, idProdDetail);
+            var obj = this.vWarehouseProductCtrl.GetAWarehouseProduct(idWhr, idProdDetail);
             //Valores a los textbox
             txtWarehouseId.Text = idWhr.ToString();
             txtProductId.Text = idProdDetail.ToString();
@@ -101,7 +113,7 @@ namespace HardwareStore.Modules.Orders.Module
             ddlstWarehouses.SelectedValue = obj.Fk_WarehouseID.ToString();
             txtMeasureUnit.Text = obj.MeasureUnit;
             txtPrice.Text = obj.WhPr_PurchasePrice.ToString();
-            txtSupplier.Text = obj.SupplierName;
+            ddlstSuppliers.SelectedValue = obj.Fk_SupplierID.ToString();
             txtMaterialType.Text = obj.MaterialType;
             txtWarehouseName.Text = obj.WarehouseName;
             txtSupplierId.Text = obj.Fk_SupplierID.ToString();
@@ -147,9 +159,9 @@ namespace HardwareStore.Modules.Orders.Module
             txtBrand.Text = obj.BrandName;
             txtDimensions.Text = obj.Dimensions;
             ddlstWarehouses.SelectedValue = obj.Fk_WarehouseID.ToString();
+            ddlstSuppliers.SelectedValue = obj.Fk_SupplierID.ToString();
             txtMeasureUnit.Text = obj.MeasureUnit;
             txtPrice.Text = obj.PurchasePrice.ToString();
-            txtSupplier.Text = obj.SupplierName;
             txtMaterialType.Text = obj.MaterialType;
             txtWarehouseName.Text = obj.WarehouseName;
             txtDetailDiscount.Text = obj.Discount.ToString();
@@ -168,7 +180,7 @@ namespace HardwareStore.Modules.Orders.Module
             OdtStg.WarehouseName = ddlstWarehouses.SelectedItem.Text;
             OdtStg.ProductName = txtProduct.Text;
             OdtStg.BrandName = txtBrand.Text;
-            OdtStg.SupplierName = txtSupplier.Text;
+            OdtStg.SupplierName = ddlstSuppliers.SelectedItem.Text;
             OdtStg.MaterialType = txtMaterialType.Text;
             OdtStg.MeasureUnit = txtMeasureUnit.Text;
             OdtStg.PurchasePrice = Convert.ToDouble(txtPrice.Text);
@@ -176,7 +188,7 @@ namespace HardwareStore.Modules.Orders.Module
             OdtStg.Discount = Convert.ToInt32(txtDetailDiscount.Text);
             OdtStg.DefaultCode = txtDefaultCode.Text;
             OdtStg.Dimensions = txtDimensions.Text;
-            OdtStg.Fk_SupplierID = Convert.ToInt32(txtSupplierId.Text);
+            OdtStg.Fk_SupplierID = Convert.ToInt32(ddlstSuppliers.SelectedValue);
             return OdtStg;
         }
 
@@ -201,8 +213,11 @@ namespace HardwareStore.Modules.Orders.Module
                         //recuperando los datos de la sesión...
                         listOdtStage = (Session["ListOdtStg"] as List<OrderDetailsStage>);
                         //veriicando si el objeto existe
-                        bool exist = listOdtStage.Exists(x => x.Fk_WarehouseID == obj.Fk_WarehouseID && x.Fk_ProductDetailID == obj.Fk_ProductDetailID);
-                        if (!exist)
+                        bool WhProdExist = listOdtStage
+                            .Exists(x => x.Fk_WarehouseID == obj.Fk_WarehouseID
+                            && x.Fk_ProductDetailID == obj.Fk_ProductDetailID
+                            && x.Fk_SupplierID == obj.Fk_SupplierID);
+                        if (!WhProdExist)
                         {
                             listOdtStage.Add(obj);
                         }
@@ -230,6 +245,8 @@ namespace HardwareStore.Modules.Orders.Module
                     oldObj.Discount = Convert.ToInt32(txtDetailDiscount.Text);
                     oldObj.Fk_WarehouseID = Convert.ToInt32(ddlstWarehouses.SelectedValue);
                     oldObj.WarehouseName = ddlstWarehouses.SelectedItem.Text;
+                    oldObj.SupplierName = ddlstSuppliers.SelectedItem.Text;
+                    oldObj.Fk_SupplierID = Convert.ToInt32(ddlstSuppliers.SelectedValue);
                     GridViewOrderDetailsStage.DataSource = listOdtStage;
                     GridViewOrderDetailsStage.DataBind();
                     this.ResetDetailInputs();
@@ -258,7 +275,6 @@ namespace HardwareStore.Modules.Orders.Module
             txtWarehouseName.Text = "";
             ddlstWarehouses.SelectedIndex = 0;
             txtPrice.Text = "";
-            txtSupplier.Text = "";
             txtBrand.Text = "";
             txtDefaultCode.Text = "";
             txtDimensions.Text = "";
@@ -272,7 +288,7 @@ namespace HardwareStore.Modules.Orders.Module
         {
             double SubtotalAmount = 0;
             listOdtStage = (Session["ListOdtStg"] as List<OrderDetailsStage>);
-            if(listOdtStage != null)
+            if (listOdtStage != null)
             {
                 foreach (var item in listOdtStage)
                 {
@@ -331,9 +347,9 @@ namespace HardwareStore.Modules.Orders.Module
             List<Tbl_OrderDetails> OdtList = new List<Tbl_OrderDetails>();
             List<Tbl_WarehouseProducts> WpList = new List<Tbl_WarehouseProducts>();
             Tbl_Orders Ord = new Tbl_Orders();
-            Ord.Fk_SupplierID = Convert.ToInt32(txtSupplierId.Text);
+            Ord.Fk_SupplierID = Convert.ToInt32(ddlstSuppliers.SelectedValue);
             Ord.Fk_UserID = 1;
-            Ord.Ord_Number = txtOrdNumber.Text;
+            if (txtOrdNumber.Text != "") { Ord.Ord_Number = txtOrdNumber.Text; } else { Ord.Ord_Number = null; }
             Ord.Ord_Tax = Convert.ToDouble(txtTotalTax.Text);
             Ord.Ord_Subtotal = Convert.ToDouble(txtSubtotal.Text);
             Ord.Ord_Discount = Convert.ToInt32(txtTotalDiscount.Text);
@@ -344,6 +360,7 @@ namespace HardwareStore.Modules.Orders.Module
             {
                 Tbl_OrderDetails Odt = new Tbl_OrderDetails();
                 Odt.Fk_ProductDetailID = item.Fk_ProductDetailID;
+                Odt.Fk_DestinationWarehouseID = item.Fk_WarehouseID;
                 Odt.Odt_Quantity = item.Quantity;
                 Odt.Odt_PurchasePrice = item.PurchasePrice;
                 Odt.Odt_DetailTax = null;
@@ -358,16 +375,19 @@ namespace HardwareStore.Modules.Orders.Module
                 Tbl_WarehouseProducts obj = new Tbl_WarehouseProducts();
                 obj.Fk_WarehouseID = item.Fk_WarehouseID;
                 obj.Fk_ProductDetailID = item.Fk_ProductDetailID;
+                obj.Fk_SupplierID = item.Fk_SupplierID;
                 obj.WhPr_Stock = item.Quantity;
                 obj.WhPr_PurchasePrice = item.PurchasePrice;
                 obj.WhPr_SalePrice = item.PurchasePrice + (((double)25 / 100) * item.PurchasePrice);
                 WpList.Add(obj);
             }
 
-            string msg = OrdersController.MainOrderTransaction(Ord, OdtList, WpList);
-            msgCreate.InnerText = msg;
+            vOrdersCtrl.MainOrderTransaction(Ord, OdtList, WpList);
             this.RemoveListOrdertDetailsStage();
             this.ResetOrderInputs();
+            string ShowToaster = "OrderCreated_Toast()";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", ShowToaster, true);
+            this.loadGridViewWarehouseProducts("");
         }
 
         public void ResetOrderInputs()
@@ -378,6 +398,7 @@ namespace HardwareStore.Modules.Orders.Module
             txtTotalDiscount.Text = "";
             txtTotal.Text = "";
             txtSupplierId.Text = "";
+            ddlstSuppliers.SelectedIndex = 0;
         }
 
         protected void btnCancelOrder_Click(object sender, EventArgs e)
@@ -393,6 +414,50 @@ namespace HardwareStore.Modules.Orders.Module
             listOdtStage = (Session["ListOdtStg"] as List<OrderDetailsStage>);
             GridViewOrderDetailsStage.DataSource = listOdtStage;
             GridViewOrderDetailsStage.DataBind();
+        }
+
+        protected void GridViewOrders_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            GridViewRow Row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+            int index = Row.RowIndex;
+            int id = Convert.ToInt32(GridViewOrders.DataKeys[index].Value);
+            if (e.CommandName == "cmdDetail")
+            {
+                this.LoadGridViewOrderDetail(id);
+
+                string ShowOdtList = "ShowOdtList()";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", ShowOdtList, true);
+            }
+        }
+
+        public void LoadGridViewOrderDetail(int id)
+        {
+            var list = vOrdersCtrl.GetOrderDetails(id);
+            GridViewOrderDetail.DataSource = list;
+            GridViewOrderDetail.DataBind();
+        }
+
+        protected void btnFilterByDate_Click(object sender, EventArgs e)
+        {
+            DateTime Start = Convert.ToDateTime(DatepickerFrom.Value);
+            DateTime End = Convert.ToDateTime(DatepickerTo.Value);
+            if( Start > End)
+            {
+                //Response.Write("<script>alert('La fecha de inicio no debe ser mayor que la fecha final');</script>");
+                string ShowModalDate = "ModalDate()";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", ShowModalDate, true);
+            }
+            else
+            {
+                this.LoadGridViewOrders(Start, End);
+            }
+        }
+
+        protected void btnUpdateTable_Click(object sender, EventArgs e)
+        {
+            DateTime Start = DateTime.Parse("1998-10-01");
+            DateTime End = DateTime.Now;
+            this.LoadGridViewOrders(Start, End);
         }
     }
 }

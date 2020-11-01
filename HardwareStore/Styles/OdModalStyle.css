@@ -46,12 +46,12 @@
 
 .modal-dialog {
     position: relative;
-    width: 1000px;
+    width: 1200px;
     min-width: 500px;
     max-height: 80vh;
     border-radius: 5px;
     background: var(--white);
-    overflow: auto;
+    overflow: hidden;
     cursor: default;
 }
 
@@ -65,15 +65,21 @@
 }
 
 .modal-header {
+    display:flex;
+    align-items:center;
     width: 100%;
     position: relative;
+    height: 80px;
 }
 
     .modal-header .close-modal {
         font-size: 1.5rem;
     }
 
-
+.modal-content {
+    width: 100%;
+    overflow-x: scroll;
+}
 
 .OdModal p + p {
     margin-top: 1rem;

@@ -17,6 +17,7 @@ namespace HardwareStore.Domain.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Ctg_Warehouses()
         {
+            this.Tbl_OrderDetails = new HashSet<Tbl_OrderDetails>();
             this.Tbl_Transfers = new HashSet<Tbl_Transfers>();
             this.Tbl_RemovedProducts = new HashSet<Tbl_RemovedProducts>();
             this.Tbl_WarehouseProducts = new HashSet<Tbl_WarehouseProducts>();
@@ -30,6 +31,8 @@ namespace HardwareStore.Domain.Models
         public System.DateTime Whs_UpdatedAt { get; set; }
         public bool Whs_Deleted { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_OrderDetails> Tbl_OrderDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_Transfers> Tbl_Transfers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

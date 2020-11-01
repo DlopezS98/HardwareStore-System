@@ -13,7 +13,6 @@ namespace HardwareStore.Domain
         public string ProductName { get; set; }
         public string CategoryName { get; set; }
         public string BrandName { get; set; }
-        public int Fk_SupplierID { get; set; }
         public string SupplierName { get; set; }
         public string MeasureUnit { get; set; }
         public string DefaultCode { get; set; }

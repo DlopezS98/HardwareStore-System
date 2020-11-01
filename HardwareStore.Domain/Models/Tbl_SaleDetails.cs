@@ -22,9 +22,8 @@ namespace HardwareStore.Domain.Models
         public double Sdt_Subtotal { get; set; }
         public Nullable<int> Sdt_Discount { get; set; }
         public double Sdt_Total { get; set; }
-        public Nullable<bool> Sdt_Deleted { get; set; }
     
-        public virtual Tbl_Sales Tbl_Sales { get; set; }
         public virtual Ctg_ProductDetails Ctg_ProductDetails { get; set; }
+        public virtual Tbl_Sales Tbl_Sales { get; set; }
     }
 }

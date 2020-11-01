@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductDetailsController.cs" />
+    <Compile Include="Controllers\SuppliersControllers.cs" />
     <Compile Include="Controllers\WarehouseController.cs" />
     <Compile Include="Controllers\WarehouseProductsController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

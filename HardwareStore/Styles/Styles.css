@@ -20,6 +20,7 @@
 
     .btnSuccess:hover {
         background: #218838;
+        cursor:pointer;
     }
 
 .btnDanger {
@@ -37,6 +38,7 @@
 
     .btnDanger:hover {
         background: #C82333;
+        cursor: pointer;
     }
 
 
@@ -55,6 +57,7 @@
 
     .btnPrimary:hover {
         background: #0069D9;
+        cursor: pointer;
     }
 
 .LinkbtnDanger {
@@ -112,6 +115,11 @@
         margin: 5px;
         margin-top: 15px;
     }
+
+        .btnAdd:hover {
+            background: #218838;
+            cursor: pointer;
+        }
 
 .spanType {
     float: left;
@@ -433,16 +441,25 @@ header {
 }
     
 .form-control {
-    border: none;
     height: 50px;
     padding: 5px;
-    padding-left: 5px;
+    padding-left: 10px;
     margin: 5px;
     width: 100%;
     background: #fff;
     border-radius: 8px;
-    border: 0.5px solid #ddd;
+    border: 1px solid #ccc;
     max-width: 100%;
+    outline:none;
+}
+
+    .form-control:focus {
+        border: 2px solid #0084FF;
+    }
+
+.form-disable {
+    background: #ccc;
+    border: 0.5px solid #aaa;
 }
 /*orderPages*/
 .headerTable {

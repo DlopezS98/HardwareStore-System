@@ -116,6 +116,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HardwareStoreModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>HardwareStoreModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Tbl_HardwareStore.cs">
       <DependentUpon>HardwareStoreModel.tt</DependentUpon>
     </Compile>
@@ -148,6 +151,7 @@
     </Compile>
     <Compile Include="OrderDetailsStage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tblOrderDetails.cs" />
     <Compile Include="tblOrders.cs" />
     <Compile Include="tblWarehouseProducts.cs" />
   </ItemGroup>

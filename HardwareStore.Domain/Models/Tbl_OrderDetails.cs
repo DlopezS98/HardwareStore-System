@@ -16,15 +16,16 @@ namespace HardwareStore.Domain.Models
     {
         public int Fk_OrderID { get; set; }
         public int Fk_ProductDetailID { get; set; }
+        public int Fk_DestinationWarehouseID { get; set; }
         public int Odt_Quantity { get; set; }
         public double Odt_PurchasePrice { get; set; }
         public Nullable<double> Odt_DetailTax { get; set; }
         public double Odt_Subtotal { get; set; }
         public Nullable<int> Odt_Discount { get; set; }
         public double Odt_Total { get; set; }
-        public Nullable<bool> Odt_Deleted { get; set; }
     
-        public virtual Tbl_Orders Tbl_Orders { get; set; }
         public virtual Ctg_ProductDetails Ctg_ProductDetails { get; set; }
+        public virtual Ctg_Warehouses Ctg_Warehouses { get; set; }
+        public virtual Tbl_Orders Tbl_Orders { get; set; }
     }
 }

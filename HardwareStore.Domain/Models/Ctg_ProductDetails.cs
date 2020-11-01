@@ -18,10 +18,10 @@ namespace HardwareStore.Domain.Models
         public Ctg_ProductDetails()
         {
             this.Tbl_RemovedProducts = new HashSet<Tbl_RemovedProducts>();
-            this.Tbl_WarehouseProducts = new HashSet<Tbl_WarehouseProducts>();
             this.Tbl_TransferDetails = new HashSet<Tbl_TransferDetails>();
             this.Tbl_OrderDetails = new HashSet<Tbl_OrderDetails>();
             this.Tbl_SaleDetails = new HashSet<Tbl_SaleDetails>();
+            this.Tbl_WarehouseProducts = new HashSet<Tbl_WarehouseProducts>();
         }
     
         public int Pk_ProductDetailID { get; set; }
@@ -29,7 +29,6 @@ namespace HardwareStore.Domain.Models
         public string Pdl_customID { get; set; }
         public int Fk_CategoryID { get; set; }
         public Nullable<int> Fk_BrandID { get; set; }
-        public int Fk_SupplierID { get; set; }
         public int Fk_UnitConversion { get; set; }
         public string Pdl_DefaultCode { get; set; }
         public string Pdl_Dimensions { get; set; }
@@ -44,15 +43,14 @@ namespace HardwareStore.Domain.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_RemovedProducts> Tbl_RemovedProducts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tbl_WarehouseProducts> Tbl_WarehouseProducts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_TransferDetails> Tbl_TransferDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_OrderDetails> Tbl_OrderDetails { get; set; }
         public virtual Ctg_Products Ctg_Products { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_SaleDetails> Tbl_SaleDetails { get; set; }
-        public virtual Ctg_Suppliers Ctg_Suppliers { get; set; }
         public virtual Ctg_UnitConversion Ctg_UnitConversion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_WarehouseProducts> Tbl_WarehouseProducts { get; set; }
     }
 }

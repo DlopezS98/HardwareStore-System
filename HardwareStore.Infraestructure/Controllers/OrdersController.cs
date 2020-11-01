@@ -38,7 +38,7 @@ namespace HardwareStore.Infraestructure.Controllers
             try
             {
                 DataTable dt = new DataTable();
-                var query = string.Format("exec [dbo].[Sp_ListOrders] '{0}', '{1}', {2}", StartDate, EndDate, false);
+                var query = string.Format("EXEC [dbo].[Sp_ListOrders] '{0}', '{1}', {2}", StartDate, EndDate, false);
                 dt = this.GetInformation(query);
                 return dt;
             }
@@ -142,6 +142,7 @@ namespace HardwareStore.Infraestructure.Controllers
                         Command.CommandText = "Sp_CreateOrderDetail";
                         Command.CommandType = CommandType.StoredProcedure;
                         Command.Parameters.AddWithValue("@Fk_ProductDetailID", Odt[i].Fk_ProductDetailID);
+                        Command.Parameters.AddWithValue("@Fk_DestinationWarehouseID", Odt[i].Fk_DestinationWarehouseID);
                         Command.Parameters.AddWithValue("@Odt_Quantity", Odt[i].Odt_Quantity);
                         Command.Parameters.AddWithValue("@Odt_PurchasePrice", Odt[i].Odt_PurchasePrice);
                         Command.Parameters.AddWithValue("@Odt_DetailTax", Odt[i].Odt_DetailTax);
@@ -176,6 +177,7 @@ namespace HardwareStore.Infraestructure.Controllers
                         Command.CommandType = CommandType.StoredProcedure;
                         Command.Parameters.AddWithValue("@Fk_WarehouseID", WhPr[i].Fk_WarehouseID);
                         Command.Parameters.AddWithValue("@Fk_ProductDetailID", WhPr[i].Fk_ProductDetailID);
+                        Command.Parameters.AddWithValue("@Fk_SupplierID", WhPr[i].Fk_SupplierID);
                         Command.Parameters.AddWithValue("@WhPr_Stock", WhPr[i].WhPr_Stock);
                         Command.Parameters.AddWithValue("@WhPr_PurchasePrice", WhPr[i].WhPr_PurchasePrice);
                         Command.Parameters.AddWithValue("@WhPr_SalePrice", WhPr[i].WhPr_SalePrice);
@@ -183,6 +185,74 @@ namespace HardwareStore.Infraestructure.Controllers
                     }
                     Connection.Close();
                 }
+            }
+            catch (Exception exc)
+            {
+
+                throw exc;
+            }
+        }
+
+        public List<tblOrderDetails> GetOrderDetails(int id)
+        {
+            try
+            {
+                List<tblOrderDetails> OdtList = new List<tblOrderDetails>();
+                var data = this.ExecSpListOrderDetail(id);
+                OdtList = this.MapOrderDetail(data);
+                return OdtList;
+            }
+            catch (Exception exc)
+            {
+
+                throw exc;
+            }
+        }
+
+        public DataTable ExecSpListOrderDetail(int id)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                var query = string.Format("EXEC [dbo].[Sp_ListOrderDetails] {0}", id);
+                dt = this.GetInformation(query);
+                return dt;
+            }
+            catch (Exception exc)
+            {
+
+                throw exc;
+            }
+        }
+
+        public List<tblOrderDetails> MapOrderDetail(DataTable dataTable)
+        {
+            try
+            {
+                List<tblOrderDetails> List = new List<tblOrderDetails>();
+                if(dataTable.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        tblOrderDetails obj = new tblOrderDetails();
+                        obj.Fk_OrderID = Convert.ToInt32(row["Fk_OrderID"]);
+                        obj.Ord_Number = row["Ord_Number"].ToString();
+                        obj.Fk_ProductDetailID = Convert.ToInt32(row["Fk_ProductDetailID"]);
+                        obj.Pdl_CustomID = row["Pdl_CustomID"].ToString();
+                        obj.Prod_Name = row["Prod_Name"].ToString();
+                        obj.Fk_DestinationWarehouseID = Convert.ToInt32(row["Fk_DestinationWarehouseID"]);
+                        obj.Whs_Name = row["Whs_Name"].ToString();
+                        obj.Odt_Quantity = Convert.ToInt32(row["Odt_Quantity"]);
+                        obj.Odt_PurchasePrice = Convert.ToDouble(row["Odt_PurchasePrice"]);
+                        obj.Odt_Subtotal = Convert.ToDouble(row["Odt_Subtotal"]);
+                        obj.Odt_DetailTax = Convert.ToDouble(row["Odt_DetailTax"]);
+                        obj.Odt_Discount = Convert.ToInt32(row["Odt_Discount"]);
+                        obj.Odt_Total = Convert.ToDouble(row["Odt_Total"]);
+                        List.Add(obj);
+                    }
+                }
+
+                return List;
             }
             catch (Exception exc)
             {
