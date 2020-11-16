@@ -1,6 +1,6 @@
 ﻿using HardwareStore.Domain;
 using HardwareStore.Domain.Models;
-using HardwareStore.Infraestructure.Repository;
+using HardwareStore.Infraestructure.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,10 +9,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HardwareStore.Infraestructure.Controllers
+namespace HardwareStore.Infraestructure.Repository
 {
-    public class WarehouseProductsController : HarwareStoreRepository
+    public class WarehouseProductsRepository: HardwareStoreRepository, IWarehouseProductsRepository
     {
+        private readonly HardwareStoreEntities Context;
+
+        public WarehouseProductsRepository(HardwareStoreEntities Context): base(Context)
+        {
+            this.Context = Context;
+        }
+
         private SqlCommand Command;
 
         public List<tblWarehouseProducts> GetProductsInWarehouse(string QueryString)
@@ -31,7 +38,7 @@ namespace HardwareStore.Infraestructure.Controllers
             }
         }
 
-        public DataTable ExecSpListWarehouseProduct(string QueryString)
+        private DataTable ExecSpListWarehouseProduct(string QueryString)
         {
             try
             {
@@ -47,7 +54,7 @@ namespace HardwareStore.Infraestructure.Controllers
             }
         }
 
-        public List<tblWarehouseProducts> MapWarehouseProduct(DataTable dataTable)
+        private List<tblWarehouseProducts> MapWarehouseProduct(DataTable dataTable)
         {
             try
             {

@@ -1,6 +1,6 @@
 ﻿using HardwareStore.Domain;
 using HardwareStore.Domain.Models;
-using HardwareStore.Infraestructure.Repository;
+using HardwareStore.Infraestructure.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,10 +9,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HardwareStore.Infraestructure.Controllers
+namespace HardwareStore.Infraestructure.Repository
 {
-    public class WarehouseController : HarwareStoreRepository
+    public class WarehousesRepository: HardwareStoreRepository, IWarehousesRepository
     {
+        private readonly HardwareStoreEntities Context;
+
+        public WarehousesRepository(HardwareStoreEntities Context): base(Context)
+        {
+            this.Context = Context;
+        }
+
         private SqlCommand Command;
 
         public List<ctgWarehouse> GetWarehouses()

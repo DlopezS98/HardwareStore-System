@@ -1,6 +1,6 @@
 ﻿using HardwareStore.Domain;
 using HardwareStore.Domain.Models;
-using HardwareStore.Infraestructure.Repository;
+using HardwareStore.Infraestructure.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,12 +8,18 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 
-namespace HardwareStore.Infraestructure.Controllers
+namespace HardwareStore.Infraestructure.Repository
 {
-    public class OrdersController : HarwareStoreRepository
+    public class OrdersRepository : HardwareStoreRepository, IOrdersRepository
     {
+        private readonly HardwareStoreEntities Context;
+
+        public OrdersRepository(HardwareStoreEntities Context) : base(Context)
+        {
+            this.Context = Context;
+        }
+
         //HttpContext context = HttpContext.Current;
         private SqlCommand Command;
 
@@ -33,7 +39,7 @@ namespace HardwareStore.Infraestructure.Controllers
             }
         }
 
-        public DataTable execSpListOrders(DateTime StartDate, DateTime EndDate)
+        private DataTable execSpListOrders(DateTime StartDate, DateTime EndDate)
         {
             try
             {
@@ -48,7 +54,7 @@ namespace HardwareStore.Infraestructure.Controllers
             }
         }
 
-        public List<tblOrders> MapOrdersData(DataTable dataTable)
+        private List<tblOrders> MapOrdersData(DataTable dataTable)
         {
             try
             {
@@ -101,7 +107,7 @@ namespace HardwareStore.Infraestructure.Controllers
             }
         }
 
-        public void CreateOrder(Tbl_Orders Ord)
+        private void CreateOrder(Tbl_Orders Ord)
         {
             try
             {
@@ -127,7 +133,7 @@ namespace HardwareStore.Infraestructure.Controllers
             }
         }
 
-        public void SendOrderDetails(List<Tbl_OrderDetails> Odt)
+        private void SendOrderDetails(List<Tbl_OrderDetails> Odt)
         {
             try
             {
@@ -161,7 +167,7 @@ namespace HardwareStore.Infraestructure.Controllers
             }
         }
 
-        public void InsertOrUpdateWirehouseProducts(List<Tbl_WarehouseProducts> WhPr)
+        private void InsertOrUpdateWirehouseProducts(List<Tbl_WarehouseProducts> WhPr)
         {
             try
             {
@@ -209,7 +215,7 @@ namespace HardwareStore.Infraestructure.Controllers
             }
         }
 
-        public DataTable ExecSpListOrderDetail(int id)
+        private DataTable ExecSpListOrderDetail(int id)
         {
             try
             {
@@ -225,12 +231,12 @@ namespace HardwareStore.Infraestructure.Controllers
             }
         }
 
-        public List<tblOrderDetails> MapOrderDetail(DataTable dataTable)
+        private List<tblOrderDetails> MapOrderDetail(DataTable dataTable)
         {
             try
             {
                 List<tblOrderDetails> List = new List<tblOrderDetails>();
-                if(dataTable.Rows.Count > 0)
+                if (dataTable.Rows.Count > 0)
                 {
                     foreach (DataRow row in dataTable.Rows)
                     {

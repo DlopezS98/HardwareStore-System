@@ -1,6 +1,9 @@
 ﻿using HardwareStore.Domain;
 using HardwareStore.Domain.Models;
-using HardwareStore.Infraestructure.Controllers;
+//using HardwareStore.Infraestructure.Controllers;
+using HardwareStore.Infraestructure.Interfaces;
+using Ninject;
+using Ninject.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,21 +15,18 @@ using System.Web.UI.WebControls;
 
 namespace HardwareStore.Modules.Orders.Module
 {
-    public partial class OrdersPage : System.Web.UI.Page
+    public partial class OrdersPage : PageBase
     {
-        private readonly WarehouseController vWarehouseCtrl;
-        private readonly WarehouseProductsController vWarehouseProductCtrl;
-        private readonly OrdersController vOrdersCtrl;
-        private readonly SuppliersControllers vSupplierCtrl;
-        List<OrderDetailsStage> listOdtStage = null;
+        [Inject]
+        public IOrdersRepository vOrdersRepository { get; set; }
+        [Inject]
+        public ISuppliersRepository vSuppliersRepository { get; set; }
+        [Inject]
+        public IWarehousesRepository vWarehousesRepository { get; set; }
+        [Inject]
+        public IWarehouseProductsRepository vWarehouseProductsRepository { get; set; }
 
-        public OrdersPage()
-        {
-            this.vWarehouseCtrl = new WarehouseController();
-            this.vWarehouseProductCtrl = new WarehouseProductsController();
-            this.vOrdersCtrl = new OrdersController();
-            this.vSupplierCtrl = new SuppliersControllers();
-        }
+        List<OrderDetailsStage> listOdtStage = null;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -50,7 +50,7 @@ namespace HardwareStore.Modules.Orders.Module
 
         public void LoadDropDownWarehouse()
         {
-            ddlstWarehouses.DataSource = this.vWarehouseCtrl.GetWarehouses();
+            ddlstWarehouses.DataSource = this.vWarehousesRepository.GetWarehouses();
             ddlstWarehouses.DataTextField = "DropDisplayName";
             ddlstWarehouses.DataValueField = "Pk_WarehouseID";
             ddlstWarehouses.DataBind();
@@ -59,14 +59,14 @@ namespace HardwareStore.Modules.Orders.Module
 
         public void loadGridViewWarehouseProducts(string query)
         {
-            var list = this.vWarehouseProductCtrl.GetProductsInWarehouse(query);
+            var list = this.vWarehouseProductsRepository.GetProductsInWarehouse(query);
             GridViewWarehouseProducts.DataSource = list;
             GridViewWarehouseProducts.DataBind();
         }
 
         public void LoadDropDownSuppliers()
         {
-            ddlstSuppliers.DataSource = this.vSupplierCtrl.GetSuppliers();
+            ddlstSuppliers.DataSource = this.vSuppliersRepository.GetSuppliers();
             ddlstSuppliers.DataTextField = "Sps_CompanyName";
             ddlstSuppliers.DataValueField = "Pk_SupplierID";
             ddlstSuppliers.DataBind();
@@ -76,7 +76,7 @@ namespace HardwareStore.Modules.Orders.Module
 
         public void LoadGridViewOrders(DateTime Start, DateTime End)
         {
-            var list = vOrdersCtrl.GetOrders(Start, End);
+            var list = vOrdersRepository.GetOrders(Start, End);
             GridViewOrders.DataSource = list;
             GridViewOrders.DataBind();
         }
@@ -102,7 +102,7 @@ namespace HardwareStore.Modules.Orders.Module
         public void SendWarehouseProductToTextBox(int idWhr, int idProdDetail)
         {
             //Metodo que retorna un elemento en productos bodegas (Warehouse-products)
-            var obj = this.vWarehouseProductCtrl.GetAWarehouseProduct(idWhr, idProdDetail);
+            var obj = this.vWarehouseProductsRepository.GetAWarehouseProduct(idWhr, idProdDetail);
             //Valores a los textbox
             txtWarehouseId.Text = idWhr.ToString();
             txtProductId.Text = idProdDetail.ToString();
@@ -382,7 +382,7 @@ namespace HardwareStore.Modules.Orders.Module
                 WpList.Add(obj);
             }
 
-            vOrdersCtrl.MainOrderTransaction(Ord, OdtList, WpList);
+            vOrdersRepository.MainOrderTransaction(Ord, OdtList, WpList);
             this.RemoveListOrdertDetailsStage();
             this.ResetOrderInputs();
             string ShowToaster = "OrderCreated_Toast()";
@@ -432,7 +432,7 @@ namespace HardwareStore.Modules.Orders.Module
 
         public void LoadGridViewOrderDetail(int id)
         {
-            var list = vOrdersCtrl.GetOrderDetails(id);
+            var list = vOrdersRepository.GetOrderDetails(id);
             GridViewOrderDetail.DataSource = list;
             GridViewOrderDetail.DataBind();
         }

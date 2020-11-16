@@ -72,6 +72,7 @@
                         <div class="ContainerPedidos" style="padding-left: 24px; padding-right: 24px;">
                             <div style="text-align: center">
                                 <h2 class="titleVenta">Nuevo Pedido</h2>
+                                <h2 runat="server" class="titleVenta" id="ShowMessage"></h2>
                             </div>
                             <div>
                                 <asp:Button CssClass="btnPrimary" runat="server" ID="btnGoToListOrders" OnClick="btnGoToListOrders_Click" Text="Ver Pedidos" />

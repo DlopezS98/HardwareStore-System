@@ -85,6 +85,15 @@ namespace HardwareStore.Modules.Orders.Module {
         protected global::System.Web.UI.UpdatePanel UpdatePanel2;
         
         /// <summary>
+        /// ShowMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ShowMessage;
+        
+        /// <summary>
         /// btnGoToListOrders control.
         /// </summary>
         /// <remarks>

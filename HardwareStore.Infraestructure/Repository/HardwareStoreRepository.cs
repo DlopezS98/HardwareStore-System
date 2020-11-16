@@ -1,4 +1,6 @@
 ﻿using HardwareStore.Domain;
+using HardwareStore.Domain.Models;
+using HardwareStore.Infraestructure.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,13 +11,29 @@ using System.Threading.Tasks;
 
 namespace HardwareStore.Infraestructure.Repository
 {
-    public class HarwareStoreRepository: DbConnection
+    public class HardwareStoreRepository: IHardwareStoreRepository
     {
+
+        private readonly HardwareStoreEntities Context;
+
+        public HardwareStoreRepository(HardwareStoreEntities Context)
+        {
+            this.Context = Context;
+        }
+
+        public SqlConnection GetConnection()
+        {
+            string stringConnection = @"" + this.Context.Database.Connection.ConnectionString;
+            //string stringConnection = @"data source=01DLOPES98\DEVSTACK;initial catalog=HardwareStore;user id=DlopezS98;password=Aldahir1998;MultipleActiveResultSets=True;";
+            return new SqlConnection(stringConnection);
+            //return stringConnection;
+        }
+
         public DataTable GetInformation(string query)
         {
             try
             {
-                var Connection = GetConnection();
+                var Connection = this.GetConnection();
                 DataTable dt = new DataTable();
                 Connection.Open();
                 var command = Connection.CreateCommand();

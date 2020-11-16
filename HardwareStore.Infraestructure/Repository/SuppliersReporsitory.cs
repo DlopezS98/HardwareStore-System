@@ -1,18 +1,23 @@
 ﻿using HardwareStore.Domain.Models;
-using HardwareStore.Infraestructure.Repository;
+using HardwareStore.Infraestructure.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HardwareStore.Infraestructure.Controllers
+namespace HardwareStore.Infraestructure.Repository
 {
-    public class SuppliersControllers : HarwareStoreRepository
+    public class SuppliersReporsitory : HardwareStoreRepository, ISuppliersRepository
     {
-        private SqlCommand Command;
+
+        private readonly HardwareStoreEntities Context;
+
+        public SuppliersReporsitory(HardwareStoreEntities Context) : base(Context)
+        {
+            this.Context = Context;
+        }
 
         public List<Ctg_Suppliers> GetSuppliers()
         {
@@ -30,7 +35,7 @@ namespace HardwareStore.Infraestructure.Controllers
             }
         }
 
-        public DataTable ExecQuerySuppliers()
+        private DataTable ExecQuerySuppliers()
         {
             try
             {
@@ -45,7 +50,7 @@ namespace HardwareStore.Infraestructure.Controllers
             }
         }
 
-        public List<Ctg_Suppliers> MapSuppliersData(DataTable dataTable)
+        private List<Ctg_Suppliers> MapSuppliersData(DataTable dataTable)
         {
             List<Ctg_Suppliers> List = new List<Ctg_Suppliers>();
             if (dataTable.Rows.Count > 0)
