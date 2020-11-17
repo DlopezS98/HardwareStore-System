@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HardwareStore.Infraestructure.Interfaces
+namespace HardwareStore.Core.Interfaces
 {
     public interface ISuppliersRepository
     {

@@ -1,7 +1,6 @@
 ﻿using HardwareStore.Domain;
 using HardwareStore.Domain.Models;
-//using HardwareStore.Infraestructure.Controllers;
-using HardwareStore.Infraestructure.Interfaces;
+using HardwareStore.Core.Interfaces;
 using Ninject;
 using Ninject.Web;
 using System;

@@ -357,9 +357,9 @@
       <Project>{4BAAA2F3-6291-4505-B3B6-17D1F1845ABA}</Project>
       <Name>HardwareStore.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HardwareStore.Infraestructure\HardwareStore.Infraestructure.csproj">
+    <ProjectReference Include="..\HardwareStore.Infraestructure\HardwareStore.Core.csproj">
       <Project>{8940aac1-6cbf-470c-a9a5-fd4ea18baa75}</Project>
-      <Name>HardwareStore.Infraestructure</Name>
+      <Name>HardwareStore.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

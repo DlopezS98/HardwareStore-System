@@ -1,6 +1,6 @@
 ﻿using HardwareStore.Domain;
 using HardwareStore.Domain.Models;
-using HardwareStore.Infraestructure.Interfaces;
+using HardwareStore.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HardwareStore.Infraestructure.Repository
+namespace HardwareStore.Core.Repository
 {
     public class WarehouseProductsRepository: HardwareStoreRepository, IWarehouseProductsRepository
     {

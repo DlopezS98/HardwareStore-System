@@ -5,8 +5,8 @@ namespace HardwareStore.App_Start
 {
     using System;
     using System.Web;
-    using HardwareStore.Infraestructure.Interfaces;
-    using HardwareStore.Infraestructure.Repository;
+    using HardwareStore.Core.Interfaces;
+    using HardwareStore.Core.Repository;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;

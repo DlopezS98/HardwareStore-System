@@ -5,13 +5,15 @@ VisualStudioVersion = 15.0.28307.1267
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. PresentationLayer", "1. PresentationLayer", "{E5713184-D586-4ED8-98CE-84BFFB2B753C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. DataAccessLayer", "2. DataAccessLayer", "{910FD6CC-3897-4CFF-941B-705661A85185}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. DataAccessLayer", "3. DataAccessLayer", "{910FD6CC-3897-4CFF-941B-705661A85185}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HardwareStore.Domain", "HardwareStore.Domain\HardwareStore.Domain.csproj", "{4BAAA2F3-6291-4505-B3B6-17D1F1845ABA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HardwareStore.Infraestructure", "HardwareStore.Infraestructure\HardwareStore.Infraestructure.csproj", "{8940AAC1-6CBF-470C-A9A5-FD4EA18BAA75}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HardwareStore.Core", "HardwareStore.Infraestructure\HardwareStore.Core.csproj", "{8940AAC1-6CBF-470C-A9A5-FD4EA18BAA75}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HardwareStore", "HardwareStore\HardwareStore.csproj", "{F773A63F-DE96-4B46-8AA0-775B98D8D795}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. BusinessLayer", "2. BusinessLayer", "{47865AF2-9B8E-45FE-886E-8C5C8C6F99E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,7 +39,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4BAAA2F3-6291-4505-B3B6-17D1F1845ABA} = {910FD6CC-3897-4CFF-941B-705661A85185}
-		{8940AAC1-6CBF-470C-A9A5-FD4EA18BAA75} = {910FD6CC-3897-4CFF-941B-705661A85185}
+		{8940AAC1-6CBF-470C-A9A5-FD4EA18BAA75} = {47865AF2-9B8E-45FE-886E-8C5C8C6F99E6}
 		{F773A63F-DE96-4B46-8AA0-775B98D8D795} = {E5713184-D586-4ED8-98CE-84BFFB2B753C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
