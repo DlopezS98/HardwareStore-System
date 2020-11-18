@@ -153,6 +153,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tblOrderDetails.cs" />
     <Compile Include="tblOrders.cs" />
+    <Compile Include="tblSaleDetails.cs" />
+    <Compile Include="tblSales.cs" />
     <Compile Include="tblWarehouseProducts.cs" />
   </ItemGroup>
   <ItemGroup>

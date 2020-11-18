@@ -59,7 +59,8 @@ namespace HardwareStore.Modules.Orders.Module
         public void loadGridViewWarehouseProducts(string query)
         {
             var list = this.vWarehouseProductsRepository.GetProductsInWarehouse(query);
-            GridViewWarehouseProducts.DataSource = list;
+            var ProductsBySuppliers = list.FindAll(sp => sp.Fk_SupplierID == 1);
+            GridViewWarehouseProducts.DataSource = ProductsBySuppliers;
             GridViewWarehouseProducts.DataBind();
         }
 

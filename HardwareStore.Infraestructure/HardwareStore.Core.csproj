@@ -8,8 +8,8 @@
     <ProjectGuid>{8940AAC1-6CBF-470C-A9A5-FD4EA18BAA75}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HardwareStore.Infraestructure</RootNamespace>
-    <AssemblyName>HardwareStore.Infraestructure</AssemblyName>
+    <RootNamespace>HardwareStore.Core</RootNamespace>
+    <AssemblyName>HardwareStore.Core</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Interfaces\IHardwareStoreRepository.cs" />
     <Compile Include="Interfaces\IOrdersRepository.cs" />
+    <Compile Include="Interfaces\ISalesRepository.cs" />
     <Compile Include="Interfaces\ISuppliersRepository.cs" />
     <Compile Include="Interfaces\IWarehouseProductsRepository.cs" />
     <Compile Include="Interfaces\IWarehousesRepository.cs" />
