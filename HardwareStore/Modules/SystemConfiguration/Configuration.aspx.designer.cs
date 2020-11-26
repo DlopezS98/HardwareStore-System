@@ -7,10 +7,10 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace HardwareStore.Modules.Catalogs.Module {
+namespace HardwareStore.Modules.SystemConfiguration {
     
     
-    public partial class Customers {
+    public partial class Configuration {
         
         /// <summary>
         /// Control mtvContenedor.
@@ -22,22 +22,22 @@ namespace HardwareStore.Modules.Catalogs.Module {
         protected global::System.Web.UI.WebControls.MultiView mtvContenedor;
         
         /// <summary>
-        /// Control vVista0.
+        /// Control Vista0.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View vVista0;
+        protected global::System.Web.UI.WebControls.View Vista0;
         
         /// <summary>
-        /// Control BtnClientTodos.
+        /// Control Text1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnClientTodos;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text1;
         
         /// <summary>
         /// Control Text2.
@@ -49,13 +49,13 @@ namespace HardwareStore.Modules.Catalogs.Module {
         protected global::System.Web.UI.HtmlControls.HtmlInputText Text2;
         
         /// <summary>
-        /// Control Text1.
+        /// Control Text3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Text1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text3;
         
         /// <summary>
         /// Control Text4.
@@ -76,39 +76,84 @@ namespace HardwareStore.Modules.Catalogs.Module {
         protected global::System.Web.UI.HtmlControls.HtmlInputText Text5;
         
         /// <summary>
-        /// Control Text3.
+        /// Control Text6.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Text3;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text6;
         
         /// <summary>
-        /// Control btnCancelar.
+        /// Control Text7.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelar;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text7;
         
         /// <summary>
-        /// Control vView1.
+        /// Control Text8.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View vView1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text8;
         
         /// <summary>
-        /// Control BtnAtras.
+        /// Control Text9.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnAtras;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text9;
+        
+        /// <summary>
+        /// Control Text10.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text10;
+        
+        /// <summary>
+        /// Control Text11.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text11;
+        
+        /// <summary>
+        /// Control Text12.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl Text12;
+        
+        /// <summary>
+        /// Control Text13.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl Text13;
+        
+        /// <summary>
+        /// Control View1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View View1;
     }
 }

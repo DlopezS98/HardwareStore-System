@@ -1,80 +1,68 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Employees.aspx.cs" Inherits="HardwareStore.Modules.Catalogs.Module.Employees" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <link href="../../Styles/cssCatalogs.css" rel="stylesheet" />
+    <div style="text-align: center; margin: 10px;">
+        <h2>Empleado</h2>
+    </div>
     <asp:MultiView ID="mtvContenedor" runat="server" ActiveViewIndex="0">
         <asp:View ID="vVista0" runat="server">
-            <a href="MainCatalogs.aspx"><i style="color: #ff0000; margin: 10px" class="fas fa-times"></i></a>
-            <div style="float: right">
-                  <asp:Button OnClick="BtnEmpTodos_Click" ID="BtnEmpTodos" Text="Todos" runat="server" CssClass="btnSuccess" />
-            </div>
-                <div style="text-align: center; margin-top: 20px">
-                    <h3>Nuevo Empleado</h3>            
-                </div>
-            <div style="display: flex">
-                 <div style="width: 27%;margin: 10px">
-                      <h6 style="margin-left: 10px">ID</h6>
-                      <div style="display: flex">
-                           <input runat="server" type="text" name="Type" id="txtId" class="txtFechaRep"/>
-                      </div>
-                  </div>
-                  <div style="width: 60%;margin: 10px">
-                          <h6 style="margin-left: 10px">Nombre</h6>
-                          <div style="display: flex">
-                              <input runat="server" type="text" name="Type" id="Text1" class="txtFechaRep"/>
-                          </div>
-                  </div>
-            </div>
-            <div style="display: flex">
-                <div style="width: 60%;margin: 10px">
-                      <h6 style="margin-left: 10px">Apellido</h6>
-                      <div style="display: flex">
-                           <input runat="server" type="text" name="Type" id="Text3" class="txtFechaRep"/>
-                      </div>
-                </div>
-                <div style="width: 25%;margin: 15px">
-                    <h6 style="margin-left: 10px">Cargo</h6>
-                    <div style="display: flex">
-                            <asp:DropDownList Width="100%" Height="30px" runat="server">
-                                <asp:ListItem Text="Seleccionar--" />
-                                <asp:ListItem Text="..." />
-                                <asp:ListItem Text="..." />
-                            </asp:DropDownList>                    
-                    </div>
-                </div>
-            </div>
-            <div style="display: flex">
-                <div style="width: 30%;margin: 10px">
-                      <h6 style="margin-left: 10px">Teléfono</h6>
-                      <div style="display: flex">
-                           <input runat="server" type="text" name="Type" id="Text2" class="txtFechaRep"/>
-                      </div>
-                </div>
-                <div style="display: flex">
-                    <div style="width: 100%; margin: 10px">
-                         <h6 style="margin-left: 10px">Dirección</h6>
-                         <div style="display: flex">
-                              <textarea placeholder="Escribe la Diirección del empleado" name="textarea"></textarea>
-                         </div>
-                    </div>
-                </div>
-                <div style="width: 35%;margin: 10px">
-                      <h6 style="margin-left: 10px">DNI</h6>
-                      <div style="display: flex">
-                           <input runat="server" type="text" name="Type" id="Text4" class="txtFechaRep"/>
-                      </div>
-                </div>
-            </div>
-            <div style="display: flex">
-                <div style="width: 45%;margin: 10px">
-                      <h6 style="margin-left: 10px">Correo</h6>
-                      <div style="display: flex">
-                           <input runat="server" type="text" name="Type" id="Text5" class="txtFechaRep"/>
-                      </div>
-                </div>
-            </div>
-            <div style="text-align: center; margin: 25px">
-                <asp:Button ID="BtnProCancel" Text="Cancelar" runat="server"  CssClass="btnDanger" />
-                <asp:Button ID="BtnProGuardar" Text="Guardar" runat="server"  CssClass="btnSuccess" />    
-            </div>
+                <div class="containerCatalog">                
+                    <div class="form-principal-employees">
+                        <div style="float: right;">
+                            <asp:Button CssClass="btnPrimary" runat="server" OnClick="BtnEmpTodos_Click" Text="Ver Todos" ID="BtnEmpTodos" />
+                        </div>
+                        <div style="display: flex; margin-top: 50px">
+                            <div class="col-46">
+                                <h5 style="float: left; margin-left: 5px;">Nombre</h5>
+                                <input runat="server" type="text" name="Type" id="Text2" class="form-control"/>
+                            </div>
+                            <div class="col-46">
+                                <h5 style="float: left; margin-left: 5px;">Apellido</h5>
+                                <input runat="server" type="text" name="Type" id="Text1" class="form-control"/>
+                            </div>
+                        </div>
+                        <div style="display: flex">
+                            <div class="col-95">
+                                <h5 style="float: left; margin-left: 5px;">Dirección</h5>
+                                <input runat="server" type="text" name="Type" id="Text3" class="form-control"/>
+                            </div>
+                        </div>
+                        <div style="display: flex">
+                            <div class="col-46">
+                                <h5 style="float: left; margin-left: 5px;">Teléfono</h5>
+                                <input runat="server" type="text" name="Type" id="Text4" class="form-control"/>
+                            </div>
+                            <div class="col-46">
+                                <h5 style="float: left; margin-left: 5px;">DNI</h5>
+                                <input runat="server" type="text" name="Type" id="Text5" class="form-control"/>
+                            </div>
+                        </div>
+                        <div style="display: flex">
+                            <div class="col-46">
+                                <h5 style="float: left; margin-left: 5px;">Correo</h5>
+                                <input runat="server" type="text" name="Type" id="Text6" class="form-control"/>
+                            </div>
+                            <div class="col-46">
+                                <h5 style="float: left; margin-left: 5px;">Correo</h5>  
+                                <div style="width: 100%">
+                                    <asp:DropDownList CssClass="form-control" runat="server">
+                                       <asp:ListItem Text="Seleccionar--" />
+                                       <asp:ListItem Text="..." />
+                                        <asp:ListItem Text="..." />
+                                    </asp:DropDownList>                                                             
+                                </div>
+                            </div>
+                        </div>
+                        <div style="width: 100%; margin: 20px; min-width: 150px; text-align: center">
+                             <asp:Button ID="btnCancelar" OnClick="btnCancelar_Click" Text="Cancelar" runat="server" CssClass="btnDanger" />
+                             <asp:Button Text="Guardar" runat="server" CssClass="btnSuccess" />
+                        </div>
+                    </div> 
+                </div>   
+            <br />
+            <br />
+            <br />
+            <br />
         </asp:View>
         <%-- Vista 2 --%>
         <asp:View ID="vView1" runat="server">   

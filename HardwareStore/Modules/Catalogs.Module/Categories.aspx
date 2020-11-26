@@ -1,44 +1,37 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Categories.aspx.cs" Inherits="HardwareStore.Modules.Catalogs.Module.Categories" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <link href="../../Styles/cssCatalogs.css" rel="stylesheet" />
+    <div style="text-align: center; margin: 10px;">
+        <h2>Categorías</h2>
+    </div>
      <asp:MultiView ID="ctvContenedor" runat="server" ActiveViewIndex="0">
          <asp:View ID="vVista0" runat="server">
-             <a href="MainCatalogs.aspx"><i style="color: #ff0000; margin: 10px" class="fas fa-times"></i></a>
-            <div>
-                <div style="float: right">
-                    <asp:Button OnClick="BtnCatTodos_Click" ID="BtnCatTodos" Text="Todos" runat="server" CssClass="btnSuccess" />
-                </div>
-             
-            <div style="text-align: center; margin-top: 20px">
-                <h3>Nueva Categoría</h3>            
-            </div>
-                <div style="display: flex">
-                    <div style="width: 27%;margin: 10px">
-                          <h6 style="margin-left: 10px">ID</h6>
-                          <div style="display: flex">
-                              <input runat="server" type="text" name="Type" id="txtId" class="txtFechaRep"/>
-                          </div>
-                    </div>
-                    <div style="width: 60%;margin: 10px">
-                          <h6 style="margin-left: 10px">Nombre</h6>
-                          <div style="display: flex">
-                              <input runat="server" type="text" name="Type" id="Text1" class="txtFechaRep"/>
-                          </div>
-                    </div>
-                                        
-                </div>
-                <div style="display: flex">
-                    <div style="width: 90%; margin: 10px">
-                         <h6 style="margin-left: 10px">Descripción</h6>
-                         <div style="display: flex">
-                              <textarea placeholder="Describe el Producto" name="textarea"></textarea>
-                         </div>
-                    </div>
-                </div>               
-                <div style="text-align: center; margin-top: 10px">
-                    <asp:Button ID="BtnProCancel" Text="Cancelar" runat="server" CssClass="btnDanger" />
-                    <asp:Button ID="BtnProGuardar" Text="Guardar" runat="server"  CssClass="btnSuccess" />    
-                </div>
-            </div>
+<%--            <div style="float: right">
+                <asp:Button OnClick="BtnCatTodos_Click" ID="BtnCatTodos" Text="Todos" runat="server" CssClass="btnSuccess" />
+            </div>--%>
+                <div class="containerCatalog">                
+                    <div class="form-principal">
+                        <div style="float: right">
+                            <asp:Button ID="BtnCatTodos" OnClick="BtnCatTodos_Click" Text="Ver Todos" runat="server" CssClass="btnPrimary" />
+                        </div>
+                        <div style="display: flex; margin-top: 50px">
+                            <div class="col-95">
+                                <h5 style="float: left; margin-left: 5px;">Nombre</h5>
+                                <input runat="server" type="text" name="Type" id="Text2" class="form-control"/>
+                            </div>
+                        </div>
+                        <div style="display: flex">
+                            <div class="col-95">
+                                <h5 style="float: left; margin-left: 5px;">Decripción</h5>
+                                <input runat="server" type="text" name="Type" id="Text1" class="form-control"/>
+                            </div>
+                        </div>
+                        <div style="width: 100%; margin: 20px; min-width: 150px; text-align: center">
+                             <asp:Button ID="btnCancelar" OnClick="btnCancelar_Click" Text="Cancelar" runat="server" CssClass="btnDanger" />
+                             <asp:Button Text="Guardar" runat="server" CssClass="btnSuccess" />
+                        </div>
+                    </div> 
+                </div>           
              
         </asp:View>
 

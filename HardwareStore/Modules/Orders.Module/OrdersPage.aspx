@@ -2,8 +2,23 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link href="../../Styles/Toast.css" rel="stylesheet" />
+    <link href="../../Styles/OrdersStyle.css" rel="stylesheet" />
+    <%--header--%>
+	<header id="main-header">		
+		<div id="logo-header">
+			<span class="site-name">Modulo pedido / Compra</span>
+		</div> <!-- / #logo-header -->
 
+		<nav>
+			<ul>
+				<li><asp:Button CssClass="btnDark" runat="server" ID="btnBackToCreateOrder" OnClick="btnBackToCreateOrder_Click" Text="Nuevo" /></li>
+				<li><asp:Button CssClass="btnDark" runat="server" ID="btnTblProducts" OnClick="btnTblProducts_Click" Text="Detalle Compra" /></li>
+				<li><asp:Button CssClass="btnDark" runat="server" ID="btnGoToListOrders" OnClick="btnGoToListOrders_Click" Text="Ver Pedidos" /></li>
+			</ul>
+		</nav><!-- / nav -->
 
+	</header>
+    <%--Fin del Header--%>
     <%-- Sección del modal --%>
     <div class="OdModal" id="odmodal" data-animation="slideInOutLeft">
         <div class="modal-dialog">
@@ -59,8 +74,8 @@
         </div>
     </div>
     <%-- Fin Sección del modal --%>
-    <div style="border-bottom: 1px solid #ddd; border-left: 1px solid #ddd; border-right: 1px solid #ddd; border-top: 1.5px solid #0D9DBB; background: #fff; margin-bottom: 10px; border-radius: 10px; max-width: 100%; margin-top: 30px;">
-        <h1 style="text-align: center;">Módulo Pedidos / Compras</h1>
+    <div style="border-bottom: 1px solid #ddd; border-left: 1px solid #ddd; border-right: 1px solid #ddd; border-top: 1.5px solid #0D9DBB; background: #F9F9F9; margin-bottom: 10px; border-radius: 10px; max-width: 100%; margin-top: 30px;">
+        
         <label runat="server" id="warehouseId"></label>
         <label runat="server" id="proddetailid"></label>
 
@@ -71,11 +86,7 @@
                         <%-- Inicio formulario principal --%>
                         <div class="ContainerPedidos" style="padding-left: 24px; padding-right: 24px;">
                             <div style="text-align: center">
-                                <h2 class="titleVenta">Nuevo Pedido</h2>
                                 <h2 runat="server" class="titleVenta" id="ShowMessage"></h2>
-                            </div>
-                            <div>
-                                <asp:Button CssClass="btnPrimary" runat="server" ID="btnGoToListOrders" OnClick="btnGoToListOrders_Click" Text="Ver Pedidos" />
                             </div>
                             <hr />
                             <div id="formdetail" style="display: flex; flex-wrap: wrap;">
@@ -85,7 +96,7 @@
                                 <asp:TextBox Visible="false" placeholder="Bodega" runat="server" ID="txtWarehouseName" class="form-control" />
                                 <div class="col-31">
                                     <h6 style="margin-left: 10px">Producto</h6>
-                                    <div style="display: flex">
+                                    <div style="display: flex; ">
                                         <asp:TextBox ReadOnly="true" placeholder="Producto" runat="server" ID="txtProduct" class="form-control form-disable" />
                                         <%-- <asp:LinkButton data-open="odmodal" style="display: flex; margin-top: 5px" runat="server"><i class="fas fa-plus-circle" style="margin: 10px; color: #00A350"></i></asp:LinkButton>--%>
                                         <asp:Button runat="server" ToolTip="Agregar producto" ID="btnShowmodal" OnClientClick="ShowModalDetail()" type="button" class="btnAdd" data-open="odmodal" Text="+" />
@@ -106,7 +117,7 @@
                                     <div style="display: flex;">
                                         <asp:DropDownList ID="ddlstSuppliers" CssClass="form-control" Width="100%" Height="50px" runat="server">
                                         </asp:DropDownList>
-                                        <%--<asp:Button ToolTip="Crear nuevo proveedor" class="btnAdd" type="button" runat="server" Text="+" />--%>
+                                        <asp:Button ToolTip="Crear nuevo proveedor" class="btnAdd" type="button" runat="server" Text="+" />
                                     </div>
                                     <div>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ValidationGroup="DetailsGroup" runat="server" InitialValue="0" ControlToValidate="ddlstSuppliers" ForeColor="Red" ErrorMessage="Seleccione un proveedor"></asp:RequiredFieldValidator>
@@ -186,93 +197,7 @@
                             </div>
                         </div>
                         <%-- Fin Formulario principal --%>
-                        <%-- Tabla de productos --%>
-                        <div class="ContainerPedidos">
-                            <h4 style="text-align: center;">Tabla Productos</h4>
-                            <hr />
-                            <asp:GridView runat="server" DataKeyNames="Fk_WarehouseID,Fk_ProductDetailID" AutoGenerateColumns="false"
-                                ID="GridViewOrderDetailsStage" OnRowCommand="GridViewOrderDetailsStage_RowCommand" CssClass="headerTable" BorderStyle="None">
-                                <Columns>
-                                    <asp:BoundField HeaderText="ID Bodega" DataField="Fk_WarehouseID" Visible="false" />
-                                    <asp:BoundField HeaderText="ID Producto" DataField="Fk_ProductDetailID" Visible="false" />
-                                    <asp:BoundField HeaderText="Bodega" DataField="WarehouseName" />
-                                    <asp:BoundField HeaderText="Producto" DataField="ProductName" />
-                                    <asp:BoundField HeaderText="Proveedor" DataField="SupplierName" />
-                                    <asp:BoundField HeaderText="Marca" DataField="BrandName" />
-                                    <asp:BoundField HeaderText="Material" DataField="MaterialType" />
-                                    <asp:BoundField HeaderText="Unidad" DataField="MeasureUnit" />
-                                    <asp:BoundField HeaderText="Dimensiones" DataField="Dimensions" />
-                                    <asp:BoundField HeaderText="Código" DataField="DefaultCode" />
-                                    <asp:BoundField HeaderText="Precio Compra" DataField="PurchasePrice" />
-                                    <asp:BoundField HeaderText="Cantidad" DataField="Quantity" />
-                                    <asp:BoundField HeaderText="Subtotal" DataField="Subtotal" />
-                                    <asp:BoundField HeaderText="Descuento" DataField="Discount" />
-                                    <asp:BoundField HeaderText="Total" DataField="totalAmount" />
-                                    <asp:TemplateField HeaderText="Opciones">
-                                        <ItemTemplate>
-                                            <asp:LinkButton Font-Size="11px" Height="28px" Width="80px"
-                                                CssClass="LinkbtnPrimary" ID="EditLink" ToolTip="Editar Producto"
-                                                CommandName="cmdEdit" runat="server">Editar</asp:LinkButton>
-                                            <asp:LinkButton Font-Size="11px" Height="28px" Width="80px"
-                                                CssClass="LinkbtnDanger" ID="DeleteLink" ToolTip="Eliminar Producto"
-                                                CommandName="cmdDelete" runat="server">Eliminar</asp:LinkButton>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                </Columns>
-                            </asp:GridView>
-                        </div>
-                        <%-- Fin de la tabla --%>
-                        <%-- Inicio del formulario del total a pagar --%>
-                        <div class="ContainerPedidos">
-                            <div style="display: flex; flex-wrap: wrap;">
-                                <div class="col-31">
-                                    <h6 style="margin-left: 10px">Sub Total</h6>
-                                    <div style="display: flex">
-                                        <div class="spanType">
-                                            <span>C$</span>
-                                        </div>
-                                        <asp:TextBox ReadOnly="true" runat="server" ID="txtSubtotal" placeholder="Subtotal" CssClass="form-control form-disable" />
-                                    </div>
-                                    <asp:RequiredFieldValidator ForeColor="Red" runat="server" ID="reqValSubtotal" ValidationGroup="OrderGroup" ControlToValidate="txtSubtotal" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
-                                </div>
-                                <div class="col-31">
-                                    <h6 style="margin-left: 10px">IVA</h6>
-                                    <div style="display: flex">
-                                        <asp:TextBox TextMode="Number" step="0.01" runat="server" ID="txtTotalTax" placeholder="IVA" CssClass="form-control" />
-                                    </div>
-                                    <div>
-                                        <asp:RangeValidator Type="Double" runat="server" MinimumValue="0" MaximumValue="99999999999" ForeColor="Red" ID="valRangeTotalTax" ValidationGroup="OrderGroup" ControlToValidate="txtTotalTax" ErrorMessage="Ingrese un valor válido"></asp:RangeValidator>
-                                    </div>
-                                    <asp:RequiredFieldValidator ForeColor="Red" runat="server" ID="reqValTotalTax" ValidationGroup="OrderGroup" ControlToValidate="txtTotalTax" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
-                                </div>
-                                <div class="col-31">
-                                    <h6 style="margin-left: 10px">Descuento</h6>
-                                    <div style="display: flex">
-                                        <asp:TextBox TextMode="Number" runat="server" ID="txtTotalDiscount" placeholder="Descuento" CssClass="form-control" />
-                                    </div>
-                                    <div>
-                                        <asp:RangeValidator Type="Integer" runat="server" MinimumValue="0" MaximumValue="100" ForeColor="Red" ID="RangeValidator2" ValidationGroup="OrderGroup" ControlToValidate="txtTotalDiscount" ErrorMessage="El descuento debe ser entre 0 y 100"></asp:RangeValidator>
-                                    </div>
-                                    <asp:RequiredFieldValidator ForeColor="Red" runat="server" ID="RequiredFieldValidator1" ValidationGroup="OrderGroup" ControlToValidate="txtTotalDiscount" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
-                                </div>
-                                <div class="col-31">
-                                    <h6 style="margin-left: 10px">Total</h6>
-                                    <div style="display: flex">
-                                        <div class="spanType">
-                                            <span>C$</span>
-                                        </div>
-                                        <div style="width: 100%">
-                                            <asp:TextBox ReadOnly="true" placeholder="Total" runat="server" ID="txtTotal" CssClass="form-control form-disable" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="width: 100%; margin: 20px; min-width: 150px; text-align: center">
-                                <asp:Button runat="server" Text="Calcular" ValidationGroup="" OnClick="btnRecalculateOrderTotal_Click" ID="btnRecalculateOrderTotal" CssClass="btnSuccess" Style="margin-left: 10px" />
-                                <asp:Button runat="server" Text="Registrar Orden" ValidationGroup="OrderGroup" ID="btnCreateOrder" OnClick="btnCreateOrder_Click" CssClass="btnSuccess" Style="margin-left: 10px" />
-                                <asp:Button runat="server" Text="Cancelar" ID="btnCancelOrder" OnClick="btnCancelOrder_Click" CssClass="btnDanger" Style="margin-left: 10px" />
-                            </div>
-                        </div>
+
                     </ContentTemplate>
                     <Triggers>
                         <asp:PostBackTrigger ControlID="btnGoToListOrders" />
@@ -284,9 +209,8 @@
             <asp:View runat="server">
                 <asp:UpdatePanel runat="server" ID="UpdatePanel3">
                     <ContentTemplate>
-                        <div style="margin-left: 3%; margin-right: 3%;">
-                            <div style="display:flex; align-items:center; justify-content:space-between;">
-                                <asp:Button CssClass="btnSuccess" runat="server" ID="btnBackToCreateOrder" OnClick="btnBackToCreateOrder_Click" Text="Crear Pedido" />
+                        <div style="margin-left: 3%; margin-right: 3%; margin-top: 4%">
+                            <div style="display:flex; align-items:center; justify-content:space-between;">                                
                                 <asp:Button CssClass="btnPrimary" runat="server" ID="btnUpdateTable" Text="Actualizar" OnClick="btnUpdateTable_Click" />
                             </div>
                             <div style="display: flex">
@@ -367,6 +291,102 @@
                     </Triggers>
                 </asp:UpdatePanel>
             </asp:View>
+
+            <asp:View runat="server">
+                <asp:UpdatePanel runat="server" ID="UpdatePanel4">
+                    <ContentTemplate>
+                        <%-- Tabla de productos --%>
+                        <div class="ContainerPedidos">
+                            <h4 style="text-align: center;">Tabla Productos</h4>
+                            <hr />
+                            <asp:GridView runat="server" DataKeyNames="Fk_WarehouseID,Fk_ProductDetailID" AutoGenerateColumns="false"
+                                ID="GridViewOrderDetailsStage" OnRowCommand="GridViewOrderDetailsStage_RowCommand" CssClass="headerTable" BorderStyle="None">
+                                <Columns>
+                                    <asp:BoundField HeaderText="ID Bodega" DataField="Fk_WarehouseID" Visible="false" />
+                                    <asp:BoundField HeaderText="ID Producto" DataField="Fk_ProductDetailID" Visible="false" />
+                                    <asp:BoundField HeaderText="Bodega" DataField="WarehouseName" />
+                                    <asp:BoundField HeaderText="Producto" DataField="ProductName" />
+                                    <asp:BoundField HeaderText="Proveedor" DataField="SupplierName" />
+                                    <asp:BoundField HeaderText="Marca" DataField="BrandName" />
+                                    <asp:BoundField HeaderText="Material" DataField="MaterialType" />
+                                    <asp:BoundField HeaderText="Unidad" DataField="MeasureUnit" />
+                                    <asp:BoundField HeaderText="Dimensiones" DataField="Dimensions" />
+                                    <asp:BoundField HeaderText="Código" DataField="DefaultCode" />
+                                    <asp:BoundField HeaderText="Precio Compra" DataField="PurchasePrice" />
+                                    <asp:BoundField HeaderText="Cantidad" DataField="Quantity" />
+                                    <asp:BoundField HeaderText="Subtotal" DataField="Subtotal" />
+                                    <asp:BoundField HeaderText="Descuento" DataField="Discount" />
+                                    <asp:BoundField HeaderText="Total" DataField="totalAmount" />
+                                    <asp:TemplateField HeaderText="Opciones">
+                                        <ItemTemplate>
+                                            <asp:LinkButton Font-Size="11px" Height="28px" Width="80px"
+                                                CssClass="LinkbtnPrimary" ID="EditLink" ToolTip="Editar Producto"
+                                                CommandName="cmdEdit" runat="server">Editar</asp:LinkButton>
+                                            <asp:LinkButton Font-Size="11px" Height="28px" Width="80px"
+                                                CssClass="LinkbtnDanger" ID="DeleteLink" ToolTip="Eliminar Producto"
+                                                CommandName="cmdDelete" runat="server">Eliminar</asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
+                        </div>
+                        <%-- Inicio del formulario del total a pagar --%>
+                        <div class="ContainerPedidos">
+                            <div style="display: flex; flex-wrap: wrap;">
+                                <div class="col-31">
+                                    <h6 style="margin-left: 10px">Sub Total</h6>
+                                    <div style="display: flex">
+                                        <div class="spanType">
+                                            <span>C$</span>
+                                        </div>
+                                        <div style="padding-left: 12%; width: 100%">
+                                            <asp:TextBox ReadOnly="true" runat="server" ID="txtSubtotal" placeholder="Subtotal" CssClass="form-control form-disable" />
+                                        </div>
+                                    </div>
+                                    <asp:RequiredFieldValidator ForeColor="Red" runat="server" ID="reqValSubtotal" ValidationGroup="OrderGroup" ControlToValidate="txtSubtotal" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
+                                </div>
+                                <div class="col-31">
+                                    <h6 style="margin-left: 10px">IVA</h6>
+                                    <div style="display: flex">
+                                        <asp:TextBox TextMode="Number" step="0.01" runat="server" ID="txtTotalTax" placeholder="IVA" CssClass="form-control" />
+                                    </div>
+                                    <div>
+                                        <asp:RangeValidator Type="Double" runat="server" MinimumValue="0" MaximumValue="99999999999" ForeColor="Red" ID="valRangeTotalTax" ValidationGroup="OrderGroup" ControlToValidate="txtTotalTax" ErrorMessage="Ingrese un valor válido"></asp:RangeValidator>
+                                    </div>
+                                    <asp:RequiredFieldValidator ForeColor="Red" runat="server" ID="reqValTotalTax" ValidationGroup="OrderGroup" ControlToValidate="txtTotalTax" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
+                                </div>
+                                <div class="col-31">
+                                    <h6 style="margin-left: 10px">Descuento</h6>
+                                    <div style="display: flex">
+                                        <asp:TextBox TextMode="Number" runat="server" ID="txtTotalDiscount" placeholder="Descuento" CssClass="form-control" />
+                                    </div>
+                                    <div>
+                                        <asp:RangeValidator Type="Integer" runat="server" MinimumValue="0" MaximumValue="100" ForeColor="Red" ID="RangeValidator2" ValidationGroup="OrderGroup" ControlToValidate="txtTotalDiscount" ErrorMessage="El descuento debe ser entre 0 y 100"></asp:RangeValidator>
+                                    </div>
+                                    <asp:RequiredFieldValidator ForeColor="Red" runat="server" ID="RequiredFieldValidator1" ValidationGroup="OrderGroup" ControlToValidate="txtTotalDiscount" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
+                                </div>
+                                <div class="col-31">
+                                    <h6 style="margin-left: 10px">Total</h6>
+                                    <div style="display: flex">
+                                        <div class="spanType">
+                                            <span>C$</span>
+                                        </div>
+                                        <div style="width: 100%">
+                                            <asp:TextBox ReadOnly="true" placeholder="Total" runat="server" ID="txtTotal" CssClass="form-control form-disable" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="width: 100%; margin: 20px; min-width: 150px; text-align: center">
+                                <asp:Button runat="server" Text="Calcular" ValidationGroup="" OnClick="btnRecalculateOrderTotal_Click" ID="btnRecalculateOrderTotal" CssClass="btnSuccess" Style="margin-left: 10px" />
+                                <asp:Button runat="server" Text="Registrar Orden" ValidationGroup="OrderGroup" ID="btnCreateOrder" OnClick="btnCreateOrder_Click" CssClass="btnSuccess" Style="margin-left: 10px" />
+                                <asp:Button runat="server" Text="Cancelar" ID="btnCancelOrder" OnClick="btnCancelOrder_Click" CssClass="btnDanger" Style="margin-left: 10px" />
+                            </div>
+                        </div>
+                        <%-- Fin de la tabla --%>
+                     </ContentTemplate>
+                </asp:UpdatePanel>
+            </asp:View>
         </asp:MultiView>
     </div>
     <%--Toast--%>
@@ -398,7 +418,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ScriptSection" runat="server">
     <%--<script src="../../Scripts/Modules/OrderModule.js"></script>--%>
     <%--<script src="../../Scripts/Modal/Modal.js"></script>--%>
-    <script>
+    <script>   
+   
         function launch_toast() {
             var el = document.getElementById("toast")
             el.classList.add("show");

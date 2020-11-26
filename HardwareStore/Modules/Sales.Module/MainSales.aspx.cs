@@ -13,5 +13,20 @@ namespace HardwareStore.Modules.Sales.Module
         {
 
         }
+
+        protected void btnBackToCreateSale_Click(object sender, EventArgs e)
+        {
+            SalesView.ActiveViewIndex = 0;
+        }
+
+        protected void btnTblProducts_Click(object sender, EventArgs e)
+        {
+            SalesView.ActiveViewIndex = 2;
+        }
+
+        protected void btnGoToListOrdersSales_Click(object sender, EventArgs e)
+        {
+            SalesView.ActiveViewIndex = 1;
+        }
     }
 }

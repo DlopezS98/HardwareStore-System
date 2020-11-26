@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MainCatalogs.aspx.cs" Inherits="HardwareStore.Modules.Catalogs.Module.MainCatalogs" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-   <div class="row">
+    <div style="text-align: center; margin: 10px;">
+        <h2>Administrador de Catálogos</h2>
+    </div>
+   <div class="rowcard">
       <div class="column">
         <div class="card">
             <h3>Productos</h3>

@@ -20,7 +20,7 @@
 
     .btnSuccess:hover {
         background: #218838;
-        cursor:pointer;
+        cursor: pointer;
     }
 
 .btnDanger {
@@ -41,6 +41,23 @@
         cursor: pointer;
     }
 
+.btnDark {
+    background: #333333;
+    color: #fff;
+    border-radius: 10px;
+    border: none;
+    width: 120px;
+    height: 45px;
+    font-size: 15px;
+    text-decoration: none;
+    margin: 0px;
+    text-align: center
+}
+
+    .btnDark:hover {
+        background: #222222;
+        cursor: pointer;
+    }
 
 .btnPrimary {
     background: #0084FF;
@@ -103,28 +120,28 @@
     }
 
 
-    .btnAdd {
-        border: none;
-        background: #00A350;
-        color: #fff;
-        border-radius: 10px;
-        width: 30px;
-        height: 30px;
-        /*font-size: 15px;*/
-        padding: 0px;
-        margin: 5px;
-        margin-top: 15px;
-    }
+.btnAdd {
+    border: none;
+    background: #00A350;
+    color: #fff;
+    border-radius: 10px;
+    width: 30px;
+    height: 30px;
+    /*font-size: 15px;*/
+    padding: 0px;
+    margin: 5px;
+    margin-top: 15px;
+}
 
-        .btnAdd:hover {
-            background: #218838;
-            cursor: pointer;
-        }
+    .btnAdd:hover {
+        background: #218838;
+        cursor: pointer;
+    }
 
 .spanType {
     float: left;
     height: 50px;
-    width: 10%;
+    width: 4%;
     background: #ddd;
     color: #2F323A;
     margin: 5px;
@@ -132,6 +149,10 @@
     border-bottom-left-radius: 8px;
     border-top-left-radius: 8px;
     text-align: center;
+    position: absolute;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
 }
 /*Site Master*/
 .MainSection {
@@ -150,7 +171,7 @@
     width: 100%;
     margin-top: 4rem;
     margin-right: 10px;
-    margin-left: 260px;
+    margin-left: 70px;
 }
 
 header {
@@ -207,26 +228,26 @@ header {
     padding-top: 5px;
     position: fixed;
     left: 0;
-    width: 250px;
+    width: 60px;
     height: calc(100% + 20px);
     transition: 0.5s;
     transition-property: left;
 }
 
     .SideBar .Avatar {
-        width: 50px;
-        height: 50px;
+        height: 30px;
+        width: 30px;
+        margin-left: 15px;
         border-radius: 100px;
         margin-bottom: 10px;
-        margin-left: 100px;
     }
 
-    .SideBar h4 {
+    /*.SideBar h4 {
         color: #ccc;
         margin-top: 0;
         margin-bottom: 20px;
         margin-left: 45px;
-    }
+    }*/
 
     .SideBar a {
         color: #fff;
@@ -238,6 +259,7 @@ header {
         box-sizing: border-box;
         transition: 0.5s;
         transition-property: background;
+        font-size: 15px;
     }
 
         .SideBar a:hover {
@@ -245,13 +267,13 @@ header {
             color: #fff;
         }
 
-    .SideBar span {
+/*.SideBar span {
         padding-left: 15px;
         font-size: 15px;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+    }*/
 
-@media screen and (max-width: 1100px) {
+/*@media screen and (max-width: 1100px) {
     .SideBar {
         left: -190px;
     }
@@ -279,13 +301,13 @@ header {
         width: 30px;
         margin-left: 205px
     }
-}
+}*/
 /*Administrados de Catálogos*/
 * {
     box-sizing: border-box;
 }
 
-.column {   
+.column {
     float: left;
     width: 25%;
     padding: 0 10px;
@@ -439,22 +461,22 @@ header {
     border-radius: 5px;
     box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.5);
 }
-    
+
 .form-control {
     height: 50px;
     padding: 5px;
-    padding-left: 10px;
+    padding-left: 15px;
     margin: 5px;
     width: 100%;
     background: #fff;
     border-radius: 8px;
     border: 1px solid #ccc;
     max-width: 100%;
-    outline:none;
+    outline: none;
 }
 
     .form-control:focus {
-        border: 2px solid #0084FF;
+        border: 1.5px solid #0084FF;
     }
 
 .form-disable {
@@ -470,48 +492,49 @@ header {
     /*border-collapse: collapse;*/
 }
 
-.headerTable td {
-    padding: 2px;
-    border: none;
-    color: #717171;
-}
-.headerTable th {
-    padding: 4px 2px;
-    color: #fff;
-    background: #2F323A url(grd_head.png) repeat-x top;
-    border-left: none;
-    font-size: 0.9em;
-}
-
-.headerTable .alt {
-    background: #fcfcfc url(grd_alt.png) repeat-x top;
-}
-
-.headerTable .pgr {
-    background: #424242 url(grd_pgr.png) repeat-x top;
-}
-
-    .headerTable .pgr table {
-        margin: 5px 0;
+    .headerTable td {
+        padding: 2px;
+        border: none;
+        color: #717171;
     }
 
-    .headerTable .pgr td {
-        padding: 0 6px;
-        border-left:none;
-        font-weight: bold;
+    .headerTable th {
+        padding: 4px 2px;
         color: #fff;
-        /*line-height: 12px;*/
+        background: #2F323A url(grd_head.png) repeat-x top;
+        border-left: none;
+        font-size: 0.9em;
     }
 
-    .headerTable .pgr a {
-        color: #666;
-        text-decoration: none;
+    .headerTable .alt {
+        background: #fcfcfc url(grd_alt.png) repeat-x top;
     }
 
-        .headerTable .pgr a:hover {
-            color: #000;
+    .headerTable .pgr {
+        background: #424242 url(grd_pgr.png) repeat-x top;
+    }
+
+        .headerTable .pgr table {
+            margin: 5px 0;
+        }
+
+        .headerTable .pgr td {
+            padding: 0 6px;
+            border-left: none;
+            font-weight: bold;
+            color: #fff;
+            /*line-height: 12px;*/
+        }
+
+        .headerTable .pgr a {
+            color: #666;
             text-decoration: none;
         }
+
+            .headerTable .pgr a:hover {
+                color: #000;
+                text-decoration: none;
+            }
 
 /*columns*/
 .col-mr-25 {
@@ -569,7 +592,7 @@ header {
 }
 
 
-@media screen and (max-width: 986px) {
+@media screen and (max-width: 1172px) {
     .col-31 {
         width: 45%;
     }

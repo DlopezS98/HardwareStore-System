@@ -154,6 +154,7 @@
     <Content Include="Modules\Sales.Module\MainSales.aspx" />
     <Content Include="Modules\Security.Module\MainSecurity.aspx" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
+    <Content Include="Modules\SystemConfiguration\Configuration.aspx" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
     <Content Include="Scripts\jquery-3.5.1.slim.js" />
@@ -187,6 +188,7 @@
     <Content Include="Styles\cssConfiguration.css" />
     <Content Include="Styles\cssSales.css" />
     <Content Include="Styles\OdModalStyle.css" />
+    <Content Include="Styles\OrdersStyle.css" />
     <Content Include="Styles\Styles.css" />
     <Content Include="Styles\Toast.css" />
     <Content Include="ViewSwitcher.ascx" />
@@ -313,6 +315,13 @@
     <Compile Include="Modules\Security.Module\MainSecurity.aspx.designer.cs">
       <DependentUpon>MainSecurity.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\SystemConfiguration\Configuration.aspx.cs">
+      <DependentUpon>Configuration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\SystemConfiguration\Configuration.aspx.designer.cs">
+      <DependentUpon>Configuration.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -339,7 +348,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Modules\Home\" />
-    <Folder Include="Modules\SystemConfiguration\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

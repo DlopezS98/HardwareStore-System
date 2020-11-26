@@ -7,13 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace HardwareStore.Modules.Catalogs.Module
-{
-
-
-    public partial class Employees
-    {
-
+namespace HardwareStore.Modules.Catalogs.Module {
+    
+    
+    public partial class Employees {
+        
         /// <summary>
         /// Control mtvContenedor.
         /// </summary>
@@ -22,7 +20,7 @@ namespace HardwareStore.Modules.Catalogs.Module
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.MultiView mtvContenedor;
-
+        
         /// <summary>
         /// Control vVista0.
         /// </summary>
@@ -31,7 +29,7 @@ namespace HardwareStore.Modules.Catalogs.Module
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View vVista0;
-
+        
         /// <summary>
         /// Control BtnEmpTodos.
         /// </summary>
@@ -40,34 +38,7 @@ namespace HardwareStore.Modules.Catalogs.Module
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnEmpTodos;
-
-        /// <summary>
-        /// Control txtId.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtId;
-
-        /// <summary>
-        /// Control Text1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Text1;
-
-        /// <summary>
-        /// Control Text3.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Text3;
-
+        
         /// <summary>
         /// Control Text2.
         /// </summary>
@@ -76,7 +47,25 @@ namespace HardwareStore.Modules.Catalogs.Module
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText Text2;
-
+        
+        /// <summary>
+        /// Control Text1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text1;
+        
+        /// <summary>
+        /// Control Text3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text3;
+        
         /// <summary>
         /// Control Text4.
         /// </summary>
@@ -85,7 +74,7 @@ namespace HardwareStore.Modules.Catalogs.Module
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText Text4;
-
+        
         /// <summary>
         /// Control Text5.
         /// </summary>
@@ -94,25 +83,25 @@ namespace HardwareStore.Modules.Catalogs.Module
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText Text5;
-
+        
         /// <summary>
-        /// Control BtnProCancel.
+        /// Control Text6.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnProCancel;
-
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text6;
+        
         /// <summary>
-        /// Control BtnProGuardar.
+        /// Control btnCancelar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnProGuardar;
-
+        protected global::System.Web.UI.WebControls.Button btnCancelar;
+        
         /// <summary>
         /// Control vView1.
         /// </summary>
@@ -121,7 +110,7 @@ namespace HardwareStore.Modules.Catalogs.Module
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View vView1;
-
+        
         /// <summary>
         /// Control BtnAtras.
         /// </summary>

@@ -23,5 +23,10 @@ namespace HardwareStore.Modules
         {
             mtvContenedor.ActiveViewIndex = 0;
         }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Modules/Catalogs.Module/MainCatalogs.aspx");
+        }
     }
 }

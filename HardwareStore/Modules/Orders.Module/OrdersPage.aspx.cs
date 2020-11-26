@@ -130,7 +130,7 @@ namespace HardwareStore.Modules.Orders.Module
             {
                 case "cmdEdit":
                     this.SendOrderDetailStageToTextbox(idWhr, idProdDetail);
-                    btnAddToDetailStageList.Text = "Editar";
+                    btnAddToDetailStageList.Text = "Editar";                   
                     break;
 
                 case "cmdDelete":
@@ -192,6 +192,7 @@ namespace HardwareStore.Modules.Orders.Module
             return OdtStg;
         }
 
+
         //Añadiendo a/ editanto la Lista de detalle (pedido)
         protected void btnAddToDetailStageList_Click(object sender, EventArgs e)
         {
@@ -199,6 +200,7 @@ namespace HardwareStore.Modules.Orders.Module
             {
                 case "Agregar":
                     var obj = this.CreateItemForDetailStage();
+
                     if (Session["ListOdtStg"] == null)
                     {
                         //Agregando a lista
@@ -458,6 +460,11 @@ namespace HardwareStore.Modules.Orders.Module
             DateTime Start = DateTime.Parse("1998-10-01");
             DateTime End = DateTime.Now;
             this.LoadGridViewOrders(Start, End);
+        }
+
+        protected void btnTblProducts_Click(object sender, EventArgs e)
+        {
+            OrdersView.ActiveViewIndex = 2;
         }
     }
 }

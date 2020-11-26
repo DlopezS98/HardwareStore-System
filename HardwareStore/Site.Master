@@ -41,16 +41,16 @@
                 <div class="SideBar">
                     <div>
                         <img src="~/Images/Avatar.png" alt="" runat="server" class="Avatar" />
-                        <h4>Carlos Aguirre </h4>
+                        <%--<h4>Carlos Aguirre </h4--%>
                     </div>
-                    <a href="#"><i class="fas fa-home"><span>INICIO</span></i></a>
-                    <a href="/Modules/Sales.Module/MainSales.aspx"><i class="far fa-calendar-check"><span>Ventas</span></i></a>
-                    <a href="/Modules/ProductsAdmin.Module/ProductsAdminMain.aspx"><i class="fas fa-cogs"><span>Admin. de Existencias</span></i></a>
-                    <a href="/Modules/Catalogs.Module/MainCatalogs.aspx"><i class="fab fa-buffer"><span>Admin. de Catálogos</span></i></a>
-                    <a href="/Modules/Reports.Module/MainReports.aspx"><i class="fas fa-receipt"><span>Reportes</span></i></a>
-                    <a href="/Modules/Orders.Module/OrdersPage.aspx"><i class="fas fa-dolly"><span>Compras</span></i></a>
-                    <a href="/Modules/Security.Module/MainSecurity.aspx"><i class="fas fa-shield-alt"><span>Seguridad</span></i></a>
-                    <a href="#"><i class="fas fa-cog"><span>Configuración</span></i></a>
+                    <a title="Inicio" href="#"><i class="fas fa-home"><%--<span>INICIO</span>--%></i></a>
+                    <a title="Ventas" href="/Modules/Sales.Module/MainSales.aspx"><i class="far fa-calendar-check"><%--<span>Ventas</span>--%></i></a>
+                    <a title="Administración de Existencias" href="/Modules/ProductsAdmin.Module/ProductsAdminMain.aspx"><i class="fas fa-cogs"><%--<span>Admin. de Existencias</span>--%></i></a>
+                    <a title="Administración de Catálogos" href="/Modules/Catalogs.Module/MainCatalogs.aspx"><i class="fab fa-buffer"><%--<span>Admin. de Catálogos</span>--%></i></a>
+                    <a title="Reportes" href="/Modules/Reports.Module/MainReports.aspx"><i class="fas fa-receipt"><%--<span>Reportes</span>--%></i></a>
+                    <a title="Compras" href="/Modules/Orders.Module/OrdersPage.aspx"><i class="fas fa-dolly"><%--<span>Compras</span>--%></i></a>
+                    <a title="Seguridad" href="/Modules/Security.Module/MainSecurity.aspx"><i class="fas fa-shield-alt"><%--<span>Seguridad</span>--%></i></a>
+                    <a title="Configuración" href="/Modules/SystemConfiguration/Configuration.aspx"><i class="fas fa-cog"><%--<span>Configuración</span>--%></i></a>
                 </div>
                 <main class="ContainerPrincipal">
                     <asp:ContentPlaceHolder ID="MainContent" runat="server">
