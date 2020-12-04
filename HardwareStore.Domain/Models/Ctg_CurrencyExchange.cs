@@ -23,6 +23,7 @@ namespace HardwareStore.Domain.Models
         public int Pk_CurrencyExchangeID { get; set; }
         public int Fk_CurrencyID { get; set; }
         public string Cye_LocalCurrency { get; set; }
+        public string Cye_Symbol { get; set; }
         public double Cye_Sale { get; set; }
         public double Cye_Purchase { get; set; }
         public System.DateTime Cye_CreatedAt { get; set; }

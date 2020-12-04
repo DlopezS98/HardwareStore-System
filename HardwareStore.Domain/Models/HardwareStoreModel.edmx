@@ -35,7 +35,7 @@
           </Key>
           <Property Name="Pk_CurrencyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Cy_Name" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="Cy_Description" Type="nvarchar" MaxLength="150" />
+          <Property Name="Cy_Symbol" Type="nvarchar" MaxLength="5" Nullable="false" />
           <Property Name="Cy_Deleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Ctg_CurrencyExchange">
@@ -45,6 +45,7 @@
           <Property Name="Pk_CurrencyExchangeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Fk_CurrencyID" Type="int" Nullable="false" />
           <Property Name="Cye_LocalCurrency" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cye_Symbol" Type="nvarchar" MaxLength="5" Nullable="false" />
           <Property Name="Cye_Sale" Type="float" Nullable="false" />
           <Property Name="Cye_Purchase" Type="float" Nullable="false" />
           <Property Name="Cye_CreatedAt" Type="date" Nullable="false" />
@@ -863,8 +864,6 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
         <EntityContainer Name="HardwareStoreEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Ctg_Brands" EntityType="HardwareStoreModel.Ctg_Brands" />
           <EntitySet Name="Ctg_Categories" EntityType="HardwareStoreModel.Ctg_Categories" />
-          <EntitySet Name="Ctg_Currency" EntityType="HardwareStoreModel.Ctg_Currency" />
-          <EntitySet Name="Ctg_CurrencyExchange" EntityType="HardwareStoreModel.Ctg_CurrencyExchange" />
           <EntitySet Name="Ctg_Customers" EntityType="HardwareStoreModel.Ctg_Customers" />
           <EntitySet Name="Ctg_DiscountPromotions" EntityType="HardwareStoreModel.Ctg_DiscountPromotions" />
           <EntitySet Name="Ctg_Employees" EntityType="HardwareStoreModel.Ctg_Employees" />
@@ -894,14 +893,6 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
           <AssociationSet Name="FK_CATEGORIES_PDL" Association="HardwareStoreModel.FK_CATEGORIES_PDL">
             <End Role="Ctg_Categories" EntitySet="Ctg_Categories" />
             <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CURRENCYEXCHANGE" Association="HardwareStoreModel.FK_CURRENCYEXCHANGE">
-            <End Role="Ctg_Currency" EntitySet="Ctg_Currency" />
-            <End Role="Ctg_CurrencyExchange" EntitySet="Ctg_CurrencyExchange" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CURRENCYEXCHANGE_SALES" Association="HardwareStoreModel.FK_CURRENCYEXCHANGE_SALES">
-            <End Role="Ctg_CurrencyExchange" EntitySet="Ctg_CurrencyExchange" />
-            <End Role="Tbl_Sales" EntitySet="Tbl_Sales" />
           </AssociationSet>
           <AssociationSet Name="FK_CUSTOMERS_SALES" Association="HardwareStoreModel.FK_CUSTOMERS_SALES">
             <End Role="Ctg_Customers" EntitySet="Ctg_Customers" />
@@ -1000,6 +991,16 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
             <End Role="Ctg_Warehouses" EntitySet="Ctg_Warehouses" />
             <End Role="Tbl_WarehouseProducts" EntitySet="Tbl_WarehouseProducts" />
           </AssociationSet>
+          <EntitySet Name="Ctg_Currency" EntityType="HardwareStoreModel.Ctg_Currency" />
+          <EntitySet Name="Ctg_CurrencyExchange" EntityType="HardwareStoreModel.Ctg_CurrencyExchange" />
+          <AssociationSet Name="FK_CURRENCYEXCHANGE" Association="HardwareStoreModel.FK_CURRENCYEXCHANGE">
+            <End Role="Ctg_Currency" EntitySet="Ctg_Currency" />
+            <End Role="Ctg_CurrencyExchange" EntitySet="Ctg_CurrencyExchange" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CURRENCYEXCHANGE_SALES" Association="HardwareStoreModel.FK_CURRENCYEXCHANGE_SALES">
+            <End Role="Ctg_CurrencyExchange" EntitySet="Ctg_CurrencyExchange" />
+            <End Role="Tbl_Sales" EntitySet="Tbl_Sales" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Ctg_Brands">
           <Key>
@@ -1026,31 +1027,6 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
           <Property Name="Cat_UpdatedAt" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Cat_Deleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Ctg_ProductDetails" Relationship="HardwareStoreModel.FK_CATEGORIES_PDL" FromRole="Ctg_Categories" ToRole="Ctg_ProductDetails" />
-        </EntityType>
-        <EntityType Name="Ctg_Currency">
-          <Key>
-            <PropertyRef Name="Pk_CurrencyID" />
-          </Key>
-          <Property Name="Pk_CurrencyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Cy_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Cy_Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="Cy_Deleted" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Ctg_CurrencyExchange" Relationship="HardwareStoreModel.FK_CURRENCYEXCHANGE" FromRole="Ctg_Currency" ToRole="Ctg_CurrencyExchange" />
-        </EntityType>
-        <EntityType Name="Ctg_CurrencyExchange">
-          <Key>
-            <PropertyRef Name="Pk_CurrencyExchangeID" />
-          </Key>
-          <Property Name="Pk_CurrencyExchangeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Fk_CurrencyID" Type="Int32" Nullable="false" />
-          <Property Name="Cye_LocalCurrency" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Cye_Sale" Type="Double" Nullable="false" />
-          <Property Name="Cye_Purchase" Type="Double" Nullable="false" />
-          <Property Name="Cye_CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Cye_UpdateddAt" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Cye_Deleted" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Ctg_Currency" Relationship="HardwareStoreModel.FK_CURRENCYEXCHANGE" FromRole="Ctg_CurrencyExchange" ToRole="Ctg_Currency" />
-          <NavigationProperty Name="Tbl_Sales" Relationship="HardwareStoreModel.FK_CURRENCYEXCHANGE_SALES" FromRole="Ctg_CurrencyExchange" ToRole="Tbl_Sales" />
         </EntityType>
         <EntityType Name="Ctg_Customers">
           <Key>
@@ -1337,10 +1313,10 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
           <Property Name="Sale_Discount" Type="Int32" />
           <Property Name="Sale_TotalAmount" Type="Double" Nullable="false" />
           <Property Name="Sale_Deleted" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Ctg_CurrencyExchange" Relationship="HardwareStoreModel.FK_CURRENCYEXCHANGE_SALES" FromRole="Tbl_Sales" ToRole="Ctg_CurrencyExchange" />
           <NavigationProperty Name="Ctg_Customers" Relationship="HardwareStoreModel.FK_CUSTOMERS_SALES" FromRole="Tbl_Sales" ToRole="Ctg_Customers" />
           <NavigationProperty Name="Ctg_Users" Relationship="HardwareStoreModel.FK_USERS_SALES" FromRole="Tbl_Sales" ToRole="Ctg_Users" />
           <NavigationProperty Name="Tbl_SaleDetails" Relationship="HardwareStoreModel.FK_SALES_SDT" FromRole="Tbl_Sales" ToRole="Tbl_SaleDetails" />
+          <NavigationProperty Name="Ctg_CurrencyExchange" Relationship="HardwareStoreModel.FK_CURRENCYEXCHANGE_SALES" FromRole="Tbl_Sales" ToRole="Ctg_CurrencyExchange" />
         </EntityType>
         <EntityType Name="Tbl_Taxes">
           <Key>
@@ -1419,30 +1395,6 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
             </Principal>
             <Dependent Role="Ctg_ProductDetails">
               <PropertyRef Name="Fk_CategoryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CURRENCYEXCHANGE">
-          <End Type="HardwareStoreModel.Ctg_Currency" Role="Ctg_Currency" Multiplicity="1" />
-          <End Type="HardwareStoreModel.Ctg_CurrencyExchange" Role="Ctg_CurrencyExchange" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ctg_Currency">
-              <PropertyRef Name="Pk_CurrencyID" />
-            </Principal>
-            <Dependent Role="Ctg_CurrencyExchange">
-              <PropertyRef Name="Fk_CurrencyID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CURRENCYEXCHANGE_SALES">
-          <End Type="HardwareStoreModel.Ctg_CurrencyExchange" Role="Ctg_CurrencyExchange" Multiplicity="0..1" />
-          <End Type="HardwareStoreModel.Tbl_Sales" Role="Tbl_Sales" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ctg_CurrencyExchange">
-              <PropertyRef Name="Pk_CurrencyExchangeID" />
-            </Principal>
-            <Dependent Role="Tbl_Sales">
-              <PropertyRef Name="Fk_CurrencyExchangeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1752,6 +1704,56 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Ctg_Currency">
+          <Key>
+            <PropertyRef Name="Pk_CurrencyID" />
+          </Key>
+          <Property Name="Pk_CurrencyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cy_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Cy_Symbol" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Cy_Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ctg_CurrencyExchange" Relationship="HardwareStoreModel.FK_CURRENCYEXCHANGE" FromRole="Ctg_Currency" ToRole="Ctg_CurrencyExchange" />
+        </EntityType>
+        <EntityType Name="Ctg_CurrencyExchange">
+          <Key>
+            <PropertyRef Name="Pk_CurrencyExchangeID" />
+          </Key>
+          <Property Name="Pk_CurrencyExchangeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fk_CurrencyID" Type="Int32" Nullable="false" />
+          <Property Name="Cye_LocalCurrency" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Cye_Symbol" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Cye_Sale" Type="Double" Nullable="false" />
+          <Property Name="Cye_Purchase" Type="Double" Nullable="false" />
+          <Property Name="Cye_CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cye_UpdateddAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cye_Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ctg_Currency" Relationship="HardwareStoreModel.FK_CURRENCYEXCHANGE" FromRole="Ctg_CurrencyExchange" ToRole="Ctg_Currency" />
+          <NavigationProperty Name="Tbl_Sales" Relationship="HardwareStoreModel.FK_CURRENCYEXCHANGE_SALES" FromRole="Ctg_CurrencyExchange" ToRole="Tbl_Sales" />
+        </EntityType>
+        <Association Name="FK_CURRENCYEXCHANGE">
+          <End Type="HardwareStoreModel.Ctg_Currency" Role="Ctg_Currency" Multiplicity="1" />
+          <End Type="HardwareStoreModel.Ctg_CurrencyExchange" Role="Ctg_CurrencyExchange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Currency">
+              <PropertyRef Name="Pk_CurrencyID" />
+            </Principal>
+            <Dependent Role="Ctg_CurrencyExchange">
+              <PropertyRef Name="Fk_CurrencyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CURRENCYEXCHANGE_SALES">
+          <End Type="HardwareStoreModel.Ctg_CurrencyExchange" Role="Ctg_CurrencyExchange" Multiplicity="0..1" />
+          <End Type="HardwareStoreModel.Tbl_Sales" Role="Tbl_Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_CurrencyExchange">
+              <PropertyRef Name="Pk_CurrencyExchangeID" />
+            </Principal>
+            <Dependent Role="Tbl_Sales">
+              <PropertyRef Name="Fk_CurrencyExchangeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1781,30 +1783,6 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
                 <ScalarProperty Name="Cat_Name" ColumnName="Cat_Name" />
                 <ScalarProperty Name="Cat_CustomID" ColumnName="Cat_CustomID" />
                 <ScalarProperty Name="Pk_CategoryID" ColumnName="Pk_CategoryID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Ctg_Currency">
-            <EntityTypeMapping TypeName="HardwareStoreModel.Ctg_Currency">
-              <MappingFragment StoreEntitySet="Ctg_Currency">
-                <ScalarProperty Name="Cy_Deleted" ColumnName="Cy_Deleted" />
-                <ScalarProperty Name="Cy_Description" ColumnName="Cy_Description" />
-                <ScalarProperty Name="Cy_Name" ColumnName="Cy_Name" />
-                <ScalarProperty Name="Pk_CurrencyID" ColumnName="Pk_CurrencyID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Ctg_CurrencyExchange">
-            <EntityTypeMapping TypeName="HardwareStoreModel.Ctg_CurrencyExchange">
-              <MappingFragment StoreEntitySet="Ctg_CurrencyExchange">
-                <ScalarProperty Name="Cye_Deleted" ColumnName="Cye_Deleted" />
-                <ScalarProperty Name="Cye_UpdateddAt" ColumnName="Cye_UpdateddAt" />
-                <ScalarProperty Name="Cye_CreatedAt" ColumnName="Cye_CreatedAt" />
-                <ScalarProperty Name="Cye_Purchase" ColumnName="Cye_Purchase" />
-                <ScalarProperty Name="Cye_Sale" ColumnName="Cye_Sale" />
-                <ScalarProperty Name="Cye_LocalCurrency" ColumnName="Cye_LocalCurrency" />
-                <ScalarProperty Name="Fk_CurrencyID" ColumnName="Fk_CurrencyID" />
-                <ScalarProperty Name="Pk_CurrencyExchangeID" ColumnName="Pk_CurrencyExchangeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2135,6 +2113,31 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
                 <ScalarProperty Name="Fk_SupplierID" ColumnName="Fk_SupplierID" />
                 <ScalarProperty Name="Fk_ProductDetailID" ColumnName="Fk_ProductDetailID" />
                 <ScalarProperty Name="Fk_WarehouseID" ColumnName="Fk_WarehouseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ctg_Currency">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Ctg_Currency">
+              <MappingFragment StoreEntitySet="Ctg_Currency">
+                <ScalarProperty Name="Cy_Deleted" ColumnName="Cy_Deleted" />
+                <ScalarProperty Name="Cy_Symbol" ColumnName="Cy_Symbol" />
+                <ScalarProperty Name="Cy_Name" ColumnName="Cy_Name" />
+                <ScalarProperty Name="Pk_CurrencyID" ColumnName="Pk_CurrencyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ctg_CurrencyExchange">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Ctg_CurrencyExchange">
+              <MappingFragment StoreEntitySet="Ctg_CurrencyExchange">
+                <ScalarProperty Name="Cye_Deleted" ColumnName="Cye_Deleted" />
+                <ScalarProperty Name="Cye_UpdateddAt" ColumnName="Cye_UpdateddAt" />
+                <ScalarProperty Name="Cye_CreatedAt" ColumnName="Cye_CreatedAt" />
+                <ScalarProperty Name="Cye_Purchase" ColumnName="Cye_Purchase" />
+                <ScalarProperty Name="Cye_Sale" ColumnName="Cye_Sale" />
+                <ScalarProperty Name="Cye_Symbol" ColumnName="Cye_Symbol" />
+                <ScalarProperty Name="Cye_LocalCurrency" ColumnName="Cye_LocalCurrency" />
+                <ScalarProperty Name="Fk_CurrencyID" ColumnName="Fk_CurrencyID" />
+                <ScalarProperty Name="Pk_CurrencyExchangeID" ColumnName="Pk_CurrencyExchangeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

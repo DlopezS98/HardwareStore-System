@@ -34,10 +34,10 @@ namespace HardwareStore.Domain.Models
         public double Sale_TotalAmount { get; set; }
         public bool Sale_Deleted { get; set; }
     
-        public virtual Ctg_CurrencyExchange Ctg_CurrencyExchange { get; set; }
         public virtual Ctg_Customers Ctg_Customers { get; set; }
         public virtual Ctg_Users Ctg_Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_SaleDetails> Tbl_SaleDetails { get; set; }
+        public virtual Ctg_CurrencyExchange Ctg_CurrencyExchange { get; set; }
     }
 }

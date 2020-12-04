@@ -67,6 +67,8 @@ namespace HardwareStore.App_Start
             kernel.Bind<ISuppliersRepository>().To<SuppliersReporsitory>();
             kernel.Bind<IWarehousesRepository>().To<WarehousesRepository>();
             kernel.Bind<IWarehouseProductsRepository>().To<WarehouseProductsRepository>();
+            kernel.Bind<ISalesRepository>().To<SalesRepository>();
+            kernel.Bind<ICustomerRepository>().To<CustomerRepository>();
         }
     }
 }

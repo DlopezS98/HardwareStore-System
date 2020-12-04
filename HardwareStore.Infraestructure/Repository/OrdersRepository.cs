@@ -28,8 +28,8 @@ namespace HardwareStore.Core.Repository
             try
             {
                 List<tblOrders> OrderList = new List<tblOrders>();
-                //var data = this.execSpListOrders(StartDate, EndDate);
-                //OrderList = this.MapOrdersData(data);
+                var data = this.execSpListOrders(StartDate, EndDate);
+                OrderList = this.MapOrdersData(data);
                 return OrderList;
             }
             catch (Exception exc)

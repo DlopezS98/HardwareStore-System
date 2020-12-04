@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace HardwareStore.Domain
 {
-    public class tblSaleDetails : Tbl_SaleDetails
+    public class Customers : Ctg_Customers
     {
+        public string FullName { get => this.Cust_FirtsName + " " + this.Cust_LastName; }
     }
 }

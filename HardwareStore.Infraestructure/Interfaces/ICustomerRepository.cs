@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace HardwareStore.Core.Interfaces
 {
-    public interface ISalesRepository
+    public interface ICustomerRepository
     {
-        List<Sales> GetSalesList();
-        List<SaleDetails> GetSaleDetails(int id);
-        bool MainSalesTransactions(Tbl_Sales sales, List<SaleDetailsStage> SaleDetails);
+        List<Customers> ListAllCustomers();
     }
 }

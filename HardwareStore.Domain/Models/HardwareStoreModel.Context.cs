@@ -27,8 +27,6 @@ namespace HardwareStore.Domain.Models
     
         public virtual DbSet<Ctg_Brands> Ctg_Brands { get; set; }
         public virtual DbSet<Ctg_Categories> Ctg_Categories { get; set; }
-        public virtual DbSet<Ctg_Currency> Ctg_Currency { get; set; }
-        public virtual DbSet<Ctg_CurrencyExchange> Ctg_CurrencyExchange { get; set; }
         public virtual DbSet<Ctg_Customers> Ctg_Customers { get; set; }
         public virtual DbSet<Ctg_DiscountPromotions> Ctg_DiscountPromotions { get; set; }
         public virtual DbSet<Ctg_Employees> Ctg_Employees { get; set; }
@@ -52,5 +50,7 @@ namespace HardwareStore.Domain.Models
         public virtual DbSet<Tbl_Transfers> Tbl_Transfers { get; set; }
         public virtual DbSet<Tbl_HardwareStore> Tbl_HardwareStore { get; set; }
         public virtual DbSet<Tbl_WarehouseProducts> Tbl_WarehouseProducts { get; set; }
+        public virtual DbSet<Ctg_Currency> Ctg_Currency { get; set; }
+        public virtual DbSet<Ctg_CurrencyExchange> Ctg_CurrencyExchange { get; set; }
     }
 }

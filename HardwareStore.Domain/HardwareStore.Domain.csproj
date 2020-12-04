@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ctgWarehouse.cs" />
+    <Compile Include="Customers.cs" />
     <Compile Include="DbConnection.cs" />
     <Compile Include="Models\Ctg_Brands.cs">
       <DependentUpon>HardwareStoreModel.tt</DependentUpon>
@@ -151,10 +152,11 @@
     </Compile>
     <Compile Include="OrderDetailsStage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaleDetailsStage.cs" />
+    <Compile Include="Sales.cs" />
     <Compile Include="tblOrderDetails.cs" />
     <Compile Include="tblOrders.cs" />
-    <Compile Include="tblSaleDetails.cs" />
-    <Compile Include="tblSales.cs" />
+    <Compile Include="SaleDetails.cs" />
     <Compile Include="tblWarehouseProducts.cs" />
   </ItemGroup>
   <ItemGroup>

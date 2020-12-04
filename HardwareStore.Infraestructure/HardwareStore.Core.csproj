@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\ICustomerRepository.cs" />
     <Compile Include="Interfaces\IHardwareStoreRepository.cs" />
     <Compile Include="Interfaces\IOrdersRepository.cs" />
     <Compile Include="Interfaces\ISalesRepository.cs" />
@@ -58,8 +59,10 @@
     <Compile Include="Interfaces\IWarehouseProductsRepository.cs" />
     <Compile Include="Interfaces\IWarehousesRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\CustomerRepository.cs" />
     <Compile Include="Repository\HardwareStoreRepository.cs" />
     <Compile Include="Repository\OrdersRepository.cs" />
+    <Compile Include="Repository\SalesRepository.cs" />
     <Compile Include="Repository\SuppliersReporsitory.cs" />
     <Compile Include="Repository\WarehouseProductsRepository.cs" />
     <Compile Include="Repository\WarehousesRepository.cs" />
