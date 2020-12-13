@@ -25,7 +25,7 @@ namespace HardwareStore.Domain.Models
         public System.DateTime RmProd_CreatedAt { get; set; }
         public Nullable<bool> RmProd_Status { get; set; }
     
-        public virtual Ctg_ProductDetails Ctg_ProductDetails { get; set; }
         public virtual Ctg_Warehouses Ctg_Warehouses { get; set; }
+        public virtual Ctg_ProductDetails Ctg_ProductDetails { get; set; }
     }
 }

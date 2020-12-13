@@ -24,8 +24,8 @@ namespace HardwareStore.Domain.Models
         public Nullable<int> Odt_Discount { get; set; }
         public double Odt_Total { get; set; }
     
-        public virtual Ctg_ProductDetails Ctg_ProductDetails { get; set; }
         public virtual Ctg_Warehouses Ctg_Warehouses { get; set; }
         public virtual Tbl_Orders Tbl_Orders { get; set; }
+        public virtual Ctg_ProductDetails Ctg_ProductDetails { get; set; }
     }
 }

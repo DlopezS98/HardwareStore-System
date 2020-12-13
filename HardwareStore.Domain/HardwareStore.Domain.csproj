@@ -54,13 +54,13 @@
     <Compile Include="ctgWarehouse.cs" />
     <Compile Include="Customers.cs" />
     <Compile Include="DbConnection.cs" />
+    <Compile Include="Models\Ctg_BaseUnits.cs">
+      <DependentUpon>HardwareStoreModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Ctg_Brands.cs">
       <DependentUpon>HardwareStoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ctg_Categories.cs">
-      <DependentUpon>HardwareStoreModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Ctg_Currency.cs">
       <DependentUpon>HardwareStoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ctg_CurrencyExchange.cs">
@@ -73,6 +73,12 @@
       <DependentUpon>HardwareStoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ctg_Employees.cs">
+      <DependentUpon>HardwareStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ctg_ForeignCurrencies.cs">
+      <DependentUpon>HardwareStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ctg_LocalCurrencies.cs">
       <DependentUpon>HardwareStoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ctg_MeasureUnits.cs">

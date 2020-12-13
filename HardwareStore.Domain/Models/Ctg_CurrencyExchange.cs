@@ -20,17 +20,17 @@ namespace HardwareStore.Domain.Models
             this.Tbl_Sales = new HashSet<Tbl_Sales>();
         }
     
-        public int Pk_CurrencyExchangeID { get; set; }
-        public int Fk_CurrencyID { get; set; }
-        public string Cye_LocalCurrency { get; set; }
-        public string Cye_Symbol { get; set; }
+        public int Pk_CurrencyExchange { get; set; }
+        public int Fk_ForeignCurrency { get; set; }
+        public int Fk_LocalCurrency { get; set; }
         public double Cye_Sale { get; set; }
         public double Cye_Purchase { get; set; }
         public System.DateTime Cye_CreatedAt { get; set; }
         public System.DateTime Cye_UpdateddAt { get; set; }
         public bool Cye_Deleted { get; set; }
     
-        public virtual Ctg_Currency Ctg_Currency { get; set; }
+        public virtual Ctg_ForeignCurrencies Ctg_ForeignCurrencies { get; set; }
+        public virtual Ctg_LocalCurrencies Ctg_LocalCurrencies { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_Sales> Tbl_Sales { get; set; }
     }

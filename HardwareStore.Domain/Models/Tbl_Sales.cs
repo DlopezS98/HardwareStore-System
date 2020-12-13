@@ -23,7 +23,7 @@ namespace HardwareStore.Domain.Models
         public int Pk_SaleID { get; set; }
         public Nullable<int> Fk_UserID { get; set; }
         public Nullable<int> Fk_CustomerID { get; set; }
-        public Nullable<int> Fk_CurrencyExchangeID { get; set; }
+        public int Fk_CurrencyExchange { get; set; }
         public string Sale_CustomerName { get; set; }
         public string Sale_PaymentType { get; set; }
         public System.DateTime Sale_Date { get; set; }
@@ -34,10 +34,10 @@ namespace HardwareStore.Domain.Models
         public double Sale_TotalAmount { get; set; }
         public bool Sale_Deleted { get; set; }
     
+        public virtual Ctg_CurrencyExchange Ctg_CurrencyExchange { get; set; }
         public virtual Ctg_Customers Ctg_Customers { get; set; }
         public virtual Ctg_Users Ctg_Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_SaleDetails> Tbl_SaleDetails { get; set; }
-        public virtual Ctg_CurrencyExchange Ctg_CurrencyExchange { get; set; }
     }
 }

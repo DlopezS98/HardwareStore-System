@@ -12,26 +12,24 @@ namespace HardwareStore.Domain.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Ctg_UnitConversion
+    public partial class Ctg_BaseUnits
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Ctg_UnitConversion()
+        public Ctg_BaseUnits()
         {
-            this.Ctg_ProductDetails = new HashSet<Ctg_ProductDetails>();
+            this.Ctg_UnitConversion = new HashSet<Ctg_UnitConversion>();
         }
     
-        public int Pk_UnitConversion { get; set; }
-        public int Fk_SourceUnit { get; set; }
-        public Nullable<int> Fk_BaseUnit { get; set; }
-        public string Utc_DestinationUnit { get; set; }
-        public double Utc_Equivalence { get; set; }
-        public System.DateTime Utc_CreatedAt { get; set; }
-        public System.DateTime Utc_UpdatedAt { get; set; }
-        public bool Utc_Deleted { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int TypeId { get; set; }
+        public string Abbrevation { get; set; }
+        public System.DateTime CreatedAt { get; set; }
+        public System.DateTime UpdatedAt { get; set; }
+        public bool Deleted { get; set; }
     
-        public virtual Ctg_BaseUnits Ctg_BaseUnits { get; set; }
-        public virtual Ctg_MeasureUnits Ctg_MeasureUnits { get; set; }
+        public virtual Ctg_UnitType Ctg_UnitType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ctg_ProductDetails> Ctg_ProductDetails { get; set; }
+        public virtual ICollection<Ctg_UnitConversion> Ctg_UnitConversion { get; set; }
     }
 }

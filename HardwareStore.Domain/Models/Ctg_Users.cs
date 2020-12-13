@@ -18,8 +18,8 @@ namespace HardwareStore.Domain.Models
         public Ctg_Users()
         {
             this.Tbl_Orders = new HashSet<Tbl_Orders>();
-            this.Tbl_Sales = new HashSet<Tbl_Sales>();
             this.Tbl_Transfers = new HashSet<Tbl_Transfers>();
+            this.Tbl_Sales = new HashSet<Tbl_Sales>();
         }
     
         public int Pk_UserID { get; set; }
@@ -38,8 +38,8 @@ namespace HardwareStore.Domain.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_Orders> Tbl_Orders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tbl_Sales> Tbl_Sales { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_Transfers> Tbl_Transfers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_Sales> Tbl_Sales { get; set; }
     }
 }

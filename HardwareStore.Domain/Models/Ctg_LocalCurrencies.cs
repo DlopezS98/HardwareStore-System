@@ -12,26 +12,20 @@ namespace HardwareStore.Domain.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Ctg_UnitConversion
+    public partial class Ctg_LocalCurrencies
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Ctg_UnitConversion()
+        public Ctg_LocalCurrencies()
         {
-            this.Ctg_ProductDetails = new HashSet<Ctg_ProductDetails>();
+            this.Ctg_CurrencyExchange = new HashSet<Ctg_CurrencyExchange>();
         }
     
-        public int Pk_UnitConversion { get; set; }
-        public int Fk_SourceUnit { get; set; }
-        public Nullable<int> Fk_BaseUnit { get; set; }
-        public string Utc_DestinationUnit { get; set; }
-        public double Utc_Equivalence { get; set; }
-        public System.DateTime Utc_CreatedAt { get; set; }
-        public System.DateTime Utc_UpdatedAt { get; set; }
-        public bool Utc_Deleted { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Symbol { get; set; }
+        public bool Deleted { get; set; }
     
-        public virtual Ctg_BaseUnits Ctg_BaseUnits { get; set; }
-        public virtual Ctg_MeasureUnits Ctg_MeasureUnits { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ctg_ProductDetails> Ctg_ProductDetails { get; set; }
+        public virtual ICollection<Ctg_CurrencyExchange> Ctg_CurrencyExchange { get; set; }
     }
 }

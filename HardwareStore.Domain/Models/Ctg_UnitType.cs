@@ -17,6 +17,7 @@ namespace HardwareStore.Domain.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Ctg_UnitType()
         {
+            this.Ctg_BaseUnits = new HashSet<Ctg_BaseUnits>();
             this.Ctg_MeasureUnits = new HashSet<Ctg_MeasureUnits>();
         }
     
@@ -26,6 +27,8 @@ namespace HardwareStore.Domain.Models
         public System.DateTime Uty_UpdatedAt { get; set; }
         public bool Uty_Deleted { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Ctg_BaseUnits> Ctg_BaseUnits { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ctg_MeasureUnits> Ctg_MeasureUnits { get; set; }
     }

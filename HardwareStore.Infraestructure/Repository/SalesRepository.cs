@@ -65,9 +65,9 @@ namespace HardwareStore.Core.Repository
                             join users in this.Context.Ctg_Users
                             on sales.Fk_UserID equals users.Pk_UserID
                             join CyExchange in this.Context.Ctg_CurrencyExchange
-                            on sales.Fk_CurrencyExchangeID equals CyExchange.Pk_CurrencyExchangeID
-                            join Currency in this.Context.Ctg_Currency
-                            on CyExchange.Fk_CurrencyID equals Currency.Pk_CurrencyID
+                            on sales.Fk_CurrencyExchange equals CyExchange.Pk_CurrencyExchange
+                            join ForeignCurrency in this.Context.Ctg_ForeignCurrencies
+                            on CyExchange.Fk_ForeignCurrency equals ForeignCurrency.Pk_CurrencyID
                             where sales.Sale_Deleted == false
                             orderby sales.Sale_Date ascending
                             select new Sales
@@ -77,9 +77,9 @@ namespace HardwareStore.Core.Repository
                                 User = users.UserName,
                                 CustomerId = sales.Fk_CustomerID,
                                 Customer = sales.Sale_CustomerName,
-                                CurrencyId = sales.Fk_CurrencyExchangeID,
-                                Currency = Currency.Cy_Name,
-                                CurrencySymbol = Currency.Cy_Symbol,
+                                CurrencyId = sales.Fk_CurrencyExchange,
+                                Currency = ForeignCurrency.Cy_Name,
+                                CurrencySymbol = ForeignCurrency.Cy_Symbol,
                                 PaymentType = sales.Sale_PaymentType,
                                 SaleDate = sales.Sale_Date,
                                 TaxName = sales.Sale_TaxName,
@@ -125,7 +125,7 @@ namespace HardwareStore.Core.Repository
                 Connection.Open();
                 Command.Parameters.AddWithValue("@Fk_UserID", sale.Fk_UserID);
                 Command.Parameters.AddWithValue("@Fk_CustomerID", sale.Fk_CustomerID);
-                Command.Parameters.AddWithValue("@Fk_CurrencyExchangeID", sale.Fk_CurrencyExchangeID);
+                Command.Parameters.AddWithValue("@Fk_CurrencyExchangeID", sale.Fk_CurrencyExchange);
                 Command.Parameters.AddWithValue("@Sale_CustomerName", sale.Sale_CustomerName);
                 Command.Parameters.AddWithValue("@Sale_PaymentType", sale.Sale_PaymentType);
                 Command.Parameters.AddWithValue("@Sale_TaxName", sale.Sale_TaxName);
