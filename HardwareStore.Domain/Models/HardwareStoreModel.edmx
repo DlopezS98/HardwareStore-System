@@ -310,9 +310,11 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
           <Key>
             <PropertyRef Name="Fk_SaleID" />
             <PropertyRef Name="Fk_ProductDetailID" />
+            <PropertyRef Name="Fk_WarehouseId" />
           </Key>
           <Property Name="Fk_SaleID" Type="int" Nullable="false" />
           <Property Name="Fk_ProductDetailID" Type="int" Nullable="false" />
+          <Property Name="Fk_WarehouseId" Type="int" Nullable="false" />
           <Property Name="Sdt_Price" Type="float" Nullable="false" />
           <Property Name="Sdt_Quantity" Type="int" Nullable="false" />
           <Property Name="Sdt_Tax" Type="float" />
@@ -329,7 +331,7 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
           <Property Name="Fk_CustomerID" Type="int" />
           <Property Name="Fk_CurrencyExchange" Type="int" Nullable="false" />
           <Property Name="Sale_CustomerName" Type="nvarchar" MaxLength="50" />
-          <Property Name="Sale_PaymentType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sale_PaymentType" Type="nvarchar" MaxLength="50" />
           <Property Name="Sale_Date" Type="date" Nullable="false" />
           <Property Name="Sale_TaxName" Type="nvarchar" MaxLength="50" />
           <Property Name="Sale_Tax" Type="float" />
@@ -628,6 +630,18 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Tbl_SaleDetails_Ctg_Warehouses1">
+          <End Role="Ctg_Warehouses" Type="Self.Ctg_Warehouses" Multiplicity="1" />
+          <End Role="Tbl_SaleDetails" Type="Self.Tbl_SaleDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Warehouses">
+              <PropertyRef Name="Pk_WarehouseID" />
+            </Principal>
+            <Dependent Role="Tbl_SaleDetails">
+              <PropertyRef Name="Fk_WarehouseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Tbl_Sales_Ctg_CurrencyExchange1">
           <End Role="Ctg_CurrencyExchange" Type="Self.Ctg_CurrencyExchange" Multiplicity="1" />
           <End Role="Tbl_Sales" Type="Self.Tbl_Sales" Multiplicity="*" />
@@ -883,6 +897,10 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
             <End Role="Ctg_Suppliers" EntitySet="Ctg_Suppliers" />
             <End Role="Tbl_WarehouseProducts" EntitySet="Tbl_WarehouseProducts" />
           </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SaleDetails_Ctg_Warehouses1" Association="Self.FK_Tbl_SaleDetails_Ctg_Warehouses1">
+            <End Role="Ctg_Warehouses" EntitySet="Ctg_Warehouses" />
+            <End Role="Tbl_SaleDetails" EntitySet="Tbl_SaleDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK_Tbl_Sales_Ctg_CurrencyExchange1" Association="Self.FK_Tbl_Sales_Ctg_CurrencyExchange1">
             <End Role="Ctg_CurrencyExchange" EntitySet="Ctg_CurrencyExchange" />
             <End Role="Tbl_Sales" EntitySet="Tbl_Sales" />
@@ -1008,8 +1026,6 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
           <EntitySet Name="Ctg_ProductDetails" EntityType="HardwareStoreModel.Ctg_ProductDetails" />
           <EntitySet Name="Ctg_UnitConversion" EntityType="HardwareStoreModel.Ctg_UnitConversion" />
           <EntitySet Name="Ctg_UnitType" EntityType="HardwareStoreModel.Ctg_UnitType" />
-          <EntitySet Name="Tbl_SaleDetails" EntityType="HardwareStoreModel.Tbl_SaleDetails" />
-          <EntitySet Name="Tbl_Sales" EntityType="HardwareStoreModel.Tbl_Sales" />
           <AssociationSet Name="FK_Ctg_BaseUnits_Ctg_UnitType" Association="HardwareStoreModel.FK_Ctg_BaseUnits_Ctg_UnitType">
             <End Role="Ctg_UnitType" EntitySet="Ctg_UnitType" />
             <End Role="Ctg_BaseUnits" EntitySet="Ctg_BaseUnits" />
@@ -1033,14 +1049,6 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
           <AssociationSet Name="FK_Ctg_CurrencyExchange_Ctg_LocalCurrencies" Association="HardwareStoreModel.FK_Ctg_CurrencyExchange_Ctg_LocalCurrencies">
             <End Role="Ctg_LocalCurrencies" EntitySet="Ctg_LocalCurrencies" />
             <End Role="Ctg_CurrencyExchange" EntitySet="Ctg_CurrencyExchange" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tbl_Sales_Ctg_CurrencyExchange1" Association="HardwareStoreModel.FK_Tbl_Sales_Ctg_CurrencyExchange1">
-            <End Role="Ctg_CurrencyExchange" EntitySet="Ctg_CurrencyExchange" />
-            <End Role="Tbl_Sales" EntitySet="Tbl_Sales" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CUSTOMERS_SALES" Association="HardwareStoreModel.FK_CUSTOMERS_SALES">
-            <End Role="Ctg_Customers" EntitySet="Ctg_Customers" />
-            <End Role="Tbl_Sales" EntitySet="Tbl_Sales" />
           </AssociationSet>
           <AssociationSet Name="FK_SOURCEUNIT" Association="HardwareStoreModel.FK_SOURCEUNIT">
             <End Role="Ctg_MeasureUnits" EntitySet="Ctg_MeasureUnits" />
@@ -1070,17 +1078,31 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
             <End Role="Ctg_Products" EntitySet="Ctg_Products" />
             <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK_PRODUCTS_SDT" Association="HardwareStoreModel.FK_PRODUCTS_SDT">
-            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
-            <End Role="Tbl_SaleDetails" EntitySet="Tbl_SaleDetails" />
-          </AssociationSet>
           <AssociationSet Name="FK_UNITCONVERSION_PDL" Association="HardwareStoreModel.FK_UNITCONVERSION_PDL">
             <End Role="Ctg_UnitConversion" EntitySet="Ctg_UnitConversion" />
             <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
           </AssociationSet>
+          <EntitySet Name="Tbl_SaleDetails" EntityType="HardwareStoreModel.Tbl_SaleDetails" />
+          <EntitySet Name="Tbl_Sales" EntityType="HardwareStoreModel.Tbl_Sales" />
+          <AssociationSet Name="FK_Tbl_Sales_Ctg_CurrencyExchange1" Association="HardwareStoreModel.FK_Tbl_Sales_Ctg_CurrencyExchange1">
+            <End Role="Ctg_CurrencyExchange" EntitySet="Ctg_CurrencyExchange" />
+            <End Role="Tbl_Sales" EntitySet="Tbl_Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUSTOMERS_SALES" Association="HardwareStoreModel.FK_CUSTOMERS_SALES">
+            <End Role="Ctg_Customers" EntitySet="Ctg_Customers" />
+            <End Role="Tbl_Sales" EntitySet="Tbl_Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTS_SDT" Association="HardwareStoreModel.FK_PRODUCTS_SDT">
+            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
+            <End Role="Tbl_SaleDetails" EntitySet="Tbl_SaleDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK_USERS_SALES" Association="HardwareStoreModel.FK_USERS_SALES">
             <End Role="Ctg_Users" EntitySet="Ctg_Users" />
             <End Role="Tbl_Sales" EntitySet="Tbl_Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SaleDetails_Ctg_Warehouses1" Association="HardwareStoreModel.FK_Tbl_SaleDetails_Ctg_Warehouses1">
+            <End Role="Ctg_Warehouses" EntitySet="Ctg_Warehouses" />
+            <End Role="Tbl_SaleDetails" EntitySet="Tbl_SaleDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_SALES_SDT" Association="HardwareStoreModel.FK_SALES_SDT">
             <End Role="Tbl_Sales" EntitySet="Tbl_Sales" />
@@ -1234,6 +1256,7 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
           <NavigationProperty Name="Tbl_Transfers" Relationship="HardwareStoreModel.FK_WAREHOUSE_TFS" FromRole="Ctg_Warehouses" ToRole="Tbl_Transfers" />
           <NavigationProperty Name="Tbl_RemovedProducts" Relationship="HardwareStoreModel.FK_WAREHOUSES_RMPROD" FromRole="Ctg_Warehouses" ToRole="Tbl_RemovedProducts" />
           <NavigationProperty Name="Tbl_WarehouseProducts" Relationship="HardwareStoreModel.FK_WAREHOUSES_WHPR" FromRole="Ctg_Warehouses" ToRole="Tbl_WarehouseProducts" />
+          <NavigationProperty Name="Tbl_SaleDetails" Relationship="HardwareStoreModel.FK_Tbl_SaleDetails_Ctg_Warehouses1" FromRole="Ctg_Warehouses" ToRole="Tbl_SaleDetails" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -1605,8 +1628,8 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
           <NavigationProperty Name="Tbl_TransferDetails" Relationship="HardwareStoreModel.FK_PRODUCT_DETAIL_TD" FromRole="Ctg_ProductDetails" ToRole="Tbl_TransferDetails" />
           <NavigationProperty Name="Tbl_OrderDetails" Relationship="HardwareStoreModel.FK_PRODUCTS_ODT" FromRole="Ctg_ProductDetails" ToRole="Tbl_OrderDetails" />
           <NavigationProperty Name="Ctg_Products" Relationship="HardwareStoreModel.FK_PRODUCTS_PDL" FromRole="Ctg_ProductDetails" ToRole="Ctg_Products" />
-          <NavigationProperty Name="Tbl_SaleDetails" Relationship="HardwareStoreModel.FK_PRODUCTS_SDT" FromRole="Ctg_ProductDetails" ToRole="Tbl_SaleDetails" />
           <NavigationProperty Name="Ctg_UnitConversion" Relationship="HardwareStoreModel.FK_UNITCONVERSION_PDL" FromRole="Ctg_ProductDetails" ToRole="Ctg_UnitConversion" />
+          <NavigationProperty Name="Tbl_SaleDetails" Relationship="HardwareStoreModel.FK_PRODUCTS_SDT" FromRole="Ctg_ProductDetails" ToRole="Tbl_SaleDetails" />
         </EntityType>
         <EntityType Name="Ctg_UnitConversion">
           <Key>
@@ -1635,44 +1658,6 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
           <Property Name="Uty_Deleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Ctg_BaseUnits" Relationship="HardwareStoreModel.FK_Ctg_BaseUnits_Ctg_UnitType" FromRole="Ctg_UnitType" ToRole="Ctg_BaseUnits" />
           <NavigationProperty Name="Ctg_MeasureUnits" Relationship="HardwareStoreModel.FK_UNITTYPE_MSU" FromRole="Ctg_UnitType" ToRole="Ctg_MeasureUnits" />
-        </EntityType>
-        <EntityType Name="Tbl_SaleDetails">
-          <Key>
-            <PropertyRef Name="Fk_SaleID" />
-            <PropertyRef Name="Fk_ProductDetailID" />
-          </Key>
-          <Property Name="Fk_SaleID" Type="Int32" Nullable="false" />
-          <Property Name="Fk_ProductDetailID" Type="Int32" Nullable="false" />
-          <Property Name="Sdt_Price" Type="Double" Nullable="false" />
-          <Property Name="Sdt_Quantity" Type="Int32" Nullable="false" />
-          <Property Name="Sdt_Tax" Type="Double" />
-          <Property Name="Sdt_Subtotal" Type="Double" Nullable="false" />
-          <Property Name="Sdt_Discount" Type="Int32" />
-          <Property Name="Sdt_Total" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Ctg_ProductDetails" Relationship="HardwareStoreModel.FK_PRODUCTS_SDT" FromRole="Tbl_SaleDetails" ToRole="Ctg_ProductDetails" />
-          <NavigationProperty Name="Tbl_Sales" Relationship="HardwareStoreModel.FK_SALES_SDT" FromRole="Tbl_SaleDetails" ToRole="Tbl_Sales" />
-        </EntityType>
-        <EntityType Name="Tbl_Sales">
-          <Key>
-            <PropertyRef Name="Pk_SaleID" />
-          </Key>
-          <Property Name="Pk_SaleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Fk_UserID" Type="Int32" />
-          <Property Name="Fk_CustomerID" Type="Int32" />
-          <Property Name="Fk_CurrencyExchange" Type="Int32" Nullable="false" />
-          <Property Name="Sale_CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Sale_PaymentType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Sale_Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Sale_TaxName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Sale_Tax" Type="Double" />
-          <Property Name="Sale_Subtotal" Type="Double" Nullable="false" />
-          <Property Name="Sale_Discount" Type="Int32" />
-          <Property Name="Sale_TotalAmount" Type="Double" Nullable="false" />
-          <Property Name="Sale_Deleted" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Ctg_CurrencyExchange" Relationship="HardwareStoreModel.FK_Tbl_Sales_Ctg_CurrencyExchange1" FromRole="Tbl_Sales" ToRole="Ctg_CurrencyExchange" />
-          <NavigationProperty Name="Ctg_Customers" Relationship="HardwareStoreModel.FK_CUSTOMERS_SALES" FromRole="Tbl_Sales" ToRole="Ctg_Customers" />
-          <NavigationProperty Name="Ctg_Users" Relationship="HardwareStoreModel.FK_USERS_SALES" FromRole="Tbl_Sales" ToRole="Ctg_Users" />
-          <NavigationProperty Name="Tbl_SaleDetails" Relationship="HardwareStoreModel.FK_SALES_SDT" FromRole="Tbl_Sales" ToRole="Tbl_SaleDetails" />
         </EntityType>
         <Association Name="FK_Ctg_BaseUnits_Ctg_UnitType">
           <End Type="HardwareStoreModel.Ctg_UnitType" Role="Ctg_UnitType" Multiplicity="1" />
@@ -1743,30 +1728,6 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
             </Principal>
             <Dependent Role="Ctg_CurrencyExchange">
               <PropertyRef Name="Fk_LocalCurrency" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tbl_Sales_Ctg_CurrencyExchange1">
-          <End Type="HardwareStoreModel.Ctg_CurrencyExchange" Role="Ctg_CurrencyExchange" Multiplicity="1" />
-          <End Type="HardwareStoreModel.Tbl_Sales" Role="Tbl_Sales" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ctg_CurrencyExchange">
-              <PropertyRef Name="Pk_CurrencyExchange" />
-            </Principal>
-            <Dependent Role="Tbl_Sales">
-              <PropertyRef Name="Fk_CurrencyExchange" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CUSTOMERS_SALES">
-          <End Type="HardwareStoreModel.Ctg_Customers" Role="Ctg_Customers" Multiplicity="0..1" />
-          <End Type="HardwareStoreModel.Tbl_Sales" Role="Tbl_Sales" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ctg_Customers">
-              <PropertyRef Name="Pk_CustomerID" />
-            </Principal>
-            <Dependent Role="Tbl_Sales">
-              <PropertyRef Name="Fk_CustomerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1854,18 +1815,6 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PRODUCTS_SDT">
-          <End Type="HardwareStoreModel.Ctg_ProductDetails" Role="Ctg_ProductDetails" Multiplicity="1" />
-          <End Type="HardwareStoreModel.Tbl_SaleDetails" Role="Tbl_SaleDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ctg_ProductDetails">
-              <PropertyRef Name="Pk_ProductDetailID" />
-            </Principal>
-            <Dependent Role="Tbl_SaleDetails">
-              <PropertyRef Name="Fk_ProductDetailID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_UNITCONVERSION_PDL">
           <End Type="HardwareStoreModel.Ctg_UnitConversion" Role="Ctg_UnitConversion" Multiplicity="1" />
           <End Type="HardwareStoreModel.Ctg_ProductDetails" Role="Ctg_ProductDetails" Multiplicity="*" />
@@ -1878,6 +1827,83 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Tbl_SaleDetails">
+          <Key>
+            <PropertyRef Name="Fk_SaleID" />
+            <PropertyRef Name="Fk_ProductDetailID" />
+            <PropertyRef Name="Fk_WarehouseId" />
+          </Key>
+          <Property Name="Fk_SaleID" Type="Int32" Nullable="false" />
+          <Property Name="Fk_ProductDetailID" Type="Int32" Nullable="false" />
+          <Property Name="Fk_WarehouseId" Type="Int32" Nullable="false" />
+          <Property Name="Sdt_Price" Type="Double" Nullable="false" />
+          <Property Name="Sdt_Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Sdt_Tax" Type="Double" />
+          <Property Name="Sdt_Subtotal" Type="Double" Nullable="false" />
+          <Property Name="Sdt_Discount" Type="Int32" />
+          <Property Name="Sdt_Total" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Ctg_ProductDetails" Relationship="HardwareStoreModel.FK_PRODUCTS_SDT" FromRole="Tbl_SaleDetails" ToRole="Ctg_ProductDetails" />
+          <NavigationProperty Name="Ctg_Warehouses" Relationship="HardwareStoreModel.FK_Tbl_SaleDetails_Ctg_Warehouses1" FromRole="Tbl_SaleDetails" ToRole="Ctg_Warehouses" />
+          <NavigationProperty Name="Tbl_Sales" Relationship="HardwareStoreModel.FK_SALES_SDT" FromRole="Tbl_SaleDetails" ToRole="Tbl_Sales" />
+        </EntityType>
+        <EntityType Name="Tbl_Sales">
+          <Key>
+            <PropertyRef Name="Pk_SaleID" />
+          </Key>
+          <Property Name="Pk_SaleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fk_UserID" Type="Int32" />
+          <Property Name="Fk_CustomerID" Type="Int32" />
+          <Property Name="Fk_CurrencyExchange" Type="Int32" Nullable="false" />
+          <Property Name="Sale_CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sale_PaymentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sale_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Sale_TaxName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sale_Tax" Type="Double" />
+          <Property Name="Sale_Subtotal" Type="Double" Nullable="false" />
+          <Property Name="Sale_Discount" Type="Int32" />
+          <Property Name="Sale_TotalAmount" Type="Double" Nullable="false" />
+          <Property Name="Sale_Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ctg_CurrencyExchange" Relationship="HardwareStoreModel.FK_Tbl_Sales_Ctg_CurrencyExchange1" FromRole="Tbl_Sales" ToRole="Ctg_CurrencyExchange" />
+          <NavigationProperty Name="Ctg_Customers" Relationship="HardwareStoreModel.FK_CUSTOMERS_SALES" FromRole="Tbl_Sales" ToRole="Ctg_Customers" />
+          <NavigationProperty Name="Ctg_Users" Relationship="HardwareStoreModel.FK_USERS_SALES" FromRole="Tbl_Sales" ToRole="Ctg_Users" />
+          <NavigationProperty Name="Tbl_SaleDetails" Relationship="HardwareStoreModel.FK_SALES_SDT" FromRole="Tbl_Sales" ToRole="Tbl_SaleDetails" />
+        </EntityType>
+        <Association Name="FK_Tbl_Sales_Ctg_CurrencyExchange1">
+          <End Type="HardwareStoreModel.Ctg_CurrencyExchange" Role="Ctg_CurrencyExchange" Multiplicity="1" />
+          <End Type="HardwareStoreModel.Tbl_Sales" Role="Tbl_Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_CurrencyExchange">
+              <PropertyRef Name="Pk_CurrencyExchange" />
+            </Principal>
+            <Dependent Role="Tbl_Sales">
+              <PropertyRef Name="Fk_CurrencyExchange" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUSTOMERS_SALES">
+          <End Type="HardwareStoreModel.Ctg_Customers" Role="Ctg_Customers" Multiplicity="0..1" />
+          <End Type="HardwareStoreModel.Tbl_Sales" Role="Tbl_Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Customers">
+              <PropertyRef Name="Pk_CustomerID" />
+            </Principal>
+            <Dependent Role="Tbl_Sales">
+              <PropertyRef Name="Fk_CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTS_SDT">
+          <End Type="HardwareStoreModel.Ctg_ProductDetails" Role="Ctg_ProductDetails" Multiplicity="1" />
+          <End Type="HardwareStoreModel.Tbl_SaleDetails" Role="Tbl_SaleDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_ProductDetails">
+              <PropertyRef Name="Pk_ProductDetailID" />
+            </Principal>
+            <Dependent Role="Tbl_SaleDetails">
+              <PropertyRef Name="Fk_ProductDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_USERS_SALES">
           <End Type="HardwareStoreModel.Ctg_Users" Role="Ctg_Users" Multiplicity="0..1" />
           <End Type="HardwareStoreModel.Tbl_Sales" Role="Tbl_Sales" Multiplicity="*" />
@@ -1887,6 +1913,18 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
             </Principal>
             <Dependent Role="Tbl_Sales">
               <PropertyRef Name="Fk_UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SaleDetails_Ctg_Warehouses1">
+          <End Type="HardwareStoreModel.Ctg_Warehouses" Role="Ctg_Warehouses" Multiplicity="1" />
+          <End Type="HardwareStoreModel.Tbl_SaleDetails" Role="Tbl_SaleDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Warehouses">
+              <PropertyRef Name="Pk_WarehouseID" />
+            </Principal>
+            <Dependent Role="Tbl_SaleDetails">
+              <PropertyRef Name="Fk_WarehouseId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2288,6 +2326,7 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
                 <ScalarProperty Name="Sdt_Tax" ColumnName="Sdt_Tax" />
                 <ScalarProperty Name="Sdt_Quantity" ColumnName="Sdt_Quantity" />
                 <ScalarProperty Name="Sdt_Price" ColumnName="Sdt_Price" />
+                <ScalarProperty Name="Fk_WarehouseId" ColumnName="Fk_WarehouseId" />
                 <ScalarProperty Name="Fk_ProductDetailID" ColumnName="Fk_ProductDetailID" />
                 <ScalarProperty Name="Fk_SaleID" ColumnName="Fk_SaleID" />
               </MappingFragment>

@@ -129,10 +129,10 @@ namespace HardwareStore.Core.Repository
             }
         }
 
-        public tblWarehouseProducts GetAWarehouseProduct(int idWhr, int idProdDetail)
+        public tblWarehouseProducts GetAWarehouseProduct(int idWhr, int idProdDetail, int idSupplier)
         {
             var list = this.GetProductsInWarehouse("");
-            var obj = list.FirstOrDefault(code => code.Fk_WarehouseID == idWhr && code.Fk_ProductDetailID == idProdDetail);
+            var obj = list.FirstOrDefault(code => code.Fk_WarehouseID == idWhr && code.Fk_ProductDetailID == idProdDetail && code.Fk_SupplierID == idSupplier);
             return obj;
         }
     }

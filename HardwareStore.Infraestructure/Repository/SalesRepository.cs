@@ -25,30 +25,10 @@ namespace HardwareStore.Core.Repository
         {
             try
             {
-                var data = (from details in this.Context.Tbl_SaleDetails
-                            join productDetail in this.Context.Ctg_ProductDetails
-                            on details.Fk_ProductDetailID equals productDetail.Pk_ProductDetailID
-                            join brand in this.Context.Ctg_Brands
-                            on productDetail.Fk_BrandID equals brand.Pk_BrandID
-                            join product in this.Context.Ctg_Products
-                            on productDetail.Fk_ProductID equals product.Pk_productID
-                            where details.Fk_SaleID == id
-                            select new SaleDetails
-                            {
-                                SaleId = details.Fk_SaleID,
-                                ProductId = details.Fk_ProductDetailID,
-                                Product = product.Prod_Name,
-                                Brand = brand.Brs_Name,
-                                Dimensions = productDetail.Pdl_Dimensions,
-                                MaterialType = productDetail.Pdl_MaterialType,
-                                Price = details.Sdt_Price,
-                                Quantity = details.Sdt_Quantity,
-                                Tax = details.Sdt_Tax,
-                                Subtotal = details.Sdt_Subtotal,
-                                Discount = details.Sdt_Discount,
-                                Total = details.Sdt_Total
-                            }).ToList();
-                return data;
+                List<SaleDetails> list = new List<SaleDetails>();
+                DataTable dt = this.ExecSpListSaleDetails(id);
+                list = this.MapSaleDetailsList(dt);
+                return list;
             }
             catch (Exception exc)
             {
@@ -57,39 +37,31 @@ namespace HardwareStore.Core.Repository
             }
         }
 
-        public List<Sales> GetSalesList()
+        private List<SaleDetails> MapSaleDetailsList(DataTable dt)
         {
             try
             {
-                var data = (from sales in this.Context.Tbl_Sales
-                            join users in this.Context.Ctg_Users
-                            on sales.Fk_UserID equals users.Pk_UserID
-                            join CyExchange in this.Context.Ctg_CurrencyExchange
-                            on sales.Fk_CurrencyExchange equals CyExchange.Pk_CurrencyExchange
-                            join ForeignCurrency in this.Context.Ctg_ForeignCurrencies
-                            on CyExchange.Fk_ForeignCurrency equals ForeignCurrency.Pk_CurrencyID
-                            where sales.Sale_Deleted == false
-                            orderby sales.Sale_Date ascending
-                            select new Sales
-                            {
-                                SaleId = sales.Pk_SaleID,
-                                UserId = sales.Fk_UserID,
-                                User = users.UserName,
-                                CustomerId = sales.Fk_CustomerID,
-                                Customer = sales.Sale_CustomerName,
-                                CurrencyId = sales.Fk_CurrencyExchange,
-                                Currency = ForeignCurrency.Cy_Name,
-                                CurrencySymbol = ForeignCurrency.Cy_Symbol,
-                                PaymentType = sales.Sale_PaymentType,
-                                SaleDate = sales.Sale_Date,
-                                TaxName = sales.Sale_TaxName,
-                                Tax = sales.Sale_Tax,
-                                Discount = sales.Sale_Discount,
-                                TotalAmount = sales.Sale_TotalAmount,
-                                Deleted = sales.Sale_Deleted
-                            }).ToList();
+                List<SaleDetails> list = new List<SaleDetails>();
+                if(dt.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        SaleDetails e = new SaleDetails();
+                        e.Id = Convert.ToInt32(row["Fk_SaleID"]);
+                        e.Warehouse = row["Whs_Name"].ToString();
+                        e.Product = row["Product"].ToString();
+                        e.BaseUnit = row["NameBaseUnit"].ToString();
+                        e.Abbrevation = row["Abbrevation"].ToString();
+                        e.Price = Convert.ToDouble(row["Sdt_Price"]);
+                        e.Quantity = Convert.ToInt32(row["Sdt_Quantity"]);
+                        e.Subtotal = Convert.ToDouble(row["Sdt_Subtotal"]);
+                        e.Discount = Convert.ToInt32(row["Sdt_Discount"]);
+                        e.Total = Convert.ToDouble(row["Sdt_Total"]);
+                        list.Add(e);
+                    }
+                }
 
-                return data;
+                return list;
             }
             catch (Exception exc)
             {
@@ -98,22 +70,107 @@ namespace HardwareStore.Core.Repository
             }
         }
 
-        public bool MainSalesTransactions(Tbl_Sales sales, List<SaleDetailsStage> listSaleDetails)
+        private DataTable ExecSpListSaleDetails(int id)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                var query = string.Format("EXEC [dbo].[Sp_ListSaleDetails] {0}", id);
+                dt = this.GetInformation(query);
+                return dt;
+            }
+            catch (Exception exc)
+            {
+
+                throw exc;
+            }
+        }
+
+        public List<Sales> GetSalesList(DateTime StartDate, DateTime EndDate)
+        {
+            try
+            {
+                List<Sales> saleList = new List<Sales>();
+                var data = this.ExecSpListSales(StartDate, EndDate);
+                saleList = this.MapSaleList(data);
+                return saleList;
+            }
+            catch (Exception exc)
+            {
+
+                throw exc;
+            }
+        }
+
+        private DataTable ExecSpListSales(DateTime StartDate, DateTime EndDate)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                var query = string.Format("EXEC [dbo].[Sp_ListSales] '{0}', '{1}'", StartDate, EndDate);
+                dt = this.GetInformation(query);
+                return dt;
+            }
+            catch (Exception exc)
+            {
+
+                throw exc;
+            }
+        }
+
+        private List<Sales> MapSaleList(DataTable dataTable)
+        {
+            try
+            {
+                List<Sales> list = new List<Sales>();
+                if(dataTable.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        Sales e = new Sales();
+                        e.Id = Convert.ToInt32(row["Pk_SaleID"]);
+                        e.UserName = row["UserName"].ToString();
+                        e.CustomerName = row["CustomerName"].ToString();
+                        e.LocalCurrency = row["LocalCurrency"].ToString();
+                        e.LocalSymbol = row["LocalSymbol"].ToString();
+                        e.ForeignCurrency = row["ForeignCurrency"].ToString();
+                        e.ForeignSymbol = row["ForeignSymbol"].ToString();
+                        e.CurrencyPurchase = Convert.ToDouble(row["Cye_Purchase"]);
+                        e.CurrencySale = Convert.ToDouble(row["Cye_Sale"]);
+                        e.PaymentType = row["Sale_PaymentType"].ToString();
+                        e.SaleDate = Convert.ToDateTime(row["Sale_Date"]);
+                        e.Subtotal = Convert.ToDouble(row["Sale_Subtotal"]);
+                        e.Discount = Convert.ToInt32(row["Sale_Discount"]);
+                        e.TotalAmount = Convert.ToDouble(row["Sale_TotalAmount"]);
+                        e.Deleted = Convert.ToBoolean(row["Sale_Deleted"]);
+                        list.Add(e);
+                    }
+                }
+
+                return list;
+            }
+            catch (Exception exc)
+            {
+
+                throw exc;
+            }
+        }
+
+        public void MainSalesTransactions(Tbl_Sales sales, List<SaleDetailsStage> listSaleDetails)
         {
             try
             {
                 this.CreateSale(sales);
                 this.CreateDetailSale(listSaleDetails);
                 this.UpdateWarehousesStock(listSaleDetails);
-                return true;
             }
-            catch (Exception)
+            catch (Exception exc)
             {
-                return false;
+                throw exc;
             }
         }
 
-        private bool CreateSale(Tbl_Sales sale)
+        private void CreateSale(Tbl_Sales sale)
         {
             try
             {
@@ -135,29 +192,18 @@ namespace HardwareStore.Core.Repository
                 Command.Parameters.AddWithValue("@Sale_TotalAmount", sale.Sale_TotalAmount);
                 Command.ExecuteNonQuery();
                 Connection.Close();
-                return true;
+                //return true;
             }
             catch (Exception exc)
             {
-                return false;
+                throw exc;
             }
         }
 
-        private bool CreateDetailSale(List<SaleDetailsStage> Sdt)
+        private void CreateDetailSale(List<SaleDetailsStage> Sdt)
         {
-            try
-            {
                 var data = this.MapSaleDetailsStage(Sdt);
                 var res = this.ExecSpCreateDetailSales(data);
-                if (res)
-                    return true;
-                else
-                    return false;
-            }
-            catch (Exception exc)
-            {
-                return false;
-            }
         }
 
         private bool ExecSpCreateDetailSales(List<Tbl_SaleDetails> Sdt)
@@ -175,6 +221,7 @@ namespace HardwareStore.Core.Repository
                         Command.CommandText = "[dbo].[Sp_CreateSaleDetails]";
                         Command.CommandType = CommandType.StoredProcedure;
                         Command.Parameters.AddWithValue("@Fk_ProductDetailID", Sdt[i].Fk_ProductDetailID);
+                        Command.Parameters.AddWithValue("@Fk_WarehouseId", Sdt[i].Fk_WarehouseId);
                         Command.Parameters.AddWithValue("@Sdt_Price", Sdt[i].Sdt_Price);
                         Command.Parameters.AddWithValue("@Sdt_Quantity", Sdt[i].Sdt_Quantity);
                         Command.Parameters.AddWithValue("@Sdt_Tax", Sdt[i].Sdt_Tax);
@@ -191,9 +238,9 @@ namespace HardwareStore.Core.Repository
                     return false;
                 }
             }
-            catch (Exception)
+            catch (Exception exc)
             {
-                return false;
+                throw exc;
             }
         }
 
@@ -208,6 +255,7 @@ namespace HardwareStore.Core.Repository
                     Tbl_SaleDetails obj = new Tbl_SaleDetails()
                     {
                         Fk_ProductDetailID = item.ProductId,
+                        Fk_WarehouseId = item.WarehouseId,
                         Sdt_Price = item.Price,
                         Sdt_Quantity = item.Quantity,
                         Sdt_Tax = item.Tax,

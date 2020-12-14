@@ -12,6 +12,6 @@ namespace HardwareStore.Core.Interfaces
     {
         List<tblWarehouseProducts> GetProductsInWarehouse(string QueryString);
         void CreaeteOrUpdateWarehouseProduct(Tbl_WarehouseProducts WhPr);
-        tblWarehouseProducts GetAWarehouseProduct(int idWhr, int idProdDetail);
+        tblWarehouseProducts GetAWarehouseProduct(int idWhr, int idProdDetail, int idSupplier);
     }
 }

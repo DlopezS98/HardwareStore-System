@@ -20,21 +20,28 @@ namespace HardwareStore.Core.Repository
 
         public List<Customers> ListAllCustomers()
         {
-            var list = this.Context.Ctg_Customers.Select(e => new Customers
+            try
             {
-                Pk_CustomerID = e.Pk_CustomerID,
-                Cust_FirtsName = e.Cust_FirtsName,
-                Cust_LastName = e.Cust_LastName,
-                Cust_Address = e.Cust_Address,
-                Cust_CustomID = e.Cust_CustomID,
-                Cust_CreatedAt = e.Cust_CreatedAt,
-                Cust_Deleted = e.Cust_Deleted,
-                Cust_IdentificationCard = e.Cust_IdentificationCard,
-                Cust_UpdatedAt = e.Cust_UpdatedAt,
-                Cust_PhoneNumber = e.Cust_PhoneNumber
-            }).ToList();
+                var list = this.Context.Ctg_Customers.Select(e => new Customers
+                {
+                    Pk_CustomerID = e.Pk_CustomerID,
+                    Cust_FirtsName = e.Cust_FirtsName,
+                    Cust_LastName = e.Cust_LastName,
+                    Cust_Address = e.Cust_Address,
+                    Cust_CustomID = e.Cust_CustomID,
+                    Cust_CreatedAt = e.Cust_CreatedAt,
+                    Cust_Deleted = e.Cust_Deleted,
+                    Cust_IdentificationCard = e.Cust_IdentificationCard,
+                    Cust_UpdatedAt = e.Cust_UpdatedAt,
+                    Cust_PhoneNumber = e.Cust_PhoneNumber
+                }).ToList();
 
-            return list;
+                return list;
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
         }
     }
 }

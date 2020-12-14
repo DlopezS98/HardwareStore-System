@@ -44,16 +44,12 @@
         <EntityTypeShape EntityType="HardwareStoreModel.Ctg_ProductDetails" Width="1.5" PointX="20.125" PointY="10.5" />
         <EntityTypeShape EntityType="HardwareStoreModel.Ctg_UnitConversion" Width="1.5" PointX="17.875" PointY="17.125" />
         <EntityTypeShape EntityType="HardwareStoreModel.Ctg_UnitType" Width="1.5" PointX="13.375" PointY="17.5" />
-        <EntityTypeShape EntityType="HardwareStoreModel.Tbl_SaleDetails" Width="1.5" PointX="22.375" PointY="11.625" />
-        <EntityTypeShape EntityType="HardwareStoreModel.Tbl_Sales" Width="1.5" PointX="20.125" PointY="5" />
         <AssociationConnector Association="HardwareStoreModel.FK_Ctg_BaseUnits_Ctg_UnitType" />
         <AssociationConnector Association="HardwareStoreModel.FK_Ctg_UnitConversion_Ctg_BaseUnits" />
         <AssociationConnector Association="HardwareStoreModel.FK_BRANDS_PDL" />
         <AssociationConnector Association="HardwareStoreModel.FK_CATEGORIES_PDL" />
         <AssociationConnector Association="HardwareStoreModel.FK_Ctg_CurrencyExchange_Ctg_ForeignCurrencies" />
         <AssociationConnector Association="HardwareStoreModel.FK_Ctg_CurrencyExchange_Ctg_LocalCurrencies" />
-        <AssociationConnector Association="HardwareStoreModel.FK_Tbl_Sales_Ctg_CurrencyExchange1" />
-        <AssociationConnector Association="HardwareStoreModel.FK_CUSTOMERS_SALES" />
         <AssociationConnector Association="HardwareStoreModel.FK_SOURCEUNIT" />
         <AssociationConnector Association="HardwareStoreModel.FK_UNITTYPE_MSU" />
         <AssociationConnector Association="HardwareStoreModel.FK_PROD_DETAILS_RMPROD" />
@@ -61,9 +57,14 @@
         <AssociationConnector Association="HardwareStoreModel.FK_PRODUCT_DETAIL_TD" />
         <AssociationConnector Association="HardwareStoreModel.FK_PRODUCTS_ODT" />
         <AssociationConnector Association="HardwareStoreModel.FK_PRODUCTS_PDL" />
-        <AssociationConnector Association="HardwareStoreModel.FK_PRODUCTS_SDT" />
         <AssociationConnector Association="HardwareStoreModel.FK_UNITCONVERSION_PDL" />
+        <EntityTypeShape EntityType="HardwareStoreModel.Tbl_SaleDetails" Width="1.5" PointX="22.375" PointY="11.25" />
+        <EntityTypeShape EntityType="HardwareStoreModel.Tbl_Sales" Width="1.5" PointX="20.125" PointY="16.625" />
+        <AssociationConnector Association="HardwareStoreModel.FK_Tbl_Sales_Ctg_CurrencyExchange1" />
+        <AssociationConnector Association="HardwareStoreModel.FK_CUSTOMERS_SALES" />
+        <AssociationConnector Association="HardwareStoreModel.FK_PRODUCTS_SDT" />
         <AssociationConnector Association="HardwareStoreModel.FK_USERS_SALES" />
+        <AssociationConnector Association="HardwareStoreModel.FK_Tbl_SaleDetails_Ctg_Warehouses1" />
         <AssociationConnector Association="HardwareStoreModel.FK_SALES_SDT" />
       </Diagram>
     </edmx:Diagrams>

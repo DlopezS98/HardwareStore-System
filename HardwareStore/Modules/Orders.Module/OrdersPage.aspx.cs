@@ -88,21 +88,22 @@ namespace HardwareStore.Modules.Orders.Module
             int index = Row.RowIndex;
             int idWhr = Convert.ToInt32(GridViewWarehouseProducts.DataKeys[index]["Fk_WarehouseID"]);
             int idProdDetail = Convert.ToInt32(GridViewWarehouseProducts.DataKeys[index]["Fk_ProductDetailID"]);
+            int idSupplier = Convert.ToInt32(GridViewWarehouseProducts.DataKeys[index]["Fk_SupplierID"]);
             switch (e.CommandName)
             {
                 case "cmdSelect":
                     this.ResetDetailInputs();
-                    this.SendWarehouseProductToTextBox(idWhr, idProdDetail);
+                    this.SendWarehouseProductToTextBox(idWhr, idProdDetail, idSupplier);
                     break;
                 default:
                     break;
             }
         }
 
-        public void SendWarehouseProductToTextBox(int idWhr, int idProdDetail)
+        public void SendWarehouseProductToTextBox(int idWhr, int idProdDetail, int idSupplier)
         {
             //Metodo que retorna un elemento en productos bodegas (Warehouse-products)
-            var obj = this.vWarehouseProductsRepository.GetAWarehouseProduct(idWhr, idProdDetail);
+            var obj = this.vWarehouseProductsRepository.GetAWarehouseProduct(idWhr, idProdDetail, idSupplier);
             //Valores a los textbox
             txtWarehouseId.Text = idWhr.ToString();
             txtProductId.Text = idProdDetail.ToString();
@@ -126,10 +127,11 @@ namespace HardwareStore.Modules.Orders.Module
             int index = Row.RowIndex;
             int idWhr = Convert.ToInt32(GridViewOrderDetailsStage.DataKeys[index]["Fk_WarehouseID"]);
             int idProdDetail = Convert.ToInt32(GridViewOrderDetailsStage.DataKeys[index]["Fk_ProductDetailID"]);
+            int SupplierId = Convert.ToInt32(GridViewOrderDetailsStage.DataKeys[index]["Fk_SupplierID"]);
             switch (e.CommandName)
             {
                 case "cmdEdit":
-                    this.SendOrderDetailStageToTextbox(idWhr, idProdDetail);
+                    this.SendOrderDetailStageToTextbox(idWhr, idProdDetail, SupplierId);
                     btnAddToDetailStageList.Text = "Editar";                   
                     break;
 
@@ -149,10 +151,10 @@ namespace HardwareStore.Modules.Orders.Module
             }
         }
 
-        public void SendOrderDetailStageToTextbox(int idWhr, int idProdDetail)
+        public void SendOrderDetailStageToTextbox(int idWhr, int idProdDetail, int SupplierId)
         {
             listOdtStage = (Session["ListOdtStg"] as List<OrderDetailsStage>);
-            var obj = this.listOdtStage.FirstOrDefault(o => o.Fk_WarehouseID == idWhr && o.Fk_ProductDetailID == idProdDetail);
+            var obj = this.listOdtStage.FirstOrDefault(o => o.Fk_WarehouseID == idWhr && o.Fk_ProductDetailID == idProdDetail && o.Fk_SupplierID == SupplierId);
             txtWarehouseId.Text = idWhr.ToString();
             txtProductId.Text = idProdDetail.ToString();
             txtProduct.Text = obj.ProductName;
@@ -241,7 +243,8 @@ namespace HardwareStore.Modules.Orders.Module
                     listOdtStage = (Session["ListOdtStg"] as List<OrderDetailsStage>);
                     int WhrId = Convert.ToInt32(txtWarehouseId.Text);
                     int ProdDdtId = Convert.ToInt32(txtProductId.Text);
-                    var oldObj = listOdtStage.FirstOrDefault(o => o.Fk_WarehouseID == WhrId && o.Fk_ProductDetailID == ProdDdtId);
+                    int SupplierId = Convert.ToInt32(txtSupplierId.Text);
+                    var oldObj = listOdtStage.FirstOrDefault(o => o.Fk_WarehouseID == WhrId && o.Fk_ProductDetailID == ProdDdtId && o.Fk_SupplierID == SupplierId);
                     oldObj.PurchasePrice = Convert.ToDouble(txtPrice.Text);
                     oldObj.Quantity = Convert.ToInt32(txtQuantity.Text);
                     oldObj.Discount = Convert.ToInt32(txtDetailDiscount.Text);
@@ -466,5 +469,6 @@ namespace HardwareStore.Modules.Orders.Module
         {
             OrdersView.ActiveViewIndex = 2;
         }
+
     }
 }

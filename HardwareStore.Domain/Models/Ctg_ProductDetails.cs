@@ -49,8 +49,8 @@ namespace HardwareStore.Domain.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_OrderDetails> Tbl_OrderDetails { get; set; }
         public virtual Ctg_Products Ctg_Products { get; set; }
+        public virtual Ctg_UnitConversion Ctg_UnitConversion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_SaleDetails> Tbl_SaleDetails { get; set; }
-        public virtual Ctg_UnitConversion Ctg_UnitConversion { get; set; }
     }
 }

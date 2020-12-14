@@ -11,9 +11,9 @@
 
 		<nav>
 			<ul>
-				<li><asp:Button CssClass="btnDark" runat="server" ID="btnBackToCreateOrder" OnClick="btnBackToCreateOrder_Click" Text="Nuevo" /></li>
+				<li><asp:Button CssClass="btnDark" runat="server" ID="btnBackToCreateOrder" OnClick="btnBackToCreateOrder_Click" Text="Realizar Compra" /></li>
 				<li><asp:Button CssClass="btnDark" runat="server" ID="btnTblProducts" OnClick="btnTblProducts_Click" Text="Detalle Compra" /></li>
-				<li><asp:Button CssClass="btnDark" runat="server" ID="btnGoToListOrders" OnClick="btnGoToListOrders_Click" Text="Ver Pedidos" /></li>
+				<li><asp:Button CssClass="btnDark" runat="server" ID="btnGoToListOrders" OnClick="btnGoToListOrders_Click" Text="Ver Compras" /></li>
 			</ul>
 		</nav><!-- / nav -->
 
@@ -38,11 +38,12 @@
                                 <asp:Button CssClass="btnPrimary" runat="server" OnClick="btnSearchWarehouseProduct_Click" Text="Buscar" ID="btnSearchWarehouseProduct" />
                             </div>
                         </div>
-                        <asp:GridView runat="server" DataKeyNames="Fk_WarehouseID,Fk_ProductDetailID" AutoGenerateColumns="false"
+                        <asp:GridView runat="server" DataKeyNames="Fk_WarehouseID,Fk_ProductDetailID,Fk_SupplierID" AutoGenerateColumns="false"
                             ID="GridViewWarehouseProducts" OnRowCommand="GridViewWarehouseProducts_RowCommand" CssClass="headerTable" CellPadding="5">
                             <Columns>
                                 <asp:BoundField HeaderText="ID Bodega" DataField="Fk_WarehouseID" Visible="false" />
                                 <asp:BoundField HeaderText="ID Producto" DataField="Fk_ProductDetailID" Visible="false" />
+                                <asp:BoundField HeaderText="ID proveedor" DataField="Fk_SupplierID" Visible="false" />
                                 <asp:BoundField HeaderText="Bodega" DataField="WarehouseName" />
                                 <asp:BoundField HeaderText="Producto" DataField="ProductName" />
                                 <asp:BoundField HeaderText="Proveedor" DataField="SupplierName" />
@@ -206,6 +207,7 @@
                 </asp:UpdatePanel>
                 <%-- Fin del formulario --%>
             </asp:View>
+
             <asp:View runat="server">
                 <asp:UpdatePanel runat="server" ID="UpdatePanel3">
                     <ContentTemplate>
@@ -299,11 +301,12 @@
                         <div class="ContainerPedidos">
                             <h4 style="text-align: center;">Tabla Productos</h4>
                             <hr />
-                            <asp:GridView runat="server" DataKeyNames="Fk_WarehouseID,Fk_ProductDetailID" AutoGenerateColumns="false"
+                            <asp:GridView runat="server" DataKeyNames="Fk_WarehouseID,Fk_ProductDetailID,Fk_SupplierID" AutoGenerateColumns="false"
                                 ID="GridViewOrderDetailsStage" OnRowCommand="GridViewOrderDetailsStage_RowCommand" CssClass="headerTable" BorderStyle="None">
                                 <Columns>
                                     <asp:BoundField HeaderText="ID Bodega" DataField="Fk_WarehouseID" Visible="false" />
                                     <asp:BoundField HeaderText="ID Producto" DataField="Fk_ProductDetailID" Visible="false" />
+                                    <asp:BoundField HeaderText="ID Proveedor" DataField="Fk_SupplierID" Visible="false" />
                                     <asp:BoundField HeaderText="Bodega" DataField="WarehouseName" />
                                     <asp:BoundField HeaderText="Producto" DataField="ProductName" />
                                     <asp:BoundField HeaderText="Proveedor" DataField="SupplierName" />
@@ -371,14 +374,14 @@
                                         <div class="spanType">
                                             <span>C$</span>
                                         </div>
-                                        <div style="width: 100%">
+                                        <div style="padding-left: 12%; width: 100%">
                                             <asp:TextBox ReadOnly="true" placeholder="Total" runat="server" ID="txtTotal" CssClass="form-control form-disable" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div style="width: 100%; margin: 20px; min-width: 150px; text-align: center">
-                                <asp:Button runat="server" Text="Calcular" ValidationGroup="" OnClick="btnRecalculateOrderTotal_Click" ID="btnRecalculateOrderTotal" CssClass="btnSuccess" Style="margin-left: 10px" />
+                                <asp:Button runat="server" Text="Calcular" ValidationGroup="OrderGroup" OnClick="btnRecalculateOrderTotal_Click" ID="btnRecalculateOrderTotal" CssClass="btnSuccess" Style="margin-left: 10px" />
                                 <asp:Button runat="server" Text="Registrar Orden" ValidationGroup="OrderGroup" ID="btnCreateOrder" OnClick="btnCreateOrder_Click" CssClass="btnSuccess" Style="margin-left: 10px" />
                                 <asp:Button runat="server" Text="Cancelar" ID="btnCancelOrder" OnClick="btnCancelOrder_Click" CssClass="btnDanger" Style="margin-left: 10px" />
                             </div>
@@ -401,6 +404,7 @@
             </p>
         </div>
     </div>
+
     <div id="toastOrdSuccess" class="toast">
         <div class="toast-img toast-img-success"><i class="fas fa-check-circle"></i></div>
         <div class="toast-body">

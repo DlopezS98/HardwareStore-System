@@ -3,15 +3,15 @@
     margin: 0;
 }
 
-.containerSales {
+/*.containerSales {
     margin-top: 30px;
     display: flex;
     background: #fff;
-}
+}*/
 
-.form-principal-sales {
+/*.form-principal-sales {
     background: #F9F9F9;
-    height: 800px;
+    max-height: 200px;
     width: 100%;
     margin-left: 10px;
     margin-right: 10px;
@@ -22,7 +22,7 @@
     border-right: 0.5px solid #ddd;
     border-bottom: 0.5px solid #ddd;
     border-radius: 5px;
-}
+}*/
 
 .col-15 {
     width: 15%;

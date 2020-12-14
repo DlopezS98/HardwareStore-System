@@ -10,8 +10,8 @@ namespace HardwareStore.Core.Interfaces
 {
     public interface ISalesRepository
     {
-        List<Sales> GetSalesList();
+        List<Sales> GetSalesList(DateTime StartDate, DateTime EndDate);
         List<SaleDetails> GetSaleDetails(int id);
-        bool MainSalesTransactions(Tbl_Sales sales, List<SaleDetailsStage> SaleDetails);
+        void MainSalesTransactions(Tbl_Sales sales, List<SaleDetailsStage> SaleDetails);
     }
 }

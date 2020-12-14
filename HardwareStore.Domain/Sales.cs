@@ -8,22 +8,23 @@ namespace HardwareStore.Domain
 {
     public class Sales
     {
-        public int SaleId { get; set; }
-        public Nullable<int> UserId { get; set; }
-        public string User { get; set; }
-        public Nullable<int> CustomerId { get; set; }
-        public string Customer { get; set; }
-        public Nullable<int> CurrencyId { get; set; }
-        public string Currency { get; set; }
-        public string CurrencySymbol { get; set; }
+        public int Id { get; set; }
+        public string UserName { get; set; }
+        public string CustomerName { get; set; }
+        public string LocalCurrency { get; set; }
+        public string LocalSymbol { get; set; }
+        public string ForeignCurrency { get; set; }
+        public string ForeignSymbol { get; set; }
         public string PaymentType { get; set; }
+        public double CurrencyPurchase { get; set; }
+        public double CurrencySale { get; set; }
         public DateTime SaleDate { get; set; }
         public string DateString { get => "[ " + this.SaleDate.ToString("dd-MM-yyyy") + " ]"; }
-        public string TaxName { get; set; }
-        public Nullable<double> Tax { get; set; }
         public Nullable<int> Discount { get; set; }
+        public double Subtotal { get; set; }
+        public string SubtotalString { get => this.LocalSymbol + " " + this.Subtotal; }
         public double TotalAmount { get; set; }
-        public string TotalString { get => this.CurrencySymbol + "" + this.TotalAmount; }
+        public string TotalString { get => this.LocalSymbol + " " + this.TotalAmount; }
         public bool Deleted { get; set; }
     }
 }

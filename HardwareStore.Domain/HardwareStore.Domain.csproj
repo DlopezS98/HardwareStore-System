@@ -52,8 +52,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ctgWarehouse.cs" />
+    <Compile Include="ForeignCurrencies.cs" />
     <Compile Include="Customers.cs" />
     <Compile Include="DbConnection.cs" />
+    <Compile Include="LocalCurrencies.cs" />
     <Compile Include="Models\Ctg_BaseUnits.cs">
       <DependentUpon>HardwareStoreModel.tt</DependentUpon>
     </Compile>

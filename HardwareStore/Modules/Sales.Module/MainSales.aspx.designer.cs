@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HardwareStore.Modules.Sales.Module {
-    
-    
-    public partial class MainSales {
-        
+namespace HardwareStore.Modules.Sales.Module
+{
+
+
+    public partial class MainSales
+    {
+
         /// <summary>
         /// btnBackToCreateSale control.
         /// </summary>
@@ -20,16 +22,16 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBackToCreateSale;
-        
+
         /// <summary>
-        /// btnTblProducts control.
+        /// btnSaleDetailList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnTblProducts;
-        
+        protected global::System.Web.UI.WebControls.Button btnSaleDetailList;
+
         /// <summary>
         /// btnGoToListOrdersSales control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnGoToListOrdersSales;
-        
+
         /// <summary>
         /// getidFromtable control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl getidFromtable;
-        
+
         /// <summary>
         /// updatePanel1 control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel updatePanel1;
-        
+
         /// <summary>
         /// txtSearchWarehouseProduct control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSearchWarehouseProduct;
-        
+
         /// <summary>
         /// btnSearchWarehouseProduct control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSearchWarehouseProduct;
-        
+
         /// <summary>
         /// GridViewWarehouseProducts control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewWarehouseProducts;
-        
+
         /// <summary>
         /// SalesView control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.MultiView SalesView;
-        
+
         /// <summary>
         /// UpdatePanel2 control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel2;
-        
+
         /// <summary>
         /// txtWarehouseId control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtWarehouseId;
-        
+
         /// <summary>
         /// txtProductId control.
         /// </summary>
@@ -119,25 +121,25 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtProductId;
-        
+
         /// <summary>
-        /// txtProduct control.
+        /// txtSupplierId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtProduct;
-        
+        protected global::System.Web.UI.WebControls.TextBox txtSupplierId;
+
         /// <summary>
-        /// btnShowmodal control.
+        /// txtCurrencyExchangeId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnShowmodal;
-        
+        protected global::System.Web.UI.WebControls.TextBox txtCurrencyExchangeId;
+
         /// <summary>
         /// txtWarehouseName control.
         /// </summary>
@@ -146,7 +148,52 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtWarehouseName;
-        
+
+        /// <summary>
+        /// txtProduct control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtProduct;
+
+        /// <summary>
+        /// btnShowmodal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnShowmodal;
+
+        /// <summary>
+        /// ddlistCustomers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlistCustomers;
+
+        /// <summary>
+        /// Button1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
+
+        /// <summary>
+        /// txtCustomer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCustomer;
+
         /// <summary>
         /// txtBrand control.
         /// </summary>
@@ -155,7 +202,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBrand;
-        
+
         /// <summary>
         /// txtMaterialType control.
         /// </summary>
@@ -164,7 +211,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtMaterialType;
-        
+
         /// <summary>
         /// txtDimensions control.
         /// </summary>
@@ -173,7 +220,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDimensions;
-        
+
         /// <summary>
         /// txtMeasureUnit control.
         /// </summary>
@@ -182,7 +229,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtMeasureUnit;
-        
+
         /// <summary>
         /// txtProductCode control.
         /// </summary>
@@ -191,7 +238,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtProductCode;
-        
+
         /// <summary>
         /// txtProductStock control.
         /// </summary>
@@ -200,7 +247,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtProductStock;
-        
+
         /// <summary>
         /// txtQuantity control.
         /// </summary>
@@ -209,7 +256,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtQuantity;
-        
+
         /// <summary>
         /// txtPrice control.
         /// </summary>
@@ -218,7 +265,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPrice;
-        
+
         /// <summary>
         /// txtDetailDiscount control.
         /// </summary>
@@ -227,7 +274,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDetailDiscount;
-        
+
         /// <summary>
         /// btnAddToDetailStageList control.
         /// </summary>
@@ -236,7 +283,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAddToDetailStageList;
-        
+
         /// <summary>
         /// btnAbortAddToDetailStageList control.
         /// </summary>
@@ -245,7 +292,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAbortAddToDetailStageList;
-        
+
         /// <summary>
         /// UpdatePanel3 control.
         /// </summary>
@@ -254,7 +301,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel3;
-        
+
         /// <summary>
         /// btnUpdateTable control.
         /// </summary>
@@ -263,7 +310,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnUpdateTable;
-        
+
         /// <summary>
         /// DatepickerFrom control.
         /// </summary>
@@ -272,7 +319,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl DatepickerFrom;
-        
+
         /// <summary>
         /// DatepickerTo control.
         /// </summary>
@@ -281,7 +328,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl DatepickerTo;
-        
+
         /// <summary>
         /// btnFilterByDate control.
         /// </summary>
@@ -290,16 +337,61 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnFilterByDate;
-        
+
         /// <summary>
-        /// UpdatePanel1 control.
+        /// GridviewSales control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
+        protected global::System.Web.UI.WebControls.GridView GridviewSales;
+
+        /// <summary>
+        /// GridViewSaleDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewSaleDetails;
+
+        /// <summary>
+        /// UpdatePanel4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel4;
+
+        /// <summary>
+        /// GridViewSaleDetailsStage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewSaleDetailsStage;
+
+        /// <summary>
+        /// txtSubtotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSubtotal;
+
+        /// <summary>
+        /// txtTotalDiscount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTotalDiscount;
+
         /// <summary>
         /// txtTotal control.
         /// </summary>
@@ -308,68 +400,95 @@ namespace HardwareStore.Modules.Sales.Module {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTotal;
-        
+
         /// <summary>
-        /// txtDescuentototal control.
+        /// ddlistForeignCurrencies control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescuentototal;
-        
+        protected global::System.Web.UI.WebControls.DropDownList ddlistForeignCurrencies;
+
         /// <summary>
-        /// ddlstMoneda control.
+        /// ddlistLocalCurrencies control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlstMoneda;
-        
+        protected global::System.Web.UI.WebControls.DropDownList ddlistLocalCurrencies;
+
         /// <summary>
-        /// txtpago control.
+        /// txtCurrencyPurchase control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtpago;
-        
+        protected global::System.Web.UI.WebControls.TextBox txtCurrencyPurchase;
+
         /// <summary>
-        /// txtCambio control.
+        /// txtCurrencySale control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCambio;
-        
+        protected global::System.Web.UI.WebControls.TextBox txtCurrencySale;
+
         /// <summary>
-        /// btnCalcularr control.
+        /// txtPayment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCalcularr;
-        
+        protected global::System.Web.UI.WebControls.TextBox txtPayment;
+
         /// <summary>
-        /// btnRegistrar control.
+        /// txtConversion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRegistrar;
-        
+        protected global::System.Web.UI.WebControls.TextBox txtConversion;
+
         /// <summary>
-        /// btnCancelar control.
+        /// txtPaymentChange control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelar;
+        protected global::System.Web.UI.WebControls.TextBox txtPaymentChange;
+
+        /// <summary>
+        /// btnCalculateTotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCalculateTotal;
+
+        /// <summary>
+        /// btnCreateSale control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCreateSale;
+
+        /// <summary>
+        /// btnAbortTransaction control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAbortTransaction;
     }
 }

@@ -16,6 +16,7 @@ namespace HardwareStore.Domain.Models
     {
         public int Fk_SaleID { get; set; }
         public int Fk_ProductDetailID { get; set; }
+        public int Fk_WarehouseId { get; set; }
         public double Sdt_Price { get; set; }
         public int Sdt_Quantity { get; set; }
         public Nullable<double> Sdt_Tax { get; set; }
@@ -24,6 +25,7 @@ namespace HardwareStore.Domain.Models
         public double Sdt_Total { get; set; }
     
         public virtual Ctg_ProductDetails Ctg_ProductDetails { get; set; }
+        public virtual Ctg_Warehouses Ctg_Warehouses { get; set; }
         public virtual Tbl_Sales Tbl_Sales { get; set; }
     }
 }

@@ -21,6 +21,7 @@ namespace HardwareStore.Domain.Models
             this.Tbl_Transfers = new HashSet<Tbl_Transfers>();
             this.Tbl_RemovedProducts = new HashSet<Tbl_RemovedProducts>();
             this.Tbl_WarehouseProducts = new HashSet<Tbl_WarehouseProducts>();
+            this.Tbl_SaleDetails = new HashSet<Tbl_SaleDetails>();
         }
     
         public int Pk_WarehouseID { get; set; }
@@ -39,5 +40,7 @@ namespace HardwareStore.Domain.Models
         public virtual ICollection<Tbl_RemovedProducts> Tbl_RemovedProducts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_WarehouseProducts> Tbl_WarehouseProducts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_SaleDetails> Tbl_SaleDetails { get; set; }
     }
 }
