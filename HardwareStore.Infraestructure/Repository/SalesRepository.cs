@@ -142,7 +142,7 @@ namespace HardwareStore.Core.Repository
                         e.Subtotal = Convert.ToDouble(row["Sale_Subtotal"]);
                         e.Discount = Convert.ToInt32(row["Sale_Discount"]);
                         e.TotalAmount = Convert.ToDouble(row["Sale_TotalAmount"]);
-                        e.Deleted = Convert.ToBoolean(row["Sale_Deleted"]);
+                        e.Deleted = Convert.ToBoolean(row["Status"]);
                         list.Add(e);
                     }
                 }
