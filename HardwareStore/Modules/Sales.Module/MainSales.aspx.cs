@@ -58,9 +58,9 @@ namespace HardwareStore.Modules.Sales.Module
             this.ddlistLocalCurrencies.DataBind();
         }
 
-        public void LoadGridViewSales(DateTime Start, DateTime End)
+        public void LoadGridViewSales(DateTime Start, DateTime End, int status)
         {
-            var list = this.vSalesRepository.GetSalesList(Start, End);
+            var list = this.vSalesRepository.GetSalesList(Start, End, status);
             this.GridviewSales.DataSource = list;
             this.GridviewSales.DataBind();
         }
@@ -78,7 +78,7 @@ namespace HardwareStore.Modules.Sales.Module
             {
                 DateTime Start = DateTime.Parse("1998-10-01");
                 DateTime End = DateTime.Now;
-                this.LoadGridViewSales(Start, End);
+                this.LoadGridViewSales(Start, End, 0);
                 this.LoadGridViewWarehouseProducts("");
                 this.LoadDropDownCustomers();
                 this.LoadDropDownListsCurrencies();
@@ -520,7 +520,7 @@ namespace HardwareStore.Modules.Sales.Module
         {
             DateTime Start = DateTime.Parse("1998-10-01");
             DateTime End = DateTime.Now;
-            this.LoadGridViewSales(Start, End);
+            this.LoadGridViewSales(Start, End, 0);
         }
 
         protected void btnFilterByDate_Click(object sender, EventArgs e)
@@ -534,7 +534,7 @@ namespace HardwareStore.Modules.Sales.Module
             }
             else
             {
-                this.LoadGridViewSales(Start, End);
+                this.LoadGridViewSales(Start, End, 0);
             }
         }
     }

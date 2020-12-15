@@ -86,12 +86,12 @@ namespace HardwareStore.Core.Repository
             }
         }
 
-        public List<Sales> GetSalesList(DateTime StartDate, DateTime EndDate)
+        public List<Sales> GetSalesList(DateTime StartDate, DateTime EndDate, int status)
         {
             try
             {
                 List<Sales> saleList = new List<Sales>();
-                var data = this.ExecSpListSales(StartDate, EndDate);
+                var data = this.ExecSpListSales(StartDate, EndDate, status);
                 saleList = this.MapSaleList(data);
                 return saleList;
             }
@@ -102,12 +102,12 @@ namespace HardwareStore.Core.Repository
             }
         }
 
-        private DataTable ExecSpListSales(DateTime StartDate, DateTime EndDate)
+        private DataTable ExecSpListSales(DateTime StartDate, DateTime EndDate, int status)
         {
             try
             {
                 DataTable dt = new DataTable();
-                var query = string.Format("EXEC [dbo].[Sp_ListSales] '{0}', '{1}'", StartDate, EndDate);
+                var query = string.Format("EXEC [dbo].[Sp_ListSales] '{0}', '{1}', {2}", StartDate, EndDate, status);
                 dt = this.GetInformation(query);
                 return dt;
             }
