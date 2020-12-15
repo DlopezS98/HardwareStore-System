@@ -27,7 +27,6 @@
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 20px;
-    text-align: center;
     border-top: 1.5px solid #0D9DBB;
     border-left: 0.5px solid #ddd;
     border-right: 0.5px solid #ddd;
@@ -35,29 +34,18 @@
     border-radius: 5px;
 }
 
-.col-25 {
-    width: 25%;
-    margin: 10px;
-}
-
-.col-70 {
+.form-principal-edit {
+    background: #F9F9F9;
+    height: 950px;
     width: 70%;
-    margin: 10px;
-}
-
-.col-100 {
-    width: 100%;
-    margin: 10px;
-}
-
-.col-50 {
-    width: 50%;
-    margin: 10px;
-}
-
-.col-47 {
-    width: 47%;
-    margin: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    border-top: 1.5px solid #0D9DBB;
+    border-left: 0.5px solid #ddd;
+    border-right: 0.5px solid #ddd;
+    border-bottom: 0.5px solid #ddd;
+    border-radius: 5px;
 }
 
 

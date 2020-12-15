@@ -13,5 +13,15 @@ namespace HardwareStore.Modules.SystemConfiguration
         {
 
         }
+
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            containerConfig.ActiveViewIndex = 1;
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            containerConfig.ActiveViewIndex = 0;
+        }
     }
 }

@@ -167,6 +167,15 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Images\Avatar.png" />
+    <Content Include="Images\clientes.png" />
+    <Content Include="Images\crash.png" />
+    <Content Include="Images\devoluciones.png" />
+    <Content Include="Images\img1.png" />
+    <Content Include="Images\img2.png" />
+    <Content Include="Images\img3.png" />
+    <Content Include="Images\lista-tareas.png" />
+    <Content Include="Images\mensajero-trabajando.png" />
+    <Content Include="Images\unnamed.png" />
     <Content Include="Modules\Catalogs.Module\Brands.aspx" />
     <Content Include="Modules\Catalogs.Module\Categories.aspx" />
     <Content Include="Modules\Catalogs.Module\Customers.aspx" />
@@ -177,8 +186,11 @@
     <Content Include="Modules\Catalogs.Module\Suppliers.aspx" />
     <Content Include="Modules\Catalogs.Module\UnitsOfMeasurement.aspx" />
     <Content Include="Modules\Catalogs.Module\Warehauses.aspx" />
+    <Content Include="Modules\Home\Home.aspx" />
     <Content Include="Modules\Orders.Module\OrdersPage.aspx" />
-    <Content Include="Modules\ProductsAdmin.Module\MainProductsAdmin.aspx" />
+    <Content Include="Modules\ProductsAdmin.Module\AdminExistencias.aspx" />
+    <Content Include="Modules\ProductsAdmin.Module\DeleteProductWarehause.aspx" />
+    <Content Include="Modules\ProductsAdmin.Module\ProductosB.aspx" />
     <Content Include="Modules\Reports.Module\MainReports.aspx" />
     <Content Include="Modules\Sales.Module\MainSales.aspx" />
     <Content Include="Modules\Security.Module\MainSecurity.aspx" />
@@ -240,8 +252,11 @@
     <Content Include="Styles\cssCatalogs.css" />
     <Content Include="Styles\cssConfiguration.css" />
     <Content Include="Styles\cssSales.css" />
+    <Content Include="Styles\ExistenciaStyles.css" />
+    <Content Include="Styles\FloatingButtonStyles.css" />
     <Content Include="Styles\OdModalStyle.css" />
     <Content Include="Styles\OrdersStyle.css" />
+    <Content Include="Styles\SideBarStyle.css" />
     <Content Include="Styles\Styles.css" />
     <Content Include="Styles\Toast.css" />
     <Content Include="ViewSwitcher.ascx" />
@@ -338,6 +353,13 @@
     <Compile Include="Modules\Catalogs.Module\Warehauses.aspx.designer.cs">
       <DependentUpon>Warehauses.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Home\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Home\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Orders.Module\OrdersPage.aspx.cs">
       <DependentUpon>OrdersPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -345,12 +367,26 @@
     <Compile Include="Modules\Orders.Module\OrdersPage.aspx.designer.cs">
       <DependentUpon>OrdersPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Modules\ProductsAdmin.Module\MainProductsAdmin.aspx.cs">
-      <DependentUpon>MainProductsAdmin.aspx</DependentUpon>
+    <Compile Include="Modules\ProductsAdmin.Module\AdminExistencias.aspx.cs">
+      <DependentUpon>AdminExistencias.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Modules\ProductsAdmin.Module\MainProductsAdmin.aspx.designer.cs">
-      <DependentUpon>MainProductsAdmin.aspx</DependentUpon>
+    <Compile Include="Modules\ProductsAdmin.Module\AdminExistencias.aspx.designer.cs">
+      <DependentUpon>AdminExistencias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\ProductsAdmin.Module\DeleteProductWarehause.aspx.cs">
+      <DependentUpon>DeleteProductWarehause.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\ProductsAdmin.Module\DeleteProductWarehause.aspx.designer.cs">
+      <DependentUpon>DeleteProductWarehause.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\ProductsAdmin.Module\ProductosB.aspx.cs">
+      <DependentUpon>ProductosB.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\ProductsAdmin.Module\ProductosB.aspx.designer.cs">
+      <DependentUpon>ProductosB.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modules\Reports.Module\MainReports.aspx.cs">
       <DependentUpon>MainReports.aspx</DependentUpon>
@@ -406,7 +442,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Modules\Home\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
