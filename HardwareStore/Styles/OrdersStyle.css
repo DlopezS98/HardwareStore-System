@@ -1,4 +1,4 @@
-﻿body {
+﻿/*body {
 }
 
 #main-header {
@@ -12,12 +12,12 @@
 
     #main-header a {
         color: white;
-    }
+    }*/
 
 /*
  * Logo
  */
-#logo-header {
+/*#logo-header {
     float: left;
     padding: 15px 0 0 20px;
     text-decoration: none;
@@ -42,7 +42,7 @@
 /*
  * Navegación
  */
-nav {
+/*nav {
     float: right;
 }
 
@@ -66,5 +66,5 @@ nav {
 
                 nav ul li a:hover {
                     background: #0b76a6;
-                }
+                }*/
 

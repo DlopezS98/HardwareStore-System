@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MainSecurity.aspx.cs" Inherits="HardwareStore.Modules.Security.Module.MainSecurity" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div style="padding-left: 24px; padding-right: 24px;">
         <h1>Seguridad</h1>
@@ -9,7 +10,7 @@
 
                     <div class="row">
                         <div class="Button_Group">
-                            <asp:Button ID="btnNewUser" OnClick="btnNewUser_Click" Text="Nuevo Usuario" runat="server" CssClass="btn-success" />
+                            <asp:Button ID="btnNewUser" OnClick="btnNewUser_Click" Text="Nuevo Usuario" runat="server" CssClass="btnSuccess" />
                         </div>
                         <div class="col-lg-12">
                             <table class="table">
@@ -59,12 +60,12 @@
                     </div>
                     <div style="padding: 20px;">
                         <div class="formSection">
-                        <div>
-                            <div style="style="margin: 0 auto;"">
+
+                            <div class="col-46">
                                 <h4>Código</h4>
                                 <asp:TextBox ReadOnly="true" runat="server" placeholder="Codigo Usuario" CssClass="form-control" />
                             </div>
-                            <div style="margin: 0 auto;">
+                            <div class="col-46">
                                 <h4>Empleado</h4>
                                 <asp:DropDownList runat="server" class="form-control">
                                     <asp:ListItem>Empleados</asp:ListItem>
@@ -72,7 +73,7 @@
                                     <asp:ListItem>Rubén Parrales</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
-                            <div style="margin: 0 auto;">
+                            <div class="col-46">
                                 <h4>Privilegio</h4>
                                 <asp:DropDownList runat="server" class="form-control">
                                     <asp:ListItem>Seleccione el rol</asp:ListItem>
@@ -80,21 +81,20 @@
                                     <asp:ListItem>Administrador de ventas</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
-                            <div style="margin: 0 auto;">
+                            <div class="col-46">
                                 <h4>Contraseña</h4>
                                 <asp:TextBox runat="server" placeholder="Contraseña" CssClass="form-control" />
                             </div>
-                            <div style="margin: 0 auto;">
+                            <div class="col-46">
                                 <h4>Foto</h4>
                                 <input type="file" title="Seleccionar Imagen" class="form-control" />
                             </div>
                         </div>
                     </div>
-                    </div>
                 </div>
             </asp:View>
         </asp:MultiView>
-    </div>   
+    </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ScriptSection" runat="server">
 </asp:Content>

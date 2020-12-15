@@ -19,7 +19,7 @@ namespace HardwareStore.Modules.Orders.Module {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBackToCreateOrder;
+        protected global::System.Web.UI.WebControls.LinkButton btnBackToCreateOrder;
         
         /// <summary>
         /// Control btnTblProducts.
@@ -28,7 +28,7 @@ namespace HardwareStore.Modules.Orders.Module {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnTblProducts;
+        protected global::System.Web.UI.WebControls.LinkButton btnTblProducts;
         
         /// <summary>
         /// Control btnGoToListOrders.
@@ -37,7 +37,7 @@ namespace HardwareStore.Modules.Orders.Module {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGoToListOrders;
+        protected global::System.Web.UI.WebControls.LinkButton btnGoToListOrders;
         
         /// <summary>
         /// Control UpdatePanel1.

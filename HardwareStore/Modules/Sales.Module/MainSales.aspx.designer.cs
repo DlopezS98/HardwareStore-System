@@ -19,7 +19,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBackToCreateSale;
+        protected global::System.Web.UI.WebControls.LinkButton btnBackToCreateSale;
         
         /// <summary>
         /// Control btnTblProducts.
@@ -28,7 +28,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnTblProducts;
+        protected global::System.Web.UI.WebControls.LinkButton btnTblProducts;
         
         /// <summary>
         /// Control btnGoToListOrdersSales.
@@ -37,7 +37,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGoToListOrdersSales;
+        protected global::System.Web.UI.WebControls.LinkButton btnGoToListOrdersSales;
         
         /// <summary>
         /// Control SalesView.
@@ -76,13 +76,13 @@ namespace HardwareStore.Modules.Sales.Module {
         protected global::System.Web.UI.WebControls.Button btnShowmodal;
         
         /// <summary>
-        /// Control txtDate.
+        /// Control txtMarca.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDate;
+        protected global::System.Web.UI.WebControls.TextBox txtMarca;
         
         /// <summary>
         /// Control txtNFact.
@@ -94,13 +94,13 @@ namespace HardwareStore.Modules.Sales.Module {
         protected global::System.Web.UI.WebControls.TextBox txtNFact;
         
         /// <summary>
-        /// Control txtVendedor.
+        /// Control txtMaterial.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtVendedor;
+        protected global::System.Web.UI.WebControls.TextBox txtMaterial;
         
         /// <summary>
         /// Control txtBodega.
@@ -121,22 +121,13 @@ namespace HardwareStore.Modules.Sales.Module {
         protected global::System.Web.UI.WebControls.TextBox txtProveedor;
         
         /// <summary>
-        /// Control txtMarca.
+        /// Control txtUMedida.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMarca;
-        
-        /// <summary>
-        /// Control txtMaterial.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMaterial;
+        protected global::System.Web.UI.WebControls.TextBox txtUMedida;
         
         /// <summary>
         /// Control txtDimensiones.
@@ -146,15 +137,6 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDimensiones;
-        
-        /// <summary>
-        /// Control txtUMedida.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUMedida;
         
         /// <summary>
         /// Control txtCodigoProducto.

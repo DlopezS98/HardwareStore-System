@@ -1,24 +1,46 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MainSales.aspx.cs" Inherits="HardwareStore.Modules.Sales.Module.MainSales" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link href="../../Styles/cssSales.css" rel="stylesheet" />
     <link href="../../Styles/OrdersStyle.css" rel="stylesheet" />
+    <link href="../../Styles/FloatingButtonStyles.css" rel="stylesheet" />
+    <div class="container">
 
-	    <header id="main-header">		
-		    <div id="logo-header">
-			    <span class="site-name">Ventas</span>
-		    </div> <!-- / #logo-header -->
+        <input type="checkbox" id="toggle">
+        <label for="toggle" class="button"></label>
 
-		    <nav>
-			    <ul>
-				    <li><asp:Button CssClass="btnDark" runat="server" ID="btnBackToCreateSale" OnClick="btnBackToCreateSale_Click" Text="Nueva" /></li>
-				    <li><asp:Button CssClass="btnDark" runat="server" ID="btnTblProducts" OnClick="btnTblProducts_Click" Text="Detalle Venta" /></li>
-				    <li><asp:Button CssClass="btnDark" runat="server" ID="btnGoToListOrdersSales" OnClick="btnGoToListOrdersSales_Click" Text="Ver Ventas" /></li>
-			    </ul>
-		    </nav><!-- / nav -->
+        <nav class="nav">
+<%--            <a href="#">Inicio</a>
+            <a href="#">Contactame</a>
+            <a href="#">Acerca de</a>
+            <a href="#">Suscribete</a>--%>
+            <asp:LinkButton ID="btnBackToCreateSale" OnClick="btnBackToCreateSale_Click" CssClass="textfloat" Text="Nueva" runat="server" />
+            <asp:LinkButton ID="btnTblProducts" OnClick="btnTblProducts_Click" CssClass="textfloat" Text="Detalles" runat="server" />
+            <asp:LinkButton ID="btnGoToListOrdersSales" OnClick="btnGoToListOrdersSales_Click" CssClass="textfloat" Text="Lista" runat="server" />
+        </nav>
 
-	    </header>
+    </div>
+    <%--    <header id="main-header">
+        <div id="logo-header">
+            <span class="site-name">Ventas</span>
+        </div>
+        <!-- / #logo-header -->
+
+        <nav>
+            <ul>
+                <li>
+                    <asp:Button CssClass="btnDark" runat="server" ID="btnBackToCreateSale" OnClick="btnBackToCreateSale_Click" Text="Nueva" /></li>
+                <li>
+                    <asp:Button CssClass="btnDark" runat="server" ID="btnTblProducts" OnClick="btnTblProducts_Click" Text="Detalle Venta" /></li>
+                <li>
+                    <asp:Button CssClass="btnDark" runat="server" ID="btnGoToListOrdersSales" OnClick="btnGoToListOrdersSales_Click" Text="Ver Ventas" /></li>
+            </ul>
+        </nav>
+        <!-- / nav -->
+
+    </header>--%>
     <%--Inicio del Modal--%>
-<%--    <div class="OdModal" id="odmodal" data-animation="slideInOutLeft">
+    <%--    <div class="OdModal" id="odmodal" data-animation="slideInOutLeft">
         <div class="modal-dialog">
             <div class="modal-header">
                 <h4 style="color: #fff;">Existencias Productos</h4>
@@ -73,207 +95,223 @@
     </div>--%>
     <%-- Fin Sección del modal --%>
 
-        <asp:MultiView ID="SalesView" ActiveViewIndex="0" runat="server">
-            <asp:View runat="server">
-                <asp:UpdatePanel runat="server" ID="UpdatePanel2">
-                    <ContentTemplate>
-                         <div class="containerSales">                
-                            <div class="form-principal-sales">
-                                <div style="display: flex">
-                                    <div class="col-31"> 
-                                        <h5 style="float: left; margin-left: 5px;">Producto</h5>
-                                        <br />
-                                        <br />
-                                        <div style="display: inline-flex; float: left; width: 100%">
-                                            <asp:TextBox ReadOnly="true" runat="server" ID="txtProduct" placeholder="Producto" CssClass="form-control" />                                 
-                                             <asp:Button OnClientClick="ShowModalDetail()" ID="btnShowmodal" ToolTip="Crear Nueva Categoría" class="btnAdd" type="button" runat="server" Text="+" />
-                                        </div>
-                                    </div>
-                                    <div class="col-31">
-                                        <h5 style="float: left; margin-left: 5px;">Fecha</h5>
-                                        <br />
-                                        <br />
-                                        <asp:TextBox TextMode="Date" runat="server" ID="txtDate" placeholder="Descuento" CssClass="form-control" />
-                                    </div>
-                                    <div class="col-31">
-                                        <h5 style="float: left; margin-left: 5px;">Num Factura</h5>
-                                        <br />
-                                        <br />
-                                        <asp:TextBox ReadOnly="true" runat="server" ID="txtNFact" placeholder="Número de Factura" CssClass="form-control" />
+    <asp:MultiView ID="SalesView" ActiveViewIndex="0" runat="server">
+        <asp:View runat="server">
+            <asp:UpdatePanel runat="server" ID="UpdatePanel2">
+                <ContentTemplate>
+                    <div class="containerSales">
+                        <div class="form-principal-sales">
+                            <div style="display: flex">
+                                <div class="col-31">
+                                    <h5 style="float: left; margin-left: 5px;">Producto</h5>
+                                    <br />
+                                    <br />
+                                    <div style="display: inline-flex; float: left; width: 100%;">
+                                        <asp:TextBox ReadOnly="true" runat="server" ID="txtProduct" placeholder="Producto" CssClass="form-control form-disable" />
+                                        <asp:Button OnClientClick="ShowModalDetail()" ID="btnShowmodal" ToolTip="Crear Nueva Categoría" class="btnAdd" type="button" runat="server" Text="+" />
                                     </div>
                                 </div>
-                                <div style="display: flex">
-                                    <div class="col-31"> 
-                                        <h5 style="float: left; margin-left: 5px;">Vendedor</h5>
-                                         <asp:TextBox ReadOnly="true" runat="server" ID="txtVendedor" placeholder="Nombre del Vendedor" CssClass="form-control" />
-                                    </div>
-
-                                    <div class="col-31"> 
-                                        <h5 style="float: left; margin-left: 5px;">Bodega</h5>
-                                        <asp:TextBox TextMode="Number" ReadOnly="true" runat="server" ID="txtBodega" CssClass="form-control" />
-                                    </div>
-
-                                    <div class="col-31"> 
-                                        <h5 style="float: left; margin-left: 5px;">Proveedor</h5>
-                                        <asp:TextBox TextMode="Number" ReadOnly="true" runat="server" ID="txtProveedor" CssClass="form-control" />
+                                <div class="col-31">
+                                    <h5 style="float: left; margin-left: 5px;">Marca</h5>
+                                    <div style="margin-left: 10px">
+                                        <asp:TextBox ReadOnly="true" runat="server" ID="txtMarca" placeholder="Nombre del Vendedor" CssClass="form-control form-disable" />
                                     </div>
                                 </div>
 
-                                <div style="display: flex">
-                                    <div class="col-31"> 
-                                        <h5 style="float: left; margin-left: 5px;">Marca</h5>
-                                         <asp:TextBox ReadOnly="true" runat="server" ID="txtMarca" placeholder="Nombre del Vendedor" CssClass="form-control" />
-                                    </div>
-
-                                    <div class="col-31"> 
-                                        <h5 style="float: left; margin-left: 5px;">Material</h5>
-                                        <asp:TextBox TextMode="Number" ReadOnly="true" runat="server" ID="txtMaterial" CssClass="form-control" />
-                                    </div>
-
-                                    <div class="col-31"> 
-                                        <h5 style="float: left; margin-left: 5px;">Dimensiones</h5>
-                                        <asp:TextBox TextMode="Number" ReadOnly="true" runat="server" ID="txtDimensiones" CssClass="form-control" />
+                                <div class="col-31">
+                                    <h5 style="float: left; margin-left: 5px;">Num Factura</h5>
+                                    <br />
+                                    <br />
+                                    <div style="margin-left: 10px">
+                                        <asp:TextBox ReadOnly="true" runat="server" ID="txtNFact" placeholder="Número de Factura" CssClass="form-control form-disable" />
                                     </div>
                                 </div>
-                                <div style="display: flex">
-                                    <div class="col-20">
-                                        <h5 style="float: left; margin-left: 5px;">Unidad de Medida</h5>
-                                        <br />
-                                        <br />
-                                        <asp:TextBox TextMode="Number" ReadOnly="true" runat="server" ID="txtUMedida" CssClass="form-control" />
-                                    </div>
-                                    <div class="col-20">
-                                        <h5 style="float: left; margin-left: 5px;">Código de producto</h5>
-                                        <br />
-                                        <br />
-                                        <asp:TextBox TextMode="Number" ReadOnly="true" runat="server" ID="txtCodigoProducto" CssClass="form-control" />
-                                    </div>
-                                    <div class="col-20">
-                                        <h5 style="float: left; margin-left: 5px;">Existencia</h5>
-                                        <br />
-                                        <br />
-                                        <asp:TextBox TextMode="Number" ReadOnly="true" runat="server" ID="txtExistencia" CssClass="form-control" />
-                                    </div>
-                                    <div class="col-31"> 
-                                        <h5 style="float: left; margin-left: 5px;">Cantidad</h5>
-                                        <br />
-                                        <br />
-                                        <asp:TextBox TextMode="Number" ReadOnly="true" runat="server" ID="txtcantidad" CssClass="form-control" />
-                                    </div>
-                                </div>
-                                <div style="display: flex">
-                                    <div class="col-42"> 
-                                        <h5 style="float: left; margin-left: 5px;">Precio</h5>
-                                        <asp:TextBox TextMode="Number" ReadOnly="true" runat="server" ID="txtPrecio" CssClass="form-control" />
-                                    </div>
-                                    <div class="col-25"> 
-                                        <h5 style="float: left; margin-left: 5px;">Descuento</h5>
-                                        <asp:TextBox TextMode="Number" ReadOnly="true" runat="server" ID="txtDescuento" CssClass="form-control" />
-                                    </div>
-                                </div>  
-                                <div style="width: 100%; margin: 20px; min-width: 150px; text-align: center">
-                                    <asp:Button runat="server" Text="Agregar"  ID="btnAddToDetailStageList" CssClass="btnSuccess" Style="margin-left: 10px" />
-                                    <asp:Button runat="server" Text="Cancelar" ID="btnAbortAddToDetailStageList" CssClass="btnDanger" Style="margin-left: 10px" />
-                                </div>
-                    </ContentTemplate>
-               </asp:UpdatePanel>
-            </asp:View>
-
-            <asp:View runat="server">
-                <asp:UpdatePanel runat="server" ID="UpdatePanel3">
-                    <ContentTemplate>
-                        <div style="margin-left: 3%; margin-right: 3%; margin-top: 4%">
-                            <div style="display:flex; align-items:center; justify-content:space-between;">                                
-                                <asp:Button CssClass="btnPrimary" runat="server" ID="btnUpdateTable" Text="Actualizar" />
                             </div>
                             <div style="display: flex">
                                 <div class="col-31">
-                                    <h6 style="margin-left: 10px">Desde</h6>
-                                    <div style="display: flex">
-                                        <input runat="server" type="date" name="Type" id="DatepickerFrom" class="form-control" />
-                                    </div>
-                                    <asp:RequiredFieldValidator runat="server" ForeColor="Red" ControlToValidate="DatepickerFrom" ValidationGroup="FormDateInput" ErrorMessage="Seleccione una fecha valida" ></asp:RequiredFieldValidator>
+                                    <h5 style="float: left; margin-left: 5px;">Material</h5>
+
+                                    <asp:TextBox TextMode="Number" ReadOnly="true" runat="server" ID="txtMaterial" CssClass="form-control form-disable" />
                                 </div>
                                 <div class="col-31">
-                                    <h6 style="margin-left: 10px">Hasta</h6>
-                                    <div style="display: flex">
-                                        <input runat="server" type="date" name="Type" id="DatepickerTo" class="form-control" />
+                                    <h5 style="float: left; margin-left: 5px;">Bodega</h5>
+                                    <div style="margin-left: 10px">
+                                        <asp:TextBox TextMode="Number" ReadOnly="true" runat="server" ID="txtBodega" CssClass="form-control form-disable" />
                                     </div>
-                                    <asp:RequiredFieldValidator runat="server" ForeColor="Red" ControlToValidate="DatepickerTo" ValidationGroup="FormDateInput" ErrorMessage="Seleccione una fecha valida" ></asp:RequiredFieldValidator>
                                 </div>
-                                <div class="col-25" style="display:flex; align-items:flex-end;">
-                                    <asp:Button runat="server" Text="Filtrar" ID="btnFilterByDate" ValidationGroup="FormDateInput" CssClass="btnPrimary" Style="margin-left: 10px; margin-bottom: 30px;" />
+
+                                <div class="col-31">
+                                    <h5 style="float: left; margin-left: 5px;">Proveedor</h5>
+                                    <div style="margin-left: 10px">
+                                        <asp:TextBox TextMode="Number" ReadOnly="true" runat="server" ID="txtProveedor" CssClass="form-control form-disable" />
+                                    </div>
                                 </div>
                             </div>
+
+                            <div style="display: flex">
+                                <div class="col-31">
+                                    <h5 style="float: left; margin-left: 5px;">Unidad de Medida</h5>
+                                    <br />
+                                    <br />
+                                    <asp:TextBox TextMode="Number" ReadOnly="true" runat="server" ID="txtUMedida" CssClass="form-control form-disable" />
+                                </div>
+                                <div class="col-31">
+                                    <h5 style="float: left; margin-left: 5px;">Dimensiones</h5>
+                                    <div style="margin-left: 10px">
+                                        <asp:TextBox TextMode="Number" ReadOnly="true" runat="server" ID="txtDimensiones" CssClass="form-control form-disable" />
+                                    </div>
+                                </div>
+                                <div class="col-31">
+                                    <h5 style="float: left; margin-left: 5px;">Código de producto</h5>
+                                    <br />
+                                    <br />
+                                    <div style="margin-left: 10px">
+                                        <asp:TextBox TextMode="Number" ReadOnly="true" runat="server" ID="txtCodigoProducto" CssClass="form-control form-disable" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="display: flex">
+                                <div class="col-23">
+                                    <h5 style="float: left; margin-left: 5px;">Existencia</h5>
+                                    <br />
+                                    <br />
+
+                                    <asp:TextBox TextMode="Number" ReadOnly="true" runat="server" ID="txtExistencia" CssClass="form-control form-disable" />
+
+                                </div>
+                                <div class="col-23">
+                                    <h5 style="float: left; margin-left: 5px;">Cantidad</h5>
+                                    <br />
+                                    <br />
+                                    <div style="margin-left: 10px">
+                                        <asp:TextBox TextMode="Number" runat="server" ID="txtcantidad" CssClass="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="col-23">
+                                    <h5 style="float: left; margin-left: 5px;">Precio</h5>
+                                    <div style="margin-left: 10px">
+                                        <asp:TextBox TextMode="Number" ReadOnly="true" runat="server" ID="txtPrecio" CssClass="form-control form-disable" />
+                                    </div>
+                                </div>
+                                <div class="col-23">
+                                    <h5 style="float: left; margin-left: 5px;">Descuento</h5>
+                                    <div style="margin-left: 10px">
+                                        <asp:TextBox TextMode="Number" runat="server" ID="txtDescuento" CssClass="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="width: 100%; margin: 20px; min-width: 150px; text-align: center">
+                                <asp:Button runat="server" Text="Agregar" ID="btnAddToDetailStageList" CssClass="btnSuccess" Style="margin-left: 10px" />
+                                <asp:Button runat="server" Text="Cancelar" ID="btnAbortAddToDetailStageList" CssClass="btnDanger" Style="margin-left: 10px" />
+                            </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </asp:View>
+
+        <asp:View runat="server">
+            <asp:UpdatePanel runat="server" ID="UpdatePanel3">
+                <ContentTemplate>
+                    <div style="margin-left: 3%; margin-right: 3%; margin-top: 4%">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <asp:Button CssClass="btnPrimary" runat="server" ID="btnUpdateTable" Text="Actualizar" />
                         </div>
-                    </ContentTemplate>
-                </asp:UpdatePanel>                    
-            </asp:View>
+                        <div style="display: flex">
+                            <div class="col-31">
+                                <h6 style="margin-left: 10px">Desde</h6>
+                                <div style="display: flex">
+                                    <input runat="server" type="date" name="Type" id="DatepickerFrom" class="form-control" />
+                                </div>
+                                <asp:RequiredFieldValidator runat="server" ForeColor="Red" ControlToValidate="DatepickerFrom" ValidationGroup="FormDateInput" ErrorMessage="Seleccione una fecha valida"></asp:RequiredFieldValidator>
+                            </div>
+                            <div class="col-31">
+                                <h6 style="margin-left: 10px">Hasta</h6>
+                                <div style="display: flex">
+                                    <input runat="server" type="date" name="Type" id="DatepickerTo" class="form-control" />
+                                </div>
+                                <asp:RequiredFieldValidator runat="server" ForeColor="Red" ControlToValidate="DatepickerTo" ValidationGroup="FormDateInput" ErrorMessage="Seleccione una fecha valida"></asp:RequiredFieldValidator>
+                            </div>
+                            <div class="col-25" style="display: flex; align-items: flex-end;">
+                                <asp:Button runat="server" Text="Filtrar" ID="btnFilterByDate" ValidationGroup="FormDateInput" CssClass="btnPrimary" Style="margin-left: 10px; margin-bottom: 30px;" />
+                            </div>
+                        </div>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </asp:View>
         <%-- Tabla --%>
-            <asp:View runat="server">
-                <asp:UpdatePanel runat="server" ID="UpdatePanel1">
-                    <ContentTemplate>
-                        <h5 style="text-align: center; margin-top: 90px">Tabla de Ventas</h5>
+        <asp:View runat="server">
+            <asp:UpdatePanel runat="server" ID="UpdatePanel1">
+                <ContentTemplate>
+                    <h5 style="text-align: center; margin-top: 90px">Tabla de Ventas</h5>
 
-                        <%-- FIN DE LA TABLA --%>
-                        <div style="display: flex">
-                             <div class="col-31"> 
-                                  <h5 style="float: left; margin-left: 5px;">Total</h5>
-                                  <br />
-                                  <br />
-                                  <asp:TextBox TextMode="Number" ReadOnly="true" runat="server" ID="txtTotal" CssClass="form-control" />
-                             </div>
-                             <div class="col-31"> 
-                                  <h5 style="float: left; margin-left: 5px;">Descuento</h5>
-                                  <br />
-                                  <br />
-                                  <asp:TextBox TextMode="Number" runat="server" ID="txtDescuentototal" CssClass="form-control" />
-                             </div>
-                             <div class="col-31"> 
-                                  <h5 style="float: left; margin-left: 5px;">Tipo de Moneda</h5>
-                                  <br />
-                                  <br />
-                                  <br />
-                                  <div style="display: flex;">
-                                      <asp:DropDownList ID="ddlstMoneda" CssClass="form-control" Width="100%" Height="50px" runat="server">
-                                          <asp:ListItem>--Seleccione--</asp:ListItem>
-                                          <asp:ListItem>C$</asp:ListItem>
-                                          <asp:ListItem>USD</asp:ListItem>
-                                      </asp:DropDownList>
-                                  </div>                                  
-                             </div>        
-                         </div>
+                    <%-- FIN DE LA TABLA --%>
+                    <div style="display: flex">
+                        <div class="col-31">
+                            <h5 style="float: left; margin-left: 5px;">Total</h5>
+                            <br />
+                            <br />
+                            <div style="margin-left: 10px">
+                                <asp:TextBox TextMode="Number" ReadOnly="true" runat="server" ID="txtTotal" CssClass="form-control form-disable" />
+                            </div>
+                        </div>
+                        <div class="col-31">
+                            <h5 style="float: left; margin-left: 5px;">Descuento</h5>
+                            <br />
+                            <br />
+                            <div style="margin-left: 10px">
+                                <asp:TextBox TextMode="Number" runat="server" ID="txtDescuentototal" CssClass="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-31">
+                            <h5 style="float: left; margin-left: 5px;">Tipo de Moneda</h5>
+                            <br />
+                            <br />
+                            <br />
+                            <div style="display: flex; margin-left: 10px">
+                                <asp:DropDownList ID="ddlstMoneda" CssClass="form-control" Width="100%" Height="50px" runat="server">
+                                    <asp:ListItem>--Seleccione--</asp:ListItem>
+                                    <asp:ListItem>C$</asp:ListItem>
+                                    <asp:ListItem>USD</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                    </div>
 
-                        <div style="display: flex">
-                             <div title="Tasa de Cambio 35 C$" class="col-31"> 
-                                  <h5 style="float: left; margin-left: 5px;">Pago</h5>
-                                  <br />
-                                  <br />
-                                  <asp:TextBox TextMode="Number" runat="server" ID="txtpago" CssClass="form-control" />
-                             </div>
-                             <div class="col-31"> 
-                                  <h5 style="float: left; margin-left: 5px;">Cambio</h5>
-                                  <br />
-                                  <br />
-                                  <asp:TextBox TextMode="Number" runat="server" ID="txtCambio" CssClass="form-control" />
-                             </div>       
-                         </div>
+                    <div style="display: flex;">
+                        <div title="Tasa de Cambio 35 C$" class="col-31">
+                            <h5 style="float: left; margin-left: 5px;">Pago</h5>
+                            <br />
+                            <br />
+                            <br />
+                            <div style="margin-left: 10px; margin-top: 10px">
+                                <asp:TextBox TextMode="Number" runat="server" ID="txtpago" CssClass="form-control" />
+                                <div />
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex;">
+                        <div class="col-100">
+                            <h5 style="float: left; margin-left: 5px;">Cambio</h5>
+                            <div style="margin-left: 10px">
+                                <asp:TextBox TextMode="Number" runat="server" ID="txtCambio" CssClass="form-control form-disable" />
+                            </div>
+                        </div>
 
-                         <div style="width: 100%; margin: 20px; min-width: 150px; text-align: center">
-                            <asp:Button ID="btnCalcularr" Text="Calcular" runat="server" CssClass="btnSuccess" />
-                            <asp:Button ID="btnRegistrar" Text="Registrar Venta" runat="server" CssClass="btnSuccess" />
-                            <asp:Button ID="btnCancelar" Text="Cancelar" runat="server" CssClass="btnDanger" />                            
-                         </div>
                     </div>
                     </div>
-        </ContentTemplate>
-    </asp:UpdatePanel>
- </asp:View>
-</asp:MultiView>
+                    <div style="width: 100%; margin: 20px; min-width: 150px; text-align: center; margin-top: 100px">
+                        <asp:Button ID="btnCalcularr" Text="Calcular" runat="server" CssClass="btnSuccess" />
+                        <asp:Button ID="btnRegistrar" Text="Registrar Venta" runat="server" CssClass="btnSuccess" />
+                        <asp:Button ID="btnCancelar" Text="Cancelar" runat="server" CssClass="btnDanger" />
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </asp:View>
+    </asp:MultiView>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ScriptSection" runat="server">
-    <script>   
-   
+    <script>      
         function launch_toast() {
             var el = document.getElementById("toast")
             el.classList.add("show");

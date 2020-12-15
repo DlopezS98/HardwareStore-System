@@ -3,6 +3,17 @@
     padding: 0px;
     font-family: "Segoe UI", sans-serif;
 }
+
+.Title1 {
+    font-size: 55px;
+    color: #73B7FE
+}
+
+
+.Title2 {
+    color: #4F4C54;
+    font-size: 25px;
+}
 /*Botones*/
 .btnSuccess {
     background: #00A441;
@@ -18,10 +29,11 @@
     border: none;
 }
 
-    .btnSuccess:hover {
-        background: #218838;
-        cursor: pointer;
-    }
+
+.btnSuccess:hover {
+    background: #218838;
+    cursor: pointer;
+}
 
 .btnDanger {
     border: none;
@@ -222,7 +234,7 @@ header {
         color: #fff;
     }
 
-.SideBar {
+/*.SideBar {
     background: #1F2126;
     margin-top: 50px;
     padding-top: 5px;
@@ -240,7 +252,7 @@ header {
         margin-left: 15px;
         border-radius: 100px;
         margin-bottom: 10px;
-    }
+    }*/
 
     /*.SideBar h4 {
         color: #ccc;
@@ -249,7 +261,7 @@ header {
         margin-left: 45px;
     }*/
 
-    .SideBar a {
+    /*.SideBar a {
         color: #fff;
         display: block;
         width: 100%;
@@ -265,7 +277,7 @@ header {
         .SideBar a:hover {
             background: #19B3D3;
             color: #fff;
-        }
+        }*/
 
 /*.SideBar span {
         padding-left: 15px;
@@ -454,12 +466,15 @@ header {
 }
 
 .formSection {
+    border-top: 1.5px solid #0D9DBB;
     background-color: white;
-    width: 450px;
+    width: 90%;
     padding: 40px 10px 40px 10px;
     margin: 10px auto; /*centrar el formulario*/
     border-radius: 5px;
     box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .form-control {
@@ -547,6 +562,10 @@ header {
     width: 95%;
     margin: 10px;
 }
+.col-23 {
+    width: 23%;
+    margin: 0px;
+}
 
 .col-46 {
     width: 46%;
@@ -555,7 +574,12 @@ header {
 
 .col-31 {
     width: 31%;
-    margin: 10px;
+    margin: 0px;
+}
+
+.col-33 {
+    width: 33%;
+    margin: 0px;
 }
 
 
@@ -568,7 +592,7 @@ header {
 
 .col-25 {
     width: 25%;
-    margin: 10px;
+    margin: 0px;
 }
 
 .col-70 {
