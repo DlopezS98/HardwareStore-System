@@ -23,12 +23,12 @@ namespace HardwareStore.Core.Repository
         //HttpContext context = HttpContext.Current;
         private SqlCommand Command;
 
-        public List<tblOrders> GetOrders(DateTime StartDate, DateTime EndDate)
+        public List<tblOrders> GetOrders(DateTime StartDate, DateTime EndDate, string Invoice)
         {
             try
             {
                 List<tblOrders> OrderList = new List<tblOrders>();
-                var data = this.execSpListOrders(StartDate, EndDate);
+                var data = this.ExecSpListOrders(StartDate, EndDate, Invoice);
                 OrderList = this.MapOrdersData(data);
                 return OrderList;
             }
@@ -39,12 +39,12 @@ namespace HardwareStore.Core.Repository
             }
         }
 
-        private DataTable execSpListOrders(DateTime StartDate, DateTime EndDate)
+        public DataTable ExecSpListOrders(DateTime StartDate, DateTime EndDate, string Invoice)
         {
             try
             {
                 DataTable dt = new DataTable();
-                var query = string.Format("EXEC [dbo].[Sp_ListOrders] '{0}', '{1}', {2}", StartDate, EndDate, false);
+                var query = string.Format("EXEC [dbo].[Sp_ListOrders] '{0}', '{1}', '{2}'", StartDate, EndDate, Invoice);
                 dt = this.GetInformation(query);
                 return dt;
             }

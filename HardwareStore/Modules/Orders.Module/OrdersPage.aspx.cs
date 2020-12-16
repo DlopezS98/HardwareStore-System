@@ -31,12 +31,13 @@ namespace HardwareStore.Modules.Orders.Module
         {
             if (!IsPostBack)
             {
+                this.loadDdlistFilterByWarehouse();
                 this.LoadDropDownWarehouse();
-                this.loadGridViewWarehouseProducts("");
+                this.loadGridViewWarehouseProducts("", 0);
                 this.LoadDropDownSuppliers();
                 DateTime Start = DateTime.Parse("1998-10-01");
                 DateTime End = DateTime.Now;
-                this.LoadGridViewOrders(Start, End);
+                this.LoadGridViewOrders(Start, End, "");
             }
 
             if (Session["ListOdtStg"] != null)
@@ -56,9 +57,9 @@ namespace HardwareStore.Modules.Orders.Module
             ddlstWarehouses.Items.Insert(0, new ListItem("----[Seleccionar Bodega Destino]----", "0"));
         }
 
-        public void loadGridViewWarehouseProducts(string query)
+        public void loadGridViewWarehouseProducts(string query, int id)
         {
-            var list = this.vWarehouseProductsRepository.GetProductsInWarehouse(query);
+            var list = this.vWarehouseProductsRepository.GetProductsInWarehouse(query, id);
             var ProductsBySuppliers = list.FindAll(sp => sp.Fk_SupplierID == 1);
             GridViewWarehouseProducts.DataSource = ProductsBySuppliers;
             GridViewWarehouseProducts.DataBind();
@@ -73,10 +74,18 @@ namespace HardwareStore.Modules.Orders.Module
             ddlstSuppliers.Items.Insert(0, new ListItem("----[Seleccionar Proveedor]----", "0"));
         }
 
-
-        public void LoadGridViewOrders(DateTime Start, DateTime End)
+        public void loadDdlistFilterByWarehouse() 
         {
-            var list = vOrdersRepository.GetOrders(Start, End);
+            ddlistFilterByWarehouse.DataSource = this.vWarehousesRepository.GetWarehouses();
+            ddlistFilterByWarehouse.DataTextField = "DropDisplayName";
+            ddlistFilterByWarehouse.DataValueField = "Pk_WarehouseID";
+            ddlistFilterByWarehouse.DataBind();
+            ddlistFilterByWarehouse.Items.Insert(0, new ListItem("----[Filtra por bodega]----", "0"));
+        }
+
+        public void LoadGridViewOrders(DateTime Start, DateTime End, string Invoice)
+        {
+            var list = vOrdersRepository.GetOrders(Start, End, Invoice);
             GridViewOrders.DataSource = list;
             GridViewOrders.DataBind();
         }
@@ -333,7 +342,9 @@ namespace HardwareStore.Modules.Orders.Module
 
         protected void btnSearchWarehouseProduct_Click(object sender, EventArgs e)
         {
-            this.loadGridViewWarehouseProducts(txtSearchWarehouseProduct.Text);
+            int id = Convert.ToInt32(ddlistFilterByWarehouse.SelectedValue);
+            string filter = txtSearchWarehouseProduct.Text;
+            this.loadGridViewWarehouseProducts(filter, id);
         }
 
         protected void btnGoToListOrders_Click(object sender, EventArgs e)
@@ -392,7 +403,7 @@ namespace HardwareStore.Modules.Orders.Module
             this.ResetOrderInputs();
             string ShowToaster = "OrderCreated_Toast()";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "script", ShowToaster, true);
-            this.loadGridViewWarehouseProducts("");
+            this.loadGridViewWarehouseProducts("", 0);
         }
 
         public void ResetOrderInputs()
@@ -446,6 +457,7 @@ namespace HardwareStore.Modules.Orders.Module
         {
             DateTime Start = Convert.ToDateTime(DatepickerFrom.Value);
             DateTime End = Convert.ToDateTime(DatepickerTo.Value);
+            string invoice = txtSearchByInvoiceNumber.Text;
             if( Start > End)
             {
                 //Response.Write("<script>alert('La fecha de inicio no debe ser mayor que la fecha final');</script>");
@@ -454,7 +466,7 @@ namespace HardwareStore.Modules.Orders.Module
             }
             else
             {
-                this.LoadGridViewOrders(Start, End);
+                this.LoadGridViewOrders(Start, End, invoice);
             }
         }
 
@@ -462,7 +474,7 @@ namespace HardwareStore.Modules.Orders.Module
         {
             DateTime Start = DateTime.Parse("1998-10-01");
             DateTime End = DateTime.Now;
-            this.LoadGridViewOrders(Start, End);
+            this.LoadGridViewOrders(Start, End, "");
         }
 
         protected void btnTblProducts_Click(object sender, EventArgs e)
@@ -470,5 +482,11 @@ namespace HardwareStore.Modules.Orders.Module
             OrdersView.ActiveViewIndex = 2;
         }
 
+        protected void ddlistFilterByWarehouse_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(ddlistFilterByWarehouse.SelectedValue);
+            string filter = txtSearchWarehouseProduct.Text;
+            this.loadGridViewWarehouseProducts(filter, id);
+        }
     }
 }

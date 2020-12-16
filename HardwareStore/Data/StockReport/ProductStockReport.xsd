@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ProductStockReport" targetNamespace="http://tempuri.org/ProductStockReport.xsd" xmlns:mstns="http://tempuri.org/ProductStockReport.xsd" xmlns="http://tempuri.org/ProductStockReport.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ProductStockReport" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ProductStockReport" msprop:Generator_UserDSName="ProductStockReport">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Whs_Name" msprop:Generator_ColumnVarNameInTable="columnWhs_Name" msprop:Generator_ColumnPropNameInRow="Whs_Name" msprop:Generator_ColumnPropNameInTable="Whs_NameColumn" msprop:Generator_UserColumnName="Whs_Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Sps_CompanyName" msprop:Generator_ColumnVarNameInTable="columnSps_CompanyName" msprop:Generator_ColumnPropNameInRow="Sps_CompanyName" msprop:Generator_ColumnPropNameInTable="Sps_CompanyNameColumn" msprop:Generator_UserColumnName="Sps_CompanyName" type="xs:string" minOccurs="0" />
+              <xs:element name="Prod_Name" msprop:Generator_ColumnVarNameInTable="columnProd_Name" msprop:Generator_ColumnPropNameInRow="Prod_Name" msprop:Generator_ColumnPropNameInTable="Prod_NameColumn" msprop:Generator_UserColumnName="Prod_Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Cat_Name" msprop:Generator_ColumnVarNameInTable="columnCat_Name" msprop:Generator_ColumnPropNameInRow="Cat_Name" msprop:Generator_ColumnPropNameInTable="Cat_NameColumn" msprop:Generator_UserColumnName="Cat_Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Brs_Name" msprop:Generator_ColumnVarNameInTable="columnBrs_Name" msprop:Generator_ColumnPropNameInRow="Brs_Name" msprop:Generator_ColumnPropNameInTable="Brs_NameColumn" msprop:Generator_UserColumnName="Brs_Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Pdl_DefaultCode" msprop:Generator_ColumnVarNameInTable="columnPdl_DefaultCode" msprop:Generator_ColumnPropNameInRow="Pdl_DefaultCode" msprop:Generator_ColumnPropNameInTable="Pdl_DefaultCodeColumn" msprop:Generator_UserColumnName="Pdl_DefaultCode" type="xs:string" minOccurs="0" />
+              <xs:element name="Utc_DestinationUnit" msprop:Generator_ColumnVarNameInTable="columnUtc_DestinationUnit" msprop:Generator_ColumnPropNameInRow="Utc_DestinationUnit" msprop:Generator_ColumnPropNameInTable="Utc_DestinationUnitColumn" msprop:Generator_UserColumnName="Utc_DestinationUnit" type="xs:string" minOccurs="0" />
+              <xs:element name="Pdl_MaterialType" msprop:Generator_ColumnVarNameInTable="columnPdl_MaterialType" msprop:Generator_ColumnPropNameInRow="Pdl_MaterialType" msprop:Generator_ColumnPropNameInTable="Pdl_MaterialTypeColumn" msprop:Generator_UserColumnName="Pdl_MaterialType" type="xs:string" minOccurs="0" />
+              <xs:element name="Pdl_Dimensions" msprop:Generator_ColumnVarNameInTable="columnPdl_Dimensions" msprop:Generator_ColumnPropNameInRow="Pdl_Dimensions" msprop:Generator_ColumnPropNameInTable="Pdl_DimensionsColumn" msprop:Generator_UserColumnName="Pdl_Dimensions" type="xs:string" minOccurs="0" />
+              <xs:element name="Pdl_ExpiryDate" msprop:Generator_ColumnVarNameInTable="columnPdl_ExpiryDate" msprop:Generator_ColumnPropNameInRow="Pdl_ExpiryDate" msprop:Generator_ColumnPropNameInTable="Pdl_ExpiryDateColumn" msprop:Generator_UserColumnName="Pdl_ExpiryDate" type="xs:string" minOccurs="0" />
+              <xs:element name="WhPr_Stock" msprop:Generator_ColumnVarNameInTable="columnWhPr_Stock" msprop:Generator_ColumnPropNameInRow="WhPr_Stock" msprop:Generator_ColumnPropNameInTable="WhPr_StockColumn" msprop:Generator_UserColumnName="WhPr_Stock" type="xs:string" minOccurs="0" />
+              <xs:element name="WhPr_PurchasePrice" msprop:Generator_ColumnVarNameInTable="columnWhPr_PurchasePrice" msprop:Generator_ColumnPropNameInRow="WhPr_PurchasePrice" msprop:Generator_ColumnPropNameInTable="WhPr_PurchasePriceColumn" msprop:Generator_UserColumnName="WhPr_PurchasePrice" type="xs:string" minOccurs="0" />
+              <xs:element name="WhPr_SalePrice" msprop:Generator_ColumnVarNameInTable="columnWhPr_SalePrice" msprop:Generator_ColumnPropNameInRow="WhPr_SalePrice" msprop:Generator_ColumnPropNameInTable="WhPr_SalePriceColumn" msprop:Generator_UserColumnName="WhPr_SalePrice" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
