@@ -96,7 +96,7 @@
                                     <div style="display: flex; margin-left: 10px">
                                         <asp:DropDownList CssClass="form-control" Width="100%" Height="50px" runat="server">
                                         </asp:DropDownList>
-                                    </div>                   
+                                    </div>
                                 </div>
 
                                 <div style="width: 100%; margin: 20px; min-width: 150px; text-align: center">
@@ -165,6 +165,10 @@
                         </div>
                     </div>
                 </ContentTemplate>
+                <Triggers>
+                    <asp:PostBackTrigger ControlID="btnDelete" />
+                    <asp:PostBackTrigger ControlID="Listmove" />
+                </Triggers>
             </asp:UpdatePanel>
         </asp:View>
 
@@ -249,6 +253,9 @@
                         </div>
                     </div>
                 </ContentTemplate>
+                <Triggers>
+                    <asp:PostBackTrigger ControlID="btnCancel" />
+                </Triggers>
             </asp:UpdatePanel>
         </asp:View>
 
