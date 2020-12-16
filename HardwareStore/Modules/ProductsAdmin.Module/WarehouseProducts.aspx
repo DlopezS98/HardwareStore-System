@@ -24,7 +24,6 @@
                         <button id="btnCloseModal" class="btnClose" data-close>✕</button>
                     </div>
                     <div class="modal-content">
-
                         <div style="padding: 8px; border-radius: 5px; background-color: #fff">
                             <h3 style="text-align: center">Datos del Producto a Eliminar</h3>
                             <div style="display: flex; margin-top: 25px">
