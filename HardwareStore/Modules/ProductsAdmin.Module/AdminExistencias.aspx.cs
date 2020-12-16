@@ -16,17 +16,12 @@ namespace HardwareStore.Modules.ProductsAdmin.Module
 
         protected void btnProductWarehouse_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Modules/ProductsAdmin.Module/ProductosB.aspx");
-        }
-
-        protected void btnDelProductWarehouse_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/Modules/ProductsAdmin.Module/DeleteProductWarehause.aspx");
+            Response.Redirect("~/Modules/ProductsAdmin.Module/WarehouseProducts.aspx");
         }
 
         protected void btntransferencies_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Modules/ProductsAdmin.Module/HistorialTransferencies.aspx");
+            Response.Redirect("~/Modules/ProductsAdmin.Module/TransfersHistory.aspx");
         }
 
         protected void btnDamage_Click(object sender, EventArgs e)

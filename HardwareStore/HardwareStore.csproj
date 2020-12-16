@@ -189,8 +189,9 @@
     <Content Include="Modules\Home\Home.aspx" />
     <Content Include="Modules\Orders.Module\OrdersPage.aspx" />
     <Content Include="Modules\ProductsAdmin.Module\AdminExistencias.aspx" />
-    <Content Include="Modules\ProductsAdmin.Module\DeleteProductWarehause.aspx" />
-    <Content Include="Modules\ProductsAdmin.Module\ProductosB.aspx" />
+    <Content Include="Modules\ProductsAdmin.Module\DamagedProducts.aspx" />
+    <Content Include="Modules\ProductsAdmin.Module\TransfersHistory.aspx" />
+    <Content Include="Modules\ProductsAdmin.Module\WarehouseProducts.aspx" />
     <Content Include="Modules\Reports.Module\MainReports.aspx" />
     <Content Include="Modules\Sales.Module\MainSales.aspx" />
     <Content Include="Modules\Security.Module\MainSecurity.aspx" />
@@ -374,19 +375,26 @@
     <Compile Include="Modules\ProductsAdmin.Module\AdminExistencias.aspx.designer.cs">
       <DependentUpon>AdminExistencias.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Modules\ProductsAdmin.Module\DeleteProductWarehause.aspx.cs">
-      <DependentUpon>DeleteProductWarehause.aspx</DependentUpon>
+    <Compile Include="Modules\ProductsAdmin.Module\DamagedProducts.aspx.cs">
+      <DependentUpon>DamagedProducts.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Modules\ProductsAdmin.Module\DeleteProductWarehause.aspx.designer.cs">
-      <DependentUpon>DeleteProductWarehause.aspx</DependentUpon>
+    <Compile Include="Modules\ProductsAdmin.Module\DamagedProducts.aspx.designer.cs">
+      <DependentUpon>DamagedProducts.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Modules\ProductsAdmin.Module\ProductosB.aspx.cs">
-      <DependentUpon>ProductosB.aspx</DependentUpon>
+    <Compile Include="Modules\ProductsAdmin.Module\TransfersHistory.aspx.cs">
+      <DependentUpon>TransfersHistory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Modules\ProductsAdmin.Module\ProductosB.aspx.designer.cs">
-      <DependentUpon>ProductosB.aspx</DependentUpon>
+    <Compile Include="Modules\ProductsAdmin.Module\TransfersHistory.aspx.designer.cs">
+      <DependentUpon>TransfersHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\ProductsAdmin.Module\WarehouseProducts.aspx.cs">
+      <DependentUpon>WarehouseProducts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\ProductsAdmin.Module\WarehouseProducts.aspx.designer.cs">
+      <DependentUpon>WarehouseProducts.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modules\Reports.Module\MainReports.aspx.cs">
       <DependentUpon>MainReports.aspx</DependentUpon>

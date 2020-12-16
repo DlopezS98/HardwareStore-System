@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="HistorialTransferencies.aspx.cs" Inherits="HardwareStore.Modules.ProductsAdmin.Module.HistorialTransferencies" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TransfersHistory.aspx.cs" Inherits="HardwareStore.Modules.ProductsAdmin.Module.TransfersHistory" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:UpdatePanel runat="server" ID="UpdatePanel2">

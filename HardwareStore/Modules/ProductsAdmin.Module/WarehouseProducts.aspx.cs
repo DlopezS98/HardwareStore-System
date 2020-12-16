@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace HardwareStore.Modules.ProductsAdmin.Module
 {
-    public partial class ProductosB : System.Web.UI.Page
+    public partial class WarehouseProducts : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
