@@ -206,6 +206,39 @@
     <Content Include="Data\ProductsReport.xss">
       <DependentUpon>ProductsReport.xsd</DependentUpon>
     </Content>
+    <Content Include="Data\StockReport\ProductStockReport.xsc">
+      <DependentUpon>ProductStockReport.xsd</DependentUpon>
+    </Content>
+    <Content Include="Data\PurchaseReport\ProductPurchaseReport.xsc">
+      <DependentUpon>ProductPurchaseReport.xsd</DependentUpon>
+    </Content>
+    <None Include="Data\PurchaseReport\ProductPurchaseReport.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProductPurchaseReport.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Data\PurchaseReport\ProductPurchaseReport.xss">
+      <DependentUpon>ProductPurchaseReport.xsd</DependentUpon>
+    </Content>
+    <Content Include="Data\SaleReport\ProductSaleReport.xsc">
+      <DependentUpon>ProductSaleReport.xsd</DependentUpon>
+    </Content>
+    <None Include="Data\SaleReport\ProductSaleReport.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProductSaleReport.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Data\SaleReport\ProductSaleReport.xss">
+      <DependentUpon>ProductSaleReport.xsd</DependentUpon>
+    </Content>
+    <None Include="Data\StockReport\ProductStockReport.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProductStockReport.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Data\StockReport\ProductStockReport.xss">
+      <DependentUpon>ProductStockReport.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Modules\SystemConfiguration\Configuration.aspx" />
     <Content Include="Scripts\jquery-3.5.1.js" />
@@ -273,6 +306,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ProductsReport.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PurchaseReport\ProductPurchaseReport.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductPurchaseReport.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SaleReport\ProductSaleReport.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductSaleReport.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\StockReport\ProductStockReport.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductStockReport.xsd</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -473,7 +521,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Data\PurchaseReport\ProductPurchaseReport.rdlc" />
     <EmbeddedResource Include="Data\Report1.rdlc" />
+    <EmbeddedResource Include="Data\SaleReport\ProductSaleReport.rdlc" />
+    <EmbeddedResource Include="Data\StockReport\ProductStockReport.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

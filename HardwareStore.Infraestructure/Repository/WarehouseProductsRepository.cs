@@ -22,12 +22,12 @@ namespace HardwareStore.Core.Repository
 
         private SqlCommand Command;
 
-        public List<tblWarehouseProducts> GetProductsInWarehouse(string QueryString)
+        public List<tblWarehouseProducts> GetProductsInWarehouse(string QueryString, int WarehouseId)
         {
             try
             {
                 List<tblWarehouseProducts> WhPr = new List<tblWarehouseProducts>();
-                var data = this.ExecSpListWarehouseProduct(QueryString);
+                var data = this.ExecSpListWarehouseProduct(QueryString, WarehouseId);
                 WhPr = this.MapWarehouseProduct(data);
                 return WhPr;
             }
@@ -38,12 +38,12 @@ namespace HardwareStore.Core.Repository
             }
         }
 
-        private DataTable ExecSpListWarehouseProduct(string QueryString)
+        public DataTable ExecSpListWarehouseProduct(string QueryString, int WarehouseId)
         {
             try
             {
                 DataTable dt = new DataTable();
-                var query = string.Format("exec [dbo].[Sp_ListWarehouseProducts] '{0}'", QueryString);
+                var query = string.Format("exec [dbo].[Sp_ListWarehouseProducts] '{0}', {1}", QueryString, WarehouseId);
                 dt = this.GetInformation(query);
                 return dt;
             }
@@ -131,7 +131,7 @@ namespace HardwareStore.Core.Repository
 
         public tblWarehouseProducts GetAWarehouseProduct(int idWhr, int idProdDetail, int idSupplier)
         {
-            var list = this.GetProductsInWarehouse("");
+            var list = this.GetProductsInWarehouse("", 0);
             var obj = list.FirstOrDefault(code => code.Fk_WarehouseID == idWhr && code.Fk_ProductDetailID == idProdDetail && code.Fk_SupplierID == idSupplier);
             return obj;
         }

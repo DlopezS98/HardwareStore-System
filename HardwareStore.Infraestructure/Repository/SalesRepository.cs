@@ -102,7 +102,7 @@ namespace HardwareStore.Core.Repository
             }
         }
 
-        private DataTable ExecSpListSales(DateTime StartDate, DateTime EndDate, int status)
+        public DataTable ExecSpListSales(DateTime StartDate, DateTime EndDate, int status)
         {
             try
             {

@@ -43,6 +43,7 @@
                 <h4 style="color: #fff;">Existencias Productos</h4>
                 <%--<label runat="server" id="getidFromtable"></label>--%>
                 <button id="btnCloseModal" class="btnClose" data-close>✕</button>
+
             </div>
             <div class="modal-content">
                 <asp:UpdatePanel runat="server" ID="UpdatePanel1">
@@ -53,6 +54,11 @@
                             </div>
                             <div style="margin-top: 15px">
                                 <asp:Button CssClass="btnPrimary" runat="server" OnClick="btnSearchWarehouseProduct_Click" Text="Buscar" ID="btnSearchWarehouseProduct" />
+                            </div>
+                            <h6 style="margin-left: 10px">Bodegas</h6>
+                            <div style="display: flex; margin-left: 10px">
+                                <asp:DropDownList AutoPostBack="true" ID="ddlistFilterByWarehouse" OnSelectedIndexChanged="ddlistFilterByWarehouse_SelectedIndexChanged" CssClass="form-control" Width="100%" Height="50px" runat="server">
+                                </asp:DropDownList>
                             </div>
                         </div>
                         <asp:GridView runat="server" DataKeyNames="Fk_WarehouseID,Fk_ProductDetailID,Fk_SupplierID" AutoGenerateColumns="false"
@@ -232,15 +238,15 @@
                                 <asp:Button CssClass="btnPrimary" runat="server" ID="btnUpdateTable" Text="Actualizar" OnClick="btnUpdateTable_Click" />
                             </div>
                             <div style="display: flex">
-                                <div class="col-33">
-                                    <h6 style="margin-left: 10px">Desde</h6>
+                                <div class="col-3">
+                                    <h5 style="margin-left: 10px">Desde</h5>
                                     <div style="display: flex; margin-left: 10px">
                                         <input runat="server" type="date" name="Type" id="DatepickerFrom" class="form-control" />
                                     </div>
                                     <asp:RequiredFieldValidator runat="server" ForeColor="Red" ControlToValidate="DatepickerFrom" ValidationGroup="FormDateInput" ErrorMessage="Seleccione una fecha valida"></asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-33">
-                                    <h6 style="margin-left: 10px">Hasta</h6>
+                                    <h5 style="margin-left: 10px">Hasta</h5>
                                     <div style="display: flex; margin-left: 10px">
                                         <input runat="server" type="date" name="Type" id="DatepickerTo" class="form-control" />
                                     </div>
@@ -248,6 +254,12 @@
                                 </div>
                                 <div class="col-25" style="display: flex; align-items: flex-end;">
                                     <asp:Button runat="server" Text="Filtrar" ID="btnFilterByDate" ValidationGroup="FormDateInput" OnClick="btnFilterByDate_Click" CssClass="btnPrimary" Style="margin-left: 10px; margin-bottom: 30px;" />
+                                </div>
+                            </div>
+                            <div style="display: flex">
+                                <h5 style="margin-left: 10px">Buscar</h5>
+                                <div style="display: flex; margin-left: 10px">
+                                    <asp:TextBox runat="server" ID="txtSearchByInvoiceNumber" CssClass="form-control" placeholder="Número de factura"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
