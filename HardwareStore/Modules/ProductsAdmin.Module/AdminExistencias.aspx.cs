@@ -23,5 +23,15 @@ namespace HardwareStore.Modules.ProductsAdmin.Module
         {
             Response.Redirect("~/Modules/ProductsAdmin.Module/DeleteProductWarehause.aspx");
         }
+
+        protected void btntransferencies_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Modules/ProductsAdmin.Module/HistorialTransferencies.aspx");
+        }
+
+        protected void btnDamage_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Modules/ProductsAdmin.Module/DamagedProducts.aspx");
+        }
     }
 }

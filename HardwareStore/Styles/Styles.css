@@ -30,10 +30,10 @@
 }
 
 
-.btnSuccess:hover {
-    background: #218838;
-    cursor: pointer;
-}
+    .btnSuccess:hover {
+        background: #218838;
+        cursor: pointer;
+    }
 
 .btnDanger {
     border: none;
@@ -254,14 +254,14 @@ header {
         margin-bottom: 10px;
     }*/
 
-    /*.SideBar h4 {
+/*.SideBar h4 {
         color: #ccc;
         margin-top: 0;
         margin-bottom: 20px;
         margin-left: 45px;
     }*/
 
-    /*.SideBar a {
+/*.SideBar a {
         color: #fff;
         display: block;
         width: 100%;
@@ -562,6 +562,7 @@ header {
     width: 95%;
     margin: 10px;
 }
+
 .col-23 {
     width: 23%;
     margin: 0px;
@@ -569,6 +570,11 @@ header {
 
 .col-46 {
     width: 46%;
+    margin: 10px;
+}
+
+.col-48 {
+    width: 48%;
     margin: 10px;
 }
 

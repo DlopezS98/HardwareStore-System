@@ -19,11 +19,11 @@
         <asp:View runat="server">
             <asp:UpdatePanel runat="server" ID="UpdatePanel1">
                 <ContentTemplate>
-                    <h1 style="color: #1F2126; text-align: center;">Existencias Productos</h1>
+                    <h1 style="color: #1F2126;">Existencias Productos</h1>
                     <div class="rowcard">
                         <div class="column">
                             <div class="card">
-                                <h3>Productos en bodegas</h3>
+                                <h3>Existencias en bodegas</h3>
                                 <asp:Image Height="150px" Width="130px" ImageUrl="~/Images/img1.png" runat="server" />
                                 <div style="margin-top: 40px">
                                     <asp:Button CssClass="btnPrimary" runat="server" Text="Ver" ID="btnProductWarehouse" OnClick="btnProductWarehouse_Click" />
@@ -32,19 +32,10 @@
                         </div>
                         <div class="column">
                             <div class="card">
-                                <h3>Eliminar productos</h3>
-                                <asp:Image Height="150px" Width="130px" ImageUrl="~/Images/img2.png" runat="server" />
-                                <div style="margin-top: 40px">
-                                    <asp:Button CssClass="btnPrimary" runat="server" Text="Ver" ID="btnDelProductWarehouse" OnClick="btnDelProductWarehouse_Click" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="card">
-                                <h3>Transferir o mover productos</h3>
+                                <h3>Historial de transferencia</h3>
                                 <asp:Image Height="150px" Width="130px" ImageUrl="~/Images/img3.png" runat="server" />
                                 <div style="margin-top: 40px">
-                                    <asp:Button CssClass="btnPrimary" runat="server" Text="Ver" ID="Button3" />
+                                    <asp:Button CssClass="btnPrimary" runat="server" Text="Ver" ID="btntransferencies" OnClick="btntransferencies_Click" />
                                 </div>
                             </div>
                         </div>
@@ -53,21 +44,11 @@
                                 <h3>Productos dañados</h3>
                                 <asp:Image Height="150px" Width="130px" ImageUrl="~/Images/devoluciones.png" runat="server" />
                                 <div style="margin-top: 40px">
-                                    <asp:Button CssClass="btnPrimary" runat="server" Text="Ver" ID="Button4" />
+                                    <asp:Button CssClass="btnPrimary" runat="server" Text="Ver" ID="btnDamage" OnClick="btnDamage_Click" />
                                 </div>
                             </div>
                         </div>
                     </div>
-                </ContentTemplate>
-            </asp:UpdatePanel>
-
-            <asp:UpdatePanel runat="server" ID="UpdatePanel2">
-                <ContentTemplate>
-                </ContentTemplate>
-            </asp:UpdatePanel>
-
-            <asp:UpdatePanel runat="server" ID="UpdatePanel3">
-                <ContentTemplate>
                 </ContentTemplate>
             </asp:UpdatePanel>
         </asp:View>
