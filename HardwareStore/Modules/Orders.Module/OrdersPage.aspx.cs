@@ -458,7 +458,7 @@ namespace HardwareStore.Modules.Orders.Module
             DateTime Start = Convert.ToDateTime(DatepickerFrom.Value);
             DateTime End = Convert.ToDateTime(DatepickerTo.Value);
             string invoice = txtSearchByInvoiceNumber.Text;
-            if( Start > End)
+            if( Start >= End)
             {
                 //Response.Write("<script>alert('La fecha de inicio no debe ser mayor que la fecha final');</script>");
                 string ShowModalDate = "ModalDate()";

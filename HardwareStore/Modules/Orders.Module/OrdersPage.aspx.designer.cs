@@ -427,15 +427,6 @@ namespace HardwareStore.Modules.Orders.Module {
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl DatepickerTo;
         
         /// <summary>
-        /// Control btnFilterByDate.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFilterByDate;
-        
-        /// <summary>
         /// Control txtSearchByInvoiceNumber.
         /// </summary>
         /// <remarks>
@@ -443,6 +434,15 @@ namespace HardwareStore.Modules.Orders.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSearchByInvoiceNumber;
+        
+        /// <summary>
+        /// Control btnFilterByDate.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnFilterByDate;
         
         /// <summary>
         /// Control GridViewOrders.
