@@ -595,6 +595,10 @@ header {
     margin: 10px;
 }
 
+.col-24 {
+    width: 24%;
+    margin: 0px;
+}
 
 .col-25 {
     width: 25%;

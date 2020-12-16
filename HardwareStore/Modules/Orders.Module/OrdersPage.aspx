@@ -118,7 +118,7 @@
                                 <asp:TextBox Visible="false" TextMode="Number" placeholder="Id Producto" runat="server" ID="txtProductId" class="form-control" />
                                 <asp:TextBox Visible="false" TextMode="Number" placeholder="Id Proveedor" runat="server" ID="txtSupplierId" class="form-control" />
                                 <asp:TextBox Visible="false" placeholder="Bodega" runat="server" ID="txtWarehouseName" class="form-control" />
-                                <div class="col-33">
+                                <div class="col-25">
                                     <h6 style="margin-left: 10px">Producto</h6>
                                     <div style="display: flex; margin-left: 10px">
                                         <asp:TextBox ReadOnly="true" placeholder="Producto" runat="server" ID="txtProduct" class="form-control form-disable" />
@@ -127,7 +127,7 @@
                                     </div>
                                     <asp:RequiredFieldValidator Height="5px" Font-Size="12px" ForeColor="Red" runat="server" ID="reqValProduct" ValidationGroup="DetailsGroup" ControlToValidate="txtProduct" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
                                 </div>
-                                <div class="col-33">
+                                <div class="col-25">
                                     <h6 style="margin-left: 10px">Bodegas</h6>
                                     <div style="display: flex; margin-left: 10px">
                                         <asp:DropDownList ID="ddlstWarehouses" CssClass="form-control" Width="100%" Height="50px" runat="server">
@@ -136,7 +136,7 @@
                                     </div>
                                     <asp:RequiredFieldValidator Height="5px" Font-Size="12px" ID="reqValddlWarehouse" ValidationGroup="DetailsGroup" runat="server" InitialValue="0" ControlToValidate="ddlstWarehouses" ForeColor="Red" ErrorMessage="Seleccione una bodega destino"></asp:RequiredFieldValidator>
                                 </div>
-                                <div class="col-33">
+                                <div class="col-25">
                                     <h6 style="margin-left: 10px">Proveedores</h6>
                                     <div style="display: flex; margin-left: 10px">
                                         <asp:DropDownList ID="ddlstSuppliers" CssClass="form-control" Width="100%" Height="50px" runat="server">
@@ -148,13 +148,13 @@
                                     </div>
                                     <asp:RequiredFieldValidator Height="5px" Font-Size="12px" ID="RequiredFieldValidator3" ValidationGroup="OrderGroup" runat="server" InitialValue="0" ControlToValidate="ddlstSuppliers" ForeColor="Red" ErrorMessage="Seleccione un proveedor"></asp:RequiredFieldValidator>
                                 </div>
-                                <div class="col-33">
+                                <div class="col-25">
                                     <h6 style="margin-left: 10px">Número Factura</h6>
                                     <div style="display: flex; margin-left: 10px">
                                         <asp:TextBox placeholder="Número Factura" runat="server" ID="txtOrdNumber" class="form-control" />
                                     </div>
                                 </div>
-                                <div class="col-33">
+                                <div class="col-25">
                                     <h6 style="margin-left: 10px">Precio</h6>
                                     <div style="display: flex; margin-left: 10px">
                                         <asp:TextBox TextMode="Number" step="0.01" placeholder="Precio" runat="server" ID="txtPrice" class="form-control" />
@@ -164,37 +164,37 @@
                                     </div>
                                     <asp:RequiredFieldValidator Height="5px" Font-Size="12px" ForeColor="Red" runat="server" ID="reqPrice" ValidationGroup="DetailsGroup" ControlToValidate="txtPrice" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
                                 </div>
-                                <div class="col-33">
+                                <div class="col-25">
                                     <h6 style="margin-left: 10px">Código</h6>
                                     <div style="display: flex; margin-left: 10px">
                                         <asp:TextBox ReadOnly="true" placeholder="Código producto" runat="server" ID="txtDefaultCode" CssClass="form-control form-disable" />
                                     </div>
                                 </div>
-                                <div class="col-33">
+                                <div class="col-25">
                                     <h6 style="margin-left: 10px">Marca</h6>
                                     <div style="display: flex; margin-left: 10px">
                                         <asp:TextBox ReadOnly="true" placeholder="Marca" runat="server" ID="txtBrand" CssClass="form-control form-disable" />
                                     </div>
                                 </div>
-                                <div class="col-33">
+                                <div class="col-25">
                                     <h6 style="margin-left: 10px">Material</h6>
                                     <div style="display: flex; margin-left: 10px">
                                         <asp:TextBox ReadOnly="true" placeholder="Material" runat="server" ID="txtMaterialType" CssClass="form-control form-disable" />
                                     </div>
                                 </div>
-                                <div class="col-33">
+                                <div class="col-25">
                                     <h6 style="margin-left: 10px">Dimensiones</h6>
                                     <div style="display: flex; margin-left: 10px">
                                         <asp:TextBox ReadOnly="true" placeholder="Dimensiones" runat="server" ID="txtDimensions" CssClass="form-control form-disable" />
                                     </div>
                                 </div>
-                                <div class="col-33">
+                                <div class="col-25">
                                     <h6 style="margin-left: 10px">Unidad de medida</h6>
                                     <div style="display: flex; margin-left: 10px">
                                         <asp:TextBox ReadOnly="true" placeholder="Unidad de medida" runat="server" ID="txtMeasureUnit" CssClass="form-control form-disable" />
                                     </div>
                                 </div>
-                                <div class="col-33">
+                                <div class="col-25">
                                     <h6 style="margin-left: 10px">Cantidad</h6>
                                     <div style="display: flex; margin-left: 10px">
                                         <asp:TextBox ID="txtQuantity" placeholder="Cantidad" TextMode="Number" runat="server" CssClass="form-control" />
@@ -204,7 +204,7 @@
                                     </div>
                                     <asp:RequiredFieldValidator Height="5px" Font-Size="12px" ForeColor="Red" runat="server" ID="reqQuantity" ValidationGroup="DetailsGroup" ControlToValidate="txtQuantity" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
                                 </div>
-                                <div class="col-33">
+                                <div class="col-25">
                                     <h6 style="margin-left: 10px">Descuento (%)</h6>
                                     <div style="display: flex; margin-left: 10px">
                                         <asp:TextBox ID="txtDetailDiscount" runat="server" placeholder="Descuento (%)" TextMode="Number" CssClass="form-control" />
@@ -367,12 +367,7 @@
                                 <div class="col-31">
                                     <h6 style="margin-left: 10px">Sub Total</h6>
                                     <div style="display: flex">
-                                        <div class="spanType">
-                                            <span>C$</span>
-                                        </div>
-                                        <div style="padding-left: 12%; width: 100%">
-                                            <asp:TextBox ReadOnly="true" runat="server" ID="txtSubtotal" placeholder="Subtotal" CssClass="form-control form-disable" />
-                                        </div>
+                                        <asp:TextBox ReadOnly="true" runat="server" ID="txtSubtotal" placeholder="Subtotal" CssClass="form-control form-disable" />
                                     </div>
                                     <asp:RequiredFieldValidator Height="5px" Font-Size="12px" ForeColor="Red" runat="server" ID="reqValSubtotal" ValidationGroup="OrderGroup" ControlToValidate="txtSubtotal" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
                                 </div>
@@ -399,12 +394,7 @@
                                 <div class="col-31">
                                     <h6 style="margin-left: 10px">Total</h6>
                                     <div style="display: flex; margin-left: 10px">
-                                        <div class="spanType">
-                                            <span>C$</span>
-                                        </div>
-                                        <div style="padding-left: 12%; width: 100%">
-                                            <asp:TextBox ReadOnly="true" placeholder="Total" runat="server" ID="txtTotal" CssClass="form-control form-disable" />
-                                        </div>
+                                        <asp:TextBox ReadOnly="true" placeholder="Total" runat="server" ID="txtTotal" CssClass="form-control form-disable" />
                                     </div>
                                 </div>
                             </div>
