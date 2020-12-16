@@ -20,8 +20,9 @@ namespace HardwareStore.Domain.Models
             this.Tbl_OrderDetails = new HashSet<Tbl_OrderDetails>();
             this.Tbl_Transfers = new HashSet<Tbl_Transfers>();
             this.Tbl_RemovedProducts = new HashSet<Tbl_RemovedProducts>();
-            this.Tbl_WarehouseProducts = new HashSet<Tbl_WarehouseProducts>();
             this.Tbl_SaleDetails = new HashSet<Tbl_SaleDetails>();
+            this.Tbl_TransferDetails = new HashSet<Tbl_TransferDetails>();
+            this.Tbl_WarehouseProducts = new HashSet<Tbl_WarehouseProducts>();
         }
     
         public int Pk_WarehouseID { get; set; }
@@ -39,8 +40,10 @@ namespace HardwareStore.Domain.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_RemovedProducts> Tbl_RemovedProducts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tbl_WarehouseProducts> Tbl_WarehouseProducts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_SaleDetails> Tbl_SaleDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_TransferDetails> Tbl_TransferDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_WarehouseProducts> Tbl_WarehouseProducts { get; set; }
     }
 }

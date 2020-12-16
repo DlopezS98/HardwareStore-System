@@ -54,6 +54,7 @@
     <Compile Include="Interfaces\ICurrencyRepository.cs" />
     <Compile Include="Interfaces\ICustomerRepository.cs" />
     <Compile Include="Interfaces\IHardwareStoreRepository.cs" />
+    <Compile Include="Interfaces\IInternalTransfersRepository.cs" />
     <Compile Include="Interfaces\IOrdersRepository.cs" />
     <Compile Include="Interfaces\IProductsRepository.cs" />
     <Compile Include="Interfaces\ISalesRepository.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Repository\CurrencyRepository.cs" />
     <Compile Include="Repository\CustomerRepository.cs" />
     <Compile Include="Repository\HardwareStoreRepository.cs" />
+    <Compile Include="Repository\InternalTransfersRepository.cs" />
     <Compile Include="Repository\OrdersRepository.cs" />
     <Compile Include="Repository\ProductsRepository.cs" />
     <Compile Include="Repository\SalesRepository.cs" />

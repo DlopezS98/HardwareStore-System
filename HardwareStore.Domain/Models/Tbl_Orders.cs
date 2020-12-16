@@ -31,9 +31,9 @@ namespace HardwareStore.Domain.Models
         public double Ord_Total { get; set; }
         public bool Ord_Deleted { get; set; }
     
-        public virtual Ctg_Suppliers Ctg_Suppliers { get; set; }
         public virtual Ctg_Users Ctg_Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_OrderDetails> Tbl_OrderDetails { get; set; }
+        public virtual Ctg_Suppliers Ctg_Suppliers { get; set; }
     }
 }

@@ -12,7 +12,6 @@
         <EntityTypeShape EntityType="HardwareStoreModel.Ctg_Employees" Width="1.5" PointX="6" PointY="24.125" />
         <EntityTypeShape EntityType="HardwareStoreModel.Ctg_Privilegies" Width="1.5" PointX="6" PointY="21.25" />
         <EntityTypeShape EntityType="HardwareStoreModel.Ctg_Products" Width="1.5" PointX="5.25" PointY="14.375" />
-        <EntityTypeShape EntityType="HardwareStoreModel.Ctg_Suppliers" Width="1.5" PointX="10.5" PointY="0.75" />
         <EntityTypeShape EntityType="HardwareStoreModel.Ctg_Users" Width="1.5" PointX="8.25" PointY="22.5" />
         <EntityTypeShape EntityType="HardwareStoreModel.Ctg_Warehouses" Width="1.5" PointX="7.5" PointY="4.875" />
         <EntityTypeShape EntityType="HardwareStoreModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="1.125" />
@@ -20,22 +19,16 @@
         <EntityTypeShape EntityType="HardwareStoreModel.Tbl_Orders" Width="1.5" PointX="7.5" PointY="15.625" />
         <EntityTypeShape EntityType="HardwareStoreModel.Tbl_RemovedProducts" Width="1.5" PointX="9.75" PointY="5.75" />
         <EntityTypeShape EntityType="HardwareStoreModel.Tbl_Taxes" Width="1.5" PointX="4.75" PointY="1.125" />
-        <EntityTypeShape EntityType="HardwareStoreModel.Tbl_TransferDetails" Width="1.5" PointX="12.75" PointY="10" />
         <EntityTypeShape EntityType="HardwareStoreModel.Tbl_Transfers" Width="1.5" PointX="10.5" PointY="23" />
         <EntityTypeShape EntityType="HardwareStoreModel.Tbl_HardwareStore" Width="1.5" PointX="0.75" PointY="5.125" />
         <AssociationConnector Association="HardwareStoreModel.FK_EMPLOYEES_USERS" />
         <AssociationConnector Association="HardwareStoreModel.FK_PRIVILEGIES_USERS" />
-        <AssociationConnector Association="HardwareStoreModel.FK_SUPPLIERS_ORD" />
         <AssociationConnector Association="HardwareStoreModel.FK_USERS_ORD" />
         <AssociationConnector Association="HardwareStoreModel.FK_USERS_TFS" />
         <AssociationConnector Association="HardwareStoreModel.FK_WAREHOUSE_ODT" />
         <AssociationConnector Association="HardwareStoreModel.FK_WAREHOUSE_TFS" />
         <AssociationConnector Association="HardwareStoreModel.FK_WAREHOUSES_RMPROD" />
         <AssociationConnector Association="HardwareStoreModel.FK_ORDERS_ODT" />
-        <AssociationConnector Association="HardwareStoreModel.FK_TRANSFERS_TD" />
-        <EntityTypeShape EntityType="HardwareStoreModel.Tbl_WarehouseProducts" Width="1.5" PointX="12.75" PointY="5.75" />
-        <AssociationConnector Association="HardwareStoreModel.FK_SUPPLIERS_WHPR" />
-        <AssociationConnector Association="HardwareStoreModel.FK_WAREHOUSES_WHPR" />
         <EntityTypeShape EntityType="HardwareStoreModel.Ctg_BaseUnits" Width="1.5" PointX="15.625" PointY="15.5" />
         <EntityTypeShape EntityType="HardwareStoreModel.Ctg_CurrencyExchange" Width="1.5" PointX="17.875" PointY="5.5" />
         <EntityTypeShape EntityType="HardwareStoreModel.Ctg_ForeignCurrencies" Width="1.5" PointX="15.625" PointY="4.75" />
@@ -53,8 +46,6 @@
         <AssociationConnector Association="HardwareStoreModel.FK_SOURCEUNIT" />
         <AssociationConnector Association="HardwareStoreModel.FK_UNITTYPE_MSU" />
         <AssociationConnector Association="HardwareStoreModel.FK_PROD_DETAILS_RMPROD" />
-        <AssociationConnector Association="HardwareStoreModel.FK_PROD_DETAILS_WHPR" />
-        <AssociationConnector Association="HardwareStoreModel.FK_PRODUCT_DETAIL_TD" />
         <AssociationConnector Association="HardwareStoreModel.FK_PRODUCTS_ODT" />
         <AssociationConnector Association="HardwareStoreModel.FK_PRODUCTS_PDL" />
         <AssociationConnector Association="HardwareStoreModel.FK_UNITCONVERSION_PDL" />
@@ -66,6 +57,17 @@
         <AssociationConnector Association="HardwareStoreModel.FK_USERS_SALES" />
         <AssociationConnector Association="HardwareStoreModel.FK_Tbl_SaleDetails_Ctg_Warehouses1" />
         <AssociationConnector Association="HardwareStoreModel.FK_SALES_SDT" />
+        <EntityTypeShape EntityType="HardwareStoreModel.Ctg_Suppliers" Width="1.5" PointX="2.25" PointY="15.625" />
+        <EntityTypeShape EntityType="HardwareStoreModel.Tbl_TransferDetails" Width="1.5" PointX="22.375" PointY="15.625" />
+        <EntityTypeShape EntityType="HardwareStoreModel.Tbl_WarehouseProducts" Width="1.5" PointX="25.375" PointY="10.5" />
+        <AssociationConnector Association="HardwareStoreModel.FK_PROD_DETAILS_WHPR" />
+        <AssociationConnector Association="HardwareStoreModel.FK_PRODUCT_DETAIL_TD" />
+        <AssociationConnector Association="HardwareStoreModel.FK_SUPPLIERS_ORD" />
+        <AssociationConnector Association="HardwareStoreModel.FK_SUPPLIERS_WHPR" />
+        <AssociationConnector Association="HardwareStoreModel.FK_Tbl_TransferDetails_Ctg_Suppliers" />
+        <AssociationConnector Association="HardwareStoreModel.FK_Tbl_TransferDetails_Ctg_Warehouses" />
+        <AssociationConnector Association="HardwareStoreModel.FK_WAREHOUSES_WHPR" />
+        <AssociationConnector Association="HardwareStoreModel.FK_TRANSFERS_TD" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

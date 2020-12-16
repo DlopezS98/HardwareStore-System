@@ -300,7 +300,7 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
           <Property Name="Fk_ProductDetailID" Type="int" Nullable="false" />
           <Property Name="Fk_UserID" Type="int" Nullable="false" />
           <Property Name="RmProd_Title" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="RmProd_Description" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="RmProd_Description" Type="nvarchar" MaxLength="450" Nullable="false" />
           <Property Name="RmProd_Quantity" Type="int" Nullable="false" />
           <Property Name="RmProd_PurchasePrice" Type="float" Nullable="false" />
           <Property Name="RmProd_CreatedAt" Type="date" Nullable="false" />
@@ -359,7 +359,8 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
           <Property Name="Pk_TransferDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Fk_TransferID" Type="int" Nullable="false" />
           <Property Name="Fk_ProductDetailID" Type="int" Nullable="false" />
-          <Property Name="TD_SourceWarehouseID" Type="int" Nullable="false" />
+          <Property Name="Fk_SourceWarehouseID" Type="int" Nullable="false" />
+          <Property Name="Fk_SupplierId" Type="int" Nullable="false" />
           <Property Name="TD_Quantity" Type="int" Nullable="false" />
           <Property Name="TD_CreatedAt" Type="date" />
           <Property Name="TD_UpdatedAt" Type="date" />
@@ -654,6 +655,30 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Tbl_TransferDetails_Ctg_Suppliers">
+          <End Role="Ctg_Suppliers" Type="Self.Ctg_Suppliers" Multiplicity="1" />
+          <End Role="Tbl_TransferDetails" Type="Self.Tbl_TransferDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Suppliers">
+              <PropertyRef Name="Pk_SupplierID" />
+            </Principal>
+            <Dependent Role="Tbl_TransferDetails">
+              <PropertyRef Name="Fk_SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_TransferDetails_Ctg_Warehouses">
+          <End Role="Ctg_Warehouses" Type="Self.Ctg_Warehouses" Multiplicity="1" />
+          <End Role="Tbl_TransferDetails" Type="Self.Tbl_TransferDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Warehouses">
+              <PropertyRef Name="Pk_WarehouseID" />
+            </Principal>
+            <Dependent Role="Tbl_TransferDetails">
+              <PropertyRef Name="Fk_SourceWarehouseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TRANSFERS_TD">
           <End Role="Tbl_Transfers" Type="Self.Tbl_Transfers" Multiplicity="1" />
           <End Role="Tbl_TransferDetails" Type="Self.Tbl_TransferDetails" Multiplicity="*" />
@@ -905,6 +930,14 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
             <End Role="Ctg_CurrencyExchange" EntitySet="Ctg_CurrencyExchange" />
             <End Role="Tbl_Sales" EntitySet="Tbl_Sales" />
           </AssociationSet>
+          <AssociationSet Name="FK_Tbl_TransferDetails_Ctg_Suppliers" Association="Self.FK_Tbl_TransferDetails_Ctg_Suppliers">
+            <End Role="Ctg_Suppliers" EntitySet="Ctg_Suppliers" />
+            <End Role="Tbl_TransferDetails" EntitySet="Tbl_TransferDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_TransferDetails_Ctg_Warehouses" Association="Self.FK_Tbl_TransferDetails_Ctg_Warehouses">
+            <End Role="Ctg_Warehouses" EntitySet="Ctg_Warehouses" />
+            <End Role="Tbl_TransferDetails" EntitySet="Tbl_TransferDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK_TRANSFERS_TD" Association="Self.FK_TRANSFERS_TD">
             <End Role="Tbl_Transfers" EntitySet="Tbl_Transfers" />
             <End Role="Tbl_TransferDetails" EntitySet="Tbl_TransferDetails" />
@@ -958,7 +991,6 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
           <EntitySet Name="Ctg_Employees" EntityType="HardwareStoreModel.Ctg_Employees" />
           <EntitySet Name="Ctg_Privilegies" EntityType="HardwareStoreModel.Ctg_Privilegies" />
           <EntitySet Name="Ctg_Products" EntityType="HardwareStoreModel.Ctg_Products" />
-          <EntitySet Name="Ctg_Suppliers" EntityType="HardwareStoreModel.Ctg_Suppliers" />
           <EntitySet Name="Ctg_Users" EntityType="HardwareStoreModel.Ctg_Users" />
           <EntitySet Name="Ctg_Warehouses" EntityType="HardwareStoreModel.Ctg_Warehouses" />
           <EntitySet Name="sysdiagrams" EntityType="HardwareStoreModel.sysdiagrams" />
@@ -966,7 +998,6 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
           <EntitySet Name="Tbl_Orders" EntityType="HardwareStoreModel.Tbl_Orders" />
           <EntitySet Name="Tbl_RemovedProducts" EntityType="HardwareStoreModel.Tbl_RemovedProducts" />
           <EntitySet Name="Tbl_Taxes" EntityType="HardwareStoreModel.Tbl_Taxes" />
-          <EntitySet Name="Tbl_TransferDetails" EntityType="HardwareStoreModel.Tbl_TransferDetails" />
           <EntitySet Name="Tbl_Transfers" EntityType="HardwareStoreModel.Tbl_Transfers" />
           <EntitySet Name="Tbl_HardwareStore" EntityType="HardwareStoreModel.Tbl_HardwareStore" />
           <AssociationSet Name="FK_EMPLOYEES_USERS" Association="HardwareStoreModel.FK_EMPLOYEES_USERS">
@@ -976,10 +1007,6 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
           <AssociationSet Name="FK_PRIVILEGIES_USERS" Association="HardwareStoreModel.FK_PRIVILEGIES_USERS">
             <End Role="Ctg_Privilegies" EntitySet="Ctg_Privilegies" />
             <End Role="Ctg_Users" EntitySet="Ctg_Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SUPPLIERS_ORD" Association="HardwareStoreModel.FK_SUPPLIERS_ORD">
-            <End Role="Ctg_Suppliers" EntitySet="Ctg_Suppliers" />
-            <End Role="Tbl_Orders" EntitySet="Tbl_Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_USERS_ORD" Association="HardwareStoreModel.FK_USERS_ORD">
             <End Role="Ctg_Users" EntitySet="Ctg_Users" />
@@ -1004,19 +1031,6 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
           <AssociationSet Name="FK_ORDERS_ODT" Association="HardwareStoreModel.FK_ORDERS_ODT">
             <End Role="Tbl_Orders" EntitySet="Tbl_Orders" />
             <End Role="Tbl_OrderDetails" EntitySet="Tbl_OrderDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TRANSFERS_TD" Association="HardwareStoreModel.FK_TRANSFERS_TD">
-            <End Role="Tbl_Transfers" EntitySet="Tbl_Transfers" />
-            <End Role="Tbl_TransferDetails" EntitySet="Tbl_TransferDetails" />
-          </AssociationSet>
-          <EntitySet Name="Tbl_WarehouseProducts" EntityType="HardwareStoreModel.Tbl_WarehouseProducts" />
-          <AssociationSet Name="FK_SUPPLIERS_WHPR" Association="HardwareStoreModel.FK_SUPPLIERS_WHPR">
-            <End Role="Ctg_Suppliers" EntitySet="Ctg_Suppliers" />
-            <End Role="Tbl_WarehouseProducts" EntitySet="Tbl_WarehouseProducts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WAREHOUSES_WHPR" Association="HardwareStoreModel.FK_WAREHOUSES_WHPR">
-            <End Role="Ctg_Warehouses" EntitySet="Ctg_Warehouses" />
-            <End Role="Tbl_WarehouseProducts" EntitySet="Tbl_WarehouseProducts" />
           </AssociationSet>
           <EntitySet Name="Ctg_BaseUnits" EntityType="HardwareStoreModel.Ctg_BaseUnits" />
           <EntitySet Name="Ctg_CurrencyExchange" EntityType="HardwareStoreModel.Ctg_CurrencyExchange" />
@@ -1062,14 +1076,6 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
             <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
             <End Role="Tbl_RemovedProducts" EntitySet="Tbl_RemovedProducts" />
           </AssociationSet>
-          <AssociationSet Name="FK_PROD_DETAILS_WHPR" Association="HardwareStoreModel.FK_PROD_DETAILS_WHPR">
-            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
-            <End Role="Tbl_WarehouseProducts" EntitySet="Tbl_WarehouseProducts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRODUCT_DETAIL_TD" Association="HardwareStoreModel.FK_PRODUCT_DETAIL_TD">
-            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
-            <End Role="Tbl_TransferDetails" EntitySet="Tbl_TransferDetails" />
-          </AssociationSet>
           <AssociationSet Name="FK_PRODUCTS_ODT" Association="HardwareStoreModel.FK_PRODUCTS_ODT">
             <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
             <End Role="Tbl_OrderDetails" EntitySet="Tbl_OrderDetails" />
@@ -1107,6 +1113,41 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
           <AssociationSet Name="FK_SALES_SDT" Association="HardwareStoreModel.FK_SALES_SDT">
             <End Role="Tbl_Sales" EntitySet="Tbl_Sales" />
             <End Role="Tbl_SaleDetails" EntitySet="Tbl_SaleDetails" />
+          </AssociationSet>
+          <EntitySet Name="Ctg_Suppliers" EntityType="HardwareStoreModel.Ctg_Suppliers" />
+          <EntitySet Name="Tbl_TransferDetails" EntityType="HardwareStoreModel.Tbl_TransferDetails" />
+          <EntitySet Name="Tbl_WarehouseProducts" EntityType="HardwareStoreModel.Tbl_WarehouseProducts" />
+          <AssociationSet Name="FK_PROD_DETAILS_WHPR" Association="HardwareStoreModel.FK_PROD_DETAILS_WHPR">
+            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
+            <End Role="Tbl_WarehouseProducts" EntitySet="Tbl_WarehouseProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCT_DETAIL_TD" Association="HardwareStoreModel.FK_PRODUCT_DETAIL_TD">
+            <End Role="Ctg_ProductDetails" EntitySet="Ctg_ProductDetails" />
+            <End Role="Tbl_TransferDetails" EntitySet="Tbl_TransferDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SUPPLIERS_ORD" Association="HardwareStoreModel.FK_SUPPLIERS_ORD">
+            <End Role="Ctg_Suppliers" EntitySet="Ctg_Suppliers" />
+            <End Role="Tbl_Orders" EntitySet="Tbl_Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SUPPLIERS_WHPR" Association="HardwareStoreModel.FK_SUPPLIERS_WHPR">
+            <End Role="Ctg_Suppliers" EntitySet="Ctg_Suppliers" />
+            <End Role="Tbl_WarehouseProducts" EntitySet="Tbl_WarehouseProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_TransferDetails_Ctg_Suppliers" Association="HardwareStoreModel.FK_Tbl_TransferDetails_Ctg_Suppliers">
+            <End Role="Ctg_Suppliers" EntitySet="Ctg_Suppliers" />
+            <End Role="Tbl_TransferDetails" EntitySet="Tbl_TransferDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_TransferDetails_Ctg_Warehouses" Association="HardwareStoreModel.FK_Tbl_TransferDetails_Ctg_Warehouses">
+            <End Role="Ctg_Warehouses" EntitySet="Ctg_Warehouses" />
+            <End Role="Tbl_TransferDetails" EntitySet="Tbl_TransferDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAREHOUSES_WHPR" Association="HardwareStoreModel.FK_WAREHOUSES_WHPR">
+            <End Role="Ctg_Warehouses" EntitySet="Ctg_Warehouses" />
+            <End Role="Tbl_WarehouseProducts" EntitySet="Tbl_WarehouseProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANSFERS_TD" Association="HardwareStoreModel.FK_TRANSFERS_TD">
+            <End Role="Tbl_Transfers" EntitySet="Tbl_Transfers" />
+            <End Role="Tbl_TransferDetails" EntitySet="Tbl_TransferDetails" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Ctg_Brands">
@@ -1204,23 +1245,6 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
           <Property Name="Prod_Deleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Ctg_ProductDetails" Relationship="HardwareStoreModel.FK_PRODUCTS_PDL" FromRole="Ctg_Products" ToRole="Ctg_ProductDetails" />
         </EntityType>
-        <EntityType Name="Ctg_Suppliers">
-          <Key>
-            <PropertyRef Name="Pk_SupplierID" />
-          </Key>
-          <Property Name="Pk_SupplierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Sps_customID" Type="String" MaxLength="9" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="Sps_CompanyName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Sps_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Sps_Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Sps_PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Sps_EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Sps_CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Sps_UpdatedAt_" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Sps_Deleted" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Tbl_Orders" Relationship="HardwareStoreModel.FK_SUPPLIERS_ORD" FromRole="Ctg_Suppliers" ToRole="Tbl_Orders" />
-          <NavigationProperty Name="Tbl_WarehouseProducts" Relationship="HardwareStoreModel.FK_SUPPLIERS_WHPR" FromRole="Ctg_Suppliers" ToRole="Tbl_WarehouseProducts" />
-        </EntityType>
         <EntityType Name="Ctg_Users">
           <Key>
             <PropertyRef Name="Pk_UserID" />
@@ -1255,8 +1279,9 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
           <NavigationProperty Name="Tbl_OrderDetails" Relationship="HardwareStoreModel.FK_WAREHOUSE_ODT" FromRole="Ctg_Warehouses" ToRole="Tbl_OrderDetails" />
           <NavigationProperty Name="Tbl_Transfers" Relationship="HardwareStoreModel.FK_WAREHOUSE_TFS" FromRole="Ctg_Warehouses" ToRole="Tbl_Transfers" />
           <NavigationProperty Name="Tbl_RemovedProducts" Relationship="HardwareStoreModel.FK_WAREHOUSES_RMPROD" FromRole="Ctg_Warehouses" ToRole="Tbl_RemovedProducts" />
-          <NavigationProperty Name="Tbl_WarehouseProducts" Relationship="HardwareStoreModel.FK_WAREHOUSES_WHPR" FromRole="Ctg_Warehouses" ToRole="Tbl_WarehouseProducts" />
           <NavigationProperty Name="Tbl_SaleDetails" Relationship="HardwareStoreModel.FK_Tbl_SaleDetails_Ctg_Warehouses1" FromRole="Ctg_Warehouses" ToRole="Tbl_SaleDetails" />
+          <NavigationProperty Name="Tbl_TransferDetails" Relationship="HardwareStoreModel.FK_Tbl_TransferDetails_Ctg_Warehouses" FromRole="Ctg_Warehouses" ToRole="Tbl_TransferDetails" />
+          <NavigationProperty Name="Tbl_WarehouseProducts" Relationship="HardwareStoreModel.FK_WAREHOUSES_WHPR" FromRole="Ctg_Warehouses" ToRole="Tbl_WarehouseProducts" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -1301,9 +1326,9 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
           <Property Name="Ord_Discount" Type="Int32" />
           <Property Name="Ord_Total" Type="Double" Nullable="false" />
           <Property Name="Ord_Deleted" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Ctg_Suppliers" Relationship="HardwareStoreModel.FK_SUPPLIERS_ORD" FromRole="Tbl_Orders" ToRole="Ctg_Suppliers" />
           <NavigationProperty Name="Ctg_Users" Relationship="HardwareStoreModel.FK_USERS_ORD" FromRole="Tbl_Orders" ToRole="Ctg_Users" />
           <NavigationProperty Name="Tbl_OrderDetails" Relationship="HardwareStoreModel.FK_ORDERS_ODT" FromRole="Tbl_Orders" ToRole="Tbl_OrderDetails" />
+          <NavigationProperty Name="Ctg_Suppliers" Relationship="HardwareStoreModel.FK_SUPPLIERS_ORD" FromRole="Tbl_Orders" ToRole="Ctg_Suppliers" />
         </EntityType>
         <EntityType Name="Tbl_RemovedProducts">
           <Key>
@@ -1314,7 +1339,7 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
           <Property Name="Fk_ProductDetailID" Type="Int32" Nullable="false" />
           <Property Name="Fk_UserID" Type="Int32" Nullable="false" />
           <Property Name="RmProd_Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="RmProd_Description" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="RmProd_Description" Type="String" Nullable="false" MaxLength="450" FixedLength="false" Unicode="true" />
           <Property Name="RmProd_Quantity" Type="Int32" Nullable="false" />
           <Property Name="RmProd_PurchasePrice" Type="Double" Nullable="false" />
           <Property Name="RmProd_CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
@@ -1333,20 +1358,6 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
           <Property Name="TaxCreatedAt" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TaxUpdatedAt" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TaxDeleted" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Tbl_TransferDetails">
-          <Key>
-            <PropertyRef Name="Pk_TransferDetailID" />
-          </Key>
-          <Property Name="Pk_TransferDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Fk_TransferID" Type="Int32" Nullable="false" />
-          <Property Name="Fk_ProductDetailID" Type="Int32" Nullable="false" />
-          <Property Name="TD_SourceWarehouseID" Type="Int32" Nullable="false" />
-          <Property Name="TD_Quantity" Type="Int32" Nullable="false" />
-          <Property Name="TD_CreatedAt" Type="DateTime" Precision="0" />
-          <Property Name="TD_UpdatedAt" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Tbl_Transfers" Relationship="HardwareStoreModel.FK_TRANSFERS_TD" FromRole="Tbl_TransferDetails" ToRole="Tbl_Transfers" />
-          <NavigationProperty Name="Ctg_ProductDetails" Relationship="HardwareStoreModel.FK_PRODUCT_DETAIL_TD" FromRole="Tbl_TransferDetails" ToRole="Ctg_ProductDetails" />
         </EntityType>
         <EntityType Name="Tbl_Transfers">
           <Key>
@@ -1399,18 +1410,6 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
             </Principal>
             <Dependent Role="Ctg_Users">
               <PropertyRef Name="Fk_PrivilegieID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SUPPLIERS_ORD">
-          <End Type="HardwareStoreModel.Ctg_Suppliers" Role="Ctg_Suppliers" Multiplicity="1" />
-          <End Type="HardwareStoreModel.Tbl_Orders" Role="Tbl_Orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ctg_Suppliers">
-              <PropertyRef Name="Pk_SupplierID" />
-            </Principal>
-            <Dependent Role="Tbl_Orders">
-              <PropertyRef Name="Fk_SupplierID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1483,60 +1482,6 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
             </Principal>
             <Dependent Role="Tbl_OrderDetails">
               <PropertyRef Name="Fk_OrderID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TRANSFERS_TD">
-          <End Type="HardwareStoreModel.Tbl_Transfers" Role="Tbl_Transfers" Multiplicity="1" />
-          <End Type="HardwareStoreModel.Tbl_TransferDetails" Role="Tbl_TransferDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_Transfers">
-              <PropertyRef Name="Pk_TransferID" />
-            </Principal>
-            <Dependent Role="Tbl_TransferDetails">
-              <PropertyRef Name="Fk_TransferID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Tbl_WarehouseProducts">
-          <Key>
-            <PropertyRef Name="Fk_WarehouseID" />
-            <PropertyRef Name="Fk_ProductDetailID" />
-            <PropertyRef Name="Fk_SupplierID" />
-          </Key>
-          <Property Name="Fk_WarehouseID" Type="Int32" Nullable="false" />
-          <Property Name="Fk_ProductDetailID" Type="Int32" Nullable="false" />
-          <Property Name="Fk_SupplierID" Type="Int32" Nullable="false" />
-          <Property Name="WhPr_Stock" Type="Int32" />
-          <Property Name="WhPr_PurchasePrice" Type="Double" Nullable="false" />
-          <Property Name="WhPr_SalePrice" Type="Double" Nullable="false" />
-          <Property Name="WhPr_CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="WhPr_UpdatedAt" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Ctg_Suppliers" Relationship="HardwareStoreModel.FK_SUPPLIERS_WHPR" FromRole="Tbl_WarehouseProducts" ToRole="Ctg_Suppliers" />
-          <NavigationProperty Name="Ctg_Warehouses" Relationship="HardwareStoreModel.FK_WAREHOUSES_WHPR" FromRole="Tbl_WarehouseProducts" ToRole="Ctg_Warehouses" />
-          <NavigationProperty Name="Ctg_ProductDetails" Relationship="HardwareStoreModel.FK_PROD_DETAILS_WHPR" FromRole="Tbl_WarehouseProducts" ToRole="Ctg_ProductDetails" />
-        </EntityType>
-        <Association Name="FK_SUPPLIERS_WHPR">
-          <End Type="HardwareStoreModel.Ctg_Suppliers" Role="Ctg_Suppliers" Multiplicity="1" />
-          <End Type="HardwareStoreModel.Tbl_WarehouseProducts" Role="Tbl_WarehouseProducts" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ctg_Suppliers">
-              <PropertyRef Name="Pk_SupplierID" />
-            </Principal>
-            <Dependent Role="Tbl_WarehouseProducts">
-              <PropertyRef Name="Fk_SupplierID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WAREHOUSES_WHPR">
-          <End Type="HardwareStoreModel.Ctg_Warehouses" Role="Ctg_Warehouses" Multiplicity="1" />
-          <End Type="HardwareStoreModel.Tbl_WarehouseProducts" Role="Tbl_WarehouseProducts" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ctg_Warehouses">
-              <PropertyRef Name="Pk_WarehouseID" />
-            </Principal>
-            <Dependent Role="Tbl_WarehouseProducts">
-              <PropertyRef Name="Fk_WarehouseID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1624,12 +1569,12 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
           <NavigationProperty Name="Ctg_Brands" Relationship="HardwareStoreModel.FK_BRANDS_PDL" FromRole="Ctg_ProductDetails" ToRole="Ctg_Brands" />
           <NavigationProperty Name="Ctg_Categories" Relationship="HardwareStoreModel.FK_CATEGORIES_PDL" FromRole="Ctg_ProductDetails" ToRole="Ctg_Categories" />
           <NavigationProperty Name="Tbl_RemovedProducts" Relationship="HardwareStoreModel.FK_PROD_DETAILS_RMPROD" FromRole="Ctg_ProductDetails" ToRole="Tbl_RemovedProducts" />
-          <NavigationProperty Name="Tbl_WarehouseProducts" Relationship="HardwareStoreModel.FK_PROD_DETAILS_WHPR" FromRole="Ctg_ProductDetails" ToRole="Tbl_WarehouseProducts" />
-          <NavigationProperty Name="Tbl_TransferDetails" Relationship="HardwareStoreModel.FK_PRODUCT_DETAIL_TD" FromRole="Ctg_ProductDetails" ToRole="Tbl_TransferDetails" />
           <NavigationProperty Name="Tbl_OrderDetails" Relationship="HardwareStoreModel.FK_PRODUCTS_ODT" FromRole="Ctg_ProductDetails" ToRole="Tbl_OrderDetails" />
           <NavigationProperty Name="Ctg_Products" Relationship="HardwareStoreModel.FK_PRODUCTS_PDL" FromRole="Ctg_ProductDetails" ToRole="Ctg_Products" />
           <NavigationProperty Name="Ctg_UnitConversion" Relationship="HardwareStoreModel.FK_UNITCONVERSION_PDL" FromRole="Ctg_ProductDetails" ToRole="Ctg_UnitConversion" />
           <NavigationProperty Name="Tbl_SaleDetails" Relationship="HardwareStoreModel.FK_PRODUCTS_SDT" FromRole="Ctg_ProductDetails" ToRole="Tbl_SaleDetails" />
+          <NavigationProperty Name="Tbl_WarehouseProducts" Relationship="HardwareStoreModel.FK_PROD_DETAILS_WHPR" FromRole="Ctg_ProductDetails" ToRole="Tbl_WarehouseProducts" />
+          <NavigationProperty Name="Tbl_TransferDetails" Relationship="HardwareStoreModel.FK_PRODUCT_DETAIL_TD" FromRole="Ctg_ProductDetails" ToRole="Tbl_TransferDetails" />
         </EntityType>
         <EntityType Name="Ctg_UnitConversion">
           <Key>
@@ -1763,30 +1708,6 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
               <PropertyRef Name="Pk_ProductDetailID" />
             </Principal>
             <Dependent Role="Tbl_RemovedProducts">
-              <PropertyRef Name="Fk_ProductDetailID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PROD_DETAILS_WHPR">
-          <End Type="HardwareStoreModel.Ctg_ProductDetails" Role="Ctg_ProductDetails" Multiplicity="1" />
-          <End Type="HardwareStoreModel.Tbl_WarehouseProducts" Role="Tbl_WarehouseProducts" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ctg_ProductDetails">
-              <PropertyRef Name="Pk_ProductDetailID" />
-            </Principal>
-            <Dependent Role="Tbl_WarehouseProducts">
-              <PropertyRef Name="Fk_ProductDetailID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PRODUCT_DETAIL_TD">
-          <End Type="HardwareStoreModel.Ctg_ProductDetails" Role="Ctg_ProductDetails" Multiplicity="1" />
-          <End Type="HardwareStoreModel.Tbl_TransferDetails" Role="Tbl_TransferDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ctg_ProductDetails">
-              <PropertyRef Name="Pk_ProductDetailID" />
-            </Principal>
-            <Dependent Role="Tbl_TransferDetails">
               <PropertyRef Name="Fk_ProductDetailID" />
             </Dependent>
           </ReferentialConstraint>
@@ -1940,6 +1861,155 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Ctg_Suppliers">
+          <Key>
+            <PropertyRef Name="Pk_SupplierID" />
+          </Key>
+          <Property Name="Pk_SupplierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sps_customID" Type="String" MaxLength="9" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Sps_CompanyName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sps_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sps_Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Sps_PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Sps_EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sps_CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Sps_UpdatedAt_" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Sps_Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Tbl_Orders" Relationship="HardwareStoreModel.FK_SUPPLIERS_ORD" FromRole="Ctg_Suppliers" ToRole="Tbl_Orders" />
+          <NavigationProperty Name="Tbl_WarehouseProducts" Relationship="HardwareStoreModel.FK_SUPPLIERS_WHPR" FromRole="Ctg_Suppliers" ToRole="Tbl_WarehouseProducts" />
+          <NavigationProperty Name="Tbl_TransferDetails" Relationship="HardwareStoreModel.FK_Tbl_TransferDetails_Ctg_Suppliers" FromRole="Ctg_Suppliers" ToRole="Tbl_TransferDetails" />
+        </EntityType>
+        <EntityType Name="Tbl_TransferDetails">
+          <Key>
+            <PropertyRef Name="Pk_TransferDetailID" />
+          </Key>
+          <Property Name="Pk_TransferDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fk_TransferID" Type="Int32" Nullable="false" />
+          <Property Name="Fk_ProductDetailID" Type="Int32" Nullable="false" />
+          <Property Name="Fk_SourceWarehouseID" Type="Int32" Nullable="false" />
+          <Property Name="Fk_SupplierId" Type="Int32" Nullable="false" />
+          <Property Name="TD_Quantity" Type="Int32" Nullable="false" />
+          <Property Name="TD_CreatedAt" Type="DateTime" Precision="0" />
+          <Property Name="TD_UpdatedAt" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Ctg_ProductDetails" Relationship="HardwareStoreModel.FK_PRODUCT_DETAIL_TD" FromRole="Tbl_TransferDetails" ToRole="Ctg_ProductDetails" />
+          <NavigationProperty Name="Ctg_Suppliers" Relationship="HardwareStoreModel.FK_Tbl_TransferDetails_Ctg_Suppliers" FromRole="Tbl_TransferDetails" ToRole="Ctg_Suppliers" />
+          <NavigationProperty Name="Ctg_Warehouses" Relationship="HardwareStoreModel.FK_Tbl_TransferDetails_Ctg_Warehouses" FromRole="Tbl_TransferDetails" ToRole="Ctg_Warehouses" />
+          <NavigationProperty Name="Tbl_Transfers" Relationship="HardwareStoreModel.FK_TRANSFERS_TD" FromRole="Tbl_TransferDetails" ToRole="Tbl_Transfers" />
+        </EntityType>
+        <EntityType Name="Tbl_WarehouseProducts">
+          <Key>
+            <PropertyRef Name="Fk_WarehouseID" />
+            <PropertyRef Name="Fk_ProductDetailID" />
+            <PropertyRef Name="Fk_SupplierID" />
+          </Key>
+          <Property Name="Fk_WarehouseID" Type="Int32" Nullable="false" />
+          <Property Name="Fk_ProductDetailID" Type="Int32" Nullable="false" />
+          <Property Name="Fk_SupplierID" Type="Int32" Nullable="false" />
+          <Property Name="WhPr_Stock" Type="Int32" />
+          <Property Name="WhPr_PurchasePrice" Type="Double" Nullable="false" />
+          <Property Name="WhPr_SalePrice" Type="Double" Nullable="false" />
+          <Property Name="WhPr_CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="WhPr_UpdatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Ctg_ProductDetails" Relationship="HardwareStoreModel.FK_PROD_DETAILS_WHPR" FromRole="Tbl_WarehouseProducts" ToRole="Ctg_ProductDetails" />
+          <NavigationProperty Name="Ctg_Suppliers" Relationship="HardwareStoreModel.FK_SUPPLIERS_WHPR" FromRole="Tbl_WarehouseProducts" ToRole="Ctg_Suppliers" />
+          <NavigationProperty Name="Ctg_Warehouses" Relationship="HardwareStoreModel.FK_WAREHOUSES_WHPR" FromRole="Tbl_WarehouseProducts" ToRole="Ctg_Warehouses" />
+        </EntityType>
+        <Association Name="FK_PROD_DETAILS_WHPR">
+          <End Type="HardwareStoreModel.Ctg_ProductDetails" Role="Ctg_ProductDetails" Multiplicity="1" />
+          <End Type="HardwareStoreModel.Tbl_WarehouseProducts" Role="Tbl_WarehouseProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_ProductDetails">
+              <PropertyRef Name="Pk_ProductDetailID" />
+            </Principal>
+            <Dependent Role="Tbl_WarehouseProducts">
+              <PropertyRef Name="Fk_ProductDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCT_DETAIL_TD">
+          <End Type="HardwareStoreModel.Ctg_ProductDetails" Role="Ctg_ProductDetails" Multiplicity="1" />
+          <End Type="HardwareStoreModel.Tbl_TransferDetails" Role="Tbl_TransferDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_ProductDetails">
+              <PropertyRef Name="Pk_ProductDetailID" />
+            </Principal>
+            <Dependent Role="Tbl_TransferDetails">
+              <PropertyRef Name="Fk_ProductDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUPPLIERS_ORD">
+          <End Type="HardwareStoreModel.Ctg_Suppliers" Role="Ctg_Suppliers" Multiplicity="1" />
+          <End Type="HardwareStoreModel.Tbl_Orders" Role="Tbl_Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Suppliers">
+              <PropertyRef Name="Pk_SupplierID" />
+            </Principal>
+            <Dependent Role="Tbl_Orders">
+              <PropertyRef Name="Fk_SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUPPLIERS_WHPR">
+          <End Type="HardwareStoreModel.Ctg_Suppliers" Role="Ctg_Suppliers" Multiplicity="1" />
+          <End Type="HardwareStoreModel.Tbl_WarehouseProducts" Role="Tbl_WarehouseProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Suppliers">
+              <PropertyRef Name="Pk_SupplierID" />
+            </Principal>
+            <Dependent Role="Tbl_WarehouseProducts">
+              <PropertyRef Name="Fk_SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_TransferDetails_Ctg_Suppliers">
+          <End Type="HardwareStoreModel.Ctg_Suppliers" Role="Ctg_Suppliers" Multiplicity="1" />
+          <End Type="HardwareStoreModel.Tbl_TransferDetails" Role="Tbl_TransferDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Suppliers">
+              <PropertyRef Name="Pk_SupplierID" />
+            </Principal>
+            <Dependent Role="Tbl_TransferDetails">
+              <PropertyRef Name="Fk_SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_TransferDetails_Ctg_Warehouses">
+          <End Type="HardwareStoreModel.Ctg_Warehouses" Role="Ctg_Warehouses" Multiplicity="1" />
+          <End Type="HardwareStoreModel.Tbl_TransferDetails" Role="Tbl_TransferDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Warehouses">
+              <PropertyRef Name="Pk_WarehouseID" />
+            </Principal>
+            <Dependent Role="Tbl_TransferDetails">
+              <PropertyRef Name="Fk_SourceWarehouseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAREHOUSES_WHPR">
+          <End Type="HardwareStoreModel.Ctg_Warehouses" Role="Ctg_Warehouses" Multiplicity="1" />
+          <End Type="HardwareStoreModel.Tbl_WarehouseProducts" Role="Tbl_WarehouseProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ctg_Warehouses">
+              <PropertyRef Name="Pk_WarehouseID" />
+            </Principal>
+            <Dependent Role="Tbl_WarehouseProducts">
+              <PropertyRef Name="Fk_WarehouseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANSFERS_TD">
+          <End Type="HardwareStoreModel.Tbl_Transfers" Role="Tbl_Transfers" Multiplicity="1" />
+          <End Type="HardwareStoreModel.Tbl_TransferDetails" Role="Tbl_TransferDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Transfers">
+              <PropertyRef Name="Pk_TransferID" />
+            </Principal>
+            <Dependent Role="Tbl_TransferDetails">
+              <PropertyRef Name="Fk_TransferID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2039,22 +2109,6 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
                 <ScalarProperty Name="Prod_Name" ColumnName="Prod_Name" />
                 <ScalarProperty Name="Prod_customID" ColumnName="Prod_customID" />
                 <ScalarProperty Name="Pk_productID" ColumnName="Pk_productID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Ctg_Suppliers">
-            <EntityTypeMapping TypeName="HardwareStoreModel.Ctg_Suppliers">
-              <MappingFragment StoreEntitySet="Ctg_Suppliers">
-                <ScalarProperty Name="Sps_Deleted" ColumnName="Sps_Deleted" />
-                <ScalarProperty Name="Sps_UpdatedAt_" ColumnName="Sps_UpdatedAt_" />
-                <ScalarProperty Name="Sps_CreatedAt" ColumnName="Sps_CreatedAt" />
-                <ScalarProperty Name="Sps_EmailAddress" ColumnName="Sps_EmailAddress" />
-                <ScalarProperty Name="Sps_PhoneNumber" ColumnName="Sps_PhoneNumber" />
-                <ScalarProperty Name="Sps_Address" ColumnName="Sps_Address" />
-                <ScalarProperty Name="Sps_Name" ColumnName="Sps_Name" />
-                <ScalarProperty Name="Sps_CompanyName" ColumnName="Sps_CompanyName" />
-                <ScalarProperty Name="Sps_customID" ColumnName="Sps_customID" />
-                <ScalarProperty Name="Pk_SupplierID" ColumnName="Pk_SupplierID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2158,19 +2212,6 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_TransferDetails">
-            <EntityTypeMapping TypeName="HardwareStoreModel.Tbl_TransferDetails">
-              <MappingFragment StoreEntitySet="Tbl_TransferDetails">
-                <ScalarProperty Name="TD_UpdatedAt" ColumnName="TD_UpdatedAt" />
-                <ScalarProperty Name="TD_CreatedAt" ColumnName="TD_CreatedAt" />
-                <ScalarProperty Name="TD_Quantity" ColumnName="TD_Quantity" />
-                <ScalarProperty Name="TD_SourceWarehouseID" ColumnName="TD_SourceWarehouseID" />
-                <ScalarProperty Name="Fk_ProductDetailID" ColumnName="Fk_ProductDetailID" />
-                <ScalarProperty Name="Fk_TransferID" ColumnName="Fk_TransferID" />
-                <ScalarProperty Name="Pk_TransferDetailID" ColumnName="Pk_TransferDetailID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Tbl_Transfers">
             <EntityTypeMapping TypeName="HardwareStoreModel.Tbl_Transfers">
               <MappingFragment StoreEntitySet="Tbl_Transfers">
@@ -2196,20 +2237,6 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
                 <ScalarProperty Name="Hws_Address" ColumnName="Hws_Address" />
                 <ScalarProperty Name="Hws_RUCNumber" ColumnName="Hws_RUCNumber" />
                 <ScalarProperty Name="Hws_Name" ColumnName="Hws_Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_WarehouseProducts">
-            <EntityTypeMapping TypeName="HardwareStoreModel.Tbl_WarehouseProducts">
-              <MappingFragment StoreEntitySet="Tbl_WarehouseProducts">
-                <ScalarProperty Name="WhPr_UpdatedAt" ColumnName="WhPr_UpdatedAt" />
-                <ScalarProperty Name="WhPr_CreatedAt" ColumnName="WhPr_CreatedAt" />
-                <ScalarProperty Name="WhPr_SalePrice" ColumnName="WhPr_SalePrice" />
-                <ScalarProperty Name="WhPr_PurchasePrice" ColumnName="WhPr_PurchasePrice" />
-                <ScalarProperty Name="WhPr_Stock" ColumnName="WhPr_Stock" />
-                <ScalarProperty Name="Fk_SupplierID" ColumnName="Fk_SupplierID" />
-                <ScalarProperty Name="Fk_ProductDetailID" ColumnName="Fk_ProductDetailID" />
-                <ScalarProperty Name="Fk_WarehouseID" ColumnName="Fk_WarehouseID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2348,6 +2375,50 @@ warning 6002: The table/view 'HardwareStore.dbo.Tbl_HardwareStore' does not have
                 <ScalarProperty Name="Fk_CustomerID" ColumnName="Fk_CustomerID" />
                 <ScalarProperty Name="Fk_UserID" ColumnName="Fk_UserID" />
                 <ScalarProperty Name="Pk_SaleID" ColumnName="Pk_SaleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ctg_Suppliers">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Ctg_Suppliers">
+              <MappingFragment StoreEntitySet="Ctg_Suppliers">
+                <ScalarProperty Name="Sps_Deleted" ColumnName="Sps_Deleted" />
+                <ScalarProperty Name="Sps_UpdatedAt_" ColumnName="Sps_UpdatedAt_" />
+                <ScalarProperty Name="Sps_CreatedAt" ColumnName="Sps_CreatedAt" />
+                <ScalarProperty Name="Sps_EmailAddress" ColumnName="Sps_EmailAddress" />
+                <ScalarProperty Name="Sps_PhoneNumber" ColumnName="Sps_PhoneNumber" />
+                <ScalarProperty Name="Sps_Address" ColumnName="Sps_Address" />
+                <ScalarProperty Name="Sps_Name" ColumnName="Sps_Name" />
+                <ScalarProperty Name="Sps_CompanyName" ColumnName="Sps_CompanyName" />
+                <ScalarProperty Name="Sps_customID" ColumnName="Sps_customID" />
+                <ScalarProperty Name="Pk_SupplierID" ColumnName="Pk_SupplierID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_TransferDetails">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Tbl_TransferDetails">
+              <MappingFragment StoreEntitySet="Tbl_TransferDetails">
+                <ScalarProperty Name="TD_UpdatedAt" ColumnName="TD_UpdatedAt" />
+                <ScalarProperty Name="TD_CreatedAt" ColumnName="TD_CreatedAt" />
+                <ScalarProperty Name="TD_Quantity" ColumnName="TD_Quantity" />
+                <ScalarProperty Name="Fk_SupplierId" ColumnName="Fk_SupplierId" />
+                <ScalarProperty Name="Fk_SourceWarehouseID" ColumnName="Fk_SourceWarehouseID" />
+                <ScalarProperty Name="Fk_ProductDetailID" ColumnName="Fk_ProductDetailID" />
+                <ScalarProperty Name="Fk_TransferID" ColumnName="Fk_TransferID" />
+                <ScalarProperty Name="Pk_TransferDetailID" ColumnName="Pk_TransferDetailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_WarehouseProducts">
+            <EntityTypeMapping TypeName="HardwareStoreModel.Tbl_WarehouseProducts">
+              <MappingFragment StoreEntitySet="Tbl_WarehouseProducts">
+                <ScalarProperty Name="WhPr_UpdatedAt" ColumnName="WhPr_UpdatedAt" />
+                <ScalarProperty Name="WhPr_CreatedAt" ColumnName="WhPr_CreatedAt" />
+                <ScalarProperty Name="WhPr_SalePrice" ColumnName="WhPr_SalePrice" />
+                <ScalarProperty Name="WhPr_PurchasePrice" ColumnName="WhPr_PurchasePrice" />
+                <ScalarProperty Name="WhPr_Stock" ColumnName="WhPr_Stock" />
+                <ScalarProperty Name="Fk_SupplierID" ColumnName="Fk_SupplierID" />
+                <ScalarProperty Name="Fk_ProductDetailID" ColumnName="Fk_ProductDetailID" />
+                <ScalarProperty Name="Fk_WarehouseID" ColumnName="Fk_WarehouseID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

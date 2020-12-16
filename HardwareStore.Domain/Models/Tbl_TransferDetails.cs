@@ -17,12 +17,15 @@ namespace HardwareStore.Domain.Models
         public int Pk_TransferDetailID { get; set; }
         public int Fk_TransferID { get; set; }
         public int Fk_ProductDetailID { get; set; }
-        public int TD_SourceWarehouseID { get; set; }
+        public int Fk_SourceWarehouseID { get; set; }
+        public int Fk_SupplierId { get; set; }
         public int TD_Quantity { get; set; }
         public Nullable<System.DateTime> TD_CreatedAt { get; set; }
         public Nullable<System.DateTime> TD_UpdatedAt { get; set; }
     
-        public virtual Tbl_Transfers Tbl_Transfers { get; set; }
         public virtual Ctg_ProductDetails Ctg_ProductDetails { get; set; }
+        public virtual Ctg_Suppliers Ctg_Suppliers { get; set; }
+        public virtual Ctg_Warehouses Ctg_Warehouses { get; set; }
+        public virtual Tbl_Transfers Tbl_Transfers { get; set; }
     }
 }

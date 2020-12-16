@@ -23,8 +23,8 @@ namespace HardwareStore.Domain.Models
         public System.DateTime WhPr_CreatedAt { get; set; }
         public System.DateTime WhPr_UpdatedAt { get; set; }
     
+        public virtual Ctg_ProductDetails Ctg_ProductDetails { get; set; }
         public virtual Ctg_Suppliers Ctg_Suppliers { get; set; }
         public virtual Ctg_Warehouses Ctg_Warehouses { get; set; }
-        public virtual Ctg_ProductDetails Ctg_ProductDetails { get; set; }
     }
 }
