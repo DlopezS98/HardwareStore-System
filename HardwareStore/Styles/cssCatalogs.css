@@ -36,7 +36,7 @@
 
 .form-principal-employees {
     background: #F9F9F9;
-    height: 700px;
+    height: 570px;
     width: 80%;
     margin-left: 10px;
     margin-right: 10px;
@@ -47,11 +47,13 @@
     border-right: 0.5px solid #ddd;
     border-bottom: 0.5px solid #ddd;
     border-radius: 5px;
+
 }
 
 .containerCatalog {
     display: flex;
     background: #fff;
+    margin-bottom: 40px;
 }
 
 

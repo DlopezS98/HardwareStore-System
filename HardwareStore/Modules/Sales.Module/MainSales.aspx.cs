@@ -68,8 +68,8 @@ namespace HardwareStore.Modules.Sales.Module
         public void LoadGridViewDetail(int id)
         {
             var list = vSalesRepository.GetSaleDetails(id);
-            GridViewSaleDetails.DataSource = list;
-            GridViewSaleDetails.DataBind();
+            //GridViewSaleDetails.DataSource = list;
+            //GridViewSaleDetails.DataBind();
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -92,19 +92,12 @@ namespace HardwareStore.Modules.Sales.Module
             }
         }
 
-        protected void btnBackToCreateSale_Click(object sender, EventArgs e)
-        {
-            SalesView.ActiveViewIndex = 0;
-        }
 
-        protected void btnGoToListOrdersSales_Click(object sender, EventArgs e)
-        {
-            SalesView.ActiveViewIndex = 1;
-        }
+
 
         protected void btnSearchWarehouseProduct_Click(object sender, EventArgs e)
         {
-            this.LoadGridViewWarehouseProducts(txtSearchWarehouseProduct.Text);
+            this.LoadGridViewWarehouseProducts(txtSearchWarehouseProduct.Value);
         }
 
         protected void GridViewWarehouseProducts_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -128,19 +121,19 @@ namespace HardwareStore.Modules.Sales.Module
         public void ResetDetailInputs()
         {
             txtProduct.Text = "";
-            txtBrand.Text = "";
-            txtMaterialType.Text = "";
-            txtMeasureUnit.Text = "";
-            txtProductCode.Text = "";
+            txtBrand.Value = "";
+            txtMaterialType.Value = "";
+            txtMeasureUnit.Value = "";
+            txtProductCode.Value = "";
             txtWarehouseId.Text = "";
             txtProductId.Text = "";
             txtSupplierId.Text = "";
-            txtDimensions.Text = "";
-            txtQuantity.Text = "";
-            txtPrice.Text = "";
-            txtDetailDiscount.Text = "";
-            txtProductStock.Text = "";
-            txtPrice.Text = "";
+            txtDimensions.Value = "";
+            txtQuantity.Value = "";
+            txtPrice.Value = "";
+            txtDetailDiscount.Value = "";
+            txtProductStock.Value = "";
+            txtPrice.Value = "";
             btnAddToDetailStageList.Text = "Agregar";
         }
 
@@ -151,13 +144,13 @@ namespace HardwareStore.Modules.Sales.Module
             txtProductId.Text = idProdDetail.ToString();
             txtProduct.Text = obj.ProductName;
             txtWarehouseName.Text = obj.WarehouseName;
-            txtBrand.Text = obj.BrandName;
-            txtMaterialType.Text = obj.MaterialType;
-            txtDimensions.Text = obj.Dimensions;
-            txtMeasureUnit.Text = obj.MeasureUnit;
-            txtProductCode.Text = obj.DefaultCode;
-            txtProductStock.Text = obj.WhPr_Stock.ToString();
-            txtPrice.Text = obj.WhPr_SalePrice.ToString();
+            txtBrand.Value = obj.BrandName;
+            txtMaterialType.Value = obj.MaterialType;
+            txtDimensions.Value = obj.Dimensions;
+            txtMeasureUnit.Value = obj.MeasureUnit;
+            txtProductCode.Value = obj.DefaultCode;
+            txtProductStock.Value = obj.WhPr_Stock.ToString();
+            txtPrice.Value = obj.WhPr_SalePrice.ToString();
             txtSupplierId.Text = obj.Fk_SupplierID.ToString();
         }
 
@@ -169,16 +162,16 @@ namespace HardwareStore.Modules.Sales.Module
                 ProductId = Convert.ToInt32(txtProductId.Text),
                 SupplierId = Convert.ToInt32(txtSupplierId.Text),
                 ProductName = txtProduct.Text,
-                BrandName = txtBrand.Text,
-                UnitMeasure = txtMeasureUnit.Text,
-                Code = txtProductCode.Text,
-                Dimensions = txtDimensions.Text,
-                MaterialType = txtMaterialType.Text,
-                Quantity = Convert.ToInt32(txtQuantity.Text),
-                Price = Convert.ToDouble(txtPrice.Text),
-                Discount = Convert.ToInt32(txtDetailDiscount.Text),
+                BrandName = txtBrand.Value,
+                UnitMeasure = txtMeasureUnit.Value,
+                Code = txtProductCode.Value,
+                Dimensions = txtDimensions.Value,
+                MaterialType = txtMaterialType.Value,
+                Quantity = Convert.ToInt32(txtQuantity.Value),
+                Price = Convert.ToDouble(txtPrice.Value),
+                Discount = Convert.ToInt32(txtDetailDiscount.Value),
                 WarehouseName = txtWarehouseName.Text,
-                Stock = Convert.ToInt32(txtProductStock.Text)
+                Stock = Convert.ToInt32(txtProductStock.Value)
             };
 
             return ObjStage;
@@ -192,13 +185,14 @@ namespace HardwareStore.Modules.Sales.Module
                     this.AddItemInToSaleDetailList();
                     this.CalculateTotalAmount();
                     this.CalculatePaymentChange();
+                    string Visible = "notificationVisible()";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", Visible, true);
                     break;
 
                 case "Editar":
                     this.UpdateItemFromSaleDetailList();
                     this.CalculateTotalAmount();
                     this.CalculatePaymentChange();
-                    SalesView.ActiveViewIndex = 2;
                     break;
 
                 default:
@@ -218,7 +212,7 @@ namespace HardwareStore.Modules.Sales.Module
                     subtotal = subtotal + item.Total;
                 }
 
-                txtSubtotal.Text = subtotal.ToString();
+                txtSubtotal.Value = subtotal.ToString();
             }
 
             return subtotal;
@@ -231,13 +225,13 @@ namespace HardwareStore.Modules.Sales.Module
             subtotal = this.CalculateSubtotalAmount();
             total = subtotal;
 
-            if (txtTotalDiscount.Text != "")
+            if (txtTotalDiscount.Value != "")
             {
-                discount = Convert.ToInt32(txtTotalDiscount.Text);
+                discount = Convert.ToInt32(txtTotalDiscount.Value);
                 total = total - (((double)discount / 100) * total);
             }
 
-            txtTotal.Text = total.ToString();
+            txtTotal.Value = total.ToString();
         }
 
         private void AddItemInToSaleDetailList()
@@ -296,7 +290,7 @@ namespace HardwareStore.Modules.Sales.Module
             i.ProductId == productId &&
             i.SupplierId == supplierId);
 
-            int quantity = Convert.ToInt32(txtQuantity.Text);
+            int quantity = Convert.ToInt32(txtQuantity.Value);
 
             if (quantity <= OldReg.Stock)
             {
@@ -304,16 +298,16 @@ namespace HardwareStore.Modules.Sales.Module
                 OldReg.ProductId = Convert.ToInt32(txtProductId.Text);
                 OldReg.SupplierId = Convert.ToInt32(txtSupplierId.Text);
                 OldReg.ProductName = txtProduct.Text;
-                OldReg.BrandName = txtBrand.Text;
-                OldReg.UnitMeasure = txtMeasureUnit.Text;
-                OldReg.Code = txtProductCode.Text;
-                OldReg.Dimensions = txtDimensions.Text;
-                OldReg.MaterialType = txtMaterialType.Text;
+                OldReg.BrandName = txtBrand.Value;
+                OldReg.UnitMeasure = txtMeasureUnit.Value;
+                OldReg.Code = txtProductCode.Value;
+                OldReg.Dimensions = txtDimensions.Value;
+                OldReg.MaterialType = txtMaterialType.Value;
                 OldReg.Quantity = quantity;
-                OldReg.Price = Convert.ToDouble(txtPrice.Text);
-                OldReg.Discount = Convert.ToInt32(txtDetailDiscount.Text);
+                OldReg.Price = Convert.ToDouble(txtPrice.Value);
+                OldReg.Discount = Convert.ToInt32(txtDetailDiscount.Value);
                 OldReg.WarehouseName = txtWarehouseName.Text;
-                OldReg.Stock = Convert.ToInt32(txtProductStock.Text);
+                OldReg.Stock = Convert.ToInt32(txtProductStock.Value);
                 GridViewSaleDetailsStage.DataSource = listSdtStage;
                 GridViewSaleDetailsStage.DataBind();
                 this.ResetDetailInputs();
@@ -378,15 +372,15 @@ namespace HardwareStore.Modules.Sales.Module
             txtSupplierId.Text = SupplierId.ToString();
             txtProduct.Text = obj.ProductName;
             txtWarehouseName.Text = obj.WarehouseName;
-            txtBrand.Text = obj.BrandName;
-            txtMaterialType.Text = obj.MaterialType;
-            txtDimensions.Text = obj.Dimensions;
-            txtMeasureUnit.Text = obj.UnitMeasure;
-            txtProductCode.Text = obj.Code;
-            txtProductStock.Text = obj.Stock.ToString();
-            txtPrice.Text = obj.Price.ToString();
-            txtQuantity.Text = obj.Quantity.ToString();
-            txtDetailDiscount.Text = obj.Discount.ToString();
+            txtBrand.Value = obj.BrandName;
+            txtMaterialType.Value = obj.MaterialType;
+            txtDimensions.Value = obj.Dimensions;
+            txtMeasureUnit.Value = obj.UnitMeasure;
+            txtProductCode.Value = obj.Code;
+            txtProductStock.Value = obj.Stock.ToString();
+            txtPrice.Value = obj.Price.ToString();
+            txtQuantity.Value = obj.Quantity.ToString();
+            txtDetailDiscount.Value = obj.Discount.ToString();
         }
 
         protected void ddlistCustomers_SelectedIndexChanged(object sender, EventArgs e)
@@ -394,18 +388,13 @@ namespace HardwareStore.Modules.Sales.Module
             int index = ddlistCustomers.SelectedIndex;
             if (index != 0)
             {
-                txtCustomer.Text = ddlistCustomers.SelectedItem.Text;
+                txtCustomer.Value = ddlistCustomers.SelectedItem.Text;
             }
             else
             {
-                txtCustomer.Text = "";
+                txtCustomer.Value = "";
             }
 
-        }
-
-        protected void btnSaleDetailList_Click(object sender, EventArgs e)
-        {
-            SalesView.ActiveViewIndex = 2;
         }
 
         protected void btnCalculateTotal_Click(object sender, EventArgs e)
@@ -424,13 +413,13 @@ namespace HardwareStore.Modules.Sales.Module
                 Fk_UserID = 1,
                 Fk_CustomerID = Convert.ToInt32(ddlistCustomers.SelectedValue),
                 Fk_CurrencyExchange = Convert.ToInt32(txtCurrencyExchangeId.Text),
-                Sale_CustomerName = txtCustomer.Text,
+                Sale_CustomerName = txtCustomer.Value,
                 Sale_PaymentType = ddlistForeignCurrencies.SelectedItem.Text,
                 Sale_TaxName = "Without Tax",
                 Sale_Tax = 0,
-                Sale_Subtotal = Convert.ToDouble(txtSubtotal.Text),
-                Sale_Discount = Convert.ToInt32(txtTotalDiscount.Text),
-                Sale_TotalAmount = Convert.ToDouble(txtTotal.Text),
+                Sale_Subtotal = Convert.ToDouble(txtSubtotal.Value),
+                Sale_Discount = Convert.ToInt32(txtTotalDiscount.Value),
+                Sale_TotalAmount = Convert.ToDouble(txtTotal.Value),
             };
             listSdtStage = Session["ListSdt"] as List<SaleDetailsStage>;
 
@@ -443,6 +432,8 @@ namespace HardwareStore.Modules.Sales.Module
             this.ResetDetailInputs();
             this.ResetSaleInputs();
             this.LoadGridViewWarehouseProducts("");
+            string inVisible = "notificationinVisible()";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", inVisible, true);
         }
 
         protected void btnAbortTransaction_Click(object sender, EventArgs e)
@@ -454,12 +445,12 @@ namespace HardwareStore.Modules.Sales.Module
 
         private void ResetSaleInputs()
         {
-            txtSubtotal.Text = "";
-            txtTotalDiscount.Text = "";
-            txtTotal.Text = "";
-            txtPayment.Text = "";
-            txtConversion.Text = "";
-            txtPaymentChange.Text = "";
+            txtSubtotal.Value = "";
+            txtTotalDiscount.Value = "";
+            txtTotal.Value = "";
+            txtPayment.Value = "";
+            txtConversion.Value = "";
+            txtPaymentChange.Value = "";
         }
 
         private void RemoveItemsFromSaleDetailList()
@@ -480,8 +471,8 @@ namespace HardwareStore.Modules.Sales.Module
             int local = Convert.ToInt32(ddlistLocalCurrencies.SelectedValue);
             int foreign = Convert.ToInt32(ddlistForeignCurrencies.SelectedValue);
             var Currency = this.vcurrencyRepository.GetACurrencyExchange(local, foreign);
-            txtCurrencySale.Text = Currency.Cye_Sale.ToString();
-            txtCurrencyPurchase.Text = Currency.Cye_Purchase.ToString();
+            txtCurrencySale.Value = Currency.Cye_Sale.ToString();
+            txtCurrencyPurchase.Value = Currency.Cye_Purchase.ToString();
             txtCurrencyExchangeId.Text = Currency.Pk_CurrencyExchange.ToString();
         }
 
@@ -489,15 +480,15 @@ namespace HardwareStore.Modules.Sales.Module
         {
             this.FetchCurrencyExchangeFromDataBase();
             double sale, purchase, payment, conversion, paymentChange, totalToPay;
-            if (txtCurrencyPurchase.Text != "" && txtPayment.Text != "")
+            if (txtCurrencyPurchase.Value != "" && txtPayment.Value != "")
             {
-                purchase = Convert.ToDouble(txtCurrencyPurchase.Text);
-                payment = Convert.ToDouble(txtPayment.Text);
-                totalToPay = Convert.ToDouble(txtTotal.Text);
+                purchase = Convert.ToDouble(txtCurrencyPurchase.Value);
+                payment = Convert.ToDouble(txtPayment.Value);
+                totalToPay = Convert.ToDouble(txtTotal.Value);
                 conversion = purchase * payment;
-                txtConversion.Text = conversion.ToString();
+                txtConversion.Value = conversion.ToString();
                 paymentChange = conversion - totalToPay;
-                txtPaymentChange.Text = paymentChange.ToString();
+                txtPaymentChange.Value = paymentChange.ToString();
             }
         }
 
@@ -536,6 +527,21 @@ namespace HardwareStore.Modules.Sales.Module
             {
                 this.LoadGridViewSales(Start, End, 0);
             }
+        }
+
+        protected void btnNewSale_Click(object sender, EventArgs e)
+        {
+            SalesView.ActiveViewIndex = 0;
+        }
+
+        protected void btnDetailsSale_Click(object sender, EventArgs e)
+        {
+            SalesView.ActiveViewIndex = 2;
+        }
+
+        protected void btnHistSale_Click(object sender, EventArgs e)
+        {
+            SalesView.ActiveViewIndex = 1;
         }
     }
 }

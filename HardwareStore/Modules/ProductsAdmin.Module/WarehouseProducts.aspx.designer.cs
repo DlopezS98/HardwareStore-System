@@ -7,20 +7,13 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace HardwareStore.Modules.ProductsAdmin.Module {
-    
-    
-    public partial class WarehouseProducts {
-        
-        /// <summary>
-        /// Control btnGo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGo;
-        
+namespace HardwareStore.Modules.ProductsAdmin.Module
+{
+
+
+    public partial class WarehouseProducts
+    {
+
         /// <summary>
         /// Control UpdatePanel1.
         /// </summary>
@@ -29,7 +22,7 @@ namespace HardwareStore.Modules.ProductsAdmin.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
+
         /// <summary>
         /// Control TextBox4.
         /// </summary>
@@ -38,7 +31,7 @@ namespace HardwareStore.Modules.ProductsAdmin.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox4;
-        
+
         /// <summary>
         /// Control TextBox5.
         /// </summary>
@@ -47,7 +40,7 @@ namespace HardwareStore.Modules.ProductsAdmin.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox5;
-        
+
         /// <summary>
         /// Control TextBox6.
         /// </summary>
@@ -56,7 +49,7 @@ namespace HardwareStore.Modules.ProductsAdmin.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox6;
-        
+
         /// <summary>
         /// Control TextBox7.
         /// </summary>
@@ -65,16 +58,7 @@ namespace HardwareStore.Modules.ProductsAdmin.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox7;
-        
-        /// <summary>
-        /// Control TextBox8.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox8;
-        
+
         /// <summary>
         /// Control TextBox9.
         /// </summary>
@@ -83,7 +67,16 @@ namespace HardwareStore.Modules.ProductsAdmin.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox9;
-        
+
+        /// <summary>
+        /// Control TextBox8.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox8;
+
         /// <summary>
         /// Control Button2.
         /// </summary>
@@ -92,7 +85,7 @@ namespace HardwareStore.Modules.ProductsAdmin.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button2;
-        
+
         /// <summary>
         /// Control ProductWaresause.
         /// </summary>
@@ -101,7 +94,7 @@ namespace HardwareStore.Modules.ProductsAdmin.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.MultiView ProductWaresause;
-        
+
         /// <summary>
         /// Control UpdatePanel2.
         /// </summary>
@@ -110,16 +103,7 @@ namespace HardwareStore.Modules.ProductsAdmin.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel2;
-        
-        /// <summary>
-        /// Control txtOrdNumber.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOrdNumber;
-        
+
         /// <summary>
         /// Control Listmove.
         /// </summary>
@@ -128,7 +112,16 @@ namespace HardwareStore.Modules.ProductsAdmin.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Listmove;
-        
+
+        /// <summary>
+        /// Control txtOrdNumber.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOrdNumber;
+
         /// <summary>
         /// Control btnDelete.
         /// </summary>
@@ -137,7 +130,7 @@ namespace HardwareStore.Modules.ProductsAdmin.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnDelete;
-        
+
         /// <summary>
         /// Control btnMove.
         /// </summary>
@@ -146,7 +139,7 @@ namespace HardwareStore.Modules.ProductsAdmin.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnMove;
-        
+
         /// <summary>
         /// Control UpdatePanel3.
         /// </summary>
@@ -155,7 +148,7 @@ namespace HardwareStore.Modules.ProductsAdmin.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel3;
-        
+
         /// <summary>
         /// Control txtWarehouseId.
         /// </summary>
@@ -164,7 +157,7 @@ namespace HardwareStore.Modules.ProductsAdmin.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtWarehouseId;
-        
+
         /// <summary>
         /// Control txtProductId.
         /// </summary>
@@ -173,7 +166,7 @@ namespace HardwareStore.Modules.ProductsAdmin.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtProductId;
-        
+
         /// <summary>
         /// Control txtPriceOrders.
         /// </summary>
@@ -182,7 +175,7 @@ namespace HardwareStore.Modules.ProductsAdmin.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPriceOrders;
-        
+
         /// <summary>
         /// Control txtExistences.
         /// </summary>
@@ -191,16 +184,7 @@ namespace HardwareStore.Modules.ProductsAdmin.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtExistences;
-        
-        /// <summary>
-        /// Control TextBox1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
-        
+
         /// <summary>
         /// Control TextBox2.
         /// </summary>
@@ -209,7 +193,16 @@ namespace HardwareStore.Modules.ProductsAdmin.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox2;
-        
+
+        /// <summary>
+        /// Control TextBox1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+
         /// <summary>
         /// Control TextBox3.
         /// </summary>
@@ -218,7 +211,7 @@ namespace HardwareStore.Modules.ProductsAdmin.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox3;
-        
+
         /// <summary>
         /// Control btnCancel.
         /// </summary>
@@ -227,7 +220,7 @@ namespace HardwareStore.Modules.ProductsAdmin.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancel;
-        
+
         /// <summary>
         /// Control UpdatePanel4.
         /// </summary>
@@ -236,14 +229,14 @@ namespace HardwareStore.Modules.ProductsAdmin.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel4;
-        
+
         /// <summary>
-        /// Control Button1.
+        /// Control btnList.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnList;
     }
 }

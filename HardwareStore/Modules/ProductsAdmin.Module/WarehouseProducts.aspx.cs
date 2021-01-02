@@ -20,10 +20,6 @@ namespace HardwareStore.Modules.ProductsAdmin.Module
             ScriptManager.RegisterStartupScript(this, this.GetType(), "script", ShowToaster, true);
         }
 
-        protected void btnGo_Click(object sender, EventArgs e)
-        {
-
-        }
 
         protected void Listmove_Click(object sender, EventArgs e)
         {
@@ -38,6 +34,11 @@ namespace HardwareStore.Modules.ProductsAdmin.Module
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             ProductWaresause.ActiveViewIndex = 0;
+        }
+
+        protected void btnList_Click(object sender, EventArgs e)
+        {
+            ProductWaresause.ActiveViewIndex = 2;
         }
     }
 }

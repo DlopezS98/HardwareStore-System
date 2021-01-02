@@ -114,19 +114,19 @@ namespace HardwareStore.Modules.Orders.Module
             //Metodo que retorna un elemento en productos bodegas (Warehouse-products)
             var obj = this.vWarehouseProductsRepository.GetAWarehouseProduct(idWhr, idProdDetail, idSupplier);
             //Valores a los textbox
-            txtWarehouseId.Text = idWhr.ToString();
-            txtProductId.Text = idProdDetail.ToString();
-            txtProduct.Text = obj.ProductName;
-            txtBrand.Text = obj.BrandName;
-            txtDefaultCode.Text = obj.DefaultCode;
-            txtDimensions.Text = obj.Dimensions;
+            txtWarehouseId.Value = idWhr.ToString();
+            txtProductId.Value = idProdDetail.ToString();
+            txtProduct.Value = obj.ProductName;
+            txtBrand.Value = obj.BrandName;
+            txtDefaultCode.Value = obj.DefaultCode;
+            txtDimensions.Value = obj.Dimensions;
             ddlstWarehouses.SelectedValue = obj.Fk_WarehouseID.ToString();
-            txtMeasureUnit.Text = obj.MeasureUnit;
-            txtPrice.Text = obj.WhPr_PurchasePrice.ToString();
+            txtMeasureUnit.Value = obj.MeasureUnit;
+            txtPrice.Value = obj.WhPr_PurchasePrice.ToString();
             ddlstSuppliers.SelectedValue = obj.Fk_SupplierID.ToString();
-            txtMaterialType.Text = obj.MaterialType;
-            txtWarehouseName.Text = obj.WarehouseName;
-            txtSupplierId.Text = obj.Fk_SupplierID.ToString();
+            txtMaterialType.Value = obj.MaterialType;
+            txtWarehouseName.Value = obj.WarehouseName;
+            txtSupplierId.Value = obj.Fk_SupplierID.ToString();
         }
 
         //Grid Detalle de pedido
@@ -164,41 +164,41 @@ namespace HardwareStore.Modules.Orders.Module
         {
             listOdtStage = (Session["ListOdtStg"] as List<OrderDetailsStage>);
             var obj = this.listOdtStage.FirstOrDefault(o => o.Fk_WarehouseID == idWhr && o.Fk_ProductDetailID == idProdDetail && o.Fk_SupplierID == SupplierId);
-            txtWarehouseId.Text = idWhr.ToString();
-            txtProductId.Text = idProdDetail.ToString();
-            txtProduct.Text = obj.ProductName;
-            txtBrand.Text = obj.BrandName;
-            txtDimensions.Text = obj.Dimensions;
+            txtWarehouseId.Value = idWhr.ToString();
+            txtProductId.Value = idProdDetail.ToString();
+            txtProduct.Value = obj.ProductName;
+            txtBrand.Value = obj.BrandName;
+            txtDimensions.Value = obj.Dimensions;
             ddlstWarehouses.SelectedValue = obj.Fk_WarehouseID.ToString();
             ddlstSuppliers.SelectedValue = obj.Fk_SupplierID.ToString();
-            txtMeasureUnit.Text = obj.MeasureUnit;
-            txtPrice.Text = obj.PurchasePrice.ToString();
-            txtMaterialType.Text = obj.MaterialType;
-            txtWarehouseName.Text = obj.WarehouseName;
-            txtDetailDiscount.Text = obj.Discount.ToString();
-            txtDimensions.Text = obj.Dimensions;
-            txtDefaultCode.Text = obj.DefaultCode;
-            txtQuantity.Text = obj.Quantity.ToString();
-            txtSupplierId.Text = obj.Fk_SupplierID.ToString();
+            txtMeasureUnit.Value = obj.MeasureUnit;
+            txtPrice.Value = obj.PurchasePrice.ToString();
+            txtMaterialType.Value = obj.MaterialType;
+            txtWarehouseName.Value = obj.WarehouseName;
+            txtDetailDiscount.Value = obj.Discount.ToString();
+            txtDimensions.Value = obj.Dimensions;
+            txtDefaultCode.Value = obj.DefaultCode;
+            txtQuantity.Value = obj.Quantity.ToString();
+            txtSupplierId.Value = obj.Fk_SupplierID.ToString();
         }
 
         //Creacíon del objeto a añadir a lista de detalle (pedido)
         public OrderDetailsStage CreateItemForDetailStage()
         {
             OrderDetailsStage OdtStg = new OrderDetailsStage();
-            OdtStg.Fk_ProductDetailID = Convert.ToInt32(txtProductId.Text);
+            OdtStg.Fk_ProductDetailID = Convert.ToInt32(txtProductId.Value);
             OdtStg.Fk_WarehouseID = Convert.ToInt32(ddlstWarehouses.SelectedValue);
             OdtStg.WarehouseName = ddlstWarehouses.SelectedItem.Text;
-            OdtStg.ProductName = txtProduct.Text;
-            OdtStg.BrandName = txtBrand.Text;
+            OdtStg.ProductName = txtProduct.Value;
+            OdtStg.BrandName = txtBrand.Value;
             OdtStg.SupplierName = ddlstSuppliers.SelectedItem.Text;
-            OdtStg.MaterialType = txtMaterialType.Text;
-            OdtStg.MeasureUnit = txtMeasureUnit.Text;
-            OdtStg.PurchasePrice = Convert.ToDouble(txtPrice.Text);
-            OdtStg.Quantity = Convert.ToInt32(txtQuantity.Text);
-            OdtStg.Discount = Convert.ToInt32(txtDetailDiscount.Text);
-            OdtStg.DefaultCode = txtDefaultCode.Text;
-            OdtStg.Dimensions = txtDimensions.Text;
+            OdtStg.MaterialType = txtMaterialType.Value;
+            OdtStg.MeasureUnit = txtMeasureUnit.Value;
+            OdtStg.PurchasePrice = Convert.ToDouble(txtPrice.Value);
+            OdtStg.Quantity = Convert.ToInt32(txtQuantity.Value);
+            OdtStg.Discount = Convert.ToInt32(txtDetailDiscount.Value);
+            OdtStg.DefaultCode = txtDefaultCode.Value;
+            OdtStg.Dimensions = txtDimensions.Value;
             OdtStg.Fk_SupplierID = Convert.ToInt32(ddlstSuppliers.SelectedValue);
             return OdtStg;
         }
@@ -250,13 +250,13 @@ namespace HardwareStore.Modules.Orders.Module
 
                 case "Editar":
                     listOdtStage = (Session["ListOdtStg"] as List<OrderDetailsStage>);
-                    int WhrId = Convert.ToInt32(txtWarehouseId.Text);
-                    int ProdDdtId = Convert.ToInt32(txtProductId.Text);
-                    int SupplierId = Convert.ToInt32(txtSupplierId.Text);
+                    int WhrId = Convert.ToInt32(txtWarehouseId.Value);
+                    int ProdDdtId = Convert.ToInt32(txtProductId.Value);
+                    int SupplierId = Convert.ToInt32(txtSupplierId.Value);
                     var oldObj = listOdtStage.FirstOrDefault(o => o.Fk_WarehouseID == WhrId && o.Fk_ProductDetailID == ProdDdtId && o.Fk_SupplierID == SupplierId);
-                    oldObj.PurchasePrice = Convert.ToDouble(txtPrice.Text);
-                    oldObj.Quantity = Convert.ToInt32(txtQuantity.Text);
-                    oldObj.Discount = Convert.ToInt32(txtDetailDiscount.Text);
+                    oldObj.PurchasePrice = Convert.ToDouble(txtPrice.Value);
+                    oldObj.Quantity = Convert.ToInt32(txtQuantity.Value);
+                    oldObj.Discount = Convert.ToInt32(txtDetailDiscount.Value);
                     oldObj.Fk_WarehouseID = Convert.ToInt32(ddlstWarehouses.SelectedValue);
                     oldObj.WarehouseName = ddlstWarehouses.SelectedItem.Text;
                     oldObj.SupplierName = ddlstSuppliers.SelectedItem.Text;
@@ -283,19 +283,19 @@ namespace HardwareStore.Modules.Orders.Module
         public void ResetDetailInputs()
         {
             btnAddToDetailStageList.Text = "Agregar";
-            txtProductId.Text = "";
-            txtProduct.Text = "";
-            txtWarehouseId.Text = "";
-            txtWarehouseName.Text = "";
+            txtProductId.Value = "";
+            txtProduct.Value = "";
+            txtWarehouseId.Value = "";
+            txtWarehouseName.Value = "";
             ddlstWarehouses.SelectedIndex = 0;
-            txtPrice.Text = "";
-            txtBrand.Text = "";
-            txtDefaultCode.Text = "";
-            txtDimensions.Text = "";
-            txtMaterialType.Text = "";
-            txtMeasureUnit.Text = "";
-            txtDetailDiscount.Text = "";
-            txtQuantity.Text = "";
+            txtPrice.Value = "";
+            txtBrand.Value = "";
+            txtDefaultCode.Value = "";
+            txtDimensions.Value = "";
+            txtMaterialType.Value = "";
+            txtMeasureUnit.Value = "";
+            txtDetailDiscount.Value = "";
+            txtQuantity.Value = "";
         }
 
         public double CalculateSubTotalOrderAmount()
@@ -309,7 +309,7 @@ namespace HardwareStore.Modules.Orders.Module
                     SubtotalAmount = SubtotalAmount + item.totalAmount;
                 }
 
-                txtSubtotal.Text = SubtotalAmount.ToString();
+                txtSubtotal.Value = SubtotalAmount.ToString();
             }
 
             return SubtotalAmount;
@@ -321,18 +321,18 @@ namespace HardwareStore.Modules.Orders.Module
             int discount;
             double subtotal = this.CalculateSubTotalOrderAmount();
             total = subtotal;
-            if (txtTotalTax.Text != "")
+            if (txtTotalTax.Value != "")
             {
-                total = total + Convert.ToDouble(txtTotalTax.Text);
+                total = total + Convert.ToDouble(txtTotalTax.Value);
             }
 
-            if (txtTotalDiscount.Text != "")
+            if (txtTotalDiscount.Value != "")
             {
-                discount = Convert.ToInt32(txtTotalDiscount.Text);
+                discount = Convert.ToInt32(txtTotalDiscount.Value);
                 total = total - (((double)discount / 100) * total);
             }
 
-            txtTotal.Text = total.ToString();
+            txtTotal.Value = total.ToString();
         }
 
         protected void btnRecalculateOrderTotal_Click(object sender, EventArgs e)
@@ -343,7 +343,7 @@ namespace HardwareStore.Modules.Orders.Module
         protected void btnSearchWarehouseProduct_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(ddlistFilterByWarehouse.SelectedValue);
-            string filter = txtSearchWarehouseProduct.Text;
+            string filter = txtSearchWarehouseProduct.Value;
             this.loadGridViewWarehouseProducts(filter, id);
         }
 
@@ -365,11 +365,11 @@ namespace HardwareStore.Modules.Orders.Module
             Tbl_Orders Ord = new Tbl_Orders();
             Ord.Fk_SupplierID = Convert.ToInt32(ddlstSuppliers.SelectedValue);
             Ord.Fk_UserID = 1;
-            if (txtOrdNumber.Text != "") { Ord.Ord_Number = txtOrdNumber.Text; } else { Ord.Ord_Number = null; }
-            Ord.Ord_Tax = Convert.ToDouble(txtTotalTax.Text);
-            Ord.Ord_Subtotal = Convert.ToDouble(txtSubtotal.Text);
-            Ord.Ord_Discount = Convert.ToInt32(txtTotalDiscount.Text);
-            Ord.Ord_Total = Convert.ToDouble(txtTotal.Text);
+            if (txtOrdNumber.Value != "") { Ord.Ord_Number = txtOrdNumber.Value; } else { Ord.Ord_Number = null; }
+            Ord.Ord_Tax = Convert.ToDouble(txtTotalTax.Value);
+            Ord.Ord_Subtotal = Convert.ToDouble(txtSubtotal.Value);
+            Ord.Ord_Discount = Convert.ToInt32(txtTotalDiscount.Value);
+            Ord.Ord_Total = Convert.ToDouble(txtTotal.Value);
 
             listOdtStage = (Session["ListOdtStg"] as List<OrderDetailsStage>);
             foreach (var item in listOdtStage)
@@ -408,12 +408,12 @@ namespace HardwareStore.Modules.Orders.Module
 
         public void ResetOrderInputs()
         {
-            txtOrdNumber.Text = "";
-            txtSubtotal.Text = "";
-            txtTotalTax.Text = "";
-            txtTotalDiscount.Text = "";
-            txtTotal.Text = "";
-            txtSupplierId.Text = "";
+            txtOrdNumber.Value = "";
+            txtSubtotal.Value = "";
+            txtTotalTax.Value = "";
+            txtTotalDiscount.Value = "";
+            txtTotal.Value = "";
+            txtSupplierId.Value = "";
             ddlstSuppliers.SelectedIndex = 0;
         }
 
@@ -457,7 +457,7 @@ namespace HardwareStore.Modules.Orders.Module
         {
             DateTime Start = Convert.ToDateTime(DatepickerFrom.Value);
             DateTime End = Convert.ToDateTime(DatepickerTo.Value);
-            string invoice = txtSearchByInvoiceNumber.Text;
+            string invoice = txtSearchByInvoiceNumber.Value;
             if( Start >= End)
             {
                 //Response.Write("<script>alert('La fecha de inicio no debe ser mayor que la fecha final');</script>");
@@ -485,7 +485,7 @@ namespace HardwareStore.Modules.Orders.Module
         protected void ddlistFilterByWarehouse_SelectedIndexChanged(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(ddlistFilterByWarehouse.SelectedValue);
-            string filter = txtSearchWarehouseProduct.Text;
+            string filter = txtSearchWarehouseProduct.Value;
             this.loadGridViewWarehouseProducts(filter, id);
         }
     }

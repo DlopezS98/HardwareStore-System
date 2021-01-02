@@ -19,32 +19,40 @@
         <asp:View runat="server">
             <asp:UpdatePanel runat="server" ID="UpdatePanel1">
                 <ContentTemplate>
-                    <h1 style="color: #1F2126;">Existencias Productos</h1>
-                    <div class="rowcard">
-                        <div class="column">
-                            <div class="card">
-                                <h3>Existencias en bodegas</h3>
-                                <asp:Image Height="150px" Width="130px" ImageUrl="~/Images/img1.png" runat="server" />
-                                <div style="margin-top: 40px">
-                                    <asp:Button CssClass="btnPrimary" runat="server" Text="Ver" ID="btnProductWarehouse" OnClick="btnProductWarehouse_Click" />
+                    <h3 style="color: #1F2126; text-align: center; margin-top: 20px">Existencias Productos</h3>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col ml-3">
+                                <div class="card" style="width: 18rem;">
+                                    <img runat="server" src="~/Images/img1.png" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Existencias en bodegas</h5>
+                                        <div style="margin-top: 15px">
+                                            <asp:Button CssClass="btn btn-primary" runat="server" Text="Ver" ID="btnProductWarehouse" OnClick="btnProductWarehouse_Click" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="column">
-                            <div class="card">
-                                <h3>Historial de transferencia</h3>
-                                <asp:Image Height="150px" Width="130px" ImageUrl="~/Images/img3.png" runat="server" />
-                                <div style="margin-top: 40px">
-                                    <asp:Button CssClass="btnPrimary" runat="server" Text="Ver" ID="btntransferencies" OnClick="btntransferencies_Click" />
+                            <div class="col ml-3">
+                                <div class="card" style="width: 18rem;">
+                                    <img runat="server" src="~/Images/img3.png" class="card-img-top mt-4" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Transferencias</h5>
+                                        <div style="margin-top: 15px">
+                                            <asp:Button CssClass="btn btn-primary" runat="server" Text="Ver" ID="btntransferencies" OnClick="btntransferencies_Click" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="column">
-                            <div class="card">
-                                <h3>Productos dañados</h3>
-                                <asp:Image Height="150px" Width="130px" ImageUrl="~/Images/devoluciones.png" runat="server" />
-                                <div style="margin-top: 40px">
-                                    <asp:Button CssClass="btnPrimary" runat="server" Text="Ver" ID="btnDamage" OnClick="btnDamage_Click" />
+                            <div class="col ml-3">
+                                <div class="card" style="width: 18rem;">
+                                    <img runat="server" src="~/Images/devoluciones.png" class="card-img-top mt-5" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Productos dañados</h5>
+                                        <div style="margin-top: 15px">
+                                            <asp:Button CssClass="btn btn-primary" runat="server" Text="Ver" ID="btnDamage" OnClick="btnDamage_Click" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -7,47 +7,13 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace HardwareStore.Modules.Sales.Module {
-    
-    
-    public partial class MainSales {
-        
-        /// <summary>
-        /// Control btnBackToCreateSale.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnBackToCreateSale;
-        
-        /// <summary>
-        /// Control btnSaleDetailList.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnSaleDetailList;
-        
-        /// <summary>
-        /// Control btnGoToListOrdersSales.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnGoToListOrdersSales;
-        
-        /// <summary>
-        /// Control getidFromtable.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl getidFromtable;
-        
+namespace HardwareStore.Modules.Sales.Module
+{
+
+
+    public partial class MainSales
+    {
+
         /// <summary>
         /// Control updatePanel4.
         /// </summary>
@@ -56,7 +22,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel updatePanel4;
-        
+
         /// <summary>
         /// Control txtSearchWarehouseProduct.
         /// </summary>
@@ -64,8 +30,8 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchWarehouseProduct;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtSearchWarehouseProduct;
+
         /// <summary>
         /// Control btnSearchWarehouseProduct.
         /// </summary>
@@ -74,7 +40,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSearchWarehouseProduct;
-        
+
         /// <summary>
         /// Control GridViewWarehouseProducts.
         /// </summary>
@@ -83,7 +49,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewWarehouseProducts;
-        
+
         /// <summary>
         /// Control SalesView.
         /// </summary>
@@ -92,7 +58,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.MultiView SalesView;
-        
+
         /// <summary>
         /// Control UpdatePanel2.
         /// </summary>
@@ -101,7 +67,16 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel2;
-        
+
+        /// <summary>
+        /// Control btnHistSale.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnHistSale;
+
         /// <summary>
         /// Control txtWarehouseId.
         /// </summary>
@@ -110,7 +85,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtWarehouseId;
-        
+
         /// <summary>
         /// Control txtProductId.
         /// </summary>
@@ -119,7 +94,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtProductId;
-        
+
         /// <summary>
         /// Control txtSupplierId.
         /// </summary>
@@ -128,7 +103,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSupplierId;
-        
+
         /// <summary>
         /// Control txtCurrencyExchangeId.
         /// </summary>
@@ -137,7 +112,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCurrencyExchangeId;
-        
+
         /// <summary>
         /// Control txtWarehouseName.
         /// </summary>
@@ -146,7 +121,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtWarehouseName;
-        
+
         /// <summary>
         /// Control txtProduct.
         /// </summary>
@@ -155,16 +130,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtProduct;
-        
-        /// <summary>
-        /// Control btnShowmodal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnShowmodal;
-        
+
         /// <summary>
         /// Control ddlistCustomers.
         /// </summary>
@@ -173,7 +139,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlistCustomers;
-        
+
         /// <summary>
         /// Control Button1.
         /// </summary>
@@ -182,7 +148,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
-        
+
         /// <summary>
         /// Control txtCustomer.
         /// </summary>
@@ -190,8 +156,8 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustomer;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCustomer;
+
         /// <summary>
         /// Control txtBrand.
         /// </summary>
@@ -199,8 +165,8 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBrand;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtBrand;
+
         /// <summary>
         /// Control txtMaterialType.
         /// </summary>
@@ -208,8 +174,8 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMaterialType;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtMaterialType;
+
         /// <summary>
         /// Control txtProductCode.
         /// </summary>
@@ -217,8 +183,8 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtProductCode;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtProductCode;
+
         /// <summary>
         /// Control txtMeasureUnit.
         /// </summary>
@@ -226,8 +192,8 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMeasureUnit;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtMeasureUnit;
+
         /// <summary>
         /// Control txtDimensions.
         /// </summary>
@@ -235,8 +201,8 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDimensions;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtDimensions;
+
         /// <summary>
         /// Control txtProductStock.
         /// </summary>
@@ -244,8 +210,8 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtProductStock;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtProductStock;
+
         /// <summary>
         /// Control txtQuantity.
         /// </summary>
@@ -253,8 +219,8 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtQuantity;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtQuantity;
+
         /// <summary>
         /// Control txtPrice.
         /// </summary>
@@ -262,8 +228,8 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPrice;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtPrice;
+
         /// <summary>
         /// Control txtDetailDiscount.
         /// </summary>
@@ -271,8 +237,8 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDetailDiscount;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtDetailDiscount;
+
         /// <summary>
         /// Control btnAddToDetailStageList.
         /// </summary>
@@ -281,7 +247,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAddToDetailStageList;
-        
+
         /// <summary>
         /// Control btnAbortAddToDetailStageList.
         /// </summary>
@@ -290,79 +256,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAbortAddToDetailStageList;
-        
-        /// <summary>
-        /// Control UpdatePanel3.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
-        
-        /// <summary>
-        /// Control btnUpdateTable.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpdateTable;
-        
-        /// <summary>
-        /// Control DatepickerFrom.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl DatepickerFrom;
-        
-        /// <summary>
-        /// Control DatepickerTo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl DatepickerTo;
-        
-        /// <summary>
-        /// Control btnFilterByDate.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFilterByDate;
-        
-        /// <summary>
-        /// Control GridviewSales.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridviewSales;
-        
-        /// <summary>
-        /// Control GridViewSaleDetails.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewSaleDetails;
-        
-        /// <summary>
-        /// Control UpdatePanel1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
+
         /// <summary>
         /// Control GridViewSaleDetailsStage.
         /// </summary>
@@ -371,7 +265,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewSaleDetailsStage;
-        
+
         /// <summary>
         /// Control txtSubtotal.
         /// </summary>
@@ -379,8 +273,8 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSubtotal;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtSubtotal;
+
         /// <summary>
         /// Control txtTotalDiscount.
         /// </summary>
@@ -388,8 +282,8 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTotalDiscount;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtTotalDiscount;
+
         /// <summary>
         /// Control txtTotal.
         /// </summary>
@@ -397,8 +291,8 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTotal;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtTotal;
+
         /// <summary>
         /// Control ddlistForeignCurrencies.
         /// </summary>
@@ -407,7 +301,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlistForeignCurrencies;
-        
+
         /// <summary>
         /// Control ddlistLocalCurrencies.
         /// </summary>
@@ -416,7 +310,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlistLocalCurrencies;
-        
+
         /// <summary>
         /// Control txtCurrencyPurchase.
         /// </summary>
@@ -424,8 +318,8 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCurrencyPurchase;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCurrencyPurchase;
+
         /// <summary>
         /// Control txtCurrencySale.
         /// </summary>
@@ -433,8 +327,8 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCurrencySale;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCurrencySale;
+
         /// <summary>
         /// Control txtPayment.
         /// </summary>
@@ -442,8 +336,8 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPayment;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtPayment;
+
         /// <summary>
         /// Control txtConversion.
         /// </summary>
@@ -451,8 +345,8 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtConversion;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtConversion;
+
         /// <summary>
         /// Control txtPaymentChange.
         /// </summary>
@@ -460,8 +354,8 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPaymentChange;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtPaymentChange;
+
         /// <summary>
         /// Control btnCalculateTotal.
         /// </summary>
@@ -470,7 +364,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCalculateTotal;
-        
+
         /// <summary>
         /// Control btnCreateSale.
         /// </summary>
@@ -479,7 +373,7 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCreateSale;
-        
+
         /// <summary>
         /// Control btnAbortTransaction.
         /// </summary>
@@ -488,5 +382,77 @@ namespace HardwareStore.Modules.Sales.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAbortTransaction;
+
+        /// <summary>
+        /// Control UpdatePanel3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
+
+        /// <summary>
+        /// Control btnNewSale.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnNewSale;
+
+        /// <summary>
+        /// Control btnUpdateTable.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUpdateTable;
+
+        /// <summary>
+        /// Control DatepickerFrom.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl DatepickerFrom;
+
+        /// <summary>
+        /// Control DatepickerTo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl DatepickerTo;
+
+        /// <summary>
+        /// Control btnFilterByDate.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnFilterByDate;
+
+        /// <summary>
+        /// Control GridviewSales.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridviewSales;
+
+        /// <summary>
+        /// Control btnList.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnList;
     }
 }

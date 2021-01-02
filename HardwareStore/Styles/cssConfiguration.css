@@ -22,12 +22,12 @@
 
 .form-principal {
     background: #F9F9F9;
-    height: 700px;
+    height: 500px;
     width: 70%;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 20px;
-    border-top: 1.5px solid #0D9DBB;
+    border-top: 1.5px solid #0D9DBB; 
     border-left: 0.5px solid #ddd;
     border-right: 0.5px solid #ddd;
     border-bottom: 0.5px solid #ddd;
@@ -36,7 +36,7 @@
 
 .form-principal-edit {
     background: #F9F9F9;
-    height: 950px;
+    height: 700px;
     width: 70%;
     margin-left: 10px;
     margin-right: 10px;

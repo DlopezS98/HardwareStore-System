@@ -7,11 +7,13 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace HardwareStore.Modules.Catalogs.Module {
-    
-    
-    public partial class UnitsOfMeasurement {
-        
+namespace HardwareStore.Modules.Catalogs.Module
+{
+
+
+    public partial class UnitsOfMeasurement
+    {
+
         /// <summary>
         /// Control mtvContenedor.
         /// </summary>
@@ -20,7 +22,7 @@ namespace HardwareStore.Modules.Catalogs.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.MultiView mtvContenedor;
-        
+
         /// <summary>
         /// Control vVista0.
         /// </summary>
@@ -29,7 +31,7 @@ namespace HardwareStore.Modules.Catalogs.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View vVista0;
-        
+
         /// <summary>
         /// Control BtnUnitTodos.
         /// </summary>
@@ -38,7 +40,7 @@ namespace HardwareStore.Modules.Catalogs.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnUnitTodos;
-        
+
         /// <summary>
         /// Control Text2.
         /// </summary>
@@ -47,7 +49,7 @@ namespace HardwareStore.Modules.Catalogs.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText Text2;
-        
+
         /// <summary>
         /// Control Text3.
         /// </summary>
@@ -56,7 +58,7 @@ namespace HardwareStore.Modules.Catalogs.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText Text3;
-        
+
         /// <summary>
         /// Control Text1.
         /// </summary>
@@ -65,7 +67,7 @@ namespace HardwareStore.Modules.Catalogs.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText Text1;
-        
+
         /// <summary>
         /// Control btnCancelar.
         /// </summary>
@@ -74,7 +76,7 @@ namespace HardwareStore.Modules.Catalogs.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelar;
-        
+
         /// <summary>
         /// Control vVista1.
         /// </summary>
@@ -83,14 +85,23 @@ namespace HardwareStore.Modules.Catalogs.Module {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View vVista1;
-        
+
         /// <summary>
-        /// Control Btnatras.
+        /// Control txtSearch.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btnatras;
+        protected global::System.Web.UI.WebControls.TextBox txtSearch;
+
+        /// <summary>
+        /// Control btnSearch.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSearch;
     }
 }
