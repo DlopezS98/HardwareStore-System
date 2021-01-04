@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Categories.cs" />
     <Compile Include="ctgWarehouse.cs" />
     <Compile Include="ForeignCurrencies.cs" />
     <Compile Include="Customers.cs" />
@@ -161,6 +162,7 @@
     <Compile Include="OrderDetailsStage.cs" />
     <Compile Include="Products.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResponseStatus.cs" />
     <Compile Include="SaleDetailsStage.cs" />
     <Compile Include="Sales.cs" />
     <Compile Include="tblOrderDetails.cs" />

@@ -84,7 +84,7 @@ namespace HardwareStore.Core.Repository
                         }
                         else
                         {
-                            obj.ExpiryDate = "[ No date Set ]";
+                            obj.ExpiryDate = "00-00-0000";
                         }
                         obj.WhPr_Stock = Convert.ToInt32(row["WhPr_Stock"]);
                         obj.WhPr_PurchasePrice = Convert.ToDouble(row["WhPr_PurchasePrice"]);

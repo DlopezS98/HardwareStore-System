@@ -17,9 +17,9 @@ namespace HardwareStore.Domain
         public string MeasureUnit { get; set; }
         public string Dimensions { get; set; }
         public string MaterialType { get; set; }
-        public Nullable<DateTime> ExpiryDate { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdateAt { get; set; }
+        public string ExpiryDate { get; set; }
+        public string CreatedAt { get; set; }
+        public string UpdateAt { get; set; }
         public string Status { get; set; }
     }
 }
