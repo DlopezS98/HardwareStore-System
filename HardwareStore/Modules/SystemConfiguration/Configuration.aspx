@@ -17,7 +17,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <asp:Button ID="btnDelete" OnClick="btnDelete_Click" Text="Confirmar" runat="server" CssClass="btn btn-success" />
+                    <asp:Button ID="btnDelete" Text="Confirmar" runat="server" CssClass="btn btn-success" />
                 </div>
             </div>
         </div>

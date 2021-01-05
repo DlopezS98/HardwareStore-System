@@ -65,6 +65,9 @@
                             </div>
                         </div>
                     </ContentTemplate>
+                    <Triggers>
+                        <asp:PostBackTrigger ControlID="btnNewUser" />
+                    </Triggers>
                 </asp:UpdatePanel>
             </asp:View>
             <asp:View runat="server">
