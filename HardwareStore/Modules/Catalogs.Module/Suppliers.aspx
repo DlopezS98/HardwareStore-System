@@ -26,15 +26,15 @@
                             <input runat="server" type="text" name="Type" id="Text3" class="form-control" />
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <h5 style="float: left; margin-left: 5px;">Teléfono</h5>
                             <input runat="server" type="text" name="Type" id="Text4" class="form-control" />
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <h5 style="float: left; margin-left: 5px;">DNI</h5>
                             <input runat="server" type="text" name="Type" id="Text5" class="form-control" />
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-4">
                             <h5 style="float: left; margin-left: 5px;">Correo</h5>
                             <input runat="server" type="text" name="Type" id="Text8" class="form-control" />
                         </div>
@@ -51,7 +51,7 @@
         </asp:View>
         <%-- Vista 2 --%>
         <asp:View ID="View1" runat="server">
-            <div class="mt-4">
+            <div class="mt-4 p-3">
                 <div style="text-align: center">
                     <h4>Catálogo Proveedor</h4>
                 </div>
@@ -59,7 +59,7 @@
                     <div class="col-md-6">
                         <asp:TextBox CssClass="form-control" runat="server" ID="txtSearch" placeholder="Buscar..." />
                     </div>
-                    <div class="col-md-6 pl-3" style="margin-top: 10px">
+                    <div class="col-md-6 pl-3" style="margin-top: 0px">
                         <asp:Button CssClass="btn btn-primary" runat="server" Text="Buscar" ID="btnSearch" />
                     </div>
                 </div>

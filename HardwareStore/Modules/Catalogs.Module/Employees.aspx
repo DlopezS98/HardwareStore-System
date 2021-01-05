@@ -14,32 +14,32 @@
                         <h2>Nuevo Empleado</h2>
                     </div>
                     <div class="form-row mt-5">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <h5 style="float: left; margin-left: 5px;">Nombre</h5>
                             <input runat="server" type="text" name="Type" id="Text2" class="form-control" />
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <h5 style="float: left; margin-left: 5px;">Apellido</h5>
                             <input runat="server" type="text" name="Type" id="Text1" class="form-control" />
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <h5 style="float: left; margin-left: 5px;">Dirección</h5>
                             <input runat="server" type="text" name="Type" id="Text3" class="form-control" />
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <h5 style="float: left; margin-left: 5px;">Teléfono</h5>
                             <input runat="server" type="text" name="Type" id="Text4" class="form-control" />
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <h5 style="float: left; margin-left: 5px;">DNI</h5>
                             <input runat="server" type="text" name="Type" id="Text5" class="form-control" />
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <h5 style="float: left; margin-left: 5px;">Correo</h5>
                             <input runat="server" type="text" name="Type" id="Text6" class="form-control" />
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <h5 style="float: left; margin-left: 5px;">Correo</h5>
                             <div style="width: 100%">
                                 <asp:DropDownList CssClass="form-control" runat="server">
@@ -64,15 +64,15 @@
         </asp:View>
         <%-- Vista 2 --%>
         <asp:View ID="vView1" runat="server">
-            <div class="mt-4">
+            <div class="mt-4 p-3">
                 <div style="text-align: center">
                     <h4>Catálogo Empleado</h4>
                 </div>
                 <div class="form-row mt-5">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <asp:TextBox CssClass="form-control" runat="server" ID="txtSearch" placeholder="Buscar..." />
                     </div>
-                    <div class="col-md-6 pl-3" style="margin-top: 10px">
+                    <div class="col-md-4 pl-3" style="margin-top: 0px">
                         <asp:Button CssClass="btn btn-primary" runat="server" Text="Buscar" ID="btnSearch" />
                     </div>
                 </div>

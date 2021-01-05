@@ -1,87 +1,100 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="WarehouseProducts.aspx.cs" Inherits="HardwareStore.Modules.ProductsAdmin.Module.WarehouseProducts" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <%--    <link href="../../Styles/Toast.css" rel="stylesheet" />
+    <link href="../../Styles/Toast.css" rel="stylesheet" />
     <div id="toast" class="toast">
         <div class="toast-img toast-img-success"><i class="fas fa-exclamation"></i></div>
         <div class="toast-body">
-            <p style="text-align: justify;">
+            <div style="text-align: center;">
                 Producto Agregado!
                 <br />
-                <asp:Button ID="btnGo" OnClick="btnGo_Click" Text="Ir" runat="server" CssClass="btnSuccess" />
-            </p>
+                <asp:Button ID="btnGo" Text="Ir" runat="server" CssClass="btn btn-success" />
+            </div>
         </div>
-    </div>--%>
+    </div>
 
+    <%-- Modal Alert --%>
+    <div style="margin-top: 120px" class="modal fade" id="ModalAlert" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark">
+                    <h5 class="modal-title text-light" id="exampleModalLabel">Advertencia!</h5>
+                    <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+                        <span class="text-light" aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Estás seguro que quieres eliminar el producto?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <asp:Button ID="btnDelete" OnClick="btnDelete_Click" Text="Confirmar" runat="server" CssClass="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%-- Fin Modal Alert --%>
     <%-- Sección del modal --%>
     <div class="modal fade" id="ventanaModal" tabindex="-1" role="dialog" aria-labelledby="tituloVentana" aria-hidden="true">
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h4 style="text-align: center">Transferencia de Productos</h4>
+                <div class="modal-header bg-dark">
+                    <h4 class="text-light" style="text-align: center">Transferencia de Productos</h4>
                     <button class="close" data-dismiss="modal" aria-label="cerrar">
-                        <span aria-hidden="true">&times;</span>
+                        <span class="text-light" aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <asp:UpdatePanel runat="server" ID="UpdatePanel1">
                         <ContentTemplate>
                             <div>
-                                <div class="jumbotron">
-                                    <h4 style="text-align: center">Datos del Producto a Transferir</h4>
-                                    <hr class="my-4">
-                                    <div class="form-row">
-                                        <div class="col-md-4 p-2">
-                                            <b>Nombre del Producto:</b> ... 
-                                        </div>
-                                        <div class="col-md-4 p-2">
-                                            <b>Código Producto:</b> 08418652
-                                        </div>
-                                        <div class="col-md-4 p-2">
-                                            <b>Dirección:</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit 
-                                        </div>
-                                        <div class="col-md-4 p-2">
-                                            <b>Marca:</b> ...
-                                        </div>
-                                        <div class="col-md-4 p-2">
-                                            <b>Producto:</b> ...
-                                        </div>
-
-                                        <div class="col-md-4 p-2">
-                                            <b>U. Medida:</b> ...
-                                        </div>
-                                        <div class="col-md-4 p-2">
-                                            <b>Dimensiones:</b> ... 
-                                        </div>
-
-                                        <div class="col-md-4 p-2">
-                                            <b>Material:</b> Goku Uzumaki
-                                        </div>
-
-                                        <div class="col-md-4 p-2">
-                                            <b>Categoría</b> ... 
-                                        </div>
-                                        <div class="col-md-4 p-2">
-                                            <b>Decripción:</b> ...
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 style="text-align: center; margin-top: 40px; color: #73B7FE">Llena los siguientes campos para confirmar</h4>
-                                </div>
-
+                                <h4 style="text-align: center">Datos del Producto a Transferir</h4>
+                                <hr class="my-4">
                                 <div class="form-row">
+                                    <div class="col-md-4 p-2">
+                                        <b>Nombre del Producto:</b> ... 
+                                    </div>
+                                    <div class="col-md-4 p-2">
+                                        <b>Código Producto:</b> 08418652
+                                    </div>
+                                    <div class="col-md-4 p-2">
+                                        <b>Dirección:</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit 
+                                    </div>
+                                    <div class="col-md-4 p-2">
+                                        <b>Marca:</b> ...
+                                    </div>
+                                    <div class="col-md-4 p-2">
+                                        <b>Producto:</b> ...
+                                    </div>
+
+                                    <div class="col-md-4 p-2">
+                                        <b>U. Medida:</b> ...
+                                    </div>
+                                    <div class="col-md-4 p-2">
+                                        <b>Dimensiones:</b> ... 
+                                    </div>
+
+                                    <div class="col-md-4 p-2">
+                                        <b>Material:</b> Goku Uzumaki
+                                    </div>
+
+                                    <div class="col-md-4 p-2">
+                                        <b>Categoría</b> ... 
+                                    </div>
+                                    <div class="col-md-4 p-2">
+                                        <b>Decripción:</b> ...
+                                    </div>
+                                    <div>
+                                        <h4 style="text-align: center; margin-top: 40px; color: #73B7FE">Llena los siguientes campos para confirmar</h4>
+                                    </div>
+
+
                                     <asp:TextBox Visible="false" TextMode="Number" placeholder="Id Bodega" runat="server" ID="TextBox4" class="form-control" />
                                     <asp:TextBox Visible="false" TextMode="Number" placeholder="Id Producto" runat="server" ID="TextBox5" class="form-control" />
                                     <asp:TextBox Visible="false" TextMode="Number" placeholder="Id Precio Compra" runat="server" ID="TextBox6" class="form-control" />
                                     <asp:TextBox Visible="false" placeholder="Bodega" runat="server" ID="TextBox7" class="form-control" />
 
-                                    <div class="col-md-12 p-2">
-                                        <h6 style="margin-left: 10px">Título</h6>
-                                        <div style="display: flex; margin-left: 10px">
-                                            <asp:TextBox placeholder="Título" runat="server" ID="TextBox9" class="form-control" />
-                                        </div>
-                                    </div>
                                     <div class="col-md-6 p-2">
                                         <h6 style="margin-left: 10px">Cantidad a Transferir</h6>
                                         <div style="display: flex; margin-left: 10px">
@@ -92,7 +105,7 @@
                                     <div class="col-md-6 p-2">
                                         <h6 style="margin-left: 10px">Bodega de Destino</h6>
                                         <div style="display: flex; margin-left: 10px">
-                                            <asp:DropDownList CssClass="form-control" Width="100%" Height="50px" runat="server">
+                                            <asp:DropDownList CssClass="form-control" runat="server">
                                             </asp:DropDownList>
                                         </div>
                                     </div>
@@ -157,7 +170,9 @@
                                             <td>DlopezS98</td>
                                             <td>Activo</td>
                                             <td>
-                                                <asp:Button ID="btnDelete" OnClick="btnDelete_Click" Text="Quitar" runat="server" CssClass="btn btn-danger" />
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalAlert">
+                                                    Eliminar
+                                                </button>                                                
                                                 <%--<button id="btnToasts" class="btn btn-success">Ver toasts</button>--%>
                                                 <asp:Button ID="btnMove" OnClick="btnMove_Click" Text="Transferir" runat="server" CssClass="btn btn-success" />
                                             </td>
@@ -177,21 +192,22 @@
             <asp:View runat="server">
                 <asp:UpdatePanel runat="server" ID="UpdatePanel3">
                     <ContentTemplate>
-                        <div style="border: 1px solid #e4e4e4; padding: 8px; border-radius: 5px; background-color: #fff">
-                            <div class="jumbotron">
-                                <h4 style="text-align: center">Datos del Producto a Eliminar</h4>
+                        <div style="border: 1px solid #e4e4e4; padding: 8px; border-radius: 5px; background-color: #fff; margin-top: 15px">
+                            <div class="form-row p-3">
+                                <div class="d-flex justify-content-center">
+                                    <h4>Datos del Producto a Eliminar</h4>
+                                </div>
+                                <hr class="my-4">
                                 <div class="form-row">
                                     <div class="col-md-4 p-2">
                                         <b>Nombre del Producto:</b> ... 
                                     </div>
-
                                     <div class="col-md-4 p-2">
                                         <b>Código Producto:</b> 08418652
                                     </div>
                                     <div class="col-md-4 p-2">
                                         <b>Dirección:</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit 
                                     </div>
-
                                     <div class="col-md-4 p-2">
                                         <b>Marca:</b> ...
                                     </div>
@@ -202,7 +218,6 @@
                                     <div class="col-md-4 p-2">
                                         <b>U. Medida:</b> ...
                                     </div>
-
                                     <div class="col-md-4 p-2">
                                         <b>Dimensiones:</b> ... 
                                     </div>
@@ -218,12 +233,10 @@
                                         <b>Decripción:</b> ...
                                     </div>
                                 </div>
-                            </div>
 
-                            <div>
-                                <h4 style="text-align: center; margin-top: 40px; color: #73B7FE">Llena los siguientes campos para confirmar</h4>
-                            </div>
-                            <div class="form-row">
+                                <div class="d-flex justify-content-center">
+                                    <h4 style="margin-top: 40px; color: #73B7FE">Llena los siguientes campos para confirmar</h4>
+                                </div>
                                 <asp:TextBox Visible="false" TextMode="Number" placeholder="Id Bodega" runat="server" ID="txtWarehouseId" class="form-control" />
                                 <asp:TextBox Visible="false" TextMode="Number" placeholder="Id Producto" runat="server" ID="txtProductId" class="form-control" />
                                 <asp:TextBox Visible="false" TextMode="Number" placeholder="Id Precio Compra" runat="server" ID="txtPriceOrders" class="form-control" />
@@ -251,7 +264,6 @@
                                     <asp:Button ID="btnCancel" OnClick="btnCancel_Click" runat="server" Text="Cancelar" CssClass="btn btn-danger" Style="margin-left: 10px" />
                                 </div>
                             </div>
-                        </div>
                     </ContentTemplate>
                     <Triggers>
                         <asp:PostBackTrigger ControlID="btnCancel" />
@@ -298,7 +310,7 @@
         </asp:MultiView>
     </div>
 
-    <div class="d-flex align-items-end flex-column bd-highlight mb-3" style="height: 200px;">
+    <%--    <div class="d-flex align-items-end flex-column bd-highlight mb-1" style="height: 200px;">
         <div class="mt-auto p-2 bd-highlight">
             <div id="toast1" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header">
@@ -309,9 +321,6 @@
                     </ul>
                     <strong class="mr-auto">Mensaje</strong>
                     <small>Justo ahora</small>
-                    <%--            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                <span aria-hidden="true">×</span>
-            </button>--%>
                 </div>
                 <div class="toast-body">
                     Producto agregado a la tabla de tranferencias
@@ -321,7 +330,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ScriptSection" runat="server">
     <script>
@@ -331,7 +340,7 @@
         //    });
         //}
         function launch_toast() {
-            var el = document.getElementById("toast1")
+            var el = document.getElementById("toast")
             el.classList.add("show");
             setTimeout(function () { el.classList.remove("show") }, 5000);
         }

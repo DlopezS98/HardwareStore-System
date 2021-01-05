@@ -114,8 +114,8 @@ namespace HardwareStore.Modules.Orders.Module
             //Metodo que retorna un elemento en productos bodegas (Warehouse-products)
             var obj = this.vWarehouseProductsRepository.GetAWarehouseProduct(idWhr, idProdDetail, idSupplier);
             //Valores a los textbox
-            txtWarehouseId.Value = idWhr.ToString();
-            txtProductId.Value = idProdDetail.ToString();
+            txtWarehouseId.Text = idWhr.ToString();
+            txtProductId.Text = idProdDetail.ToString();
             txtProduct.Value = obj.ProductName;
             txtBrand.Value = obj.BrandName;
             txtDefaultCode.Value = obj.DefaultCode;
@@ -125,8 +125,8 @@ namespace HardwareStore.Modules.Orders.Module
             txtPrice.Value = obj.WhPr_PurchasePrice.ToString();
             ddlstSuppliers.SelectedValue = obj.Fk_SupplierID.ToString();
             txtMaterialType.Value = obj.MaterialType;
-            txtWarehouseName.Value = obj.WarehouseName;
-            txtSupplierId.Value = obj.Fk_SupplierID.ToString();
+            txtWarehouseName.Text = obj.WarehouseName;
+            txtSupplierId.Text = obj.Fk_SupplierID.ToString();
         }
 
         //Grid Detalle de pedido
@@ -164,8 +164,8 @@ namespace HardwareStore.Modules.Orders.Module
         {
             listOdtStage = (Session["ListOdtStg"] as List<OrderDetailsStage>);
             var obj = this.listOdtStage.FirstOrDefault(o => o.Fk_WarehouseID == idWhr && o.Fk_ProductDetailID == idProdDetail && o.Fk_SupplierID == SupplierId);
-            txtWarehouseId.Value = idWhr.ToString();
-            txtProductId.Value = idProdDetail.ToString();
+            txtWarehouseId.Text = idWhr.ToString();
+            txtProductId.Text = idProdDetail.ToString();
             txtProduct.Value = obj.ProductName;
             txtBrand.Value = obj.BrandName;
             txtDimensions.Value = obj.Dimensions;
@@ -174,19 +174,19 @@ namespace HardwareStore.Modules.Orders.Module
             txtMeasureUnit.Value = obj.MeasureUnit;
             txtPrice.Value = obj.PurchasePrice.ToString();
             txtMaterialType.Value = obj.MaterialType;
-            txtWarehouseName.Value = obj.WarehouseName;
+            txtWarehouseName.Text = obj.WarehouseName;
             txtDetailDiscount.Value = obj.Discount.ToString();
             txtDimensions.Value = obj.Dimensions;
             txtDefaultCode.Value = obj.DefaultCode;
             txtQuantity.Value = obj.Quantity.ToString();
-            txtSupplierId.Value = obj.Fk_SupplierID.ToString();
+            txtSupplierId.Text = obj.Fk_SupplierID.ToString();
         }
 
         //Creacíon del objeto a añadir a lista de detalle (pedido)
         public OrderDetailsStage CreateItemForDetailStage()
         {
             OrderDetailsStage OdtStg = new OrderDetailsStage();
-            OdtStg.Fk_ProductDetailID = Convert.ToInt32(txtProductId.Value);
+            OdtStg.Fk_ProductDetailID = Convert.ToInt32(txtProductId.Text);
             OdtStg.Fk_WarehouseID = Convert.ToInt32(ddlstWarehouses.SelectedValue);
             OdtStg.WarehouseName = ddlstWarehouses.SelectedItem.Text;
             OdtStg.ProductName = txtProduct.Value;
@@ -250,9 +250,9 @@ namespace HardwareStore.Modules.Orders.Module
 
                 case "Editar":
                     listOdtStage = (Session["ListOdtStg"] as List<OrderDetailsStage>);
-                    int WhrId = Convert.ToInt32(txtWarehouseId.Value);
-                    int ProdDdtId = Convert.ToInt32(txtProductId.Value);
-                    int SupplierId = Convert.ToInt32(txtSupplierId.Value);
+                    int WhrId = Convert.ToInt32(txtWarehouseId.Text);
+                    int ProdDdtId = Convert.ToInt32(txtProductId.Text);
+                    int SupplierId = Convert.ToInt32(txtSupplierId.Text);
                     var oldObj = listOdtStage.FirstOrDefault(o => o.Fk_WarehouseID == WhrId && o.Fk_ProductDetailID == ProdDdtId && o.Fk_SupplierID == SupplierId);
                     oldObj.PurchasePrice = Convert.ToDouble(txtPrice.Value);
                     oldObj.Quantity = Convert.ToInt32(txtQuantity.Value);
@@ -283,10 +283,10 @@ namespace HardwareStore.Modules.Orders.Module
         public void ResetDetailInputs()
         {
             btnAddToDetailStageList.Text = "Agregar";
-            txtProductId.Value = "";
+            txtProductId.Text = "";
             txtProduct.Value = "";
-            txtWarehouseId.Value = "";
-            txtWarehouseName.Value = "";
+            txtWarehouseId.Text = "";
+            txtWarehouseName.Text = "";
             ddlstWarehouses.SelectedIndex = 0;
             txtPrice.Value = "";
             txtBrand.Value = "";
@@ -347,15 +347,15 @@ namespace HardwareStore.Modules.Orders.Module
             this.loadGridViewWarehouseProducts(filter, id);
         }
 
-        protected void btnGoToListOrders_Click(object sender, EventArgs e)
-        {
-            OrdersView.ActiveViewIndex = 1;
-        }
+        //protected void btnGoToListOrders_Click(object sender, EventArgs e)
+        //{
+        //    OrdersView.ActiveViewIndex = 1;
+        //}
 
-        protected void btnBackToCreateOrder_Click(object sender, EventArgs e)
-        {
-            OrdersView.ActiveViewIndex = 0;
-        }
+        //protected void btnBackToCreateOrder_Click(object sender, EventArgs e)
+        //{
+        //    OrdersView.ActiveViewIndex = 0;
+        //}
 
         protected void btnCreateOrder_Click(object sender, EventArgs e)
         {
@@ -413,7 +413,7 @@ namespace HardwareStore.Modules.Orders.Module
             txtTotalTax.Value = "";
             txtTotalDiscount.Value = "";
             txtTotal.Value = "";
-            txtSupplierId.Value = "";
+            txtSupplierId.Text = "";
             ddlstSuppliers.SelectedIndex = 0;
         }
 
@@ -477,10 +477,10 @@ namespace HardwareStore.Modules.Orders.Module
             this.LoadGridViewOrders(Start, End, "");
         }
 
-        protected void btnTblProducts_Click(object sender, EventArgs e)
-        {
-            OrdersView.ActiveViewIndex = 2;
-        }
+        //protected void btnTblProducts_Click(object sender, EventArgs e)
+        //{
+        //    OrdersView.ActiveViewIndex = 2;
+        //}
 
         protected void ddlistFilterByWarehouse_SelectedIndexChanged(object sender, EventArgs e)
         {

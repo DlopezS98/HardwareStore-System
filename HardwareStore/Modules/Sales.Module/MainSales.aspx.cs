@@ -120,7 +120,7 @@ namespace HardwareStore.Modules.Sales.Module
 
         public void ResetDetailInputs()
         {
-            txtProduct.Text = "";
+            txtProduct.Value = "";
             txtBrand.Value = "";
             txtMaterialType.Value = "";
             txtMeasureUnit.Value = "";
@@ -142,7 +142,7 @@ namespace HardwareStore.Modules.Sales.Module
             var obj = this.vWarehouseProductsRepository.GetAWarehouseProduct(idWhr, idProdDetail, idSupplier);
             txtWarehouseId.Text = idWhr.ToString();
             txtProductId.Text = idProdDetail.ToString();
-            txtProduct.Text = obj.ProductName;
+            txtProduct.Value = obj.ProductName;
             txtWarehouseName.Text = obj.WarehouseName;
             txtBrand.Value = obj.BrandName;
             txtMaterialType.Value = obj.MaterialType;
@@ -161,7 +161,7 @@ namespace HardwareStore.Modules.Sales.Module
                 WarehouseId = Convert.ToInt32(txtWarehouseId.Text),
                 ProductId = Convert.ToInt32(txtProductId.Text),
                 SupplierId = Convert.ToInt32(txtSupplierId.Text),
-                ProductName = txtProduct.Text,
+                ProductName = txtProduct.Value,
                 BrandName = txtBrand.Value,
                 UnitMeasure = txtMeasureUnit.Value,
                 Code = txtProductCode.Value,
@@ -297,7 +297,7 @@ namespace HardwareStore.Modules.Sales.Module
                 OldReg.WarehouseId = Convert.ToInt32(txtWarehouseId.Text);
                 OldReg.ProductId = Convert.ToInt32(txtProductId.Text);
                 OldReg.SupplierId = Convert.ToInt32(txtSupplierId.Text);
-                OldReg.ProductName = txtProduct.Text;
+                OldReg.ProductName = txtProduct.Value;
                 OldReg.BrandName = txtBrand.Value;
                 OldReg.UnitMeasure = txtMeasureUnit.Value;
                 OldReg.Code = txtProductCode.Value;
@@ -370,7 +370,7 @@ namespace HardwareStore.Modules.Sales.Module
             txtWarehouseId.Text = warehouseId.ToString();
             txtProductId.Text = productId.ToString();
             txtSupplierId.Text = SupplierId.ToString();
-            txtProduct.Text = obj.ProductName;
+            txtProduct.Value = obj.ProductName;
             txtWarehouseName.Text = obj.WarehouseName;
             txtBrand.Value = obj.BrandName;
             txtMaterialType.Value = obj.MaterialType;
@@ -529,19 +529,19 @@ namespace HardwareStore.Modules.Sales.Module
             }
         }
 
-        protected void btnNewSale_Click(object sender, EventArgs e)
-        {
-            SalesView.ActiveViewIndex = 0;
-        }
+        //protected void btnNewSale_Click(object sender, EventArgs e)
+        //{
+        //    SalesView.ActiveViewIndex = 0;
+        //}
 
-        protected void btnDetailsSale_Click(object sender, EventArgs e)
-        {
-            SalesView.ActiveViewIndex = 2;
-        }
+        //protected void btnDetailsSale_Click(object sender, EventArgs e)
+        //{
+        //    SalesView.ActiveViewIndex = 2;
+        //}
 
-        protected void btnHistSale_Click(object sender, EventArgs e)
-        {
-            SalesView.ActiveViewIndex = 1;
-        }
+        //protected void btnHistSale_Click(object sender, EventArgs e)
+        //{
+        //    SalesView.ActiveViewIndex = 1;
+        //}
     }
 }

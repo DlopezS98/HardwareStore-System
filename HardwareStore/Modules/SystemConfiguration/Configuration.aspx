@@ -1,6 +1,29 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Configuration.aspx.cs" Inherits="HardwareStore.Modules.SystemConfiguration.Configuration" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+    <%-- Modal Alert --%>
+    <div style="margin-top: 120px" class="modal fade" id="ModalAlert" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark">
+                    <h5 class="modal-title text-light" id="exampleModalLabel">Advertencia!</h5>
+                    <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+                        <span class="text-light" aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Estás seguro que quieres eliminar el producto?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <asp:Button ID="btnDelete" OnClick="btnDelete_Click" Text="Confirmar" runat="server" CssClass="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%-- Fin Modal Alert --%>
     <link href="../../Styles/cssConfiguration.css" rel="stylesheet" />
     <div style="text-align: center; margin: 10px">
         <h2>Configuración</h2>
@@ -11,7 +34,7 @@
                 <div class="form-logo">
                     <h2>Ferretería  <span style="color: #1DC4E7">Sánchez</span></h2>
                 </div>
-                <div class="form-principal">
+                <div class="form-principal p-4">
                     <h3 style="text-align: center">Datos del Negocio</h3>
                     <div class="form-row">
                         <div class="col-md-6 p-2">
@@ -126,18 +149,6 @@
                         <div class="col-md-6 mt-3">
                             <div style="display: flex">
                                 <input placeholder="Tasa de Impuesto" runat="server" type="text" name="Type" id="Text11" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="col-md-6 mt-3">
-                            <h6 style="margin-left: 10px">Creado En</h6>
-                            <div style="display: flex">
-                                <input runat="server" type="date" name="Type" id="Text12" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="col-md-6 mt-3">
-                            <h6 style="margin-left: 10px">Actualizado en</h6>
-                            <div style="display: flex">
-                                <input readonly runat="server" type="date" name="Type" id="Text13" class="form-control form-disable" />
                             </div>
                         </div>
                         <div class="col-md-6 mt-3" style="margin: 0 auto;">
