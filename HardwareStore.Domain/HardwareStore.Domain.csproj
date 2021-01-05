@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Brands.cs" />
     <Compile Include="Categories.cs" />
     <Compile Include="ctgWarehouse.cs" />
     <Compile Include="ForeignCurrencies.cs" />

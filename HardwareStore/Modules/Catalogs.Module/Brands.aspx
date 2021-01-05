@@ -47,29 +47,25 @@
                     </div>
                     <%-- Tabla --%>
                     <div class="TableContainer">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nombre</th>
-                                    <th>Descripción</th>
-                                    <th>Estado</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td data-label="ID">1</td>
-                                    <td data-label="Nombre">Sin datos</td>
-                                    <td data-label="Descripción">Sin datos</td>
-                                    <td data-label="Estado">Sin datos</td>
-                                    <td data-label="Acciones">
-                                        <a href="#"><i class="far fa-edit"></i></a>
-                                        <a href="#"><i class="fas fa-trash"></i></a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <asp:GridView runat="server" DataKeyNames="Id" AutoGenerateColumns="false"
+                                ID="GridViewBrands" CssClass="headerTable" CellPadding="5">
+                                <Columns>
+                                    <asp:BoundField HeaderText="ID Marca" DataField="Id" Visible="false" />
+                                    <asp:BoundField HeaderText="Código" DataField="Code" />
+                                    <asp:BoundField HeaderText="Marca" DataField="Name" />
+                                    <asp:BoundField HeaderText="Descripción" DataField="Description" />
+                                    <asp:BoundField HeaderText="Creación" DataField="CreatedAt" />
+                                    <asp:BoundField HeaderText="Actualización" DataField="UpdatedAt" />
+                                    
+                                    <asp:TemplateField HeaderText="Opciones">
+                                        <ItemTemplate>
+                                            <asp:LinkButton Font-Size="11px" Height="28px" Width="80px"
+                                                CssClass="LinkbtnPrimary" ID="LinkSelect" ToolTip="Editar Marca"
+                                                CommandName="cmdSelect" runat="server">Editar</asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
                     </div>
                 </div>
             </asp:View>

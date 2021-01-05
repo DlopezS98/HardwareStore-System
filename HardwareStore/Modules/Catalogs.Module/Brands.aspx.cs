@@ -1,4 +1,7 @@
-﻿using System;
+﻿using HardwareStore.Core.Interfaces;
+using Ninject;
+using Ninject.Web;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,11 +10,14 @@ using System.Web.UI.WebControls;
 
 namespace HardwareStore.Modules
 {
-    public partial class Brands : System.Web.UI.Page
+    public partial class Brands : PageBase
     {
+        [Inject]
+        public IBrandRepository vBrandRepository { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            this.GridViewBrands.DataSource = this.vBrandRepository.GetAllBrands("");
+            this.GridViewBrands.DataBind();
         }
 
         protected void BtnMarTodos_Click(object sender, EventArgs e)

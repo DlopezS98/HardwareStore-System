@@ -45,7 +45,7 @@ namespace HardwareStore.Modules.Reports.Module
 
         protected void btnProductReport_Click(object sender, EventArgs e)
         {
-            var data = this.vProductsRepository.FetchProductsFromDataBase();
+            var data = this.vProductsRepository.FetchProductsFromDataBase(0, "");
             ReportViewer1.LocalReport.DataSources.Clear();
             ReportDataSource Rdlc = new ReportDataSource("DataSet1", data);
             ReportViewer1.LocalReport.DataSources.Add(Rdlc);
