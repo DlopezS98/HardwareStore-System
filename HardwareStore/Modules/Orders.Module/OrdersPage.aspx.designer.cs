@@ -15,6 +15,24 @@ namespace HardwareStore.Modules.Orders.Module
     {
 
         /// <summary>
+        /// Control Text9.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text9;
+
+        /// <summary>
+        /// Control Text10.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text10;
+
+        /// <summary>
         /// Control Text2.
         /// </summary>
         /// <remarks>

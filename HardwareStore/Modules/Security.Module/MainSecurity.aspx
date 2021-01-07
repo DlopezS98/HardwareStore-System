@@ -1,8 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MainSecurity.aspx.cs" Inherits="HardwareStore.Modules.Security.Module.MainSecurity" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
-
     <%-- Modal Alert --%>
     <div style="margin-top: 120px" class="modal fade" id="ModalAlert" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -67,6 +65,7 @@
                     </ContentTemplate>
                     <Triggers>
                         <asp:PostBackTrigger ControlID="btnNewUser" />
+                        <%--<asp:PostBackTrigger ControlID="btnCreateOrder" />--%>
                     </Triggers>
                 </asp:UpdatePanel>
             </asp:View>

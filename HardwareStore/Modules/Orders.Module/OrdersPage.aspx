@@ -3,9 +3,58 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link href="../../Styles/Toast.css" rel="stylesheet" />
     <br />
-    <%-- Modal Bodega --%>
-    <div style="margin-top: 80px" class="modal fade" id="ModalWarehause" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <%-- Modal Nuevo Producto --%>
+    <div style="margin-top: 70px" class="modal fade" id="ModalnewProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark">
+                    <h5 class="modal-title text-light" id="exampleModalLabel2">Nuevo Producto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="text-light" aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row p-3">
+                        <div class="col-md-6">
+                            <h5 style="float: left; margin-left: 5px;">Nombre</h5>
+                            <br />
+                            <br />
+                            <input runat="server" type="text" name="Type" id="Text9" class="form-control" />
+                        </div>
+                        <div class="col-md-6">
+                            <h5 style="float: left; margin-left: 5px;">Categoría</h5>
+                            <br />
+                            <br />
+                            <div style="display: inline-flex; float: left; width: 100%">
+                                <asp:DropDownList CssClass="form-control" runat="server">
+                                    <asp:ListItem Text="Seleccionar--" />
+                                    <asp:ListItem Text="..." />
+                                    <asp:ListItem Text="..." />
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <h5 style="float: left; margin-left: 5px;">Decripción</h5>
+                            <br />
+                            <br />
+                            <input runat="server" type="text" name="Type" id="Text10" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%-- Fin Modal Porducto --%>
+
+    <%-- Modal Bodega --%>
+    <div style="margin-top: 60px" class="modal fade" id="ModalWarehause" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg-dark">
                     <h5 class="modal-title text-light" id="exampleModalLabel">Nueva Bodega</h5>
@@ -14,21 +63,120 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-row p-3">
-                        <div class="col-md-12">
-                            <h5 style="float: left; margin-left: 5px;">Nombre</h5>
-                            <input runat="server" type="text" name="Type" id="Text2" class="form-control" />
-                        </div>
-                        <div class="col-md-12">
-                            <h5 style="float: left; margin-left: 5px;">Decripción</h5>
-                            <input runat="server" type="text" name="Type" id="Text1" class="form-control" />
+                    <div class="container">
+                        <div class="row">
+                            <div style="display: inline-block; height: 350px; overflow-y: scroll;" class="d-flex justify-content-start w-75 mt-4">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">First</th>
+                                            <th scope="col">Last</th>
+                                            <th scope="col">Handle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="d-flex justify-content-end w-25 p-2">
+                                <div style="background: #f6f6f6; border-radius: 10px">
+                                    <div class="form-row p-3 mt-5">
+                                        <div class="col-md-12">
+                                            <h5 style="float: left; margin-left: 5px;">Nombre</h5>
+                                            <input runat="server" type="text" name="Type" id="Text2" class="form-control" />
+                                        </div>
+                                        <div class="col-md-12">
+                                            <h5 style="float: left; margin-left: 5px;">Decripción</h5>
+                                            <input runat="server" type="text" name="Type" id="Text1" class="form-control" />
+                                        </div>
+                                        <div style="margin-top: 80px" class="p-3 ml-2">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-primary">Guardar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
                 </div>
             </div>
         </div>
@@ -37,63 +185,163 @@
     <%-- Fin Modal --%>
 
     <%-- Modal Proveedores --%>
-    <div style="margin-top: 80px" class="modal fade" id="ModalSuppliers" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div style="margin-top: 60px" class="modal fade" id="ModalSuppliers" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg-dark">
-                    <h5 class="modal-title text-light" id="exampleModalLabel1">Nueva Bodega</h5>
+                    <h5 class="modal-title text-light" id="exampleModalLabel1">Nuevo proveedor</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span class="text-light" aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-row p-3">
-                        <div class="col-md-6">
-                            <h5 style="float: left; margin-left: 5px;">Nombre</h5>
-                            <input runat="server" type="text" name="Type" id="Text3" class="form-control" />
-                        </div>
-                        <div class="col-md-6">
-                            <h5 style="float: left; margin-left: 5px;">Compañía</h5>
-                            <input runat="server" type="text" name="Type" id="Text4" class="form-control" />
-                        </div>
-                        <div class="col-md-12">
-                            <h5 style="float: left; margin-left: 5px;">Dirección</h5>
-                            <input runat="server" type="text" name="Type" id="Text5" class="form-control" />
-                        </div>
+                    <div class="container">
+                        <div class="row">
+                            <div style="display: inline-block; height: 350px; overflow-y: scroll;" class="d-flex justify-content-start w-75 mt-4">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">First</th>
+                                            <th scope="col">Last</th>
+                                            <th scope="col">Handle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="d-flex justify-content-end w-25 p-2">
+                                <div style="background: #f6f6f6; border-radius: 10px">
+                                    <div class="form-row p-3">
+                                        <div class="col-md-6">
+                                            <label style="float: left; margin-left: 5px;">Nombre</label>
+                                            <input runat="server" type="text" name="Type" id="Text3" class="form-control" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label style="float: left; margin-left: 5px;">Compañía</label>
+                                            <input runat="server" type="text" name="Type" id="Text4" class="form-control" />
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label style="float: left; margin-left: 5px;">Dirección</label>
+                                            <input runat="server" type="text" name="Type" id="Text5" class="form-control" />
+                                        </div>
 
-                        <div class="col-md-4">
-                            <h5 style="float: left; margin-left: 5px;">Teléfono</h5>
-                            <input runat="server" type="text" name="Type" id="Text6" class="form-control" />
-                        </div>
-                        <div class="col-md-4">
-                            <h5 style="float: left; margin-left: 5px;">DNI</h5>
-                            <input runat="server" type="text" name="Type" id="Text7" class="form-control" />
-                        </div>
-                        <div class="col-md-4">
-                            <h5 style="float: left; margin-left: 5px;">Correo</h5>
-                            <input runat="server" type="text" name="Type" id="Text8" class="form-control" />
+                                        <div class="col-md-6">
+                                            <label style="float: left; margin-left: 5px;">Teléfono</label>
+                                            <input runat="server" type="text" name="Type" id="Text6" class="form-control" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label style="float: left; margin-left: 5px;">DNI</label>
+                                            <input runat="server" type="text" name="Type" id="Text7" class="form-control" />
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label style="float: left; margin-left: 5px;">Correo</label>
+                                            <input runat="server" type="text" name="Type" id="Text8" class="form-control" />
+                                        </div>
+                                        <div class="p-3">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-primary">Guardar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
                 </div>
             </div>
         </div>
     </div>
+
 
     <%-- Fin Modal --%>
     <%-- Sección del modal --%>
     <div style="margin-top: 50px" class="modal fade" id="ventanaModal" tabindex="-1" role="dialog" aria-labelledby="tituloVentana" aria-hidden="true">
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h4>Existencias Productos</h4>
+                <div class="modal-header bg-dark">
+                    <h4 class="text-light">Existencias Productos</h4>
                     <%--<label runat="server" id="getidFromtable"></label>--%>
-                    <button class="close" data-dismiss="modal" aria-label="cerrar">
-                        <span aria-hidden="true">&times;</span>
+                    <button class="close text-light" data-dismiss="modal" aria-label="cerrar">
+                        <span class="text-light" aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -270,7 +518,7 @@
                                     <ContentTemplate>
                                         <div class="row mt-3">
                                             <div class="col-md-12">
-                                                <form class="card card-shadow needs-validation" novalidate>
+                                                <form class="card card-shadow">
                                                     <div class="card-body">
                                                         <asp:TextBox Visible="false" TextMode="Number" placeholder="Id Bodega" runat="server" ID="txtWarehouseId" class="form-control" />
                                                         <asp:TextBox Visible="false" TextMode="Number" placeholder="Id Producto" runat="server" ID="txtProductId" class="form-control" />
@@ -279,59 +527,75 @@
                                                         <asp:TextBox ReadOnly="true" runat="server" Visible="false" ID="txtWarehouseName" CssClass="form-control" />
                                                         <div class="form-row">
                                                             <div class="form-group col-md-4">
-                                                                <label for="txtProduct">Producto</label>
+                                                                <div class="d-flex justify-content-start">
+                                                                    <label>Producto</label>
+                                                                </div>
                                                                 <div class="input-group">
                                                                     <input type="text" readonly placeholder="Producto" runat="server" id="txtProduct" class="form-control form-disable">
-                                                                    <div class="input-group-append">
-                                                                        <button runat="server" class="btn btn-info" data-toggle="modal" data-target="#ventanaModal">+</button>
+                                                                    <div title="Elige un Producto" class="input-group-append">
+                                                                        <button runat="server" class="btn btn-info" data-toggle="modal" data-target="#ventanaModal">...</button>
+                                                                    </div>
+                                                                    <div title="Crea un nuevo Producto" class="input-group-append">
+                                                                        <button runat="server" class="btn btn-success" data-toggle="modal" data-target="#ModalnewProduct">+</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group col-md-4">
-                                                                <label for="validationTooltip03">Bodega</label>
+                                                                <div class="d-flex justify-content-start">
+                                                                    <label for="validationTooltip03">Bodega</label>
+                                                                </div>
                                                                 <div class="input-group">
                                                                     <asp:DropDownList ID="ddlstWarehouses" CssClass="form-control" runat="server">
                                                                     </asp:DropDownList>
                                                                     <div class="input-group-append">
-                                                                        <button data-toggle="modal" data-target="#ModalWarehause" class="btn btn-primary" type="button">+</button>
+                                                                        <button data-toggle="modal" data-target="#ModalWarehause" class="btn btn-info" type="button">+</button>
                                                                     </div>
-                                                                </div>
-                                                                <div class="invalid-tooltip">
-                                                                    Please provide a valid customer
                                                                 </div>
                                                             </div>
                                                             <div class="form-group col-md-4">
-                                                                <label for="txtCustomer">Proveedores</label>
+                                                                <div class="d-flex justify-content-start">
+                                                                    <label for="txtCustomer">Proveedores</label>
+                                                                </div>
                                                                 <div class="input-group">
                                                                     <asp:DropDownList ID="ddlstSuppliers" CssClass="form-control" runat="server">
                                                                     </asp:DropDownList>
                                                                     <div class="input-group-append">
-                                                                        <button data-toggle="modal" data-target="#ModalSuppliers" class="btn btn-primary" type="button">+</button>
+                                                                        <button data-toggle="modal" data-target="#ModalSuppliers" class="btn btn-info" type="button">+</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="form-row">
                                                             <div class="form-group col-md-3">
-                                                                <label for="txtBrand">Número Factura</label>
+                                                                <div class="d-flex justify-content-start">
+                                                                    <label for="txtBrand">Número Factura</label>
+                                                                </div>
                                                                 <input runat="server" readonly type="text" class="form-control" id="txtOrdNumber" placeholder="Número Factura">
                                                             </div>
                                                             <div class="form-group col-md-3">
-                                                                <label for="txtBrand">Precio</label>
-                                                                <input required textmode="Number" step="0.01" placeholder="Precio" runat="server" id="txtPrice" class="form-control" />
+                                                                <div class="d-flex justify-content-start">
+                                                                    <label for="txtBrand">Precio</label>
+                                                                </div>
+                                                                <input textmode="Number" step="0.01" placeholder="Precio" runat="server" id="txtPrice" class="form-control" />
                                                             </div>
                                                             <div class="form-group col-md-3">
-                                                                <label for="txtProductCode">Codigo</label>
-                                                                <input readonly placeholder="Código producto" runat="server" id="txtDefaultCode" class="form-control form-disable" />
+                                                                <div class="d-flex justify-content-start">
+                                                                    <label for="txtProductCode">Codigo</label>
+                                                                </div>
+                                                                <input placeholder="Código producto" runat="server" id="txtDefaultCode" class="form-control" />
                                                             </div>
                                                             <div class="form-group col-md-3">
-                                                                <label for="txtMeasureUnit">Marca</label>
+                                                                <div class="d-flex justify-content-start">
+                                                                    <label for="txtMeasureUnit">Marca</label>
+                                                                </div>
                                                                 <input readonly placeholder="Marca" runat="server" id="txtBrand" class="form-control form-disable" />
                                                             </div>
                                                         </div>
                                                         <div class="form-row">
                                                             <div class="form-group col-md-4">
-                                                                <label for="txtDimensions">Material</label>
+                                                                <div class="d-flex justify-content-start">
+                                                                    <label for="txtDimensions">Material</label>
+                                                                </div>
                                                                 <input readonly placeholder="Material" runat="server" id="txtMaterialType" class="form-control form-disable" />
                                                             </div>
                                                             <div class="form-group col-md-2">
@@ -339,7 +603,9 @@
                                                                 <input readonly placeholder="Dimensiones" runat="server" id="txtDimensions" class="form-control form-disable" />
                                                             </div>
                                                             <div class="form-group col-md-2">
-                                                                <label for="txtPrice">Unidad de medida</label>
+                                                                <div class="d-flex justify-content-start">
+                                                                    <label for="txtPrice">Unidad de medida</label>
+                                                                </div>
                                                                 <%--<div class="input-group">--%>
                                                                 <%--                                                                    <div class="input-group-prepend">
                                                                         <span class="input-group-text">C$</span>
@@ -348,135 +614,141 @@
                                                                 <%--</div>--%>
                                                             </div>
                                                             <div class="form-group col-md-2">
-                                                                <label for="txtQuantity">Cantidad</label>
-                                                                <input required id="txtQuantity" placeholder="Cantidad" textmode="Number" runat="server" class="form-control" />
+                                                                <div class="d-flex justify-content-start">
+                                                                    <label for="txtQuantity">Cantidad</label>
+                                                                </div>
+                                                                <input id="txtQuantity" placeholder="Cantidad" textmode="Number" runat="server" class="form-control" />
                                                             </div>
                                                             <div class="form-group col-md-2">
                                                                 <label for="txtDetailDiscount">Descuento</label>
-                                                                <input required id="txtDetailDiscount" runat="server" placeholder="Descuento (%)" textmode="Number" class="form-control" />
+                                                                <input id="txtDetailDiscount" runat="server" placeholder="Descuento (%)" textmode="Number" class="form-control" />
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="card-footer">
                                                         <div class="row justify-content-center">
-                                                            <div class="p-1">
-                                                                <asp:Button runat="server" Text="Agregar" ValidationGroup="DetailsGroup" OnClick="btnAddToDetailStageList_Click" ID="btnAddToDetailStageList" CssClass="btn btn-success" Style="margin-left: 10px" />
-                                                            </div>
-                                                            <div class="p-1">
-                                                                <asp:Button runat="server" Text="Cancelar" OnClick="btnAbortAddToDetailStageList_Click" ID="btnAbortAddToDetailStageList" CssClass="btn btn-danger" Style="margin-left: 10px" />
-                                                            </div>
+                                                            <asp:Button runat="server" Text="Agregar" ValidationGroup="DetailsGroup" OnClick="btnAddToDetailStageList_Click" ID="btnAddToDetailStageList" CssClass="btn btn-success" Style="margin-left: 10px" />
+                                                            <asp:Button runat="server" Text="Cancelar" OnClick="btnAbortAddToDetailStageList_Click" ID="btnAbortAddToDetailStageList" CssClass="btn btn-danger" Style="margin-left: 10px" />
                                                         </div>
                                                     </div>
                                                 </form>
                                             </div>
                                         </div>
-                                        </div>
                                     </ContentTemplate>
-                                    <Triggers>
+                                    <%--                                    <Triggers>
                                         <asp:PostBackTrigger ControlID="btnAddToDetailStageList" />
-                                    </Triggers>
+                                        <asp:PostBackTrigger ControlID="btnAbortAddToDetailStageList" />
+                                    </Triggers>--%>
                                 </asp:UpdatePanel>
                                 <!-- End new sale section -->
+                            </div>
 
-                                <div class="tab-pane fade" id="saledetail-content" role="tabpanel" aria-labelledby="saledetail-tab">
-                                    <asp:UpdatePanel runat="server" ID="UpdatePanel1">
-                                        <ContentTemplate>
-                                            <div class="row mt-3">
-                                                <div class="col">
-                                                    <hr />
-                                                    <asp:GridView runat="server" DataKeyNames="Fk_WarehouseID,Fk_ProductDetailID,Fk_SupplierID" AutoGenerateColumns="false"
-                                                        ID="GridViewOrderDetailsStage" OnRowCommand="GridViewOrderDetailsStage_RowCommand" CssClass="headerTable" BorderStyle="None">
-                                                        <Columns>
-                                                            <asp:BoundField HeaderText="ID Bodega" DataField="Fk_WarehouseID" Visible="false" />
-                                                            <asp:BoundField HeaderText="ID Producto" DataField="Fk_ProductDetailID" Visible="false" />
-                                                            <asp:BoundField HeaderText="ID Proveedor" DataField="Fk_SupplierID" Visible="false" />
-                                                            <asp:BoundField HeaderText="Bodega" DataField="WarehouseName" />
-                                                            <asp:BoundField HeaderText="Producto" DataField="ProductName" />
-                                                            <asp:BoundField HeaderText="Proveedor" DataField="SupplierName" />
-                                                            <asp:BoundField HeaderText="Marca" DataField="BrandName" />
-                                                            <asp:BoundField HeaderText="Material" DataField="MaterialType" />
-                                                            <asp:BoundField HeaderText="Unidad" DataField="MeasureUnit" />
-                                                            <asp:BoundField HeaderText="Dimensiones" DataField="Dimensions" />
-                                                            <asp:BoundField HeaderText="Código" DataField="DefaultCode" />
-                                                            <asp:BoundField HeaderText="Precio Compra" DataField="PurchasePrice" />
-                                                            <asp:BoundField HeaderText="Cantidad" DataField="Quantity" />
-                                                            <asp:BoundField HeaderText="Subtotal" DataField="Subtotal" />
-                                                            <asp:BoundField HeaderText="Descuento" DataField="Discount" />
-                                                            <asp:BoundField HeaderText="Total" DataField="totalAmount" />
-                                                            <asp:TemplateField HeaderText="Opciones">
-                                                                <ItemTemplate>
-                                                                    <asp:LinkButton Font-Size="11px" Height="28px" Width="80px"
-                                                                        CssClass="LinkbtnPrimary" ID="EditLink" ToolTip="Editar Producto"
-                                                                        CommandName="cmdEdit" runat="server">Editar</asp:LinkButton>
-                                                                    <asp:LinkButton Font-Size="11px" Height="28px" Width="80px"
-                                                                        CssClass="LinkbtnDanger" ID="DeleteLink" ToolTip="Eliminar Producto"
-                                                                        CommandName="cmdDelete" runat="server">Eliminar</asp:LinkButton>
-                                                                </ItemTemplate>
-                                                            </asp:TemplateField>
-                                                        </Columns>
-                                                    </asp:GridView>
-                                                </div>
+                            <div class="tab-pane fade" id="saledetail-content" role="tabpanel" aria-labelledby="saledetail-tab">
+                                <asp:UpdatePanel runat="server" ID="UpdatePanel1">
+                                    <ContentTemplate>
+                                        <div class="row mt-3">
+                                            <div class="col">
+                                                <hr />
+                                                <asp:GridView runat="server" DataKeyNames="Fk_WarehouseID,Fk_ProductDetailID,Fk_SupplierID" AutoGenerateColumns="false"
+                                                    ID="GridViewOrderDetailsStage" OnRowCommand="GridViewOrderDetailsStage_RowCommand" CssClass="headerTable" BorderStyle="None">
+                                                    <Columns>
+                                                        <asp:BoundField HeaderText="ID Bodega" DataField="Fk_WarehouseID" Visible="false" />
+                                                        <asp:BoundField HeaderText="ID Producto" DataField="Fk_ProductDetailID" Visible="false" />
+                                                        <asp:BoundField HeaderText="ID Proveedor" DataField="Fk_SupplierID" Visible="false" />
+                                                        <asp:BoundField HeaderText="Bodega" DataField="WarehouseName" />
+                                                        <asp:BoundField HeaderText="Producto" DataField="ProductName" />
+                                                        <asp:BoundField HeaderText="Proveedor" DataField="SupplierName" />
+                                                        <asp:BoundField HeaderText="Marca" DataField="BrandName" />
+                                                        <asp:BoundField HeaderText="Material" DataField="MaterialType" />
+                                                        <asp:BoundField HeaderText="Unidad" DataField="MeasureUnit" />
+                                                        <asp:BoundField HeaderText="Dimensiones" DataField="Dimensions" />
+                                                        <asp:BoundField HeaderText="Código" DataField="DefaultCode" />
+                                                        <asp:BoundField HeaderText="Precio Compra" DataField="PurchasePrice" />
+                                                        <asp:BoundField HeaderText="Cantidad" DataField="Quantity" />
+                                                        <asp:BoundField HeaderText="Subtotal" DataField="Subtotal" />
+                                                        <asp:BoundField HeaderText="Descuento" DataField="Discount" />
+                                                        <asp:BoundField HeaderText="Total" DataField="totalAmount" />
+                                                        <asp:TemplateField HeaderText="Opciones">
+                                                            <ItemTemplate>
+                                                                <asp:LinkButton Font-Size="11px" Height="28px" Width="80px"
+                                                                    CssClass="LinkbtnPrimary" ID="EditLink" ToolTip="Editar Producto"
+                                                                    CommandName="cmdEdit" runat="server">Editar</asp:LinkButton>
+                                                                <asp:LinkButton Font-Size="11px" Height="28px" Width="80px"
+                                                                    CssClass="LinkbtnDanger" ID="DeleteLink" ToolTip="Eliminar Producto"
+                                                                    CommandName="cmdDelete" runat="server">Eliminar</asp:LinkButton>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                                    </Columns>
+                                                </asp:GridView>
                                             </div>
-                                            <div class="row mt-2">
-                                                <div class="col">
-                                                    <div class="card card-shadow">
-                                                        <div class="card-body">
-                                                            <div class="form-row">
-                                                                <div class="form-group col-md-3">
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col">
+                                                <div class="card card-shadow">
+                                                    <div class="card-body">
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-3">
+                                                                <div class="d-flex justify-content-start">
                                                                     <label for="txtSubtotal">Subtotal</label>
-                                                                    <div class="input-group">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">C$</span>
-                                                                        </div>
-                                                                        <input required aria-label="Username" aria-describedby="basic-addon1" readonly runat="server" id="txtSubtotal" placeholder="Subtotal" class="form-control form-disable" />
-                                                                    </div>
                                                                 </div>
-                                                                <div class="form-group col-md-2">
-                                                                    <label for="txtTotalDiscount">IVA</label>
-                                                                    <div class="input-group">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">%</span>
-                                                                        </div>
-                                                                        <input required textmode="Number" step="0.01" runat="server" id="txtTotalTax" placeholder="IVA" class="form-control" />
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">C$</span>
                                                                     </div>
-                                                                </div>
-                                                                <div class="form-group col-md-3">
-                                                                    <label for="txtTotal">Descuento</label>
-                                                                    <div class="input-group">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text">%</span>
-                                                                        </div>
-                                                                        <input required textmode="Number" runat="server" id="txtTotalDiscount" placeholder="Descuento" class="form-control" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group col-md-4">
-                                                                    <label for="ddlistCurrencies">Total</label>
-                                                                    <input required readonly placeholder="Total" runat="server" id="txtTotal" class="form-control form-disable" />
+                                                                    <input required aria-label="Username" aria-describedby="basic-addon1" readonly runat="server" id="txtSubtotal" placeholder="Subtotal" class="form-control form-disable" />
                                                                 </div>
                                                             </div>
+                                                            <div class="form-group col-md-2">
+                                                                <div class="d-flex justify-content-start">
+                                                                    <label for="txtTotalDiscount">IVA</label>
+                                                                </div>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">%</span>
+                                                                    </div>
+                                                                    <input required textmode="Number" step="0.01" runat="server" id="txtTotalTax" placeholder="IVA" class="form-control" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group col-md-3">
+                                                                <div class="d-flex justify-content-start">
+                                                                    <label for="txtTotalDiscount">Descuento</label>
+                                                                </div>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">%</span>
+                                                                    </div>
+                                                                    <input required textmode="Number" runat="server" id="txtTotalDiscount" placeholder="Descuento" class="form-control" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <div class="d-flex justify-content-start">
+                                                                    <label for="ddlistCurrencies">Total</label>
+                                                                </div>
+                                                                <input required readonly placeholder="Total" runat="server" id="txtTotal" class="form-control form-disable" />
+                                                            </div>
                                                         </div>
-                                                        <div class="card-footer">
-                                                            <div class="row justify-content-center">
-                                                                <div class="col-md-2">
-                                                                    <asp:Button runat="server" Text="Calcular" ValidationGroup="OrderGroup" OnClick="btnRecalculateOrderTotal_Click" ID="btnRecalculateOrderTotal" CssClass="btn btn-success" Style="margin-left: 10px" />
-                                                                </div>
-                                                                <div class="col-md-2">
-                                                                    <asp:Button runat="server" Text="Registrar Orden" ValidationGroup="OrderGroup" ID="btnCreateOrder" OnClick="btnCreateOrder_Click" CssClass="btn btn-success" Style="margin-left: 10px" />
-                                                                </div>
-                                                                <div class="col-md-2">
-                                                                    <asp:Button runat="server" Text="Cancelar" ID="btnCancelOrder" OnClick="btnCancelOrder_Click" CssClass="btn btn-danger" Style="margin-left: 10px" />
-                                                                </div>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <div class="row justify-content-center">
+                                                            <div class="col-md-2">
+                                                                <asp:Button runat="server" Text="Calcular" ValidationGroup="OrderGroup" OnClick="btnRecalculateOrderTotal_Click" ID="btnRecalculateOrderTotal" CssClass="btn btn-success" Style="margin-left: 10px" />
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <asp:Button runat="server" Text="Registrar Orden" ValidationGroup="OrderGroup" ID="btnCreateOrder" OnClick="btnCreateOrder_Click" CssClass="btn btn-success" Style="margin-left: 10px" />
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <asp:Button runat="server" Text="Cancelar" ID="btnCancelOrder" OnClick="btnCancelOrder_Click" CssClass="btn btn-danger" Style="margin-left: 10px" />
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            </div>
-                                        </ContentTemplate>
-                                    </asp:UpdatePanel>
-                                </div>
-                                <!-- End of tab content -->
+                                        </div>
+                                        </div>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
                             </div>
+                            <!-- End of tab content -->
                         </div>
                     </div>
                 </div>
