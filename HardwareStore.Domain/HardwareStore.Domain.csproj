@@ -54,10 +54,12 @@
     <Compile Include="Brands.cs" />
     <Compile Include="Categories.cs" />
     <Compile Include="ctgWarehouse.cs" />
+    <Compile Include="Employees.cs" />
     <Compile Include="ForeignCurrencies.cs" />
     <Compile Include="Customers.cs" />
     <Compile Include="DbConnection.cs" />
     <Compile Include="LocalCurrencies.cs" />
+    <Compile Include="LoginResponse.cs" />
     <Compile Include="Models\Ctg_BaseUnits.cs">
       <DependentUpon>HardwareStoreModel.tt</DependentUpon>
     </Compile>
@@ -162,6 +164,7 @@
     </Compile>
     <Compile Include="OrderDetailsStage.cs" />
     <Compile Include="Products.cs" />
+    <Compile Include="ProductsDeleted.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseStatus.cs" />
     <Compile Include="SaleDetailsStage.cs" />
@@ -170,6 +173,9 @@
     <Compile Include="tblOrders.cs" />
     <Compile Include="SaleDetails.cs" />
     <Compile Include="tblWarehouseProducts.cs" />
+    <Compile Include="TransferDetails.cs" />
+    <Compile Include="Transfers.cs" />
+    <Compile Include="Users.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Models\HardwareStoreModel.edmx">

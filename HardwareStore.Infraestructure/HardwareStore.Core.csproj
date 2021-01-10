@@ -55,12 +55,16 @@
     <Compile Include="Interfaces\ICategoryRepository.cs" />
     <Compile Include="Interfaces\ICurrencyRepository.cs" />
     <Compile Include="Interfaces\ICustomerRepository.cs" />
+    <Compile Include="Interfaces\IEmployeeRepository.cs" />
     <Compile Include="Interfaces\IHardwareStoreRepository.cs" />
     <Compile Include="Interfaces\IMeasureUnitsRepository.cs" />
     <Compile Include="Interfaces\IOrdersRepository.cs" />
+    <Compile Include="Interfaces\IProductsDeleted.cs" />
     <Compile Include="Interfaces\IProductsRepository.cs" />
     <Compile Include="Interfaces\ISalesRepository.cs" />
     <Compile Include="Interfaces\ISuppliersRepository.cs" />
+    <Compile Include="Interfaces\ITransferRepository.cs" />
+    <Compile Include="Interfaces\IUserRepository.cs" />
     <Compile Include="Interfaces\IWarehouseProductsRepository.cs" />
     <Compile Include="Interfaces\IWarehousesRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,11 +72,13 @@
     <Compile Include="Repository\CategoryRepository.cs" />
     <Compile Include="Repository\CurrencyRepository.cs" />
     <Compile Include="Repository\CustomerRepository.cs" />
+    <Compile Include="Repository\EmployeeRepository.cs" />
     <Compile Include="Repository\HardwareStoreRepository.cs" />
     <Compile Include="Repository\OrdersRepository.cs" />
     <Compile Include="Repository\ProductsRepository.cs" />
     <Compile Include="Repository\SalesRepository.cs" />
     <Compile Include="Repository\SuppliersReporsitory.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Repository\WarehouseProductsRepository.cs" />
     <Compile Include="Repository\WarehousesRepository.cs" />
   </ItemGroup>
